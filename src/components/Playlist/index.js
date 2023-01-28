@@ -9,7 +9,7 @@ const retrieveExercises = (indexedDB, stateCb) => {
         const db = dbPromise.result;
         const transaction = db.transaction("exercises", "readwrite");
         const store = transaction.objectStore("exercises");
-        const muscleIndex = store.index("muscle_idx");
+        const muscleIndex = store.index("muscle_type");
         const exerciseQuery = muscleIndex.get(["glute"]);
 
         exerciseQuery.onsuccess = function () {

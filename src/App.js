@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import './App.scss'; // need to run 'npm install sass'
+//import {loadDatabase} from "./components/Database/loadDatabase.js";
+import data from './components/Database/ExerciseDatabase.json'
 
 // import components
 import Selection from "./components/Selection";
 import Playlist from "./components/Playlist";
 
 const indexedDB =
-  window.indexedDB ||
-  window.mozIndexedDB ||
-  window.webkitIndexedDB ||
-  window.msIndexedDB ||
-  window.shimIndexedDB;
+    window.indexedDB ||
+    window.mozIndexedDB ||
+    window.webkitIndexedDB ||
+    window.msIndexedDB ||
+    window.shimIndexedDB;
 
 const createCollectionsInIndexedDB = () => {
     if (!indexedDB) {
@@ -19,6 +21,9 @@ const createCollectionsInIndexedDB = () => {
     }
 
     console.log(indexedDB);
+
+    // control version changes
+    var versionChangeInProgress = false;
 
     // if a database doesn not already exist with name "ExerciseDatabase" one is created, second param a version number in case we make a change and the user already has a previous version stored in broowser
     const request = indexedDB.open("ExerciseDatabase", 1);
@@ -30,26 +35,32 @@ const createCollectionsInIndexedDB = () => {
     };
 
     // create schema of database
-    request.onupgradeneeded = function () {
-        const db = request.result; // db is the result of the open request, which is the exercise database
-        if(!db.objectStoreNames.contains("ExerciseDatabase")) {
-            const store = db.createObjectStore("exercises", { keyPath: "id" }); // creating object store eqquivalent to creating tables in SQL
-            store.createIndex("muscle_idx", ["muscle"], { unique: false }); // compound index to search for exercises by difficulty and muscle grouup
-            // above we specify that it is not unique as we can have exercises with the same  difficulty and muscles trained
+    request.onupgradeneeded = function (event) {
+        const db = event.target.result;
+        if (!db.objectStoreNames.contains("ExerciseDatabase")) {
+            var jsonSchemaString = JSON.stringify(data);
+            var schema = JSON.parse(jsonSchemaString);
+    
+            for (var i = 0; i < schema.tables.length; i++) {
+                // Create the object store and add data
+                var objectStore = db.createObjectStore(schema.tables[i].name, { keyPath: schema.tables[i].keyPath });
+                // Define any indexes
+                for (var j = 0; j < schema.tables[i].indexes.length; j++) {
+                    objectStore.createIndex(schema.tables[i].indexes[j].name, schema.tables[i].indexes[j].keyPath, { unique: schema.tables[i].indexes[j].unique });
+                }
+                // Add data to the object store
+                schema.tables[i].data.forEach(row => objectStore.add(row));
+            }
         }
     };
-
-    request.onsuccess = () => {
-        const db = request.result;
-        const transaction = db.transaction("exercises", "readwrite");
-        const store = transaction.objectStore("exercises");
-        store.put({ id: 1, name: "squat", muscle: "glute", difficulty: "easy" });
-        transaction.oncomplete = function () {
-            db.close();
-        };
-        console.log('Database loaded successfully!');
-    }
+    
+    // handle version changes(adding to database)
+    request.onversionchange = function (event) {
+        versionChangeInProgress = true;
+        event.target.close();
+    };
 }
+
 
 const App = () => {
     useEffect(() => {
@@ -59,8 +70,8 @@ const App = () => {
         <div className="App">
             <h1>TRX Star (navbar)</h1>
             <Routes>
-                <Route path="/playlist" element={ <Playlist indexedDB={indexedDB}/> } />
-                <Route path="/" element={ <Selection/> } />
+                <Route path="/playlist" element={<Playlist indexedDB={indexedDB} />} />
+                <Route path="/" element={<Selection />} />
             </Routes>
         </div>
     );
