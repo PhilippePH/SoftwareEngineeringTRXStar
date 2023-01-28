@@ -7,19 +7,27 @@ const retrieveExercises = (indexedDB, stateCb) => {
     const dbPromise = indexedDB.open("ExerciseDatabase", 1);
     dbPromise.onsuccess = () => {
         const db = dbPromise.result;
-        const transaction = db.transaction("exercises", "readwrite");
+        const transaction = db.transaction(["exercises"], "readonly");
         const store = transaction.objectStore("exercises");
         const muscleIndex = store.index("muscle_type");
-        const exerciseQuery = muscleIndex.get(["glute"]);
+        const exerciseQuery = muscleIndex.openCursor("glute");
 
-        exerciseQuery.onsuccess = function () {
-            stateCb(exerciseQuery.result); // we pass in useState as a callback
-            console.log("Success, muscle query resulted in: ", exerciseQuery.result);
+
+        let results = {}; 
+        exerciseQuery.onsuccess = function (event) {
+            var cursor = event.target.result;
+            if (cursor) {
+                results = cursor.value
+                  console.log("Success, muscle query resulted in: ", cursor.value);
+                  cursor.continue();
+              } else{
+                  stateCb(results); 
         }
         transaction.oncomplete = function () {
             db.close();
         };
     }
+}
 }
 
 const Playlist = ({ indexedDB }) => {
@@ -33,9 +41,9 @@ const Playlist = ({ indexedDB }) => {
     return (
         <>
             <h1>Playlist page</h1>
-            <p>Name: {displayExercise.name}</p>
-            <p>Difficulty: {displayExercise.difficulty}</p>
-            <p>Muscle: {displayExercise.muscle}</p>
+            <p>Name: {displayExercise.exercise_name}</p>
+            <p>Difficulty: {displayExercise.intensity}</p>
+            <p>Muscle: {displayExercise.muscle_type}</p>
         </>
     );
 }
