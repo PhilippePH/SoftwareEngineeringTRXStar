@@ -1,35 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import {filterDatabase} from '../Algorithm/algorithm.js'; 
+
 
 const retrieveExercises = (indexedDB, stateCb) => {
+
     if (!indexedDB) {
         return;
     }
-    const dbPromise = indexedDB.open("ExerciseDatabase", 1);
-    dbPromise.onsuccess = () => {
-        const db = dbPromise.result;
-        const transaction = db.transaction(["exercises"], "readonly");
-        const store = transaction.objectStore("exercises");
-        const muscleIndex = store.index("muscle_type");
-        const exerciseQuery = muscleIndex.openCursor("glute");
-
-
-        let results = {}; 
-        exerciseQuery.onsuccess = function (event) {
-            var cursor = event.target.result;
-            if (cursor) {
-                results = cursor.value;
-                console.log("Success, muscle query resulted in: ", cursor.value);
-                cursor.continue();
-            } else {
-                stateCb(results); 
-        }
-
-        transaction.oncomplete = function () {
-            db.close();
-        };
-    }
+    
+    filterDatabase("exercises", ["muscle_type"], ["glute"], indexedDB, stateCb);
 }
-}
+
 
 const Playlist = ({ indexedDB }) => {
 

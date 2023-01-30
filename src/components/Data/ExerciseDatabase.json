@@ -75,7 +75,7 @@
         {
           "exercise_name": "chest press",
           "muscle_group": "upperBody, absCore",
-          "muscle_type": "triceps, chest",
+          "muscle_type": "glute",
           "position": 3,
           "focus": 1,
           "intensity": 2
@@ -83,7 +83,7 @@
         {
           "exercise_name": "crunch",
           "muscle_group": "absCore, upperBody",
-          "muscle_type": "upperAbdomen, lowerAbdomen, biceps",
+          "muscle_type": "upperAbdomen, glute, biceps",
           "position": 1,
           "focus": 1,
           "intensity": 2
