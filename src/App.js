@@ -3,12 +3,12 @@ import { Routes, Route } from "react-router-dom";
 import './App.scss'; // need to run 'npm install sass'
 
 // import components
-import Playlist from "./components/playlist";
-import SelectBodyPart from "./components/Selection/SelectBodyPart";
-import SelectDifficulty from "./components/Selection/SelectDifficulty";
-import SelectDuration from "./components/Selection/SelectDuration";
-import SelectFocus from "./components/Selection/SelectFocus";
-import SelectMuscles from "./components/Selection/SelectMuscles";
+import Playlist from "./components/playlist/Playlist";
+import SelectBodyPart from "./components/selection/SelectBodyPart";
+import SelectDifficulty from "./components/selection/SelectDifficulty";
+import SelectDuration from "./components/selection/SelectDuration";
+import SelectFocus from "./components/selection/SelectFocus";
+import SelectMuscles from "./components/selection/SelectMuscles";
 
 const indexedDB =
   window.indexedDB ||

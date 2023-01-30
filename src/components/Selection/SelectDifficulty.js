@@ -8,6 +8,7 @@ const SelectDifficulty = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const difficultyOptions = ["easy", "medium", "hard"];
+    // useSelector allows us to access the global state - retrieve state with callback function
     const completed = useSelector((state) => (state.select.difficulty))
 
     const clickHandler = (option) => {
