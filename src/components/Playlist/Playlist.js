@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {filterDatabase} from '../Algorithm/algorithm.js'; 
+import {recommendationAlgorithm} from '../Algorithm/algorithm.js'; 
 
 
 const retrieveExercises = (indexedDB, stateCb) => {
@@ -7,20 +7,24 @@ const retrieveExercises = (indexedDB, stateCb) => {
     if (!indexedDB) {
         return;
     }
-    
-    filterDatabase("exercises", ["muscle_type"], ["glute"], indexedDB)
-        .then(function(filteredObjects) {createFilteredDB(filteredObjects, stateCb)})
-        .catch(reject);
-}
 
+    recommendationAlgorithm(indexedDB, stateCb);
+    /*
+    filterDatabase("exercises", "muscle_type", "glute", indexedDB)
+        .then(function(filteredObjects) {createFilteredDB(filteredObjects, stateCb)})
+        .catch(function(event) {reject(event)});*/
+    
+}
+/*
 function createFilteredDB(objects, stateCb) {
     console.log("Resolved:", objects);
     stateCb(objects[0]);
 }
 
-function reject() {
-    console.error("DB transaction rejected.");
-}
+function reject(event) {
+    console.error("DB filtering rejected.");
+    console.error(event);
+}*/
 
 const Playlist = ({ indexedDB }) => {
 

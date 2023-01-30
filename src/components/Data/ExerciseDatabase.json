@@ -9,12 +9,14 @@
         {
           "name": "URL",
           "keyPath": "URL",
-          "unique": false
+          "unique": false,
+          "multientry": false
         },
         {
           "name": "complexity",
           "keyPath": "complexity",
-          "unique": false
+          "unique": false,
+          "multientry": false
         }
       ],
       "data": [
@@ -32,34 +34,44 @@
         {
           "name": "muscle_group",
           "keyPath": "muscle_group",
-          "unique": false
+          "unique": false,
+          "multientry": false
         },
         {
           "name": "muscle_type",
           "keyPath": "muscle_type",
-          "unique": false
+          "unique": false,
+          "multientry": true
         },
         {
           "name": "position",
           "keyPath": "position",
-          "unique": false
+          "unique": false,
+          "multientry": false
         },
         {
           "name": "focus",
           "keyPath": "focus",
-          "unique": false
+          "unique": false,
+          "multientry": false
         },
         {
           "name": "intensity",
           "keyPath": "intensity",
-          "unique": false
+          "unique": false,
+          "multientry": false
         }
       ],
       "data": [
         {
           "exercise_name": "balance lunge",
           "muscle_group": "lowerBody",
-          "muscle_type": "quads, glutes, calves, core",
+          "muscle_type": [
+            "quads",
+            "glute",
+            "calves",
+            "core"
+          ],
           "position": 3,
           "focus": 1,
           "intensity": 1
@@ -67,7 +79,10 @@
         {
           "exercise_name": "biceps curl",
           "muscle_group": "upperBody",
-          "muscle_type": "glute",
+          "muscle_type": [
+            "glute",
+            "bicep"
+          ],
           "position": 3,
           "focus": 1,
           "intensity": 2
@@ -75,7 +90,11 @@
         {
           "exercise_name": "chest press",
           "muscle_group": "upperBody, absCore",
-          "muscle_type": "glute",
+          "muscle_type": [
+            "glute",
+            "chest",
+            "triceps"
+          ],
           "position": 3,
           "focus": 1,
           "intensity": 2
@@ -83,7 +102,9 @@
         {
           "exercise_name": "crunch",
           "muscle_group": "absCore, upperBody",
-          "muscle_type": "upperAbdomen, glute, biceps",
+          "muscle_type": [
+            "upperAbdomen"
+          ],
           "position": 1,
           "focus": 1,
           "intensity": 2
@@ -97,22 +118,26 @@
         {
           "name": "video_ID",
           "keyPath": "video_ID",
-          "unique": false
+          "unique": false,
+          "multientry": false
         },
         {
           "name": "start_time",
           "keyPath": "start_time",
-          "unique": false
+          "unique": false,
+          "multientry": false
         },
         {
           "name": "end_time",
           "keyPath": "end_time",
-          "unique": false
+          "unique": false,
+          "multientry": false
         },
         {
           "name": "exercise_name",
           "keyPath": "exercise_name",
-          "unique": false
+          "unique": false,
+          "multientry": false
         }
       ],
       "data": [

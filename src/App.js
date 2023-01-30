@@ -46,7 +46,7 @@ const createCollectionsInIndexedDB = () => {
                 var objectStore = db.createObjectStore(schema.tables[i].name, { keyPath: schema.tables[i].keyPath });
                 // Define any indexes
                 for (var j = 0; j < schema.tables[i].indexes.length; j++) {
-                    objectStore.createIndex(schema.tables[i].indexes[j].name, schema.tables[i].indexes[j].keyPath, { unique: schema.tables[i].indexes[j].unique });
+                    objectStore.createIndex(schema.tables[i].indexes[j].name, schema.tables[i].indexes[j].keyPath, { unique: schema.tables[i].indexes[j].unique, multiEntry: schema.tables[i].indexes[j].multientry });
                 }
                 // Add data to the object store
                 schema.tables[i].data.forEach(row => objectStore.add(row));
