@@ -6,7 +6,7 @@ import data from './components/Data/ExerciseDatabase.json'
 
 // import components
 import Selection from "./components/Selection";
-import Playlist from "./components/Playlist";
+import Playlist from "./components/Playlist/Playlist";
 
 const indexedDB =
     window.indexedDB ||
