@@ -17,12 +17,13 @@ const retrieveExercises = (indexedDB, stateCb) => {
         exerciseQuery.onsuccess = function (event) {
             var cursor = event.target.result;
             if (cursor) {
-                results = cursor.value
-                  console.log("Success, muscle query resulted in: ", cursor.value);
-                  cursor.continue();
-              } else{
-                  stateCb(results); 
+                results = cursor.value;
+                console.log("Success, muscle query resulted in: ", cursor.value);
+                cursor.continue();
+            } else {
+                stateCb(results); 
         }
+
         transaction.oncomplete = function () {
             db.close();
         };
