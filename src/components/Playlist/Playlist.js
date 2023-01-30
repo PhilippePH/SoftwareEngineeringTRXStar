@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import {recommendationAlgorithm} from '../Algorithm/algorithm.js'; 
 
 
@@ -32,7 +32,7 @@ const Playlist = ({ indexedDB }) => {
 
     useEffect(() => {
         retrieveExercises(indexedDB, setDisplayExercise);
-    }, []);
+    }, [indexedDB]);
 
     return (
         <>
