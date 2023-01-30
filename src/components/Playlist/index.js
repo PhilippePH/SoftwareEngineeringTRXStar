@@ -8,9 +8,19 @@ const retrieveExercises = (indexedDB, stateCb) => {
         return;
     }
     
-    filterDatabase("exercises", ["muscle_type"], ["glute"], indexedDB, stateCb);
+    filterDatabase("exercises", ["muscle_type"], ["glute"], indexedDB)
+        .then(function(filteredObjects) {createFilteredDB(filteredObjects, stateCb)})
+        .catch(reject);
 }
 
+function createFilteredDB(objects, stateCb) {
+    console.log("Resolved:", objects);
+    stateCb(objects[0]);
+}
+
+function reject() {
+    console.error("DB transaction rejected.");
+}
 
 const Playlist = ({ indexedDB }) => {
 
