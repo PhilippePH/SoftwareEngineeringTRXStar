@@ -6,11 +6,12 @@ import data from './components/Data/ExerciseDatabase.json'
 
 // import components
 import Playlist from "./components/playlist/Playlist";
-import SelectBodyPart from "./components/selection/SelectBodyPart";
+import SelectMuscleGroups from "./components/selection/SelectMuscleGroups";
 import SelectDifficulty from "./components/selection/SelectDifficulty";
 import SelectDuration from "./components/selection/SelectDuration";
 import SelectFocus from "./components/selection/SelectFocus";
 import SelectMuscles from "./components/selection/SelectMuscles";
+import Welcome from "./components/intro/WelcomePage";
 
 const indexedDB =
     window.indexedDB ||
@@ -75,8 +76,8 @@ const App = () => {
             <h1>TRX Star (navbar)</h1>
             <Routes>
                 <Route path="/playlist" element={ <Playlist indexedDB={indexedDB}/> } />
-                <Route path="/" element={<SelectDifficulty/>} />
-                <Route exact path="/select/body-part" element={<SelectBodyPart/>}/>
+                <Route path="/" element={<Welcome/>} />
+                <Route exact path="/select/body-part" element={<SelectMuscleGroups/>}/>
                 <Route exact path="/select/difficulty" element={<SelectDifficulty/>}/>
                 <Route exact path="/select/duration" element={<SelectDuration/>}/>
                 <Route exact path="/select/focus" element={<SelectFocus/>}/>

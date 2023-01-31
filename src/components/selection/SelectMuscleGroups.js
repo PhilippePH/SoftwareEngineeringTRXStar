@@ -1,30 +1,36 @@
 import { useDispatch } from "react-redux";
 import SelectedOptions from "../playlist/SelectedOptions";
-import { setBodyParts } from "../../redux/slices/selectSlice";
+import { setMuscleGroups } from "../../redux/slices/selectSlice";
 import NavButtons from "../utils/NavButtons";
 
-const SelectBodyParts = () => {
+const SelectMuscleGroups = () => {
     const dispatch = useDispatch();
-    const bodyPartsOptions = [
+    const muscleGroupKey = {
+        "Core": "absCore",
+        "Lower Body": "lowerBody",
+        "Upper Body": "upperBody",
+    };
+    const muscleGroupOptions = [
         "Core",
         "Lower Body",
-        "Upper body"
+        "Upper Body",
     ];
 
     const clickHandler = (option) => {
-        dispatch(setBodyParts(option));
+        dispatch(setMuscleGroups(option));
     }
 
     return (
         <div>
             <ul>
                 {
-                    bodyPartsOptions?.map((bodyPartsOption) => {
+                    muscleGroupOptions?.map((muscleGroupOption) => {
                         return (
-                            <button key={bodyPartsOption} onClick={()=>clickHandler(bodyPartsOption)}>
-                                {bodyPartsOption}
+                            <button key={muscleGroupOption} onClick={() => clickHandler(muscleGroupKey[muscleGroupOption])}>
+                                {muscleGroupOption}
                             </button>
                         )
+
                     })
                 }
             </ul>
@@ -37,4 +43,4 @@ const SelectBodyParts = () => {
     )
 }
 
-export default SelectBodyParts;
+export default SelectMuscleGroups;

@@ -1,12 +1,15 @@
 import React, {useEffect, useState } from 'react';
 import {recommendationAlgorithm} from '../Algorithm/algorithm.js'; 
+import { useSelector  } from 'react-redux';
 
 
-const retrieveExercises = (indexedDB, stateCb) => {
+const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
 
     if (!indexedDB) {
         return;
     }
+
+    console.log("Selected:", JSON.stringify(selectedOptions));
 
     recommendationAlgorithm(indexedDB, stateCb);
     /*
@@ -15,6 +18,7 @@ const retrieveExercises = (indexedDB, stateCb) => {
         .catch(function(event) {reject(event)});*/
     
 }
+
 /*
 function createFilteredDB(objects, stateCb) {
     console.log("Resolved:", objects);
@@ -30,8 +34,10 @@ const Playlist = ({ indexedDB }) => {
 
     const [ displayExercise, setDisplayExercise ] = useState('');
 
+    const selectedOptions = useSelector((state) => (state.select));
+
     useEffect(() => {
-        retrieveExercises(indexedDB, setDisplayExercise);
+        retrieveExercises(indexedDB, setDisplayExercise, selectedOptions);
     }, [indexedDB]);
 
     return (
