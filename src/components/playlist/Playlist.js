@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react';
-import {recommendationAlgorithm} from '../Algorithm/algorithm.js'; 
+import {recommendationAlgorithm} from '../algorithm/algorithm.js'; 
 import { useSelector  } from 'react-redux';
 
 
