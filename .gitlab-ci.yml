@@ -16,9 +16,6 @@
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
-default:
-  image: node:12.22.9 # Version of node that the VM runs
-
 variables:
     VERCEL_TOKEN: MkY7zfiztYQsUxHMPbS4D50f
     VERCEL_ORG_ID: lGlSAuUd69gWNYH4bSL9RPMe
@@ -71,6 +68,7 @@ deploy_production:
     - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
     - vercel build --prod --token=$VERCEL_TOKEN
     - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+    - echo "Vercel deployed"
 
 deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
