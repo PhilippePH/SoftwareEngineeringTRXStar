@@ -32,7 +32,7 @@ build-job:       # This job runs in the build stage, which runs first.
     - export NVM_DIR="$HOME/../pp1722/.nvm" && . "$NVM_DIR/nvm.sh" --no-use #load nvm
     - nvm use v18.0.0
     - npm install
-    - npm build
+    - npm run build
     - echo "Compiling the code..."
     - echo "Compile complete."
 
