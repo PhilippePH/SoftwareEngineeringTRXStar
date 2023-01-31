@@ -17,7 +17,7 @@
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
 default:
-  image: node:16.16.0
+  image: node:12.22.9 # Version of node that the VM runs
 
 variables:
     VERCEL_TOKEN: MkY7zfiztYQsUxHMPbS4D50f
