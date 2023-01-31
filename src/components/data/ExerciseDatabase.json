@@ -1,0 +1,175 @@
+{
+  "name": "ExerciseDatabase",
+  "version": 1,
+  "tables": [
+    {
+      "name": "video",
+      "keyPath": "video_ID",
+      "indexes": [
+        {
+          "name": "URL",
+          "keyPath": "URL",
+          "unique": false,
+          "multientry": false
+        },
+        {
+          "name": "complexity",
+          "keyPath": "complexity",
+          "unique": false,
+          "multientry": false
+        }
+      ],
+      "data": [
+        {
+          "video_ID": 1,
+          "URL": "https://www.youtube.com/watch?v=4ZR25UheGpA&list=PLRJeTsJZogdIfXTOyYq-pu0tSsCojXR5i&index=1",
+          "complexity": 1
+        }
+      ]
+    },
+    {
+      "name": "exercises",
+      "keyPath": "exercise_name",
+      "indexes": [
+        {
+          "name": "muscle_group",
+          "keyPath": "muscle_group",
+          "unique": false,
+          "multientry": false
+        },
+        {
+          "name": "muscle_type",
+          "keyPath": "muscle_type",
+          "unique": false,
+          "multientry": true
+        },
+        {
+          "name": "position",
+          "keyPath": "position",
+          "unique": false,
+          "multientry": false
+        },
+        {
+          "name": "focus",
+          "keyPath": "focus",
+          "unique": false,
+          "multientry": false
+        },
+        {
+          "name": "intensity",
+          "keyPath": "intensity",
+          "unique": false,
+          "multientry": false
+        }
+      ],
+      "data": [
+        {
+          "exercise_name": "balance lunge",
+          "muscle_group": "lowerBody",
+          "muscle_type": [
+            "quads",
+            "glute",
+            "calves",
+            "core"
+          ],
+          "position": 3,
+          "focus": 1,
+          "intensity": 1
+        },
+        {
+          "exercise_name": "biceps curl",
+          "muscle_group": "upperBody",
+          "muscle_type": [
+            "glute",
+            "bicep"
+          ],
+          "position": 3,
+          "focus": 1,
+          "intensity": 2
+        },
+        {
+          "exercise_name": "chest press",
+          "muscle_group": "upperBody, absCore",
+          "muscle_type": [
+            "glute",
+            "chest",
+            "triceps"
+          ],
+          "position": 3,
+          "focus": 1,
+          "intensity": 2
+        },
+        {
+          "exercise_name": "crunch",
+          "muscle_group": "absCore, upperBody",
+          "muscle_type": [
+            "upperAbdomen"
+          ],
+          "position": 1,
+          "focus": 1,
+          "intensity": 2
+        }
+      ]
+    },
+    {
+      "name": "clip",
+      "keyPath": "clip_ID",
+      "indexes": [
+        {
+          "name": "video_ID",
+          "keyPath": "video_ID",
+          "unique": false,
+          "multientry": false
+        },
+        {
+          "name": "start_time",
+          "keyPath": "start_time",
+          "unique": false,
+          "multientry": false
+        },
+        {
+          "name": "end_time",
+          "keyPath": "end_time",
+          "unique": false,
+          "multientry": false
+        },
+        {
+          "name": "exercise_name",
+          "keyPath": "exercise_name",
+          "unique": false,
+          "multientry": false
+        }
+      ],
+      "data": [
+        {
+          "clip_ID": 1,
+          "video_ID": 1,
+          "start_time": "00:00:10",
+          "end_time": "00:00:30",
+          "exercise_name": "balance lunge"
+        },
+        {
+          "clip_ID": 2,
+          "video_ID": 1,
+          "start_time": "00:01:00",
+          "end_time": "00:01:30",
+          "exercise_name": "biceps curl"
+        },
+        {
+          "clip_ID": 3,
+          "video_ID": 1,
+          "start_time": "00:02:00",
+          "end_time": "00:02:30",
+          "exercise_name": "chest press"
+        },
+        {
+          "clip_ID": 4,
+          "video_ID": 1,
+          "start_time": "00:03:00",
+          "end_time": "00:03:30",
+          "exercise_name": "crunch"
+        }
+      ]
+    }
+  ]
+}

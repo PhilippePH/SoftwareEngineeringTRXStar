@@ -5,12 +5,13 @@ import NavButtons from "../utils/NavButtons";
 
 const SelectMuscles = () => {
     const dispatch = useDispatch()
-    const bodyParts = useSelector((state) => (state.select.bodyParts));
+    const bodyParts = useSelector((state) => (state.select.muscle_group));
     const musclesOptions = {
-        "Core": ["Obliques", "Upper abdomen", "Lower abdomen", "Lower back"],
-        "Lower Body": ["Glutes", "Quads", "Hamstrings", "Calves"],
-        "Upper body": ["Lats", "Back", "Shoulders", "Chest", "Biceps", "Triceps"]
+        "absCore": ["obliques", "abdomen"],
+        "lowerBody": ["glutes", "quads", "hamstrings", "calves"],
+        "upperBody": ["lats", "back", "shoulders", "chest", "biceps", "triceps"]
     };
+
 
     const clickHandler = (option) => {
         // dispatch allows us to use functions (actions) on global state 
@@ -36,7 +37,7 @@ const SelectMuscles = () => {
             <SelectedOptions/>
             <NavButtons
                 prev="/select/body-part"
-                next={null}
+                next="/playlist"
             />
         </div>
     )
