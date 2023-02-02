@@ -58,7 +58,7 @@ deploy_preview:
     - export NVM_DIR="$HOME/../pp1722/.nvm" && . "$NVM_DIR/nvm.sh" --no-use #load nvm
     - nvm use v18.0.0
     - echo "Vercel git branch "
-    - npm install --global vercel
+    - sudo npm install --global vercel
     - vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
     - vercel build --token=$VERCEL_TOKEN
     - vercel deploy --prebuilt  --token=$VERCEL_TOKEN
@@ -71,12 +71,11 @@ deploy_production:
      - export NVM_DIR="$HOME/../pp1722/.nvm" && . "$NVM_DIR/nvm.sh" --no-use #load nvm
      - nvm use v18.0.0
      - echo "Vercel master"
-     - npm install --global vercel
+     - sudo npm install --global vercel
      - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
      - vercel build --prod --token=$VERCEL_TOKEN
      - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
      - echo "Vercel deployed"
-
 
 deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
