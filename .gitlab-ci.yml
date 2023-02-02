@@ -16,6 +16,7 @@
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
+
 variables:
     VERCEL_TOKEN: MkY7zfiztYQsUxHMPbS4D50f
     VERCEL_ORG_ID: lGlSAuUd69gWNYH4bSL9RPMe
