@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 export function recommendationAlgorithm(indexedDB, stateCb) {
     // make filtered exercises table
     // if a database doesn not already exist with name "ExerciseDatabase" one is created, second param a version number in case we make a change and the user already has a previous version stored in broowser
+    /*
     var db;
     var request = indexedDB.open("ExerciseDatabase", 1);
     request.onsuccess = function (event) {
@@ -41,10 +42,10 @@ export function recommendationAlgorithm(indexedDB, stateCb) {
             }
         }
     }
+    */
 
-
-    filterDatabase("exercises", "muscle_type", "glute", indexedDB)
-        .then(function(filteredObjects) {createFilteredDB(filteredObjects, stateCb)})
+    filterDatabase("video", "complexity", 2, indexedDB)
+        .then(function(filteredObjects) {addToFilteredDB(filteredObjects, stateCb)})
         .catch(function(event) {reject(event)});
 
 }
@@ -59,7 +60,7 @@ function filterDatabase (tableName, indexName, value, indexedDB) {
     return new Promise(function(resolve, reject) {
 
         // open database
-        const dbPromise = indexedDB.open("ExerciseDatabase", 2);
+        const dbPromise = indexedDB.open("ExerciseDatabase", 1);
         dbPromise.onsuccess = () => {
     
             const db = dbPromise.result;
@@ -85,12 +86,19 @@ function filterDatabase (tableName, indexName, value, indexedDB) {
 
 }
 
-function createFilteredDB(objects, stateCb) {
+function addToFilteredDB(objects, stateCb) {
     console.log("Resolved:", objects);
-    stateCb(objects[0]);
+    const open  = indexedDB.open("FilteredDatabase", 1);
+    open.onsuccess = function(event) {
+        const db = event.target.result
+        const transaction = db.transaction("video", "readwrite");
+        const videoStore = transaction.objectStore("video");
+        objects.forEach(row => {videoStore.put(row)});
+        transaction.oncomplete = () => { db.close() }
+    }
 }
 
 function reject(event) {
     console.error("DB filtering rejected.");
-    console.error(event);
+    console.error(event.target.error);
 }

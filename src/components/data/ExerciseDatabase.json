@@ -24,6 +24,11 @@
           "video_ID": 1,
           "URL": "https://www.youtube.com/watch?v=4ZR25UheGpA&list=PLRJeTsJZogdIfXTOyYq-pu0tSsCojXR5i&index=1",
           "complexity": 1
+        },
+        {
+          "video_ID": 2,
+          "URL": "https://www.youtube.com",
+          "complexity": 2
         }
       ]
     },

@@ -21,6 +21,8 @@ const indexedDB =
     window.shimIndexedDB;
 
 const createCollectionsInIndexedDB = () => {
+
+    console.log("In create collection")
     if (!indexedDB) {
         console.log("IndexedDB could not be found in this browser.");
     }
@@ -29,6 +31,8 @@ const createCollectionsInIndexedDB = () => {
 
     // control version changes
     var versionChangeInProgress = false;
+    var jsonSchemaString = JSON.stringify(data);
+    var schema = JSON.parse(jsonSchemaString);
 
     // if a database doesn not already exist with name "ExerciseDatabase" one is created, second param a version number in case we make a change and the user already has a previous version stored in broowser
     const request = indexedDB.open("ExerciseDatabase", 1);
@@ -36,16 +40,13 @@ const createCollectionsInIndexedDB = () => {
     // error checks before we create schema on database
     request.onerror = function (event) {
         console.error("An error occurred with IndexedDB");
-        console.error(event);
+        console.error(event.target.error);
     };
 
     // create schema of database
     request.onupgradeneeded = function (event) {
         const db = event.target.result;
         if (!db.objectStoreNames.contains("ExerciseDatabase")) {
-            var jsonSchemaString = JSON.stringify(data);
-            var schema = JSON.parse(jsonSchemaString);
-    
             for (var i = 0; i < schema.tables.length; i++) {
                 // Create the object store and add data
                 var objectStore = db.createObjectStore(schema.tables[i].name, { keyPath: schema.tables[i].keyPath });
@@ -61,6 +62,41 @@ const createCollectionsInIndexedDB = () => {
     
     // handle version changes(adding to database)
     request.onversionchange = function (event) {
+        versionChangeInProgress = true;
+        event.target.close();
+    };
+
+    // create filtered database at start-up
+    const filtered = indexedDB.open("FilteredDatabase", 1);
+    var stores = ["exercises", "video", "clip"];
+
+    filtered.onsuccess = function(event) {
+        console.log("delete")
+        const db = event.target.result;
+        const tx = db.transaction(stores, "readwrite")
+        stores.forEach(store => {
+            const objectStore = tx.objectStore(store);
+            objectStore.clear();
+        })
+        
+    };
+
+    filtered.onerror = function (event) {
+        console.error("An error occurred with IndexedDB");
+        console.error(event);
+    };
+
+    filtered.onupgradeneeded = function (event) {
+        const db = event.target.result;
+        if (!db.objectStoreNames.contains("FilteredDatabase")) {
+            for (var i = 0; i < schema.tables.length; i++) {
+                // Create the object store and add data
+                var objectStore = db.createObjectStore(schema.tables[i].name, { keyPath: schema.tables[i].keyPath });
+            }
+        }
+    };
+
+    filtered.onversionchange = function (event) {
         versionChangeInProgress = true;
         event.target.close();
     };
