@@ -54,7 +54,7 @@ lint-test-job:   # This job also runs in the test stage.
 deploy_preview:
   stage: deploy
   except:   # This creates preview environments on commits pushed to a git branch
-    - main
+    - master
   script:
     - export NVM_DIR="$HOME/../pp1722/.nvm" && . "$NVM_DIR/nvm.sh" --no-use #load nvm
     - nvm use v18.0.0
@@ -67,7 +67,7 @@ deploy_preview:
 deploy_production:
   stage: deploy
   only:  # This creates production environments on commits to the main branch
-    - main
+    - master
   script:
      - export NVM_DIR="$HOME/../pp1722/.nvm" && . "$NVM_DIR/nvm.sh" --no-use #load nvm
      - nvm use v18.0.0
