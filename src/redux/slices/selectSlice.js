@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 
 // Javascript object to link body part selection with muscles
 const musclesOptions = {
-  "absCore": ["obliques", "abdomen"],
-  "lowerBody": ["glutes", "quads", "hamstrings", "calves"],
-  "upperBody": ["lats", "back", "shoulders", "chest", "biceps", "triceps"]
+  "Core": ["obliques", "abdomen"],
+  "Lower Body": ["glutes", "quads", "hamstrings", "calves"],
+  "Upper Body": ["lats", "back", "shoulders", "chest", "biceps", "triceps"]
 
 };
 
@@ -12,14 +12,18 @@ const musclesOptions = {
 export const selectSlice = createSlice({
   name: 'select',
   initialState: {
+    activeTab: "",
     difficulty: "",
     focus: "",
     duration: "",
-    muscle_group: [],
-    muscle_type: []
+    muscleGroups: [],
+    muscles: []
 
   },
   reducers: {
+    setActiveTab: (state, action) => {
+      state.activeTab = action.payload;
+    },
     setDifficulty: (state, action) => {
       state.difficulty = action.payload;
     },
@@ -30,21 +34,21 @@ export const selectSlice = createSlice({
       state.duration = action.payload;
     },
     setMuscleGroups: (state, action) => {
-      if (state.muscle_group.includes(action.payload)) { // if bodyPart already selected
-        state.muscle_group = state.muscle_group.filter((bodyPart) => (bodyPart!=action.payload)); // remove bodyPart
-        const bodyPartMuscles = musclesOptions[action.payload];
-        state.muscle_type = state.muscle_type.filter((muscle) => (!bodyPartMuscles.includes(muscle)));
+      if (state.muscleGroups.includes(action.payload)) { // if bodyPart already selected
+        state.muscleGroups = state.muscleGroups.filter((muscleGroup) => (muscleGroup!=action.payload)); // remove bodyPart
+        const muscleGroupMuscles = musclesOptions[action.payload];
+        state.muscles = state.muscles.filter((muscle) => (!muscleGroupMuscles.includes(muscle)));
       } else { // if bodyPart not already selected
-        state.muscle_group = [...state.muscle_group, action.payload]; // add bodyPart
-        const bodyPartMuscles = musclesOptions[action.payload];
-        state.muscle_type = [...state.muscle_type, ...bodyPartMuscles];
+        state.muscleGroups = [...state.muscleGroups, action.payload]; // add bodyPart
+        const muscleGroupMuscles = musclesOptions[action.payload];
+        state.muscles = [...state.muscles, ...muscleGroupMuscles];
       }
     },
     setMuscles: (state, action) => {
-      if (state.muscle_type.includes(action.payload)) {
-        state.muscle_type = state.muscle_type.filter((muscle) => (muscle!=action.payload));
+      if (state.muscles.includes(action.payload)) {
+        state.muscles = state.muscles.filter((muscle) => (muscle!=action.payload));
       } else {
-        state.muscle_type = [...state.muscle_type, action.payload];
+        state.muscles = [...state.muscles, action.payload];
 
       }
     }
@@ -53,6 +57,7 @@ export const selectSlice = createSlice({
 
 // The "Actions" will be used to change the state from anywhere in application - e.g.: dispatch(action(param))
 export const { 
+  setActiveTab,
   setDifficulty, 
   setFocus, 
   setDuration, 

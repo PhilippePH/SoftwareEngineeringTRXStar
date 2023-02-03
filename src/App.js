@@ -12,6 +12,9 @@ import SelectDuration from "./components/selection/SelectDuration";
 import SelectFocus from "./components/selection/SelectFocus";
 import SelectMuscles from "./components/selection/SelectMuscles";
 import Welcome from "./components/intro/WelcomePage";
+import NavBar from "./components/layout/NavBar";
+import SelectPage from "./components/layout/pages/SelectPage";
+import { DIFFICULTY, DURATION, FOCUS, MUSCLES, MUSCLE_GROUPS } from "./components/utils/constants";
 
 const indexedDB =
     window.indexedDB ||
@@ -72,16 +75,21 @@ const App = () => {
         createCollectionsInIndexedDB();
     }, []);
     return (
-        <div className="App">
-            <h1>TRX Star (navbar)</h1>
+        <div 
+            style={{
+                display: "flex",
+                flexDirection: "column"
+            }}
+        >
+            <NavBar/>
             <Routes>
                 <Route path="/playlist" element={ <Playlist indexedDB={indexedDB}/> } />
                 <Route path="/" element={<Welcome/>} />
-                <Route exact path="/select/body-part" element={<SelectMuscleGroups/>}/>
-                <Route exact path="/select/difficulty" element={<SelectDifficulty/>}/>
-                <Route exact path="/select/duration" element={<SelectDuration/>}/>
-                <Route exact path="/select/focus" element={<SelectFocus/>}/>
-                <Route exact path="/select/muscles" element={<SelectMuscles/>}/>
+                <Route exact path={`/select/${MUSCLE_GROUPS}`} element={<SelectPage selectForm={<SelectMuscleGroups/>}/>}/>
+                <Route exact path={`/select/${DIFFICULTY}`} element={<SelectPage selectForm={<SelectDifficulty/>}/>}/>
+                <Route exact path={`/select/${DURATION}`} element={<SelectPage selectForm={<SelectDuration/>}/>}/>
+                <Route exact path={`/select/${FOCUS}`} element={<SelectPage selectForm={<SelectFocus/>}/>}/>
+                <Route exact path={`/select/${MUSCLES}`} element={<SelectPage selectForm={<SelectMuscles/>}/>}/>
             </Routes>
         </div>
     );
