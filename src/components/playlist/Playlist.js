@@ -1,7 +1,6 @@
-import React, {useEffect, useState } from 'react';
-import { recommendationAlgorithm, filterDatabase, addToFilteredDB, reject } from '../algorithm/algorithm.js'; 
-import { useSelector  } from 'react-redux';
-
+import React, { useEffect, useState } from 'react';
+import { recommendationAlgorithm, filterDatabase, addToFilteredDB, reject, negFilterDatabase } from '../algorithm/algorithm.js';
+import { useSelector } from 'react-redux';
 
 const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
 
@@ -14,18 +13,61 @@ const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
     var muscles = selectedOptions["muscle_type"];
 
     // filter videos based on difficulty
-    filterDatabase("video", "complexity", complexity, indexedDB)
-        .then(function(filtered) {addToFilteredDB("video", filtered)})
-        .catch(function(event) {reject(event)});
+    filterDatabase("video", "complexity", complexity, indexedDB, "ExerciseDatabase")
+        .then(function (filtered) {
 
-    // filter exercises based on muscle_type
-    muscles.forEach(muscle => {
-        console.log("Filtering on:", muscle)
-        filterDatabase("exercises", "muscle_type", muscle, indexedDB)
-            .then(function(filtered) {addToFilteredDB("exercises", filtered)})
-            .catch(function(event) {reject(event)});
-    });
+            addToFilteredDB("video", filtered);
+            
+            // find clips of specified difficulty and of specified muscle types
+            var video_IDs = [];
+            for (var i = 0; i < filtered.length; i++) {
+                video_IDs[i] = filtered[i].video_ID;
+            }
 
+            // filter exercises based on muscle_type
+            muscles.forEach(muscle => {
+                filterDatabase("exercises", "muscle_type", muscle, indexedDB, "ExerciseDatabase")
+                    .then(function (filtered) {
+
+                        addToFilteredDB("exercises", filtered)
+
+                        // get all valid exercises based on muscle_type
+                        var valid_exercises = []
+                        for(var i=0; i<filtered.length; i++)
+                        {
+                            valid_exercises[i] = filtered[i].exercise_name; 
+                        }
+
+                        // filter clips based on video IDs
+                        video_IDs.forEach(videoID => {
+
+                            console.log("Filtering on:", videoID)
+                            filterDatabase("clip", "video_ID", videoID, indexedDB, "ExerciseDatabase")
+                                .then(function (filtered) {
+                                    addToFilteredDB("clip", filtered)
+
+                                    // filter clips based on exercise_name from filtered exercises
+                                    negFilterDatabase("clip", valid_exercises, indexedDB, "FilteredDatabase"); 
+                                })
+                                .catch(function (event) { reject(event) })
+
+                        })
+                    .catch(function (event) { reject(event) })
+                })
+
+            })
+        })
+        .catch(function (event) { reject(event) });
+
+
+    // find clips of specified difficulty and of specified muscle types
+    
+    /*
+    for(var i = 0; i< filtered_videos.length(); i++)
+    {
+        filterDatabase("clips", "video_ID", video_ID)
+    }
+*/
     //recommendationAlgorithm(indexedDB, stateCb);
     /*
     filterDatabase("exercises", "muscle_type", "glute", indexedDB)

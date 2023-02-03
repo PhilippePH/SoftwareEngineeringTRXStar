@@ -28,7 +28,7 @@
         {
           "video_ID": 2,
           "URL": "https://www.youtube.com",
-          "complexity": 2
+          "complexity": 1
         }
       ]
     },
@@ -85,7 +85,6 @@
           "exercise_name": "biceps curl",
           "muscle_group": "upperBody",
           "muscle_type": [
-            "glutes",
             "biceps"
           ],
           "position": 3,

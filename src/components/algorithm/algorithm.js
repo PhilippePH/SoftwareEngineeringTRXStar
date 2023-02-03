@@ -14,12 +14,12 @@ tableName: string specifying the name of the table to filter on
 indexNameArray: array of keys over which the table will be filtered
 valueArray: array of values, corresponding to each given key, for which entries will be kept
 */ 
-export function filterDatabase (tableName, indexName, value, indexedDB) {
+export function filterDatabase (tableName, indexName, value, indexedDB, database) {
     
     return new Promise(function(resolve, reject) {
 
         // open database
-        const dbPromise = indexedDB.open("ExerciseDatabase", 1);
+        const dbPromise = indexedDB.open(database, 1);
         dbPromise.onsuccess = () => {
     
             const db = dbPromise.result;
@@ -33,6 +33,45 @@ export function filterDatabase (tableName, indexName, value, indexedDB) {
             const request = index.getAll(value);
 
             request.onsuccess = function (event) { resolve(event.target.result); }
+
+            request.onerror = function(event) { reject(event) }
+            transaction.oncomplete = () => { db.close(); };
+            transaction.onerror = function(event) { reject(event) }
+        }
+
+        dbPromise.onerror = function(event) { reject(event) }
+
+    })
+
+}
+
+export function negFilterDatabase (tableName, value, indexedDB, database) {
+    
+    return new Promise(function(resolve, reject) {
+
+        // open database
+        const dbPromise = indexedDB.open(database, 1);
+        dbPromise.onsuccess = () => {
+    
+            const db = dbPromise.result;
+            const transaction = db.transaction(tableName, "readwrite");
+
+            // retrieve table and index of attribute specified
+            const store = transaction.objectStore(tableName);
+            const request = store.openCursor(); 
+
+            request.onsuccess = function (event) { 
+                var cursor = event.target.result; 
+
+                if(cursor){
+                    var entry = cursor.value; 
+                    if(!(value.includes(entry.exercise_name)))
+                    {
+                        cursor.delete(); 
+                    }
+                    cursor.continue(); 
+                }
+            }
 
             request.onerror = function(event) { reject(event) }
             transaction.oncomplete = () => { db.close(); };
