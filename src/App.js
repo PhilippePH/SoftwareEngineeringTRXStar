@@ -78,7 +78,7 @@ const App = () => {
         <div 
             style={{
                 display: "flex",
-                flexDirection: "column"
+                flexDirection: "column",
             }}
         >
             <NavBar/>
