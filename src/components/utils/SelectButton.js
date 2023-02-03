@@ -2,6 +2,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setDifficulty, setDuration, setFocus, setMuscleGroups, setMuscles } from "../../redux/slices/selectSlice";
 import { DIFFICULTY, DURATION, FOCUS } from "./constants";
+import './style.scss';
+
 
 const SelectButton = ({type, option, to}) => {
 
@@ -26,7 +28,7 @@ const SelectButton = ({type, option, to}) => {
     }
 
     return (
-        <button 
+        <button className='button'
             onClick={()=>clickHandler(type)}
             style={{
                 width: "8rem",
@@ -37,10 +39,12 @@ const SelectButton = ({type, option, to}) => {
                 margin: "1rem",
                 textAlign: "center",
                 cursor: "pointer",
-                backgroundColor: "yellow",
+                //backgroundColor: "yellow",
+               
                 border: "1px solid black",
                 borderRadius: "8px"
             }}
+        
         >
             <p
                 style={{

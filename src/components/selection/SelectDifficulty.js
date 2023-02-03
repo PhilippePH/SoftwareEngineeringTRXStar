@@ -4,6 +4,10 @@ import NavButtons from "../layout/NavButtons";
 import { useEffect } from "react";
 import { DIFFICULTY, FOCUS } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 const SelectDifficulty = () => {
     const dispatch = useDispatch()
@@ -34,17 +38,24 @@ const SelectDifficulty = () => {
                     padding: "0px"
                 }}
             >
-                {
+                { 
+
                     difficultyOptions?.map((option) => {
                         return (
+                          
                             <SelectButton 
                                 key={option} 
                                 type={DIFFICULTY} 
                                 option={option}
                                 to={`/select/${FOCUS}`}
                             />
+                        
                         )
+                        
                     })
+                   
+                
+                   
                 }
             </ul>
             <NavButtons

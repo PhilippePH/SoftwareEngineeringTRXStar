@@ -14,6 +14,7 @@ const NavBar = () => {
                 width: "100%",
                 display: "flex",
                 alignItems: "center",
+                backgroundColor: "white",
                 justifyContent: "space-between",
                 borderBottom: "2px solid black",
                 paddingTop: "1rem",
@@ -29,8 +30,9 @@ const NavBar = () => {
             >
                 <img
                     style={{
+                        paddingLeft: 15,
                         height: "2rem",
-                        width: "2rem"
+                        width: "2.5rem"
                     }}
                     src={logo}
                     alt={"logo"}
@@ -40,6 +42,7 @@ const NavBar = () => {
                 id="navbar-home" 
                 onClick={() => { navigate("/") }}
                 style={{
+                    paddingRight: 15,
                     cursor: "pointer"
                 }}
             >

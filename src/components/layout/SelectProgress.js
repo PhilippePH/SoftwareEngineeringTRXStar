@@ -16,7 +16,7 @@ const tabContainerStyle = {
 const activeTabStyle = {
     width: "3rem",
     height: "0.5rem",
-    backgroundColor: "lightgrey",
+    backgroundColor: "black",
     borderRadius: "8px",
     margin: "0.5rem"
 };
@@ -24,7 +24,7 @@ const activeTabStyle = {
 const inactiveTabStyle = {
     width: "3rem",
     height: "0.5rem",
-    backgroundColor: "black",
+    backgroundColor: "lightgrey",
     borderRadius: "8px",
     margin: "0.5rem"
 }

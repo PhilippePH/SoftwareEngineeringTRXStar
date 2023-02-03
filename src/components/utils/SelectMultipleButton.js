@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setMuscleGroups, setMuscles } from "../../redux/slices/selectSlice";
 import { MUSCLES, MUSCLE_GROUPS } from "./constants";
+import './style.scss';
 
 const selectedStyle = {
     backgroundColor: "yellow",
@@ -56,10 +57,10 @@ const SelectMultipleButton = ({type, option }) => {
     },[])
 
     return (
-        <button 
+        <button className='mult-button'
             onClick={() => clickHandler(type)}
             style={{
-                backgroundColor: selected? "yellow":"grey",
+                backgroundColor: selected? "":"lightgrey",
                 width: "8rem",
                 paddingTop: "0.5rem",
                 paddingbottom: "0.5rem",

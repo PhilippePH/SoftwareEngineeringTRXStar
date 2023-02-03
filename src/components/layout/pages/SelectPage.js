@@ -1,5 +1,7 @@
 import SelectProgress from "../SelectProgress";
 
+
+
 const style = {
     display: "flex",
     alignItems: "center",
@@ -10,7 +12,7 @@ const style = {
     justifyContent: "center"
 };
 
-const SelectPage = ({selectForm}) => {
+const SelectPage = ({ selectForm }) => {
     return (
         <div
             style={{
@@ -22,9 +24,12 @@ const SelectPage = ({selectForm}) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+
             }}
         >
-            <SelectProgress/>
+
+
+            <SelectProgress />
             {selectForm}
         </div>
     )

@@ -81,7 +81,8 @@ const App = () => {
                 flexDirection: "column"
             }}
         >
-            <NavBar/>
+        <NavBar></NavBar>
+       
             <Routes>
                 <Route path="/playlist" element={ <Playlist indexedDB={indexedDB}/> } />
                 <Route path="/" element={<Welcome/>} />
