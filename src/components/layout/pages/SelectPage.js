@@ -24,12 +24,9 @@ const SelectPage = ({ selectForm }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-
             }}
         >
-
-
-            <SelectProgress />
+            <SelectProgress/>
             {selectForm}
         </div>
     )

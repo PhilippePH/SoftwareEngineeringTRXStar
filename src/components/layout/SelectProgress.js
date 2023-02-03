@@ -6,7 +6,8 @@ const containerStyle = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    fontSize: "2rem"
+    fontSize: "2rem",
+    padding: "2rem"
 };
 
 const tabContainerStyle = {
