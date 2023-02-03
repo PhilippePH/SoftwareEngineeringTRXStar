@@ -1,15 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setDifficulty, setDuration, setFocus, setMuscleGroups, setMuscles } from "../../redux/slices/selectSlice";
-import { DIFFICULTY, DURATION, FOCUS, MUSCLES, MUSCLE_GROUPS } from "./constants";
-
-const reduxFunctions = {
-    [DIFFICULTY]: setDifficulty,
-    [FOCUS]: setFocus,
-    [DURATION]: setDuration,
-    [MUSCLE_GROUPS]: setMuscleGroups,
-    [MUSCLES]: setMuscles
-}
+import { DIFFICULTY, DURATION, FOCUS } from "./constants";
 
 const SelectButton = ({type, option, to}) => {
 
