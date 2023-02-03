@@ -73,7 +73,7 @@
           "muscle_group": "lowerBody",
           "muscle_type": [
             "quads",
-            "glute",
+            "glutes",
             "calves",
             "core"
           ],
@@ -85,8 +85,8 @@
           "exercise_name": "biceps curl",
           "muscle_group": "upperBody",
           "muscle_type": [
-            "glute",
-            "bicep"
+            "glutes",
+            "biceps"
           ],
           "position": 3,
           "focus": 1,
@@ -96,7 +96,7 @@
           "exercise_name": "chest press",
           "muscle_group": "upperBody, absCore",
           "muscle_type": [
-            "glute",
+            "glutes",
             "chest",
             "triceps"
           ],
@@ -108,7 +108,7 @@
           "exercise_name": "crunch",
           "muscle_group": "absCore, upperBody",
           "muscle_type": [
-            "upperAbdomen"
+            "abdomen"
           ],
           "position": 1,
           "focus": 1,

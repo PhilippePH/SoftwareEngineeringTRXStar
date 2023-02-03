@@ -71,7 +71,6 @@ const createCollectionsInIndexedDB = () => {
     var stores = ["exercises", "video", "clip"];
 
     filtered.onsuccess = function(event) {
-        console.log("delete")
         const db = event.target.result;
         const tx = db.transaction(stores, "readwrite")
         stores.forEach(store => {

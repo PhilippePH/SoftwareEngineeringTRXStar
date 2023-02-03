@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react';
-import {recommendationAlgorithm} from '../algorithm/algorithm.js'; 
+import { recommendationAlgorithm, filterDatabase, addToFilteredDB, reject } from '../algorithm/algorithm.js'; 
 import { useSelector  } from 'react-redux';
 
 
@@ -10,8 +10,23 @@ const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
     }
 
     console.log("Selected:", JSON.stringify(selectedOptions));
+    var complexity = diff_to_comp(selectedOptions["difficulty"]);
+    var muscles = selectedOptions["muscle_type"];
 
-    recommendationAlgorithm(indexedDB, stateCb);
+    // filter videos based on difficulty
+    filterDatabase("video", "complexity", complexity, indexedDB)
+        .then(function(filtered) {addToFilteredDB("video", filtered)})
+        .catch(function(event) {reject(event)});
+
+    // filter exercises based on muscle_type
+    muscles.forEach(muscle => {
+        console.log("Filtering on:", muscle)
+        filterDatabase("exercises", "muscle_type", muscle, indexedDB)
+            .then(function(filtered) {addToFilteredDB("exercises", filtered)})
+            .catch(function(event) {reject(event)});
+    });
+
+    //recommendationAlgorithm(indexedDB, stateCb);
     /*
     filterDatabase("exercises", "muscle_type", "glute", indexedDB)
         .then(function(filteredObjects) {createFilteredDB(filteredObjects, stateCb)})
@@ -19,16 +34,14 @@ const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
     
 }
 
-/*
-function createFilteredDB(objects, stateCb) {
-    console.log("Resolved:", objects);
-    stateCb(objects[0]);
+function diff_to_comp(difficulty) {
+    if (difficulty === "easy") 
+        return 0;
+    if (difficulty === "medium")
+        return 1;
+    if (difficulty === "hard")
+        return 2;
 }
-
-function reject(event) {
-    console.error("DB filtering rejected.");
-    console.error(event);
-}*/
 
 const Playlist = ({ indexedDB }) => {
 
