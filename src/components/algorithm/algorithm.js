@@ -100,3 +100,23 @@ export function reject(event) {
     console.error("DB filtering rejected.");
     console.error(event.target.error);
 }
+
+
+/*
+export function createStructure(){
+
+    exercise_dict = {
+        "time": null,
+        "sets": 2,
+        "rest_set": 20,
+        "intensity": 2,
+        "URL": "",
+        "start_time": "",
+        "end_time": ""
+
+}
+
+export function fillStructure(){
+
+}
+*/

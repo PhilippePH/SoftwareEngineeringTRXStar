@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { recommendationAlgorithm, filterDatabase, addToFilteredDB, reject, negFilterDatabase } from '../algorithm/algorithm.js';
+import { recommendationAlgorithm, filterDatabase, addToFilteredDB, reject, negFilterDatabase, createStructure, fillStructure} from '../algorithm/algorithm.js';
 import { useSelector } from 'react-redux';
 
 const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
@@ -91,9 +91,15 @@ const Playlist = ({ indexedDB }) => {
 
     const selectedOptions = useSelector((state) => (state.select));
 
+    //var playlistStructure = createStructure(selectedOptions); 
+
     useEffect(() => {
         retrieveExercises(indexedDB, setDisplayExercise, selectedOptions);
     }, [indexedDB]);
+
+
+    // playlist is of redux type
+    //var playlist = fillStructure(playlistStructure, indexedDB)
 
     return (
         <>
