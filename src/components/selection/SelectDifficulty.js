@@ -1,38 +1,55 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import SelectedOptions from "../playlist/SelectedOptions";
-import { setDifficulty } from "../../redux/slices/selectSlice";
-import NavButtons from "../utils/NavButtons";
+import { setActiveTab } from "../../redux/slices/selectSlice";
+import NavButtons from "../layout/NavButtons";
+import { useEffect } from "react";
+import { DIFFICULTY, FOCUS } from "../utils/constants";
+import SelectButton from "../utils/SelectButton";
 
 const SelectDifficulty = () => {
     const dispatch = useDispatch()
-    const navigate = useNavigate();
     const difficultyOptions = ["easy", "medium", "hard"];
     // useSelector allows us to access the global state - retrieve state with callback function
     const completed = useSelector((state) => (state.select.difficulty))
 
-    const clickHandler = (option) => {
-        dispatch(setDifficulty(option))
-        navigate("/select/focus");
-    }
+    useEffect(() => {
+        dispatch(setActiveTab(DIFFICULTY));
+    }, []);
 
     return (
-        <div>
-            <ul>
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%"
+            }}
+        >
+            <ul
+                style={{
+                    display: "grid",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    padding: "0px"
+                }}
+            >
                 {
-                    difficultyOptions?.map((difficultyOption) => {
+                    difficultyOptions?.map((option) => {
                         return (
-                            <button key={difficultyOption} onClick={()=>clickHandler(difficultyOption)}>
-                                {difficultyOption}
-                            </button>
+                            <SelectButton 
+                                key={option} 
+                                type={DIFFICULTY} 
+                                option={option}
+                                to={`/select/${FOCUS}`}
+                            />
                         )
                     })
                 }
             </ul>
-            <SelectedOptions/>
             <NavButtons
                 prev={null}
-                next={"/select/focus"}
+                next={`/select/${FOCUS}`}
                 completed={completed}
             />
         </div>

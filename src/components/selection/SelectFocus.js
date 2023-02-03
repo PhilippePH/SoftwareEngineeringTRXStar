@@ -1,8 +1,11 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import SelectedOptions from "../playlist/SelectedOptions";
-import { setFocus } from "../../redux/slices/selectSlice";
-import NavButtons from "../utils/NavButtons";
+import { setActiveTab, setFocus } from "../../redux/slices/selectSlice";
+import NavButtons from "../layout/NavButtons";
+import { useEffect } from "react";
+import { DIFFICULTY, DURATION, FOCUS } from "../utils/constants";
+import SelectButton from "../utils/SelectButton";
 
 const SelectFocus = () => {
     const dispatch = useDispatch();
@@ -11,26 +14,41 @@ const SelectFocus = () => {
 
     const clickHandler = (option) => {
         dispatch(setFocus(option))
-        navigate("/select/duration");
+        navigate(`/select/${DURATION}`);
     }
+
+    useEffect(() => {
+        dispatch(setActiveTab(FOCUS));
+    }, []);
 
     return (
         <div>
-            <ul>
+            <ul
+                style={{
+                    display: "grid",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    padding: "0px"
+                }}
+            >
                 {
-                    focusOptions?.map((focusOption) => {
+                    focusOptions?.map((option) => {
                         return (
-                            <button key={focusOption} onClick={()=>clickHandler(focusOption)}>
-                                {focusOption}
-                            </button>
+                            <SelectButton 
+                                key={option} 
+                                type={FOCUS} 
+                                option={option}
+                                to={`/select/${DURATION}`} 
+                            />
                         )
                     })
                 }
             </ul>
             <SelectedOptions/>
             <NavButtons
-                prev="/select/difficulty"
-                next="/select/duration"
+                prev={`/select/${DIFFICULTY}`}
+                next={`/select/${DURATION}`}
             />
         </div>
     )
