@@ -9,17 +9,18 @@ const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
     }
 
     console.log("Selected:", JSON.stringify(selectedOptions));
-    var complexity = diff_to_comp(selectedOptions["difficulty"]);
-    var muscles = selectedOptions["muscle_type"];
-
+    const complexity = diff_to_comp(selectedOptions["difficulty"]);
+    const muscles = selectedOptions["muscle_type"];
+    
     // filter videos based on difficulty
     filterDatabase("video", "complexity", complexity, indexedDB, "ExerciseDatabase")
         .then(function (filtered) {
 
+            // adds videos of selected difficulty into filteredDB
             addToFilteredDB("video", filtered);
-            
-            // find clips of specified difficulty and of specified muscle types
-            var video_IDs = [];
+
+            // store valid video IDs in array
+            const video_IDs = [];
             for (var i = 0; i < filtered.length; i++) {
                 video_IDs[i] = filtered[i].video_ID;
             }
@@ -29,51 +30,38 @@ const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
                 filterDatabase("exercises", "muscle_type", muscle, indexedDB, "ExerciseDatabase")
                     .then(function (filtered) {
 
-                        addToFilteredDB("exercises", filtered)
+                        // add exercises which target selected muscles into filteredDB
+                        addToFilteredDB("exercises", filtered);
 
-                        // get all valid exercises based on muscle_type
-                        var valid_exercises = []
-                        for(var i=0; i<filtered.length; i++)
-                        {
-                            valid_exercises[i] = filtered[i].exercise_name; 
+                        // store valid exercise in array
+                        const valid_exercises = []
+                        for (let i = 0; i < filtered.length; i++) {
+                            valid_exercises[i] = filtered[i].exercise_name;
                         }
 
                         // filter clips based on video IDs
                         video_IDs.forEach(videoID => {
-
-                            console.log("Filtering on:", videoID)
                             filterDatabase("clip", "video_ID", videoID, indexedDB, "ExerciseDatabase")
                                 .then(function (filtered) {
-                                    addToFilteredDB("clip", filtered)
 
+                                    // remove clips which do not include valid exercises
+                                    for (let i = 0; i < filtered.length ; i++) {
+                                        if (!valid_exercises.includes(filtered[i].exercise_name)) {
+                                            filtered.splice(i, 1);
+                                        }
+                                    }
+                                    // add valid clips into filteredDB
+                                    addToFilteredDB("clip", filtered)
                                     // filter clips based on exercise_name from filtered exercises
-                                    negFilterDatabase("clip", valid_exercises, indexedDB, "FilteredDatabase"); 
+                                    // negFilterDatabase("clip", valid_exercises, indexedDB, "FilteredDatabase"); 
                                 })
                                 .catch(function (event) { reject(event) })
-
                         })
+                    })
                     .catch(function (event) { reject(event) })
-                })
-
             })
         })
         .catch(function (event) { reject(event) });
-
-
-    // find clips of specified difficulty and of specified muscle types
-    
-    /*
-    for(var i = 0; i< filtered_videos.length(); i++)
-    {
-        filterDatabase("clips", "video_ID", video_ID)
-    }
-*/
-    //recommendationAlgorithm(indexedDB, stateCb);
-    /*
-    filterDatabase("exercises", "muscle_type", "glute", indexedDB)
-        .then(function(filteredObjects) {createFilteredDB(filteredObjects, stateCb)})
-        .catch(function(event) {reject(event)});*/
-    
 }
 
 function diff_to_comp(difficulty) {
@@ -96,7 +84,6 @@ const Playlist = ({ indexedDB }) => {
     useEffect(() => {
         retrieveExercises(indexedDB, setDisplayExercise, selectedOptions);
     }, [indexedDB]);
-
 
     // playlist is of redux type
     //var playlist = fillStructure(playlistStructure, indexedDB)

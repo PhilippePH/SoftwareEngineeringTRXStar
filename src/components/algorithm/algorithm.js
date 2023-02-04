@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-
+/*
 export function recommendationAlgorithm(indexedDB, stateCb) {
     
-    filterDatabase("video", "complexity", 2, indexedDB)
-        .then(function(filteredObjects) {addToFilteredDB(filteredObjects, stateCb)})
+    filterDatabase("video", "complexity", 2, indexedDB, "ExerciseDatabase")
+        .then(function(filteredObjects) {addToFilteredDB("video", filteredObjects)})
         .catch(function(event) {reject(event)});
 
-}
+}*/
 
 /*
 tableName: string specifying the name of the table to filter on
@@ -21,78 +21,53 @@ export function filterDatabase (tableName, indexName, value, indexedDB, database
         // open database
         const dbPromise = indexedDB.open(database, 1);
         dbPromise.onsuccess = () => {
-    
             const db = dbPromise.result;
-            const transaction = db.transaction(tableName, "readonly");
-
-            // retrieve table and index of attribute specified
-            const store = transaction.objectStore(tableName);
-            const index = store.index(indexName)
-            
-            // get all entries in table with specified value of attribute
-            const request = index.getAll(value);
-
-            request.onsuccess = function (event) { resolve(event.target.result); }
-
-            request.onerror = function(event) { reject(event) }
-            transaction.oncomplete = () => { db.close(); };
-            transaction.onerror = function(event) { reject(event) }
-        }
-
-        dbPromise.onerror = function(event) { reject(event) }
+            const request = db.transaction(tableName, "readonly")
+                .objectStore(tableName)
+                .index(indexName)
+                .getAll(value);
+            request.onsuccess = function(event) { resolve(event.target.result); }
+            request.onerror = function(event) { reject(event); }
+        } 
+        dbPromise.onerror = (event) => { reject(event); }
 
     })
 
 }
-
-export function negFilterDatabase (tableName, value, indexedDB, database) {
-    
+/*
+export function negFilterDatabase (tableName, value, indexedDB, database) { 
     return new Promise(function(resolve, reject) {
-
         // open database
         const dbPromise = indexedDB.open(database, 1);
         dbPromise.onsuccess = () => {
-    
             const db = dbPromise.result;
-            const transaction = db.transaction(tableName, "readwrite");
+            const request = db.transaction(tableName, "readwrite")
+                .objectStore(tableName)
+                .openCursor();
 
             // retrieve table and index of attribute specified
-            const store = transaction.objectStore(tableName);
-            const request = store.openCursor(); 
-
             request.onsuccess = function (event) { 
                 var cursor = event.target.result; 
-
                 if(cursor){
                     var entry = cursor.value; 
-                    if(!(value.includes(entry.exercise_name)))
-                    {
-                        cursor.delete(); 
-                    }
+                    if(!(value.includes(entry.exercise_name))) {cursor.delete();}
                     cursor.continue(); 
                 }
             }
-
-            request.onerror = function(event) { reject(event) }
-            transaction.oncomplete = () => { db.close(); };
-            transaction.onerror = function(event) { reject(event) }
+            request.onerror = function(event) {reject(event);}
         }
-
-        dbPromise.onerror = function(event) { reject(event) }
-
+        dbPromise.onerror = function(event) {reject(event);}
     })
-
-}
+}*/
 
 export function addToFilteredDB(tableName, objects) {
-    console.log("Resolved:", objects);
-    const open  = indexedDB.open("FilteredDatabase", 1);
-    open.onsuccess = function(event) {
-        const db = event.target.result
+    const dbPromise  = indexedDB.open("FilteredDatabase", 1);
+    dbPromise.onsuccess = () => {
+        const db = dbPromise.result;
         const transaction = db.transaction(tableName, "readwrite");
-        const videoStore = transaction.objectStore(tableName);
-        objects.forEach(row => {videoStore.put(row)});
-        transaction.oncomplete = () => { db.close() }
+        const objectStore = transaction.objectStore(tableName);
+        objects.forEach(row => { objectStore.put(row); })
+        transaction.oncomplete = () => { db.close(); }
     }
 }
 

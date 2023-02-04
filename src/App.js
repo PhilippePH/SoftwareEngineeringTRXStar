@@ -70,6 +70,7 @@ const createCollectionsInIndexedDB = () => {
     const filtered = indexedDB.open("FilteredDatabase", 1);
     var stores = ["exercises", "video", "clip"];
 
+    // if filtered databse already exists, clear object stores
     filtered.onsuccess = function(event) {
         const db = event.target.result;
         const tx = db.transaction(stores, "readwrite")
