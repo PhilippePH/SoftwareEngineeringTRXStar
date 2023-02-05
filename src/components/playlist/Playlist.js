@@ -43,11 +43,13 @@ const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
                         video_IDs.forEach(videoID => {
                             filterDatabase("clip", "video_ID", videoID, indexedDB, "ExerciseDatabase")
                                 .then(function (filtered) {
-
+                                    console.log("Valid exercise", valid_exercises);
+                                    console.log("Valid clips", filtered);
                                     // remove clips which do not include valid exercises
                                     for (let i = 0; i < filtered.length ; i++) {
                                         if (!valid_exercises.includes(filtered[i].exercise_name)) {
                                             filtered.splice(i, 1);
+                                            console.log("After splice", filtered);
                                         }
                                     }
                                     // add valid clips into filteredDB

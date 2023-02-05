@@ -19,7 +19,7 @@ export function filterDatabase (tableName, indexName, value, indexedDB, database
     return new Promise(function(resolve, reject) {
 
         // open database
-        const dbPromise = indexedDB.open(database, 1);
+        const dbPromise = indexedDB.open(database, 2);
         dbPromise.onsuccess = () => {
             const db = dbPromise.result;
             const request = db.transaction(tableName, "readonly")
@@ -34,7 +34,7 @@ export function filterDatabase (tableName, indexName, value, indexedDB, database
     })
 
 }
-/*
+
 export function negFilterDatabase (tableName, value, indexedDB, database) { 
     return new Promise(function(resolve, reject) {
         // open database
@@ -58,7 +58,7 @@ export function negFilterDatabase (tableName, value, indexedDB, database) {
         }
         dbPromise.onerror = function(event) {reject(event);}
     })
-}*/
+}
 
 export function addToFilteredDB(tableName, objects) {
     const dbPromise  = indexedDB.open("FilteredDatabase", 1);
