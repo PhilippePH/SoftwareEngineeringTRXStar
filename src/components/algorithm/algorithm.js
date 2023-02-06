@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Playlist from '../playlist/Playlist';
 
 /*
 export function recommendationAlgorithm(indexedDB, stateCb) {
@@ -97,8 +98,45 @@ export function createStructure(){
         "end_time": ""
 
 }
+*/
+export function fillStructure(structure, indexedDB) {
 
-export function fillStructure(){
+    var playlist = JSON.parse(JSON.stringify(structure));
+    
+    // fill each object in workout array
+    playlist.workout.forEach(item => {
+        switch(Object.keys(item)[0]) {
+            case "rest":
+                console.log("Rest branch")
+                break;
+            case "warmup":
+                console.log("Warmup branch");
+                var warmup = getWarmup(indexedDB, item.warmup.time);
+                break;
+            case "cooldown":
+                console.log("Cooldown branch")
+                var cooldown = getCooldown(indexedDB, item.cooldown.time);
+                break;
+            case "exercise":
+                console.log("Exercise branch");
+                var exercise = getExercise(indexedDB, item.exercise.time, item.exercise.intensity)
+                break;
+            default:
+                console.error("Invalid key");
+                return;
+        }
+    })
 
 }
-*/
+
+function getWarmup(indexedDB, time) {
+    console.log("Finding warmup with time: ", time);
+}
+
+function getCooldown(indexedDB, time) {
+    console.log("Finding coolsown with time:", time);
+}
+
+function getExercise(indexedDB, time, intensity) {
+    console.log("Finding exercise, time and intensity", time, intensity);
+}

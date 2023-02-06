@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { recommendationAlgorithm, filterDatabase, addToFilteredDB, reject, negFilterDatabase, createStructure, fillStructure} from '../algorithm/algorithm.js';
 import { useSelector } from 'react-redux';
+import structure from "../data/workoutStructure.json"
 
 // filter using async await
 async function filterAll(indexedDB, userOptions) {
@@ -48,7 +49,9 @@ async function filterAll(indexedDB, userOptions) {
         }
 
     } catch (error) {
+
         console.error("Database filtering rejected", error);
+
     }
 
 }
@@ -137,7 +140,7 @@ const Playlist = ({ indexedDB }) => {
     // }, [indexedDB]);
 
     // playlist is of redux type
-    //var playlist = fillStructure(playlistStructure, indexedDB)
+    fillStructure(structure, indexedDB);
 
     return (
         <>
