@@ -1,6 +1,7 @@
 import React, {useEffect, useState } from 'react';
 import {recommendationAlgorithm} from '../algorithm/algorithm.js'; 
 import { useSelector  } from 'react-redux';
+import { dblClick } from '@testing-library/user-event/dist/click.js';
 
 
 const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
@@ -12,6 +13,10 @@ const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
     console.log("Selected:", JSON.stringify(selectedOptions));
 
     recommendationAlgorithm(indexedDB, stateCb);
+
+    // dblClick.filter("exercise", (exercise) => {
+    //     return if (exercise.muscle_group == muscleGroup)
+    // })
     /*
     filterDatabase("exercises", "muscle_type", "glute", indexedDB)
         .then(function(filteredObjects) {createFilteredDB(filteredObjects, stateCb)})
@@ -34,7 +39,21 @@ const Playlist = ({ indexedDB }) => {
 
     const [ displayExercise, setDisplayExercise ] = useState('');
 
-    const selectedOptions = useSelector((state) => (state.select));
+    const { 
+        difficulty,
+        focus,
+        duration,
+        muscleGroups,
+        muscles
+    } = useSelector((state) => (state.select));
+
+    const selectedOptions = {
+        difficulty,
+        focus,
+        duration,
+        muscleGroups,
+        muscles
+    }
 
     useEffect(() => {
         retrieveExercises(indexedDB, setDisplayExercise, selectedOptions);

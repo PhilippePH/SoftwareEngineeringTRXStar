@@ -1,7 +1,10 @@
 import { useDispatch } from "react-redux";
 import SelectedOptions from "../playlist/SelectedOptions";
-import { setMuscleGroups } from "../../redux/slices/selectSlice";
-import NavButtons from "../utils/NavButtons";
+import { setActiveTab, setMuscleGroups } from "../../redux/slices/selectSlice";
+import NavButtons from "../layout/NavButtons";
+import { useEffect } from "react";
+import { DURATION, MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
+import SelectMultipleButton from "../utils/SelectMultipleButton";
 
 const SelectMuscleGroups = () => {
     const dispatch = useDispatch();
@@ -20,15 +23,25 @@ const SelectMuscleGroups = () => {
         dispatch(setMuscleGroups(option));
     }
 
+    useEffect(() => {
+        dispatch(setActiveTab(MUSCLE_GROUPS));
+    }, []);
+
     return (
         <div>
-            <ul>
+            <ul
+                style={{
+                    display: "grid",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    padding: "0px"
+                }}
+            >
                 {
-                    muscleGroupOptions?.map((muscleGroupOption) => {
+                    muscleGroupOptions?.map((option) => {
                         return (
-                            <button key={muscleGroupOption} onClick={() => clickHandler(muscleGroupKey[muscleGroupOption])}>
-                                {muscleGroupOption}
-                            </button>
+                            <SelectMultipleButton key={option} type={MUSCLE_GROUPS} option={option} />
                         )
 
                     })
@@ -36,8 +49,8 @@ const SelectMuscleGroups = () => {
             </ul>
             <SelectedOptions/>
             <NavButtons
-                prev="/select/duration"
-                next="/select/muscles"
+                prev={`/select/${DURATION}`}
+                next={`/select/${MUSCLES}`}
             />
         </div>
     )
