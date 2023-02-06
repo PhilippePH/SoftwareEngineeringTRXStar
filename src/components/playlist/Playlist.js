@@ -14,57 +14,62 @@ const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
     
     // filter videos based on difficulty
     filterDatabase("video", "complexity", complexity, indexedDB, "ExerciseDatabase")
-        .then(function (filtered) {
+        .then(function (filteredVideos) {
 
             // adds videos of selected difficulty into filteredDB
-            addToFilteredDB("video", filtered);
+            addToFilteredDB("video", filteredVideos);
 
             // store valid video IDs in array
             const video_IDs = [];
-            for (var i = 0; i < filtered.length; i++) {
-                video_IDs[i] = filtered[i].video_ID;
+            for (var i = 0; i < filteredVideos.length; i++) {
+                video_IDs[i] = filteredVideos[i].video_ID;
             }
 
+            var fullExercises = [];
             // filter exercises based on muscle_type
             muscles.forEach(muscle => {
                 filterDatabase("exercises", "muscle_type", muscle, indexedDB, "ExerciseDatabase")
-                    .then(function (filtered) {
+                    .then(function (filteredExercises) {
 
                         // add exercises which target selected muscles into filteredDB
-                        addToFilteredDB("exercises", filtered);
+                        addToFilteredDB("exercises", filteredExercises);
 
                         // store valid exercise in array
                         const valid_exercises = []
-                        for (let i = 0; i < filtered.length; i++) {
-                            valid_exercises[i] = filtered[i].exercise_name;
+                        for (let i = 0; i < filteredExercises.length; i++) {
+                            valid_exercises[i] = filteredExercises[i].exercise_name;
                         }
 
-                        // filter clips based on video IDs
-                        video_IDs.forEach(videoID => {
-                            filterDatabase("clip", "video_ID", videoID, indexedDB, "ExerciseDatabase")
-                                .then(function (filtered) {
-                                    console.log("Valid exercise", valid_exercises);
-                                    console.log("Valid clips", filtered);
-                                    // remove clips which do not include valid exercises
-                                    for (let i = 0; i < filtered.length ; i++) {
-                                        if (!valid_exercises.includes(filtered[i].exercise_name)) {
-                                            filtered.splice(i, 1);
-                                            console.log("After splice", filtered);
-                                        }
-                                    }
-                                    // add valid clips into filteredDB
-                                    addToFilteredDB("clip", filtered)
-                                    // filter clips based on exercise_name from filtered exercises
-                                    // negFilterDatabase("clip", valid_exercises, indexedDB, "FilteredDatabase"); 
-                                })
-                                .catch(function (event) { reject(event) })
+                        console.log("Valid exercise", valid_exercises);
+                        valid_exercises.forEach(exercise => {
+                            if (!fullExercises.includes(exercise)) {
+                                fullExercises.push(exercise)
+                            }
                         })
+                        console.log("Full exercises", fullExercises);
+                    })
+                    .catch(function (event) { reject(event) })
+                })
+
+            console.log("All exercise", fullExercises);
+
+            // filter clips based on video IDs
+            video_IDs.forEach(videoID => {
+                filterDatabase("clip", "video_ID", videoID, indexedDB, "ExerciseDatabase")
+                    .then(function (filteredClips) {
+                        // add valid clips into filteredDB
+                        addToFilteredDB("clip", filteredClips)
+                        // filter clips based on exercise_name from filtered exercises
+                        negFilterDatabase("clip", fullExercises, indexedDB, "FilteredDatabase"); 
                     })
                     .catch(function (event) { reject(event) })
             })
+            
         })
-        .catch(function (event) { reject(event) });
+        .catch(function (event) { reject(event) })
 }
+
+
 
 function diff_to_comp(difficulty) {
     if (difficulty === "easy") 
