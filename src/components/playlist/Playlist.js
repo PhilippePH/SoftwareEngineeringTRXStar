@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { recommendationAlgorithm, filterDatabase, addToFilteredDB, reject, negFilterDatabase, createStructure, fillStructure} from '../algorithm/algorithm.js';
+import { recommendationAlgorithm, filterDatabase, addToFilteredDB, reject, negFilterDatabase, fillStructure} from '../algorithm/algorithm.js';
+import { createStructure } from '../algorithm/createStructure.js';
 import { useSelector } from 'react-redux';
 import structure from "../data/workoutStructure.json"
 
@@ -133,7 +134,7 @@ const Playlist = ({ indexedDB }) => {
     const selectedOptions = useSelector((state) => (state.select));
 
     filterAll(indexedDB, selectedOptions);
-    //var playlistStructure = createStructure(selectedOptions); 
+    var playlistStructure = createStructure(selectedOptions); 
 
     // useEffect(() => {
     //     retrieveExercises(indexedDB, setDisplayExercise, selectedOptions);
