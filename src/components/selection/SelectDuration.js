@@ -1,8 +1,11 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import SelectedOptions from "../playlist/SelectedOptions";
-import { setDuration } from "../../redux/slices/selectSlice";
-import NavButtons from "../utils/NavButtons";
+import { setActiveTab, setDuration } from "../../redux/slices/selectSlice";
+import NavButtons from "../layout/NavButtons";
+import { useEffect } from "react";
+import { DURATION, FOCUS, MUSCLE_GROUPS } from "../utils/constants";
+import SelectButton from "../utils/SelectButton";
 
 const SelectDuration = () => {
     const dispatch = useDispatch();
@@ -16,26 +19,41 @@ const SelectDuration = () => {
 
     const clickHandler = (option) => {
         dispatch(setDuration(option));
-        navigate("/select/body-part");
+        navigate(`/select/${MUSCLE_GROUPS}`);
     }
+
+    useEffect(() => {
+        dispatch(setActiveTab(DURATION));
+    }, []);
 
     return (
         <div>
-            <ul>
+            <ul
+                style={{
+                    display: "grid",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    padding: "0px"
+                }}
+            >
                 {
-                    durationOptions?.map((durationOption) => {
+                    durationOptions?.map((option) => {
                         return (
-                            <button key={durationOption} onClick={()=>clickHandler(durationOption)}>
-                                {durationOption}
-                            </button>
+                            <SelectButton 
+                                key={option} 
+                                type={DURATION} 
+                                option={option} 
+                                to={`/select/${MUSCLE_GROUPS}`}
+                            />
                         )
                     })
                 }
             </ul>
             <SelectedOptions/>
             <NavButtons
-                prev="/select/focus"
-                next="/select/body-part"
+                prev={`/select/${FOCUS}`}
+                next={`/select/${MUSCLE_GROUPS}`}
             />
         </div>
     )

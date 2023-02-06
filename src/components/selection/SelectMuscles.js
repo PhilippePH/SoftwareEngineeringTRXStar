@@ -1,15 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import SelectedOptions from "../playlist/SelectedOptions";
-import { setMuscles } from "../../redux/slices/selectSlice";
-import NavButtons from "../utils/NavButtons";
+import { setActiveTab, setMuscles } from "../../redux/slices/selectSlice";
+import NavButtons from "../layout/NavButtons";
+import { useEffect } from "react";
+import { MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
+import SelectMultipleButton from "../utils/SelectMultipleButton";
 
 const SelectMuscles = () => {
     const dispatch = useDispatch()
-    const bodyParts = useSelector((state) => (state.select.muscle_group));
+    const muscleGroups = useSelector((state) => (state.select.muscleGroups));
     const musclesOptions = {
-        "absCore": ["obliques", "abdomen"],
-        "lowerBody": ["glutes", "quads", "hamstrings", "calves"],
-        "upperBody": ["lats", "back", "shoulders", "chest", "biceps", "triceps"]
+        "Core": ["obliques", "abdomen"],
+        "Lower Body": ["glutes", "quads", "hamstrings", "calves"],
+        "Upper Body": ["lats", "back", "shoulders", "chest", "biceps", "triceps"]
     };
 
 
@@ -19,16 +22,26 @@ const SelectMuscles = () => {
         dispatch(setMuscles(option));
     }
 
+    useEffect(() => {
+        dispatch(setActiveTab(MUSCLES));
+    }, []);
+
     return (
         <div>
-            <ul>
+            <ul
+                style={{
+                    display: "grid",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    padding: "0px"
+                }}
+            >
                 {
-                    bodyParts.map((bodyPart) => {
-                        return ( musclesOptions[bodyPart]?.map((muscleOption) => {
+                    muscleGroups.map((muscleGroup) => {
+                        return ( musclesOptions[muscleGroup]?.map((option) => {
                             return (
-                                <button key={muscleOption} onClick={()=>clickHandler(muscleOption)}>
-                                    {muscleOption}
-                                </button>
+                                <SelectMultipleButton key={option} type={MUSCLES} option={option}/>
                             )
                         })
                     )})
@@ -36,7 +49,7 @@ const SelectMuscles = () => {
             </ul>
             <SelectedOptions/>
             <NavButtons
-                prev="/select/body-part"
+                prev={`/select/${MUSCLE_GROUPS}`}
                 next="/playlist"
             />
         </div>
