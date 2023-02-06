@@ -2,6 +2,57 @@ import React, { useEffect, useState } from 'react';
 import { recommendationAlgorithm, filterDatabase, addToFilteredDB, reject, negFilterDatabase, createStructure, fillStructure} from '../algorithm/algorithm.js';
 import { useSelector } from 'react-redux';
 
+// filter using async await
+async function filterAll(indexedDB, userOptions) {
+
+    console.log("Selected:", JSON.stringify(userOptions));
+    const complexity = diff_to_comp(userOptions["difficulty"]);
+    const muscles = userOptions["muscle_type"];
+    
+    try {
+
+        // filter videos based on difficulty
+        let filteredVideos = await filterDatabase("video", "complexity", complexity, indexedDB, "ExerciseDatabase");
+        
+        // adds videos of selected difficulty into filteredDB
+        await addToFilteredDB("video", filteredVideos);
+
+        // store valid video IDs in array
+        const video_IDs = [];
+        for (var i = 0; i < filteredVideos.length; i++) {
+            video_IDs[i] = filteredVideos[i].video_ID;
+        }
+
+        var fullExercises = [];
+        // filter exercises based on muscle_type
+        for (i = 0; i < muscles.length; i++) {
+            let filteredExercises = await filterDatabase("exercises", "muscle_type", muscles[i], indexedDB, "ExerciseDatabase");
+            await addToFilteredDB("exercises", filteredExercises);
+            filteredExercises.forEach(exercise => {
+                if (!fullExercises.includes(exercise.exercise_name)) {
+                    fullExercises.push(exercise.exercise_name);
+                }
+            })
+        }
+        
+        for (i = 0; i < video_IDs.length; i++) {
+            let filteredClips = await filterDatabase("clip", "video_ID", video_IDs[i], indexedDB, "ExerciseDatabase");
+            let validClips = []
+            filteredClips.forEach(clip => {
+                if (fullExercises.includes(clip.exercise_name)) {
+                    validClips.push(clip);
+                }
+            })
+            console.log("Valid clips", validClips);
+            await addToFilteredDB("clip", validClips);
+        }
+
+    } catch (error) {
+        console.error("Database filtering rejected", error);
+    }
+
+}
+
 const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
 
     if (!indexedDB) {
@@ -30,20 +81,12 @@ const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
             muscles.forEach(muscle => {
                 filterDatabase("exercises", "muscle_type", muscle, indexedDB, "ExerciseDatabase")
                     .then(function (filteredExercises) {
-
                         // add exercises which target selected muscles into filteredDB
                         addToFilteredDB("exercises", filteredExercises);
-
-                        // store valid exercise in array
-                        const valid_exercises = []
-                        for (let i = 0; i < filteredExercises.length; i++) {
-                            valid_exercises[i] = filteredExercises[i].exercise_name;
-                        }
-
-                        console.log("Valid exercise", valid_exercises);
-                        valid_exercises.forEach(exercise => {
-                            if (!fullExercises.includes(exercise)) {
-                                fullExercises.push(exercise)
+                        console.log("Valid exercise", filteredExercises);
+                        filteredExercises.forEach(exercise => {
+                            if (!fullExercises.includes(exercise.exercise_name)) {
+                                fullExercises.push(exercise.exercise_name)
                             }
                         })
                         console.log("Full exercises", fullExercises);
@@ -86,11 +129,12 @@ const Playlist = ({ indexedDB }) => {
 
     const selectedOptions = useSelector((state) => (state.select));
 
+    filterAll(indexedDB, selectedOptions);
     //var playlistStructure = createStructure(selectedOptions); 
 
-    useEffect(() => {
-        retrieveExercises(indexedDB, setDisplayExercise, selectedOptions);
-    }, [indexedDB]);
+    // useEffect(() => {
+    //     retrieveExercises(indexedDB, setDisplayExercise, selectedOptions);
+    // }, [indexedDB]);
 
     // playlist is of redux type
     //var playlist = fillStructure(playlistStructure, indexedDB)

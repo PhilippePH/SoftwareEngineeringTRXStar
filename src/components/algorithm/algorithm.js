@@ -61,14 +61,21 @@ export function negFilterDatabase (tableName, value, indexedDB, database) {
 }
 
 export function addToFilteredDB(tableName, objects) {
-    const dbPromise  = indexedDB.open("FilteredDatabase", 1);
-    dbPromise.onsuccess = () => {
-        const db = dbPromise.result;
-        const transaction = db.transaction(tableName, "readwrite");
-        const objectStore = transaction.objectStore(tableName);
-        objects.forEach(row => { objectStore.put(row); })
-        transaction.oncomplete = () => { db.close(); }
-    }
+    return new Promise(function(resolve, reject) {
+        const dbPromise  = indexedDB.open("FilteredDatabase", 1);
+        dbPromise.onsuccess = () => {
+            const db = dbPromise.result;
+            const transaction = db.transaction(tableName, "readwrite");
+            const objectStore = transaction.objectStore(tableName);
+            objects.forEach(row => { objectStore.put(row); })
+            transaction.oncomplete = () => {
+                db.close();
+                resolve();
+            }
+            transaction.onerror = function(event) { reject(event); }
+        }
+        dbPromise.onerror = function(event) { reject(event); }
+    })
 }
 
 export function reject(event) {

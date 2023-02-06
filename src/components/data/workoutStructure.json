@@ -10,6 +10,7 @@
         },
         {
             "exercise": {
+                "exercise": "",
                 "time": 30,
                 "sets": 2,
                 "rest_set": 20,
@@ -24,6 +25,7 @@
         },
         {
             "exercise": {
+                "exercise": "",
                 "time": 30,
                 "sets": 2,
                 "rest_set": 20,
@@ -36,7 +38,6 @@
         {
             "rest": 20
         },
-
         {
             "cooldown":{
                 "time": 160,
