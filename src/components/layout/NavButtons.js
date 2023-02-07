@@ -1,4 +1,7 @@
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom"
+
+
 
 const NavButtons = ({prev, next}) => {
     const navigate = useNavigate();
@@ -15,14 +18,14 @@ const NavButtons = ({prev, next}) => {
             {
                 prev
                 &&
-                <button onClick={()=>{navigateHandler(prev)}}>
+                <button className="button" onClick={()=>{navigateHandler(prev)}}>
                     Prev
                 </button>
             }
             {
                 next 
                 &&
-                <button onClick={()=>{navigateHandler(next)}}>
+                <button className="button" onClick={()=>{navigateHandler(next)}}>
                     Next
                 </button>
             }

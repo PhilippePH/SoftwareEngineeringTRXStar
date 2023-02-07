@@ -41,14 +41,14 @@ const SelectButton = ({type, option, to}) => {
                 cursor: "pointer",
                 //backgroundColor: "yellow",
                
-                border: "1px solid black",
+                border: "2px solid black",
                 borderRadius: "8px"
             }}
         
         >
             <p
                 style={{
-                    fontSize: "1rem"
+                    fontSize: "1.1rem"
                 }}
             >
                 {option}
