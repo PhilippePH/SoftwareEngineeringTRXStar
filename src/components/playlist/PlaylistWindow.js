@@ -12,6 +12,9 @@ const PlaylistWindow = () => {
                 <ExerciseCard />
                 <ExerciseCard />
                 <ExerciseCard />
+                <ExerciseCard />
+                <ExerciseCard />
+                <ExerciseCard />
             </div>
         </div>
     );

@@ -11,11 +11,11 @@ const ExerciseCard = () => {
         setOPen(!open);
       };
 
-    return (
+    return ( 
         <>
             <div className='exercise-card'>
                 <div className='exercise-card__left-container'>
-                    <FiChevronDown onClick={toggle} size={28} className='exercise-card__chevron'/>
+                    <FiChevronDown onClick={toggle} size={28} className={`exercise-card__chevron exercise-card__chevron__${open ? "open" : "closed"}`}/>
                     <p>Exercise name</p>
                 </div>
                 <BsThreeDots size={28} className='exercise-card__three-dots'/>
