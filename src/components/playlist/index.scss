@@ -1,0 +1,60 @@
+.playlist-window {
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+
+    &__container {
+    padding-top: 40px;
+    border: 3px black solid;
+    height: 400px;
+    width: 70%;
+    border-radius: 10px;
+    overflow-y: auto;
+    // for above see: https://stackoverflow.com/questions/9811465/scrollable-div-inside-container
+    }
+
+}
+
+.exercise-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    background-color: yellow;
+    border: 2px black solid;
+    height: 50px;
+    font-size: large;
+    
+
+    &__left-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__three-dots {
+        margin-right: 20px;
+    }
+
+    &__chevron {
+        margin-left: 20px;
+        margin-right: 10px;
+    }
+}
+
+.rest-card {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 50px;
+    font-size: large;
+
+    &__text {
+        font-size: large;
+        padding-left: 5px;
+    }
+}
