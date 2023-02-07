@@ -2,6 +2,8 @@ import React, {useEffect, useState } from 'react';
 import {recommendationAlgorithm} from '../algorithm/algorithm.js'; 
 import { useSelector  } from 'react-redux';
 import { dblClick } from '@testing-library/user-event/dist/click.js';
+import ExerciseCard from './ExerciseCard.js';
+import PlaylistWindow from './PlaylistWindow.js';
 
 
 const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
@@ -61,6 +63,7 @@ const Playlist = ({ indexedDB }) => {
 
     return (
         <>
+            <PlaylistWindow />
             <h1>Playlist page</h1>
             <p>Name: {displayExercise.exercise_name}</p>
             <p>Difficulty: {displayExercise.intensity}</p>
