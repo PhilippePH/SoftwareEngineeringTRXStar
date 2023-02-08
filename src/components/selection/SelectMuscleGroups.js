@@ -2,11 +2,12 @@ import { useDispatch } from "react-redux";
 import SelectedOptions from "../playlist/SelectedOptions";
 import { setActiveTab, setMuscleGroups } from "../../redux/slices/selectSlice";
 import NavButtons from "../layout/NavButtons";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { DURATION, MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
 import SelectMultipleButton from "../utils/SelectMultipleButton";
 
 const SelectMuscleGroups = () => {
+    const [width, setWidth] = useState(window.innerWidth);
     const dispatch = useDispatch();
     const muscleGroupKey = {
         "Core": "absCore",
@@ -27,15 +28,28 @@ const SelectMuscleGroups = () => {
         dispatch(setActiveTab(MUSCLE_GROUPS));
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
+
+   
     return (
-        <div>
+        <div style={{ display: 'grid', height: '50vh', justifyContent: 'center', placeItems: "center", alignItems: "center", }}>
+            PLEASE SELECT AT LEAST 
+            ONE MUSCLE GROUP
             <ul
                 style={{
                     display: "grid",
+                    placeItems: "center",
                     justifyContent: "center",
                     alignItems: "center",
+                    maxWidth: "25rem",
                     width: "100%",
-                    padding: "0px"
+                    padding: "0px",
+                    gridTemplateColumns: width > 768 ? 'repeat(3, 1fr)' : '1fr',
+                    gridGap: '16px'
                 }}
             >
                 {
@@ -47,7 +61,7 @@ const SelectMuscleGroups = () => {
                     })
                 }
             </ul>
-            <SelectedOptions/>
+            {/* <SelectedOptions/> */}
             <NavButtons
                 prev={`/select/${DURATION}`}
                 next={`/select/${MUSCLES}`}

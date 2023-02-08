@@ -40,9 +40,8 @@ const SelectButton = ({type, option, to}) => {
                 textAlign: "center",
                 cursor: "pointer",
                 //backgroundColor: "yellow",
-               
                 border: "1px solid black",
-                borderRadius: "8px"
+                borderRadius: "8px",
             }}
         
         >

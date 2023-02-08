@@ -62,6 +62,7 @@ const SelectMultipleButton = ({type, option }) => {
             style={{
                 backgroundColor: selected? "":"lightgrey",
                 width: "8rem",
+                height: "4rem",
                 paddingTop: "0.5rem",
                 paddingbottom: "0.5rem",
                 paddingLeft: "1rem",
@@ -69,16 +70,50 @@ const SelectMultipleButton = ({type, option }) => {
                 margin: "1rem",
                 textAlign: "center",
                 cursor: "pointer",
-                // backgroundColor: "yellow",
+                //backgroundColor: "yellow",
                 border: "1px solid black",
-                borderRadius: "8px"
+                borderRadius: "8px",
             }}
         >
+            <p
+                style={{
+                    fontSize: "1rem"
+                }}
+            >
+                {option}
+            </p>
             
-            {option}
+            
         </button>
 
     )
+    // return (
+    //     <button className='mult-button'
+    //         onClick={()=>clickHandler(type)}
+    //         style={{
+    //             width: "8rem",
+    //             paddingTop: "0.5rem",
+    //             paddingbottom: "0.5rem",
+    //             paddingLeft: "1rem",
+    //             paddingRight: "1rem",
+    //             margin: "1rem",
+    //             textAlign: "center",
+    //             cursor: "pointer",
+    //             //backgroundColor: "yellow",
+    //             border: "1px solid black",
+    //             borderRadius: "8px",
+    //         }}
+        
+    //     >
+    //         <p
+    //             style={{
+    //                 fontSize: "1rem"
+    //             }}
+    //         >
+    //             {option}
+    //         </p>
+    //     </button>
+    // )
 }
 
 export default SelectMultipleButton;
