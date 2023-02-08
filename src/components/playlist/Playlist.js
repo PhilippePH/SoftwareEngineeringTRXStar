@@ -14,7 +14,7 @@ async function filterAll(indexedDB, userOptions) {
     try {
 
         // filter videos based on difficulty
-        let filteredVideos = await filterDatabase("video", "complexity", complexity, indexedDB, "ExerciseDatabase");
+        let filteredVideos = await filterDatabase("video", "complexity", complexity, indexedDB, "ExerciseDatabase", 2);
         
         // adds videos of selected difficulty into filteredDB
         await addToFilteredDB("video", filteredVideos);
@@ -28,7 +28,7 @@ async function filterAll(indexedDB, userOptions) {
         var fullExercises = [];
         // filter exercises based on muscle_type
         for (i = 0; i < muscles.length; i++) {
-            let filteredExercises = await filterDatabase("exercises", "muscle_type", muscles[i], indexedDB, "ExerciseDatabase");
+            let filteredExercises = await filterDatabase("exercises", "muscle_type", muscles[i], indexedDB, "ExerciseDatabase", 2);
             await addToFilteredDB("exercises", filteredExercises);
             filteredExercises.forEach(exercise => {
                 if (!fullExercises.includes(exercise.exercise_name)) {
@@ -38,7 +38,7 @@ async function filterAll(indexedDB, userOptions) {
         }
         
         for (i = 0; i < video_IDs.length; i++) {
-            let filteredClips = await filterDatabase("clip", "video_ID", video_IDs[i], indexedDB, "ExerciseDatabase");
+            let filteredClips = await filterDatabase("clip", "video_ID", video_IDs[i], indexedDB, "ExerciseDatabase", 2);
             let validClips = []
             filteredClips.forEach(clip => {
                 if (fullExercises.includes(clip.exercise_name)) {
@@ -57,66 +57,64 @@ async function filterAll(indexedDB, userOptions) {
 
 }
 
-const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
+// const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
 
-    if (!indexedDB) {
-        return;
-    }
+//     if (!indexedDB) {
+//         return;
+//     }
 
-    console.log("Selected:", JSON.stringify(selectedOptions));
-    const complexity = diff_to_comp(selectedOptions["difficulty"]);
-    const muscles = selectedOptions["muscle_type"];
+//     console.log("Selected:", JSON.stringify(selectedOptions));
+//     const complexity = diff_to_comp(selectedOptions["difficulty"]);
+//     const muscles = selectedOptions["muscle_type"];
     
-    // filter videos based on difficulty
-    filterDatabase("video", "complexity", complexity, indexedDB, "ExerciseDatabase")
-        .then(function (filteredVideos) {
+//     // filter videos based on difficulty
+//     filterDatabase("video", "complexity", complexity, indexedDB, "ExerciseDatabase")
+//         .then(function (filteredVideos) {
 
-            // adds videos of selected difficulty into filteredDB
-            addToFilteredDB("video", filteredVideos);
+//             // adds videos of selected difficulty into filteredDB
+//             addToFilteredDB("video", filteredVideos);
 
-            // store valid video IDs in array
-            const video_IDs = [];
-            for (var i = 0; i < filteredVideos.length; i++) {
-                video_IDs[i] = filteredVideos[i].video_ID;
-            }
+//             // store valid video IDs in array
+//             const video_IDs = [];
+//             for (var i = 0; i < filteredVideos.length; i++) {
+//                 video_IDs[i] = filteredVideos[i].video_ID;
+//             }
 
-            var fullExercises = [];
-            // filter exercises based on muscle_type
-            muscles.forEach(muscle => {
-                filterDatabase("exercises", "muscle_type", muscle, indexedDB, "ExerciseDatabase")
-                    .then(function (filteredExercises) {
-                        // add exercises which target selected muscles into filteredDB
-                        addToFilteredDB("exercises", filteredExercises);
-                        console.log("Valid exercise", filteredExercises);
-                        filteredExercises.forEach(exercise => {
-                            if (!fullExercises.includes(exercise.exercise_name)) {
-                                fullExercises.push(exercise.exercise_name)
-                            }
-                        })
-                        console.log("Full exercises", fullExercises);
-                    })
-                    .catch(function (event) { reject(event) })
-                })
+//             var fullExercises = [];
+//             // filter exercises based on muscle_type
+//             muscles.forEach(muscle => {
+//                 filterDatabase("exercises", "muscle_type", muscle, indexedDB, "ExerciseDatabase")
+//                     .then(function (filteredExercises) {
+//                         // add exercises which target selected muscles into filteredDB
+//                         addToFilteredDB("exercises", filteredExercises);
+//                         console.log("Valid exercise", filteredExercises);
+//                         filteredExercises.forEach(exercise => {
+//                             if (!fullExercises.includes(exercise.exercise_name)) {
+//                                 fullExercises.push(exercise.exercise_name)
+//                             }
+//                         })
+//                         console.log("Full exercises", fullExercises);
+//                     })
+//                     .catch(function (event) { reject(event) })
+//                 })
 
-            console.log("All exercise", fullExercises);
+//             console.log("All exercise", fullExercises);
 
-            // filter clips based on video IDs
-            video_IDs.forEach(videoID => {
-                filterDatabase("clip", "video_ID", videoID, indexedDB, "ExerciseDatabase")
-                    .then(function (filteredClips) {
-                        // add valid clips into filteredDB
-                        addToFilteredDB("clip", filteredClips)
-                        // filter clips based on exercise_name from filtered exercises
-                        negFilterDatabase("clip", fullExercises, indexedDB, "FilteredDatabase"); 
-                    })
-                    .catch(function (event) { reject(event) })
-            })
+//             // filter clips based on video IDs
+//             video_IDs.forEach(videoID => {
+//                 filterDatabase("clip", "video_ID", videoID, indexedDB, "ExerciseDatabase")
+//                     .then(function (filteredClips) {
+//                         // add valid clips into filteredDB
+//                         addToFilteredDB("clip", filteredClips)
+//                         // filter clips based on exercise_name from filtered exercises
+//                         negFilterDatabase("clip", fullExercises, indexedDB, "FilteredDatabase"); 
+//                     })
+//                     .catch(function (event) { reject(event) })
+//             })
             
-        })
-        .catch(function (event) { reject(event) })
-}
-
-
+//         })
+//         .catch(function (event) { reject(event) })
+// }
 
 function diff_to_comp(difficulty) {
     if (difficulty === "easy") 
@@ -127,21 +125,27 @@ function diff_to_comp(difficulty) {
         return 2;
 }
 
+async function callFilterAll(indexedDB, selectedOptions) {
+    await filterAll(indexedDB, selectedOptions);
+}
+
 const Playlist = ({ indexedDB }) => {
 
     const [ displayExercise, setDisplayExercise ] = useState('');
 
     const selectedOptions = useSelector((state) => (state.select));
 
-    filterAll(indexedDB, selectedOptions);
-    var playlistStructure = createStructure(selectedOptions); 
-
+    filterAll(indexedDB, selectedOptions)
+    .then(function() {
+        var playlistStructure = createStructure(selectedOptions); 
+        fillStructure(playlistStructure, indexedDB);
+    })
     // useEffect(() => {
     //     retrieveExercises(indexedDB, setDisplayExercise, selectedOptions);
     // }, [indexedDB]);
 
     // playlist is of redux type
-    fillStructure(structure, indexedDB);
+    
 
     return (
         <>

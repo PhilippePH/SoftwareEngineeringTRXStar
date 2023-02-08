@@ -15,12 +15,12 @@ tableName: string specifying the name of the table to filter on
 indexNameArray: array of keys over which the table will be filtered
 valueArray: array of values, corresponding to each given key, for which entries will be kept
 */ 
-export function filterDatabase (tableName, indexName, value, indexedDB, database) {
+export function filterDatabase (tableName, indexName, value, indexedDB, database, versionNumber) {
     
     return new Promise(function(resolve, reject) {
 
         // open database
-        const dbPromise = indexedDB.open(database, 2);
+        const dbPromise = indexedDB.open(database, versionNumber);
         dbPromise.onsuccess = () => {
             const db = dbPromise.result;
             const request = db.transaction(tableName, "readonly")
@@ -100,43 +100,60 @@ export function createStructure(){
 }
 */
 export function fillStructure(structure, indexedDB) {
-
-    var playlist = JSON.parse(JSON.stringify(structure));
     
+    console.log("structure", structure)
     // fill each object in workout array
-    playlist.workout.forEach(item => {
-        switch(Object.keys(item)[0]) {
-            case "rest":
-                console.log("Rest branch")
-                break;
-            case "warmup":
-                console.log("Warmup branch");
-                var warmup = getWarmup(indexedDB, item.warmup.time);
-                break;
-            case "cooldown":
-                console.log("Cooldown branch")
-                var cooldown = getCooldown(indexedDB, item.cooldown.time);
-                break;
-            case "exercise":
-                console.log("Exercise branch");
-                var exercise = getExercise(indexedDB, item.exercise.time, item.exercise.intensity)
-                break;
-            default:
-                console.error("Invalid key");
-                return;
+    structure.forEach(item => {
+
+        try {
+            var intensity = item.intensity;
+        } catch (e) {
+            var intensity = null;
         }
+
+        var clip = getClip(indexedDB, item.type, item.time, intensity)
+        
     })
 
 }
 
-function getWarmup(indexedDB, time) {
-    console.log("Finding warmup with time: ", time);
+async function getClip(indexedDB, type, time, intensity) {
+
+    switch (type) {
+    
+        case "rest":
+            console.log("Rest branch")
+            break;
+            
+        case "warmup":
+            console.log("Warmup branch");
+            var warmup_clips = await filterDatabase("clip", "exercise_name", "warmup", indexedDB, "FilteredDatabase", 1);
+            console.log("Warmup clips: ", warmup_clips);
+            console.log("Selected warmup", warmup_clips[RandInt(0, warmup_clips.length)]);
+            return warmup_clips[RandInt(0, warmup_clips.length)]; 
+            
+        case "cooldown":
+            console.log("Cooldown branch")
+            var cooldown_clips = await filterDatabase("clip", "exercise_name", "cooldown", indexedDB, "FilteredDatabase", 1);
+            console.log("Cooldown clips: ",cooldown_clips);
+            console.log("Selected cooldown", cooldown_clips[RandInt(0, cooldown_clips.length)]);
+            return cooldown_clips[RandInt(0, cooldown_clips.length)]
+        case "exercise":
+            console.log("Exercise branch");
+            var valid_exercises = await filterDatabase("exercises", "intensity", intensity, indexedDB, "FilteredDatabase", 1);
+            var chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)]; 
+            console.log("Chosen_exercise", chosen_exercise); 
+            var exercise_clips = await filterDatabase("clip", "exercise_name", chosen_exercise.exercise_name, indexedDB, "FilteredDatabase", 1);
+            console.log("Exercise clips: ", exercise_clips);
+            console.log("Selected exercise clip", exercise_clips[RandInt(0, exercise_clips.length)]);
+            return exercise_clips[RandInt(0, exercise_clips.length)];
+
+        default:
+            console.error("Invalid key");
+            return;
+    }
 }
 
-function getCooldown(indexedDB, time) {
-    console.log("Finding coolsown with time:", time);
-}
-
-function getExercise(indexedDB, time, intensity) {
-    console.log("Finding exercise, time and intensity", time, intensity);
+function RandInt(min, max) {
+    return Math.floor(Math.random() * max) + min; 
 }

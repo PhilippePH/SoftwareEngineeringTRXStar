@@ -1,4 +1,5 @@
 var exerciseDict = {
+    "type": "exercise",
     "exercise_name": "",
     "time": null,
     "sets": 1,
@@ -10,11 +11,12 @@ var exerciseDict = {
 }
 
 var restDict = {
+    "type": "rest",
     "time": 30 // default 
 }
 
 var warmupDict = {
-
+    "type": "warmup",
     "time": 300,
     "URL": "",
     "start_time": "",
@@ -23,6 +25,7 @@ var warmupDict = {
 
 var cooldownDict =
 {
+    "type": "cooldown",
     "time": 300,
     "URL": "",
     "start_time": "",
@@ -190,7 +193,7 @@ export function createStructure(selectedOptions){
 
             var StrengthPlaylist = generateStrength(selectedOptions.duration, restPeriod)
             console.log("Strength Playlist", StrengthPlaylist);
-            return; 
+            return StrengthPlaylist; 
 
         case ("HIIT"):
             var split;
@@ -203,12 +206,12 @@ export function createStructure(selectedOptions){
 
             var HIITPlaylist = generateHIT(split, selectedOptions.duration);
             console.log("HIIT Playlist", HIITPlaylist);
-            return; 
+            return HIITPlaylist; 
 
         case ("Recovery"):
             var RecoveryPlaylist = generateRecovery(selectedOptions.duration); 
             console.log("Recovery Playlist", RecoveryPlaylist); 
-            return; 
+            return RecoveryPlaylist; 
 
         case ("Endurance"):
             var restPeriod;
@@ -221,6 +224,6 @@ export function createStructure(selectedOptions){
 
             var EndurancePlaylist = generateEndurance(restPeriod, selectedOptions.duration); 
             console.log("Endurance Playlist", EndurancePlaylist);
-            return; 
+            return EndurancePlaylist; 
     }
 }

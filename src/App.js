@@ -82,13 +82,14 @@ const createCollectionsInIndexedDB = () => {
     // create filtered database at start-up
     const filtered = indexedDB.open("FilteredDatabase", 1);
 
-    // if filtered databse already exists, clear object stores
+    // if filtered database already exists, clear object stores
     filtered.onsuccess = function(event) {
         const db = filtered.result;
         const objectStoreList = db.objectStoreNames;
         for (var i = 0; i < objectStoreList.length; i++) {
             db.transaction(objectStoreList[i], "readwrite").objectStore(objectStoreList[i]).clear();
         }
+        
     };
 
     filtered.onerror = function (event) {
@@ -101,9 +102,12 @@ const createCollectionsInIndexedDB = () => {
         // FilteredDatabase always has version 1, only upgrade if did not have Database
         for (var i = 0; i < schema.tables.length; i++) {
             // Create the object store and add data
-            db.createObjectStore(schema.tables[i].name, { keyPath: schema.tables[i].keyPath });
-        }
-        
+            var objectStore = db.createObjectStore(schema.tables[i].name, { keyPath: schema.tables[i].keyPath });
+            // Define any indexes
+            for (var j = 0; j < schema.tables[i].indexes.length; j++) {
+                objectStore.createIndex(schema.tables[i].indexes[j].name, schema.tables[i].indexes[j].keyPath, { unique: schema.tables[i].indexes[j].unique, multiEntry: schema.tables[i].indexes[j].multientry });
+            }
+        }        
     };
 
     filtered.onversionchange = function (event) {

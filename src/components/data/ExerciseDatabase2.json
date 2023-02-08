@@ -120,6 +120,40 @@
             "intensity": 1
           },
           {
+            "exercise_name": "warmup",
+            "muscle_group": [
+                "lowerBody",
+                "absCore",
+                "upperBody"
+            ],
+            "muscle_type": [
+                "quads",
+                "glutes",
+                "calves",
+                "abdomen"
+            ],
+            "position": 3,
+            "focus": 1,
+            "intensity": 0
+          },
+          {
+            "exercise_name": "cooldown",
+            "muscle_group": [
+                "lowerBody",
+                "absCore",
+                "upperBody"
+            ],
+            "muscle_type": [
+                "quads",
+                "glutes",
+                "calves",
+                "abdomen"
+            ],
+            "position": 3,
+            "focus": 1,
+            "intensity": 0
+          },
+          {
             "exercise_name": "biceps curl",
             "muscle_group": [
                 "upperBody"
@@ -286,6 +320,27 @@
             "start_time": "00:00:10",
             "end_time": "00:00:30",
             "exercise_name": "balance lunge"
+          },
+          {
+            "clip_ID": 24,
+            "video_ID": 1,
+            "start_time": "00:00:00",
+            "end_time": "00:05:00",
+            "exercise_name": "warmup"
+          },
+          {
+            "clip_ID": 25,
+            "video_ID": 1,
+            "start_time": "00:00:00",
+            "end_time": "00:05:00",
+            "exercise_name": "warmup"
+          },
+          {
+            "clip_ID": 26,
+            "video_ID": 1,
+            "start_time": "00:00:00",
+            "end_time": "00:05:00",
+            "exercise_name": "cooldown"
           },
           {
             "clip_ID": 2,
