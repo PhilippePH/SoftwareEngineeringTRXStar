@@ -55,7 +55,14 @@ const SelectMuscleGroups = () => {
                 {
                     muscleGroupOptions?.map((option) => {
                         return (
-                            <SelectMultipleButton key={option} type={MUSCLE_GROUPS} option={option} />
+                            <SelectMultipleButton 
+                                key={option} 
+                                type={MUSCLE_GROUPS} 
+                                option={option} 
+                                width="8rem"
+                                height='4rem'
+                                fontSize='1rem'
+                            />
                         )
 
                     })

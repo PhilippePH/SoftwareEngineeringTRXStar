@@ -42,11 +42,13 @@ const SelectMuscles = () => {
                     placeItems: "center",
                     justifyContent: "center",
                     alignItems: "center",
-                    maxWidth: "25rem",
-                    width: "100%",
+                    width: "50%",
                     padding: "0px",
-                    gridTemplateColumns: width > 768 ? 'repeat(3, 1fr)' : '1fr',
-                    gridGap: '16px'
+                    // maxWidth: "25rem",
+                    gridTemplateColumns: width > 768 ? "maxWidth:'25rem'":"maxWidth:'10rem'",
+                    gridTemplateColumns: width > 768 ? 'repeat(4, 1fr)' : 'repeat(2, 1fr)',
+                    //backgroundColor:"red",
+                    gridGap: '16px',
                 }}
             >
                 {
@@ -57,9 +59,10 @@ const SelectMuscles = () => {
                                     key={option} 
                                     type={MUSCLES} 
                                     option={option}
-                                    // width="8px" 
-                                    // height="4px"
-                                    />
+                                    width="5.5rem"
+                                    height='3.4rem'
+                                    fontSize='0.9rem'
+                                />
                             )
                         })
                     )})
