@@ -38,16 +38,14 @@ const SelectMuscles = () => {
             DESELECT MUSCLES YOU DON'T WANT TO TRAIN
             <ul
                 style={{
-                    display: "grid",
+                    display: "flex",
+                    flexWrap:"wrap",
                     placeItems: "center",
                     justifyContent: "center",
                     alignItems: "center",
-                    width: "50%",
-                    padding: "0px",
-                    // maxWidth: "25rem",
-                    gridTemplateColumns: width > 768 ? "maxWidth:'25rem'":"maxWidth:'10rem'",
-                    gridTemplateColumns: width > 768 ? 'repeat(4, 1fr)' : 'repeat(2, 1fr)',
-                    //backgroundColor:"red",
+                    padding: "0px", 
+                    maxWidth: width > 768 ? "500px":"350px",
+                    // gridTemplateColumns: width > 768 ? 'repeat(4, 1fr)' : 'repeat(2, 1fr)',
                     gridGap: '16px',
                 }}
             >
