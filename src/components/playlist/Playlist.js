@@ -57,65 +57,6 @@ async function filterAll(indexedDB, userOptions) {
 
 }
 
-// const retrieveExercises = (indexedDB, stateCb, selectedOptions) => {
-
-//     if (!indexedDB) {
-//         return;
-//     }
-
-//     console.log("Selected:", JSON.stringify(selectedOptions));
-//     const complexity = diff_to_comp(selectedOptions["difficulty"]);
-//     const muscles = selectedOptions["muscle_type"];
-    
-//     // filter videos based on difficulty
-//     filterDatabase("video", "complexity", complexity, indexedDB, "ExerciseDatabase")
-//         .then(function (filteredVideos) {
-
-//             // adds videos of selected difficulty into filteredDB
-//             addToFilteredDB("video", filteredVideos);
-
-//             // store valid video IDs in array
-//             const video_IDs = [];
-//             for (var i = 0; i < filteredVideos.length; i++) {
-//                 video_IDs[i] = filteredVideos[i].video_ID;
-//             }
-
-//             var fullExercises = [];
-//             // filter exercises based on muscle_type
-//             muscles.forEach(muscle => {
-//                 filterDatabase("exercises", "muscle_type", muscle, indexedDB, "ExerciseDatabase")
-//                     .then(function (filteredExercises) {
-//                         // add exercises which target selected muscles into filteredDB
-//                         addToFilteredDB("exercises", filteredExercises);
-//                         console.log("Valid exercise", filteredExercises);
-//                         filteredExercises.forEach(exercise => {
-//                             if (!fullExercises.includes(exercise.exercise_name)) {
-//                                 fullExercises.push(exercise.exercise_name)
-//                             }
-//                         })
-//                         console.log("Full exercises", fullExercises);
-//                     })
-//                     .catch(function (event) { reject(event) })
-//                 })
-
-//             console.log("All exercise", fullExercises);
-
-//             // filter clips based on video IDs
-//             video_IDs.forEach(videoID => {
-//                 filterDatabase("clip", "video_ID", videoID, indexedDB, "ExerciseDatabase")
-//                     .then(function (filteredClips) {
-//                         // add valid clips into filteredDB
-//                         addToFilteredDB("clip", filteredClips)
-//                         // filter clips based on exercise_name from filtered exercises
-//                         negFilterDatabase("clip", fullExercises, indexedDB, "FilteredDatabase"); 
-//                     })
-//                     .catch(function (event) { reject(event) })
-//             })
-            
-//         })
-//         .catch(function (event) { reject(event) })
-// }
-
 function diff_to_comp(difficulty) {
     if (difficulty === "easy") 
         return 0;
@@ -131,28 +72,32 @@ async function callFilterAll(indexedDB, selectedOptions) {
 
 const Playlist = ({ indexedDB }) => {
 
-    const [ displayExercise, setDisplayExercise ] = useState('');
+    const [ displayName, setDisplayName ] = useState('');
 
     const selectedOptions = useSelector((state) => (state.select));
 
     filterAll(indexedDB, selectedOptions)
     .then(function() {
-        var playlistStructure = createStructure(selectedOptions); 
-        fillStructure(playlistStructure, indexedDB);
-    })
-    // useEffect(() => {
-    //     retrieveExercises(indexedDB, setDisplayExercise, selectedOptions);
-    // }, [indexedDB]);
+        try {
+            createStructure(selectedOptions)
+            .then(function (empty) {
+                console.log("Should be empty", empty);
+                fillStructure(empty, indexedDB)
+                .then(function(filled) {
+                    console.log("Filled structure", filled);
+                    setDisplayName(filled[1].exercise_name)
+                })
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    })   
 
-    // playlist is of redux type
-    
 
     return (
         <>
             <h1>Playlist page</h1>
-            <p>Name: {displayExercise.exercise_name}</p>
-            <p>Difficulty: {displayExercise.intensity}</p>
-            <p>Muscle: {displayExercise.muscle_type}</p>
+            <p>Exercise 1: {displayName}</p>
         </>
     );
 }

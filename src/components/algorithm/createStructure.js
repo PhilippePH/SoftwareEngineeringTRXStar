@@ -178,7 +178,7 @@ function generateRecovery(totalTime){
 
 }
 
-export function createStructure(selectedOptions){
+export async function createStructure(selectedOptions){
 
     // workout type 
     switch (selectedOptions.focus) {

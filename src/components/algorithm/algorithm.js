@@ -36,6 +36,26 @@ export function filterDatabase (tableName, indexName, value, indexedDB, database
 
 }
 
+export function filterOnKey (tableName, value, indexedDB, database, versionNumber) {
+    
+    return new Promise(function(resolve, reject) {
+
+        // open database
+        const dbPromise = indexedDB.open(database, versionNumber);
+        dbPromise.onsuccess = () => {
+            const db = dbPromise.result;
+            const request = db.transaction(tableName, "readonly")
+                .objectStore(tableName)
+                .getAll(value);
+            request.onsuccess = function(event) { resolve(event.target.result); }
+            request.onerror = function(event) { reject(event); }
+        } 
+        dbPromise.onerror = (event) => { reject(event); }
+
+    })
+
+}
+
 export function negFilterDatabase (tableName, value, indexedDB, database) { 
     return new Promise(function(resolve, reject) {
         // open database
@@ -99,52 +119,69 @@ export function createStructure(){
 
 }
 */
-export function fillStructure(structure, indexedDB) {
+export async function fillStructure(structure, indexedDB) {
     
-    console.log("structure", structure)
+    console.log("Before fill", structure)
+    var structureCopy = JSON.parse(JSON.stringify(structure));
     // fill each object in workout array
-    structure.forEach(item => {
+    
+    for (let i = 0; i < structureCopy.length; i++) {
 
+        console.log("Item", structureCopy[i])
         try {
-            var intensity = item.intensity;
+            var intensity = structureCopy[i].intensity;
         } catch (e) {
             var intensity = null;
         }
 
-        var clip = getClip(indexedDB, item.type, item.time, intensity)
-        
-    })
+        if (structureCopy[i].type !== "rest") {
+    
+            await getClip(indexedDB, structureCopy[i].type, structureCopy[i].time, intensity)
+            .then( async function(clip) {
 
+                var video_of_clip = await filterOnKey("video", clip.video_ID, indexedDB, "FilteredDatabase", 1);
+
+                if(structureCopy[i].type === "exercise"){
+                    structureCopy[i].exercise_name = clip.exercise_name; 
+                }
+            
+                structureCopy[i].start_time = clip.start_time; 
+                structureCopy[i].end_time = clip.end_time; 
+                structureCopy[i].URL = video_of_clip[0].URL; 
+            })
+        }
+    }
+
+    console.log("After fill", structureCopy);
+    return structureCopy; 
 }
+
+
 
 async function getClip(indexedDB, type, time, intensity) {
 
     switch (type) {
     
         case "rest":
-            console.log("Rest branch")
             break;
             
         case "warmup":
-            console.log("Warmup branch");
             var warmup_clips = await filterDatabase("clip", "exercise_name", "warmup", indexedDB, "FilteredDatabase", 1);
-            console.log("Warmup clips: ", warmup_clips);
-            console.log("Selected warmup", warmup_clips[RandInt(0, warmup_clips.length)]);
             return warmup_clips[RandInt(0, warmup_clips.length)]; 
             
         case "cooldown":
-            console.log("Cooldown branch")
             var cooldown_clips = await filterDatabase("clip", "exercise_name", "cooldown", indexedDB, "FilteredDatabase", 1);
-            console.log("Cooldown clips: ",cooldown_clips);
-            console.log("Selected cooldown", cooldown_clips[RandInt(0, cooldown_clips.length)]);
             return cooldown_clips[RandInt(0, cooldown_clips.length)]
+
         case "exercise":
-            console.log("Exercise branch");
             var valid_exercises = await filterDatabase("exercises", "intensity", intensity, indexedDB, "FilteredDatabase", 1);
-            var chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)]; 
-            console.log("Chosen_exercise", chosen_exercise); 
-            var exercise_clips = await filterDatabase("clip", "exercise_name", chosen_exercise.exercise_name, indexedDB, "FilteredDatabase", 1);
-            console.log("Exercise clips: ", exercise_clips);
+            var exercise_clips = []
+            while (exercise_clips.length === 0) {
+                var chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)]; 
+                console.log("Chosen_exercise", chosen_exercise);
+                exercise_clips = await filterDatabase("clip", "exercise_name", chosen_exercise.exercise_name, indexedDB, "FilteredDatabase", 1);
+                console.log("Exercise clips: ", exercise_clips);
+            }
             console.log("Selected exercise clip", exercise_clips[RandInt(0, exercise_clips.length)]);
             return exercise_clips[RandInt(0, exercise_clips.length)];
 
