@@ -1,17 +1,50 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { DIFFICULTY } from "../utils/constants";
 
 const Welcome = () => {
+    const [width, setWidth] = useState(window.innerWidth);
     const navigate = useNavigate();
     const clickHandler = () => {
         navigate(`/select/${DIFFICULTY}`);
     }
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
 
     return (
-        <div>
-            <ul>
-                <button key={Welcome} onClick={()=>clickHandler()}>
+        <div style={{ display: 'grid', height: '90vh', justifyContent: 'center', placeItems: "center", alignItems: "center"}}>
+            <ul
+            style={{
+                display: "grid",
+                //flexWrap:"wrap",
+                placeItems: "center",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "0px", 
+                //maxWidth: width > 768 ? "500px":"350px",
+                // gridTemplateColumns: width > 768 ? 'repeat(4, 1fr)' : 'repeat(2, 1fr)',
+            }}>
+                <button 
+                    key={Welcome} 
+                    onClick={()=>clickHandler()}
+                    style={{
+                        width: width > 768 ? "320px" : width < 500? "200px" : "260px",
+                        height: width > 768 ? "6rem": width < 500? "3rem": "4rem",
+                        fontSize: width > 768 ? "2rem": width < 500? "1.2rem":"1.5rem",                        paddingTop: "0.5rem",
+                        paddingbottom: "0.5rem",
+                        paddingLeft: "1rem",
+                        paddingRight: "1rem",
+                        margin: "1rem",
+                        textAlign: "center",
+                        cursor: "pointer",
+                        //backgroundColor: "yellow",
+                        border: "1px solid black",
+                        borderRadius: "20px",
+                    }}>
                     Start Your Workout
                 </button>
             </ul>
