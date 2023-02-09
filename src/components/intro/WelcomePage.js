@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { DIFFICULTY } from "../utils/constants";
+import logo from "../../assets/logo.png";
 
 const Welcome = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -28,20 +29,31 @@ const Welcome = () => {
                 //maxWidth: width > 768 ? "500px":"350px",
                 // gridTemplateColumns: width > 768 ? 'repeat(4, 1fr)' : 'repeat(2, 1fr)',
             }}>
-                <button 
+                <img
+                    style={{
+                        paddingLeft: 15,
+                        width: width > 768 ? "15rem": width < 500? "10rem": "12rem",
+                        height: width > 768 ? "15rem":width < 500? "10rem": "12rem",
+
+                        paddingBottom:"5rem"
+                    }}
+                    src={logo}
+                    alt={"logo"}
+                />
+           
+                <button className='button'
                     key={Welcome} 
                     onClick={()=>clickHandler()}
                     style={{
                         width: width > 768 ? "320px" : width < 500? "200px" : "260px",
                         height: width > 768 ? "6rem": width < 500? "3rem": "4rem",
                         fontSize: width > 768 ? "2rem": width < 500? "1.2rem":"1.5rem",                        paddingTop: "0.5rem",
-                        paddingbottom: "0.5rem",
+                        paddingBottom: "0.5rem",
                         paddingLeft: "1rem",
                         paddingRight: "1rem",
                         margin: "1rem",
                         textAlign: "center",
                         cursor: "pointer",
-                        //backgroundColor: "yellow",
                         border: "1px solid black",
                         borderRadius: "20px",
                     }}>

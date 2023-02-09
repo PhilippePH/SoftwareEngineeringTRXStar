@@ -31,7 +31,7 @@ const NavBar = () => {
                 <img
                     style={{
                         paddingLeft: 15,
-                        height: "2rem",
+                        height: "2.5rem",
                         width: "2.5rem"
                     }}
                     src={logo}

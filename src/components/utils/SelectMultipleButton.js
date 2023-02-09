@@ -60,7 +60,7 @@ const SelectMultipleButton = ({type, option, width, height, fontSize}) => {
         <button className='mult-button'
             onClick={() => clickHandler(type)}
             style={{
-                backgroundColor: selected? "":"lightgrey",
+                backgroundColor: selected? "":"whitesmoke",
                 width:width,
                 height:height,
                 paddingTop: "0.5rem",
