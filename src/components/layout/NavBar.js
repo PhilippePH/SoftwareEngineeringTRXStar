@@ -48,6 +48,7 @@ const NavBar = () => {
             >
                 <GrHomeRounded
                     style={{
+                        fontSize: "30px",
                         "&:hover": {
                             backgroundColor: "red",
                             color: "green"
