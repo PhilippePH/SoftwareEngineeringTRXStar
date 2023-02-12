@@ -38,6 +38,8 @@ async function filterAll(indexedDB, userOptions) {
                 }
             })
         }
+
+        console.log("Full exercises", fullExercises); 
         
         for (i = 0; i < video_IDs.length; i++) {
             let filteredClips = await filterDatabase("clip", "video_ID", video_IDs[i], indexedDB, "ExerciseDatabase", 2);
@@ -74,12 +76,13 @@ async function callFilterAll(indexedDB, selectedOptions) {
 
 const Playlist = ({ indexedDB }) => {
 
+    
     const [ displayName, setDisplayName ] = useState('');
 
     const selectedOptions = useSelector((state) => (state.select));
 
     
-    useEffect(() => { // make sure not re-rendering all the time
+    useEffect(() => {// make sure not re-rendering all the time
     filterAll(indexedDB, selectedOptions)
     .then(function() {
         try {

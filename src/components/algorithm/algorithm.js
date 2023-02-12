@@ -139,6 +139,7 @@ export async function fillStructure(structure, indexedDB) {
             await getClip(indexedDB, structureCopy[i].type, structureCopy[i].time, intensity)
             .then( async function(clip) {
 
+                console.log("clip", clip);
                 var video_of_clip = await filterOnKey("video", clip.video_ID, indexedDB, "FilteredDatabase", 1);
 
                 if(structureCopy[i].type === "exercise"){
@@ -176,11 +177,17 @@ async function getClip(indexedDB, type, time, intensity) {
         case "exercise":
             var valid_exercises = await filterDatabase("exercises", "intensity", intensity, indexedDB, "FilteredDatabase", 1);
             var exercise_clips = []
-            while (exercise_clips.length === 0) {
+            var depth = 0; 
+            while (exercise_clips.length === 0 && depth<20) {
                 var chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)]; 
                 console.log("Chosen_exercise", chosen_exercise);
                 exercise_clips = await filterDatabase("clip", "exercise_name", chosen_exercise.exercise_name, indexedDB, "FilteredDatabase", 1);
                 console.log("Exercise clips: ", exercise_clips);
+                depth++; 
+            }
+            if(exercise_clips.length === 0)
+            {
+                console.log("Error could not find valid clips"); 
             }
             console.log("Selected exercise clip", exercise_clips[RandInt(0, exercise_clips.length)]);
             return exercise_clips[RandInt(0, exercise_clips.length)];
