@@ -3,6 +3,8 @@ import { recommendationAlgorithm, filterDatabase, addToFilteredDB, reject, negFi
 import { createStructure } from '../algorithm/createStructure.js';
 import { useSelector } from 'react-redux';
 import structure from "../data/workoutStructure.json"
+import { addPlaylist } from "../../redux/slices/playlistSlice.js"
+import { store } from "../../redux/store"
 
 // filter using async await
 async function filterAll(indexedDB, userOptions) {
@@ -76,6 +78,8 @@ const Playlist = ({ indexedDB }) => {
 
     const selectedOptions = useSelector((state) => (state.select));
 
+    
+    useEffect(() => { // make sure not re-rendering all the time
     filterAll(indexedDB, selectedOptions)
     .then(function() {
         try {
@@ -85,14 +89,19 @@ const Playlist = ({ indexedDB }) => {
                 fillStructure(empty, indexedDB)
                 .then(function(filled) {
                     console.log("Filled structure", filled);
-                    setDisplayName(filled[1].exercise_name)
+                    setDisplayName(filled[1].exercise_name); 
+                    store.dispatch(addPlaylist(filled));
                 })
             });
         } catch (e) {
             console.error(e);
         }
-    })   
+    });
+}, []);
 
+
+const playlist = useSelector((state) => (state.playlist));
+console.log("here", playlist.playlistData[1]); 
 
     return (
         <>
@@ -100,6 +109,6 @@ const Playlist = ({ indexedDB }) => {
             <p>Exercise 1: {displayName}</p>
         </>
     );
-}
+}   
 
 export default Playlist;
