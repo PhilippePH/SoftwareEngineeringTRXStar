@@ -24,6 +24,11 @@
           "video_ID": 1,
           "URL": "https://www.youtube.com/watch?v=4ZR25UheGpA&list=PLRJeTsJZogdIfXTOyYq-pu0tSsCojXR5i&index=1",
           "complexity": 1
+        },
+        {
+          "video_ID": 2,
+          "URL": "https://www.youtube.com",
+          "complexity": 1
         }
       ]
     },
@@ -68,7 +73,7 @@
           "muscle_group": "lowerBody",
           "muscle_type": [
             "quads",
-            "glute",
+            "glutes",
             "calves",
             "core"
           ],
@@ -80,8 +85,7 @@
           "exercise_name": "biceps curl",
           "muscle_group": "upperBody",
           "muscle_type": [
-            "glute",
-            "bicep"
+            "biceps"
           ],
           "position": 3,
           "focus": 1,
@@ -91,7 +95,7 @@
           "exercise_name": "chest press",
           "muscle_group": "upperBody, absCore",
           "muscle_type": [
-            "glute",
+            "glutes",
             "chest",
             "triceps"
           ],
@@ -103,7 +107,7 @@
           "exercise_name": "crunch",
           "muscle_group": "absCore, upperBody",
           "muscle_type": [
-            "upperAbdomen"
+            "abdomen"
           ],
           "position": 1,
           "focus": 1,

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SelectedOptions from "../playlist/SelectedOptions";
 import { setActiveTab, setMuscles } from "../../redux/slices/selectSlice";
 import NavButtons from "../layout/NavButtons";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
 import SelectMultipleButton from "../utils/SelectMultipleButton";
 import Container from 'react-bootstrap/Container';
@@ -11,6 +11,7 @@ import Col from 'react-bootstrap/Col';
 
 
 const SelectMuscles = () => {
+    const [width, setWidth] = useState(window.innerWidth);
     const dispatch = useDispatch()
     const muscleGroups = useSelector((state) => (state.select.muscleGroups));
     const musclesOptions = {
@@ -30,28 +31,46 @@ const SelectMuscles = () => {
         dispatch(setActiveTab(MUSCLES));
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
+
     return (
-        <div>
+        <div style={{ display: 'grid', height: '50vh', justifyContent: 'center', placeItems: "center", alignItems: "center"}}>
+            DESELECT MUSCLES YOU DON'T WANT TO TRAIN
             <ul
                 style={{
-                    display: "grid",
+                    display: "flex",
+                    flexWrap:"wrap",
+                    placeItems: "center",
                     justifyContent: "center",
                     alignItems: "center",
-                    width: "100%",
-                    padding: "0px"
+                    padding: "0px", 
+                    maxWidth: width > 768 ? "500px":"350px",
+                    // gridTemplateColumns: width > 768 ? 'repeat(4, 1fr)' : 'repeat(2, 1fr)',
+                    gridGap: '16px',
                 }}
             >
                 {
                     muscleGroups.map((muscleGroup) => {
                         return ( musclesOptions[muscleGroup]?.map((option) => {
                             return (
-                                <SelectMultipleButton key={option} type={MUSCLES} option={option}/>
+                                <SelectMultipleButton 
+                                    key={option} 
+                                    type={MUSCLES} 
+                                    option={option}
+                                    width="5.5rem"
+                                    height='3.4rem'
+                                    fontSize='0.9rem'
+                                />
                             )
                         })
                     )})
                 }
             </ul>
-            <SelectedOptions/>
+            {/* <SelectedOptions/> */}
             <NavButtons
                 prev={`/select/${MUSCLE_GROUPS}`}
                 next="/playlist"

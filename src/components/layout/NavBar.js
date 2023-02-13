@@ -31,7 +31,7 @@ const NavBar = () => {
                 <img
                     style={{
                         paddingLeft: 15,
-                        height: "2rem",
+                        height: "2.5rem",
                         width: "2.5rem"
                     }}
                     src={logo}
@@ -48,6 +48,7 @@ const NavBar = () => {
             >
                 <GrHomeRounded
                     style={{
+                        fontSize: "30px",
                         "&:hover": {
                             backgroundColor: "red",
                             color: "green"

@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import SelectedOptions from "../playlist/SelectedOptions";
 import { setActiveTab, setFocus } from "../../redux/slices/selectSlice";
 import NavButtons from "../layout/NavButtons";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { DIFFICULTY, DURATION, FOCUS } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
 
 const SelectFocus = () => {
+    const [width, setWidth] = useState(window.innerWidth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const focusOptions = ["HIIT", "Strength", "Endurance", "Recovery"];
@@ -21,15 +22,26 @@ const SelectFocus = () => {
         dispatch(setActiveTab(FOCUS));
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
+
     return (
-        <div>
+        <div style={{ display: 'grid', height: '50vh', justifyContent: 'center', placeItems: "center", alignItems: "center", }}
+            > FOCUS
             <ul
                 style={{
                     display: "grid",
                     justifyContent: "center",
+                    placeItems: "center",
                     alignItems: "center",
+                    maxWidth: "25rem",
                     width: "100%",
-                    padding: "0px"
+                    padding: "0px",
+                    gridTemplateColumns: width > 768 ? 'repeat(2, 1fr)' : '1fr',
+                    gridGap: '16px'
                 }}
             >
                 {
@@ -45,7 +57,7 @@ const SelectFocus = () => {
                     })
                 }
             </ul>
-            <SelectedOptions/>
+            {/* <SelectedOptions/> */}
             <NavButtons
                 prev={`/select/${DIFFICULTY}`}
                 next={`/select/${DURATION}`}
