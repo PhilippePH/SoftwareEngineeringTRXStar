@@ -21,24 +21,16 @@ function playlist_to_clipList(playlist){
     const playlistArray = playlist.playlistData; 
     console.log("here", playlist.playlistData); 
 
-    // for every element in the playlist array
 
-    var clipInfo = {
-        "URL": "", 
-        "start_time": "", 
-        "end_time": ""
-    }
-    var restInfo = {
-        "time": ""
-    }
-    
     var clipList = []; 
+    
+    // for every element in the playlist array
     for (var i=0; i < playlistArray.length; i++)
     {
         // if rest
         if (!playlistArray[i].type.localeCompare("rest")){
             var restTemp = {}; 
-            Object.assign(restInfo, {time: playlistArray[i].time}); 
+            Object.assign(restTemp, {type: "rest", time: playlistArray[i].time}); 
             clipList.push(restTemp); 
         }
 
@@ -50,16 +42,16 @@ function playlist_to_clipList(playlist){
                 // apend to list
                 var clipInfoTemp = {}; 
                 var restInfoTemp = {}; 
-                Object.assign(clipInfoTemp, {URL: playlistArray[i].URL, start_time: playlistArray[i].start_time, end_time:playlistArray[i].end_time}); 
+                Object.assign(clipInfoTemp, {type: "clip", URL: playlistArray[i].URL, start_time: playlistArray[i].start_time, end_time:playlistArray[i].end_time}); 
                 clipList.push(clipInfoTemp); 
-                Object.assign(restInfoTemp, {time: playlistArray[i].rest_set}); 
+                Object.assign(restInfoTemp, {type: "rest", time: playlistArray[i].rest_set}); 
                 clipList.push(restInfoTemp); 
             }
         }
 
         else{
             var clipInfoTemp = {}; 
-            Object.assign(clipInfoTemp, {URL: playlistArray[i].URL, start_time: playlistArray[i].start_time, end_time:playlistArray[i].end_time}); 
+            Object.assign(clipInfoTemp, {type: "clip", URL: playlistArray[i].URL, start_time: playlistArray[i].start_time, end_time:playlistArray[i].end_time}); 
             clipList.push(clipInfoTemp); 
         }
     }
