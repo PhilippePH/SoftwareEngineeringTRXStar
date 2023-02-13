@@ -19,7 +19,7 @@ async function filterAll(indexedDB, userOptions) {
     try {
 
         // filter videos based on difficulty
-        let filteredVideos = await filterDatabase("video", "complexity", complexity, indexedDB, "ExerciseDatabase", 2);
+        let filteredVideos = await filterDatabase("video", "complexity", complexity, indexedDB, "ExerciseDatabase", 1);
         
         // adds videos of selected difficulty into filteredDB
         await addToFilteredDB("video", filteredVideos);
@@ -33,7 +33,7 @@ async function filterAll(indexedDB, userOptions) {
         var fullExercises = [];
         // filter exercises based on muscle_type
         for (i = 0; i < muscles.length; i++) {
-            let filteredExercises = await filterDatabase("exercises", "muscle_type", muscles[i], indexedDB, "ExerciseDatabase", 2);
+            let filteredExercises = await filterDatabase("exercises", "muscle_type", muscles[i], indexedDB, "ExerciseDatabase", 1);
             await addToFilteredDB("exercises", filteredExercises);
             filteredExercises.forEach(exercise => {
                 if (!fullExercises.includes(exercise.exercise_name)) {
@@ -45,7 +45,7 @@ async function filterAll(indexedDB, userOptions) {
         console.log("Full exercises", fullExercises); 
         
         for (i = 0; i < video_IDs.length; i++) {
-            let filteredClips = await filterDatabase("clip", "video_ID", video_IDs[i], indexedDB, "ExerciseDatabase", 2);
+            let filteredClips = await filterDatabase("clip", "video_ID", video_IDs[i], indexedDB, "ExerciseDatabase", 1);
             let validClips = []
             filteredClips.forEach(clip => {
                 if (fullExercises.includes(clip.exercise_name)) {
