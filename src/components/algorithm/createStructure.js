@@ -67,7 +67,7 @@ function generateHIT(split, totalTime)
         var newExercise = exerciseDict; 
         var newRest = restDict; 
 
-        Object.assign(newExercise, {time: split[0], intensity: 4}); 
+        Object.assign(newExercise, {time: split[0], intensity: 4, sets: 1, rest_set: 0}); 
         HIITPlaylist.push(exerciseDict); 
         Object.assign(newRest, {time: split[1]}); 
         HIITPlaylist.push(newRest);
