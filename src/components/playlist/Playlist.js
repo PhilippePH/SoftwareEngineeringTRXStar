@@ -14,7 +14,7 @@ async function filterAll(indexedDB, userOptions) {
 
     console.log("Selected:", JSON.stringify(userOptions));
     const complexity = diff_to_comp(userOptions["difficulty"]);
-    const muscles = userOptions["muscle_type"];
+    const muscles = userOptions["muscles"];
     
     try {
 
