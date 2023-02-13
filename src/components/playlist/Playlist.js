@@ -5,9 +5,6 @@ import { useSelector } from 'react-redux';
 import structure from "../data/workoutStructure.json"
 import { addPlaylist } from "../../redux/slices/playlistSlice.js"
 import { store } from "../../redux/store"
-import React, {useEffect, useState } from 'react';
-import {recommendationAlgorithm} from '../algorithm/algorithm.js'; 
-import { useSelector  } from 'react-redux';
 import { dblClick } from '@testing-library/user-event/dist/click.js';
 import ExerciseCard from './ExerciseCard.js';
 import PlaylistWindow from './PlaylistWindow.js';
