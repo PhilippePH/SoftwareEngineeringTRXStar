@@ -1,0 +1,51 @@
+{
+    "intensity": 3,
+    "workout": [
+        {
+            "warmup": {
+                "time": 160,
+                "URL": "",
+                "start_time": "",
+                "end_time": ""
+            }
+        },
+        {
+            "exercise": {
+                "exercise": "",
+                "time": 30,
+                "sets": 2,
+                "rest_set": 20,
+                "intensity": 2,
+                "URL": "",
+                "start_time": "",
+                "end_time": ""
+            }
+        },
+        {
+            "rest": 20
+        },
+        {
+            "exercise": {
+                "exercise": "",
+                "time": 30,
+                "sets": 2,
+                "rest_set": 20,
+                "intensity": 2,
+                "URL": "",
+                "start_time": "",
+                "end_time": ""
+            }
+        },
+        {
+            "rest": 20
+        },
+        {
+            "cooldown":{
+                "time": 160,
+                "URL": "",
+                "start_time": "",
+                "end_time": ""
+            }
+        }
+    ]
+}
