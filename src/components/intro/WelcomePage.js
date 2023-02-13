@@ -59,6 +59,7 @@ const Welcome = () => {
                     }}>
                     Start Your Workout
                 </button>
+                
             </ul>
         </div>
     )

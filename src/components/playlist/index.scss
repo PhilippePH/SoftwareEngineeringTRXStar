@@ -2,14 +2,19 @@
     padding-top: 100px;
     display: flex;
     justify-content: center;
+   
 
     &__container {
-    padding-top: 40px;
+    padding-top: 30px;
+    padding-inline: 30px;
     border: 3px black solid;
+    background-color: rgb(235, 235, 235);
     height: 400px;
     width: 70%;
     border-radius: 10px;
     overflow-y: auto;
+    text-align: center;
+
     // for above see: https://stackoverflow.com/questions/9811465/scrollable-div-inside-container
     }
 
@@ -18,10 +23,11 @@
 .exercise-card {
     display: flex;
     flex-direction: row;
+   
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
-    background-color: yellow;
+    background-color: #FFE600;
     border: 2px black solid;
     height: 50px;
     font-size: large;
@@ -31,6 +37,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+  
     }
 
     &__three-dots {
@@ -40,6 +47,17 @@
     &__chevron {
         margin-left: 20px;
         margin-right: 10px;
+
+        &__open {
+            transform: rotate(180deg);
+            transition: 0.8s;
+        }
+
+        &__closed {
+            transform: rotate(0deg);
+            transition: 0.8s;
+        }
+
     }
 }
 
@@ -57,4 +75,26 @@
         font-size: large;
         padding-left: 5px;
     }
+
+
+}
+
+.workout-heading{
+    
+    font-size:x-large;
+    padding-bottom: 20px;
+    
+}
+
+.card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:flex-start;
+
+    background-color: #FFE600;
+    padding: 10px;
+    height: 80px;
+    font-size: large; 
+    
 }

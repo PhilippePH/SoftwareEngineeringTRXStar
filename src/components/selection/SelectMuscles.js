@@ -5,6 +5,10 @@ import NavButtons from "../layout/NavButtons";
 import { useEffect, useState } from "react";
 import { MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
 import SelectMultipleButton from "../utils/SelectMultipleButton";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 const SelectMuscles = () => {
     const [width, setWidth] = useState(window.innerWidth);

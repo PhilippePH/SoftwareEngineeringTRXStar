@@ -1,4 +1,7 @@
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom"
+
+
 
 const NavButtons = ({prev, next}) => {
     const navigate = useNavigate();
