@@ -13,7 +13,7 @@ const unselectedStyle = {
     border: "1px solid black",
 };
 
-const SelectMultipleButton = ({type, option }) => {
+const SelectMultipleButton = ({type, option, width, height, fontSize}) => {
     const dispatch = useDispatch();
     const [selected, setSelected] = useState(false);
 
@@ -60,8 +60,9 @@ const SelectMultipleButton = ({type, option }) => {
         <button className='mult-button'
             onClick={() => clickHandler(type)}
             style={{
-                backgroundColor: selected? "":"lightgrey",
-                width: "8rem",
+                backgroundColor: selected? "":"whitesmoke",
+                width:width,
+                height:height,
                 paddingTop: "0.5rem",
                 paddingbottom: "0.5rem",
                 paddingLeft: "1rem",
@@ -69,13 +70,26 @@ const SelectMultipleButton = ({type, option }) => {
                 margin: "1rem",
                 textAlign: "center",
                 cursor: "pointer",
-                // backgroundColor: "yellow",
+                //backgroundColor: "yellow",
                 border: "1px solid black",
-                borderRadius: "8px"
+                borderRadius: "8px",
+                fontSize: fontSize,
+                padding: '10px 20px',
+                textAlign: 'center',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
             }}
         >
+            <p
+                // style={{
+                //     fontSize: "1rem"
+                // }}
+            >
+                {option}
+            </p>
             
-            {option}
+            
         </button>
 
     )
