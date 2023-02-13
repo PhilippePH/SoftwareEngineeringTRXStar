@@ -126,8 +126,7 @@ console.log("here", playlist.playlistData[1]);
     return (
         <>
             <PlaylistWindow />
-            <h1>Playlist page</h1>
-            <p>Exercise 1: {displayName}</p>
+            
         </>
     );
 }   

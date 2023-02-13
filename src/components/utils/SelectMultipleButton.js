@@ -71,7 +71,7 @@ const SelectMultipleButton = ({type, option, width, height, fontSize}) => {
                 textAlign: "center",
                 cursor: "pointer",
                 //backgroundColor: "yellow",
-                border: "1px solid black",
+                border: "2px solid black",
                 borderRadius: "8px",
                 fontSize: fontSize,
                 padding: '10px 20px',
