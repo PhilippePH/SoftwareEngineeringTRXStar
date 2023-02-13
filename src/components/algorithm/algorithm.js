@@ -137,7 +137,7 @@ export async function fillStructure(structure, indexedDB) {
         if (structureCopy[i].type !== "rest") {
     
             await getClip(indexedDB, structureCopy[i].type, structureCopy[i].time, intensity)
-            .then( async function(clip) {
+            .then(async function(clip) {
 
                 console.log("clip", clip);
                 var video_of_clip = await filterOnKey("video", clip.video_ID, indexedDB, "FilteredDatabase", 1);
