@@ -5,6 +5,12 @@ import { useSelector } from 'react-redux';
 import structure from "../data/workoutStructure.json"
 import { addPlaylist } from "../../redux/slices/playlistSlice.js"
 import { store } from "../../redux/store"
+import React, {useEffect, useState } from 'react';
+import {recommendationAlgorithm} from '../algorithm/algorithm.js'; 
+import { useSelector  } from 'react-redux';
+import { dblClick } from '@testing-library/user-event/dist/click.js';
+import ExerciseCard from './ExerciseCard.js';
+import PlaylistWindow from './PlaylistWindow.js';
 
 // filter using async await
 async function filterAll(indexedDB, userOptions) {
@@ -59,7 +65,6 @@ async function filterAll(indexedDB, userOptions) {
 
     }
 
-}
 
 function diff_to_comp(difficulty) {
     if (difficulty === "easy") 
@@ -79,7 +84,21 @@ const Playlist = ({ indexedDB }) => {
     
     const [ displayName, setDisplayName ] = useState('');
 
-    const selectedOptions = useSelector((state) => (state.select));
+    const { 
+        difficulty,
+        focus,
+        duration,
+        muscleGroups,
+        muscles
+    } = useSelector((state) => (state.select));
+
+    const selectedOptions = {
+        difficulty,
+        focus,
+        duration,
+        muscleGroups,
+        muscles
+    }
 
     
     useEffect(() => {// make sure not re-rendering all the time
@@ -108,6 +127,7 @@ console.log("here", playlist.playlistData[1]);
 
     return (
         <>
+            <PlaylistWindow />
             <h1>Playlist page</h1>
             <p>Exercise 1: {displayName}</p>
         </>
