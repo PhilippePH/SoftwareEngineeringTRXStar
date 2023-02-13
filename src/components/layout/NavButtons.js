@@ -18,14 +18,14 @@ const NavButtons = ({prev, next}) => {
             {
                 prev
                 &&
-                <button className="button" onClick={()=>{navigateHandler(prev)}}>
+                <button onClick={()=>{navigateHandler(prev)}}>
                     Prev
                 </button>
             }
             {
                 next 
                 &&
-                <button className="button" onClick={()=>{navigateHandler(next)}}>
+                <button onClick={()=>{navigateHandler(next)}}>
                     Next
                 </button>
             }

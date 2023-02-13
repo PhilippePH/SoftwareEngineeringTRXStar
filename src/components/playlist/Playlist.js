@@ -64,10 +64,7 @@ const Playlist = ({ indexedDB }) => {
     return (
         <>
             <PlaylistWindow />
-            <h1>Playlist page</h1>
-            <p>Name: {displayExercise.exercise_name}</p>
-            <p>Difficulty: {displayExercise.intensity}</p>
-            <p>Muscle: {displayExercise.muscle_type}</p>
+     
         </>
     );
 }

@@ -9,11 +9,18 @@ const Welcome = () => {
     }
 
     return (
-        <div>
+        <div style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%"
+        }}>
             <ul>
                 <button key={Welcome} onClick={()=>clickHandler()}>
                     Start Your Workout
                 </button>
+                
             </ul>
         </div>
     )
