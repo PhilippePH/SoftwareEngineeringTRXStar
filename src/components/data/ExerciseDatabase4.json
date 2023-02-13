@@ -945,8 +945,8 @@
           "multientry": false
         },
         {
-          "name": "start_times",
-          "keyPath": "start_times",
+          "name": "start_time",
+          "keyPath": "start_time",
           "unique": false,
           "multientry": false
         },
@@ -971,7 +971,7 @@
           "end_sec": 347,
           "duration": 306,
           "exercise_name": "warmup",
-          "start_times": "00:00:41",
+          "start_time": "00:00:41",
           "end_time": "00:05:47",
           "total_time": "00:05:06"
         },
@@ -982,7 +982,7 @@
           "end_sec": 430,
           "duration": 42,
           "exercise_name": "squat",
-          "start_times": "00:06:28",
+          "start_time": "00:06:28",
           "end_time": "00:07:10",
           "total_time": "00:00:42"
         },
@@ -993,7 +993,7 @@
           "end_sec": 610,
           "duration": 40,
           "exercise_name": "balance lunges",
-          "start_times": "00:09:30",
+          "start_time": "00:09:30",
           "end_time": "00:10:10",
           "total_time": "00:00:40"
         },
@@ -1004,7 +1004,7 @@
           "end_sec": 789,
           "duration": 41,
           "exercise_name": "chest press",
-          "start_times": "00:12:28",
+          "start_time": "00:12:28",
           "end_time": "00:13:09",
           "total_time": "00:00:41"
         },
@@ -1015,7 +1015,7 @@
           "end_sec": 968,
           "duration": 40,
           "exercise_name": "overhead back extensions",
-          "start_times": "00:15:28",
+          "start_time": "00:15:28",
           "end_time": "00:16:08",
           "total_time": "00:00:40"
         },
@@ -1026,7 +1026,7 @@
           "end_sec": 1150,
           "duration": 41,
           "exercise_name": "mid row",
-          "start_times": "00:18:29",
+          "start_time": "00:18:29",
           "end_time": "00:19:10",
           "total_time": "00:00:41"
         },
@@ -1037,7 +1037,7 @@
           "end_sec": 1374,
           "duration": 40,
           "exercise_name": "kneeling roll out",
-          "start_times": "00:22:14",
+          "start_time": "00:22:14",
           "end_time": "00:22:54",
           "total_time": "00:00:40"
         },
@@ -1048,7 +1048,7 @@
           "end_sec": 1555,
           "duration": 41,
           "exercise_name": "biceps curl",
-          "start_times": "00:25:14",
+          "start_time": "00:25:14",
           "end_time": "00:25:55",
           "total_time": "00:00:41"
         },
@@ -1059,7 +1059,7 @@
           "end_sec": 1735,
           "duration": 40,
           "exercise_name": "hamstring curl",
-          "start_times": "00:28:15",
+          "start_time": "00:28:15",
           "end_time": "00:28:55",
           "total_time": "00:00:40"
         },
@@ -1070,7 +1070,7 @@
           "end_sec": 1915,
           "duration": 41,
           "exercise_name": "crunch",
-          "start_times": "00:31:14",
+          "start_time": "00:31:14",
           "end_time": "00:31:55",
           "total_time": "00:00:41"
         },
@@ -1081,7 +1081,7 @@
           "end_sec": 2095,
           "duration": 42,
           "exercise_name": "standing hip drop",
-          "start_times": "00:34:13",
+          "start_time": "00:34:13",
           "end_time": "00:34:55",
           "total_time": "00:00:42"
         },
@@ -1092,7 +1092,7 @@
           "end_sec": 344,
           "duration": 297,
           "exercise_name": "warmup",
-          "start_times": "00:00:47",
+          "start_time": "00:00:47",
           "end_time": "00:05:44",
           "total_time": "00:04:57"
         },
@@ -1103,7 +1103,7 @@
           "end_sec": 430,
           "duration": 40,
           "exercise_name": "chest press",
-          "start_times": "00:06:30",
+          "start_time": "00:06:30",
           "end_time": "00:07:10",
           "total_time": "00:00:40"
         },
@@ -1114,7 +1114,7 @@
           "end_sec": 612,
           "duration": 43,
           "exercise_name": "chest fly",
-          "start_times": "00:09:29",
+          "start_time": "00:09:29",
           "end_time": "00:10:12",
           "total_time": "00:00:43"
         },
@@ -1125,7 +1125,7 @@
           "end_sec": 790,
           "duration": 41,
           "exercise_name": "low row",
-          "start_times": "00:12:29",
+          "start_time": "00:12:29",
           "end_time": "00:13:10",
           "total_time": "00:00:41"
         },
@@ -1136,7 +1136,7 @@
           "end_sec": 970,
           "duration": 40,
           "exercise_name": "t-fly",
-          "start_times": "00:15:30",
+          "start_time": "00:15:30",
           "end_time": "00:16:10",
           "total_time": "00:00:40"
         },
@@ -1147,7 +1147,7 @@
           "end_sec": 1210,
           "duration": 41,
           "exercise_name": "split fly",
-          "start_times": "00:19:29",
+          "start_time": "00:19:29",
           "end_time": "00:20:10",
           "total_time": "00:00:41"
         },
@@ -1158,7 +1158,7 @@
           "end_sec": 1375,
           "duration": 41,
           "exercise_name": "triceps press",
-          "start_times": "00:22:14",
+          "start_time": "00:22:14",
           "end_time": "00:22:55",
           "total_time": "00:00:41"
         },
@@ -1169,7 +1169,7 @@
           "end_sec": 1677,
           "duration": 44,
           "exercise_name": "w-fly",
-          "start_times": "00:27:13",
+          "start_time": "00:27:13",
           "end_time": "00:27:57",
           "total_time": "00:00:44"
         },
@@ -1180,7 +1180,7 @@
           "end_sec": 1736,
           "duration": 40,
           "exercise_name": "biceps curl",
-          "start_times": "00:28:16",
+          "start_time": "00:28:16",
           "end_time": "00:28:56",
           "total_time": "00:00:40"
         },
@@ -1191,7 +1191,7 @@
           "end_sec": 2037,
           "duration": 41,
           "exercise_name": "face row",
-          "start_times": "00:33:16",
+          "start_time": "00:33:16",
           "end_time": "00:33:57",
           "total_time": "00:00:41"
         },
@@ -1202,7 +1202,7 @@
           "end_sec": 2156,
           "duration": 41,
           "exercise_name": "biceps clutch",
-          "start_times": "00:35:15",
+          "start_time": "00:35:15",
           "end_time": "00:35:56",
           "total_time": "00:00:41"
         },
@@ -1213,7 +1213,7 @@
           "end_sec": 345,
           "duration": 299,
           "exercise_name": "warmup",
-          "start_times": "00:00:46",
+          "start_time": "00:00:46",
           "end_time": "00:05:45",
           "total_time": "00:04:59"
         },
@@ -1224,7 +1224,7 @@
           "end_sec": 429,
           "duration": 39,
           "exercise_name": "squat",
-          "start_times": "00:06:30",
+          "start_time": "00:06:30",
           "end_time": "00:07:09",
           "total_time": "00:00:39"
         },
@@ -1235,7 +1235,7 @@
           "end_sec": 609,
           "duration": 41,
           "exercise_name": "assisted lunge",
-          "start_times": "00:09:28",
+          "start_time": "00:09:28",
           "end_time": "00:10:09",
           "total_time": "00:00:41"
         },
@@ -1246,7 +1246,7 @@
           "end_sec": 791,
           "duration": 42,
           "exercise_name": "side lunge",
-          "start_times": "00:12:29",
+          "start_time": "00:12:29",
           "end_time": "00:13:11",
           "total_time": "00:00:42"
         },
@@ -1257,7 +1257,7 @@
           "end_sec": 970,
           "duration": 40,
           "exercise_name": "hamstring curl",
-          "start_times": "00:15:30",
+          "start_time": "00:15:30",
           "end_time": "00:16:10",
           "total_time": "00:00:40"
         },
@@ -1268,7 +1268,7 @@
           "end_sec": 1150,
           "duration": 40,
           "exercise_name": "hip press",
-          "start_times": "00:18:30",
+          "start_time": "00:18:30",
           "end_time": "00:19:10",
           "total_time": "00:00:40"
         },
@@ -1279,7 +1279,7 @@
           "end_sec": 1376,
           "duration": 41,
           "exercise_name": "overhead back extensions",
-          "start_times": "00:22:15",
+          "start_time": "00:22:15",
           "end_time": "00:22:56",
           "total_time": "00:00:41"
         },
@@ -1290,7 +1290,7 @@
           "end_sec": 1555,
           "duration": 40,
           "exercise_name": "torso rotation",
-          "start_times": "00:25:15",
+          "start_time": "00:25:15",
           "end_time": "00:25:55",
           "total_time": "00:00:40"
         },
@@ -1301,7 +1301,7 @@
           "end_sec": 1794,
           "duration": 40,
           "exercise_name": "kneeling roll out",
-          "start_times": "00:29:14",
+          "start_time": "00:29:14",
           "end_time": "00:29:54",
           "total_time": "00:00:40"
         },
@@ -1312,7 +1312,7 @@
           "end_sec": 1915,
           "duration": 40,
           "exercise_name": "assisted sit up",
-          "start_times": "00:31:15",
+          "start_time": "00:31:15",
           "end_time": "00:31:55",
           "total_time": "00:00:40"
         },
@@ -1323,7 +1323,7 @@
           "end_sec": 2155,
           "duration": 40,
           "exercise_name": "bent leg raise",
-          "start_times": "00:35:15",
+          "start_time": "00:35:15",
           "end_time": "00:35:55",
           "total_time": "00:00:40"
         },
@@ -1334,7 +1334,7 @@
           "end_sec": 340,
           "duration": 294,
           "exercise_name": "warmup",
-          "start_times": "00:00:46",
+          "start_time": "00:00:46",
           "end_time": "00:05:40",
           "total_time": "00:04:54"
         },
@@ -1345,7 +1345,7 @@
           "end_sec": 380,
           "duration": 40,
           "exercise_name": "pushup",
-          "start_times": "00:05:40",
+          "start_time": "00:05:40",
           "end_time": "00:06:20",
           "total_time": "00:00:40"
         },
@@ -1356,7 +1356,7 @@
           "end_sec": 944,
           "duration": 84,
           "exercise_name": "ministeps",
-          "start_times": "00:14:20",
+          "start_time": "00:14:20",
           "end_time": "00:15:44",
           "total_time": "00:01:24"
         },
@@ -1367,7 +1367,7 @@
           "end_sec": 558,
           "duration": 34,
           "exercise_name": "chest press",
-          "start_times": "00:08:44",
+          "start_time": "00:08:44",
           "end_time": "00:09:18",
           "total_time": "00:00:34"
         },
@@ -1378,7 +1378,7 @@
           "end_sec": 740,
           "duration": 33,
           "exercise_name": "fly",
-          "start_times": "00:11:47",
+          "start_time": "00:11:47",
           "end_time": "00:12:20",
           "total_time": "00:00:33"
         },
@@ -1389,7 +1389,7 @@
           "end_sec": 1016,
           "duration": 40,
           "exercise_name": "onearm chestpress",
-          "start_times": "00:16:16",
+          "start_time": "00:16:16",
           "end_time": "00:16:56",
           "total_time": "00:00:40"
         },
@@ -1400,7 +1400,7 @@
           "end_sec": 1186,
           "duration": 30,
           "exercise_name": "closegrip chestpress",
-          "start_times": "00:19:16",
+          "start_time": "00:19:16",
           "end_time": "00:19:46",
           "total_time": "00:00:30"
         },
@@ -1411,7 +1411,7 @@
           "end_sec": 1373,
           "duration": 35,
           "exercise_name": "pullover",
-          "start_times": "00:22:18",
+          "start_time": "00:22:18",
           "end_time": "00:22:53",
           "total_time": "00:00:35"
         },
@@ -1422,7 +1422,7 @@
           "end_sec": 1557,
           "duration": 36,
           "exercise_name": "squeeze press",
-          "start_times": "00:25:21",
+          "start_time": "00:25:21",
           "end_time": "00:25:57",
           "total_time": "00:00:36"
         },
@@ -1433,7 +1433,7 @@
           "end_sec": 1836,
           "duration": 132,
           "exercise_name": "cooldown",
-          "start_times": "00:28:24",
+          "start_time": "00:28:24",
           "end_time": "00:30:36",
           "total_time": "00:02:12"
         },
@@ -1444,7 +1444,7 @@
           "end_sec": 340,
           "duration": 294,
           "exercise_name": "warmup",
-          "start_times": "00:00:46",
+          "start_time": "00:00:46",
           "end_time": "00:05:40",
           "total_time": "00:04:54"
         },
@@ -1455,7 +1455,7 @@
           "end_sec": 386,
           "duration": 41,
           "exercise_name": "mid row",
-          "start_times": "00:05:45",
+          "start_time": "00:05:45",
           "end_time": "00:06:26",
           "total_time": "00:00:41"
         },
@@ -1466,7 +1466,7 @@
           "end_sec": 564,
           "duration": 40,
           "exercise_name": "power pull",
-          "start_times": "00:08:44",
+          "start_time": "00:08:44",
           "end_time": "00:09:24",
           "total_time": "00:00:40"
         },
@@ -1477,7 +1477,7 @@
           "end_sec": 804,
           "duration": 36,
           "exercise_name": "shoulder row",
-          "start_times": "00:12:48",
+          "start_time": "00:12:48",
           "end_time": "00:13:24",
           "total_time": "00:00:36"
         },
@@ -1488,7 +1488,7 @@
           "end_sec": 944,
           "duration": 78,
           "exercise_name": "jump rope",
-          "start_times": "00:14:26",
+          "start_time": "00:14:26",
           "end_time": "00:15:44",
           "total_time": "00:01:18"
         },
@@ -1499,7 +1499,7 @@
           "end_sec": 1015,
           "duration": 39,
           "exercise_name": "i-fly",
-          "start_times": "00:16:16",
+          "start_time": "00:16:16",
           "end_time": "00:16:55",
           "total_time": "00:00:39"
         },
@@ -1510,7 +1510,7 @@
           "end_sec": 1195,
           "duration": 39,
           "exercise_name": "split fly",
-          "start_times": "00:19:16",
+          "start_time": "00:19:16",
           "end_time": "00:19:55",
           "total_time": "00:00:39"
         },
@@ -1521,7 +1521,7 @@
           "end_sec": 1375,
           "duration": 37,
           "exercise_name": "biceps curl",
-          "start_times": "00:22:18",
+          "start_time": "00:22:18",
           "end_time": "00:22:55",
           "total_time": "00:00:37"
         },
@@ -1532,7 +1532,7 @@
           "end_sec": 1555,
           "duration": 37,
           "exercise_name": "triceps press",
-          "start_times": "00:25:18",
+          "start_time": "00:25:18",
           "end_time": "00:25:55",
           "total_time": "00:00:37"
         },
@@ -1543,7 +1543,7 @@
           "end_sec": 341,
           "duration": 290,
           "exercise_name": "warmup",
-          "start_times": "00:00:51",
+          "start_time": "00:00:51",
           "end_time": "00:05:41",
           "total_time": "00:04:50"
         },
@@ -1554,7 +1554,7 @@
           "end_sec": 386,
           "duration": 41,
           "exercise_name": "y-fly",
-          "start_times": "00:05:45",
+          "start_time": "00:05:45",
           "end_time": "00:06:26",
           "total_time": "00:00:41"
         },
@@ -1565,7 +1565,7 @@
           "end_sec": 745,
           "duration": 39,
           "exercise_name": "torso rotation",
-          "start_times": "00:11:46",
+          "start_time": "00:11:46",
           "end_time": "00:12:25",
           "total_time": "00:00:39"
         },
@@ -1576,7 +1576,7 @@
           "end_sec": 944,
           "duration": 78,
           "exercise_name": "jog",
-          "start_times": "00:14:26",
+          "start_time": "00:14:26",
           "end_time": "00:15:44",
           "total_time": "00:01:18"
         },
@@ -1587,7 +1587,7 @@
           "end_sec": 1195,
           "duration": 39,
           "exercise_name": "w-fly",
-          "start_times": "00:19:16",
+          "start_time": "00:19:16",
           "end_time": "00:19:55",
           "total_time": "00:00:39"
         },
@@ -1598,7 +1598,7 @@
           "end_sec": 1376,
           "duration": 38,
           "exercise_name": "split fly",
-          "start_times": "00:22:18",
+          "start_time": "00:22:18",
           "end_time": "00:22:56",
           "total_time": "00:00:38"
         },
@@ -1609,7 +1609,7 @@
           "end_sec": 1554,
           "duration": 38,
           "exercise_name": "face row",
-          "start_times": "00:25:16",
+          "start_time": "00:25:16",
           "end_time": "00:25:54",
           "total_time": "00:00:38"
         },
@@ -1620,7 +1620,7 @@
           "end_sec": 1844,
           "duration": 140,
           "exercise_name": "cooldown",
-          "start_times": "00:28:24",
+          "start_time": "00:28:24",
           "end_time": "00:30:44",
           "total_time": "00:02:20"
         },
@@ -1631,7 +1631,7 @@
           "end_sec": 1843,
           "duration": 133,
           "exercise_name": "cooldown",
-          "start_times": "00:28:30",
+          "start_time": "00:28:30",
           "end_time": "00:30:43",
           "total_time": "00:02:13"
         },
@@ -1642,7 +1642,7 @@
           "end_sec": 643,
           "duration": 598,
           "exercise_name": "warmup",
-          "start_times": "00:00:45",
+          "start_time": "00:00:45",
           "end_time": "00:10:43",
           "total_time": "00:09:58"
         },
@@ -1653,7 +1653,7 @@
           "end_sec": 704,
           "duration": 29,
           "exercise_name": "one leg chest press",
-          "start_times": "00:11:15",
+          "start_time": "00:11:15",
           "end_time": "00:11:44",
           "total_time": "00:00:29"
         },
@@ -1664,7 +1664,7 @@
           "end_sec": 884,
           "duration": 30,
           "exercise_name": "one arm row",
-          "start_times": "00:14:14",
+          "start_time": "00:14:14",
           "end_time": "00:14:44",
           "total_time": "00:00:30"
         },
@@ -1675,7 +1675,7 @@
           "end_sec": 1064,
           "duration": 30,
           "exercise_name": "y-fly",
-          "start_times": "00:17:14",
+          "start_time": "00:17:14",
           "end_time": "00:17:44",
           "total_time": "00:00:30"
         },
@@ -1686,7 +1686,7 @@
           "end_sec": 1246,
           "duration": 35,
           "exercise_name": "power pull",
-          "start_times": "00:20:11",
+          "start_time": "00:20:11",
           "end_time": "00:20:46",
           "total_time": "00:00:35"
         },
@@ -1697,7 +1697,7 @@
           "end_sec": 729,
           "duration": 24,
           "exercise_name": "jumping jacks",
-          "start_times": "00:11:45",
+          "start_time": "00:11:45",
           "end_time": "00:12:09",
           "total_time": "00:00:24"
         },
@@ -1708,7 +1708,7 @@
           "end_sec": 1457,
           "duration": 34,
           "exercise_name": "single leg squat",
-          "start_times": "00:23:43",
+          "start_time": "00:23:43",
           "end_time": "00:24:17",
           "total_time": "00:00:34"
         },
@@ -1719,7 +1719,7 @@
           "end_sec": 1634,
           "duration": 31,
           "exercise_name": "floor touch",
-          "start_times": "00:26:43",
+          "start_time": "00:26:43",
           "end_time": "00:27:14",
           "total_time": "00:00:31"
         },
@@ -1730,7 +1730,7 @@
           "end_sec": 1814,
           "duration": 29,
           "exercise_name": "balance lunges hop",
-          "start_times": "00:29:45",
+          "start_time": "00:29:45",
           "end_time": "00:30:14",
           "total_time": "00:00:29"
         },
@@ -1741,7 +1741,7 @@
           "end_sec": 1996,
           "duration": 31,
           "exercise_name": "hamstring curl hip press",
-          "start_times": "00:32:45",
+          "start_time": "00:32:45",
           "end_time": "00:33:16",
           "total_time": "00:00:31"
         },
@@ -1752,7 +1752,7 @@
           "end_sec": 1474,
           "duration": 17,
           "exercise_name": "jog",
-          "start_times": "00:24:17",
+          "start_time": "00:24:17",
           "end_time": "00:24:34",
           "total_time": "00:00:17"
         },
@@ -1763,7 +1763,7 @@
           "end_sec": 2204,
           "duration": 28,
           "exercise_name": "standing roll out",
-          "start_times": "00:36:16",
+          "start_time": "00:36:16",
           "end_time": "00:36:44",
           "total_time": "00:00:28"
         },
@@ -1774,7 +1774,7 @@
           "end_sec": 2325,
           "duration": 23,
           "exercise_name": "mountain climbers",
-          "start_times": "00:38:22",
+          "start_time": "00:38:22",
           "end_time": "00:38:45",
           "total_time": "00:00:23"
         },
@@ -1785,7 +1785,7 @@
           "end_sec": 2444,
           "duration": 27,
           "exercise_name": "saw",
-          "start_times": "00:40:17",
+          "start_time": "00:40:17",
           "end_time": "00:40:44",
           "total_time": "00:00:27"
         },
@@ -1796,7 +1796,7 @@
           "end_sec": 2227,
           "duration": 21,
           "exercise_name": "jab jab, hook",
-          "start_times": "00:36:46",
+          "start_time": "00:36:46",
           "end_time": "00:37:07",
           "total_time": "00:00:21"
         },
@@ -1807,7 +1807,7 @@
           "end_sec": 645,
           "duration": 598,
           "exercise_name": "warmup",
-          "start_times": "00:00:47",
+          "start_time": "00:00:47",
           "end_time": "00:10:45",
           "total_time": "00:09:58"
         },
@@ -1818,7 +1818,7 @@
           "end_sec": 717,
           "duration": 37,
           "exercise_name": "low chest press",
-          "start_times": "00:11:20",
+          "start_time": "00:11:20",
           "end_time": "00:11:57",
           "total_time": "00:00:37"
         },
@@ -1829,7 +1829,7 @@
           "end_sec": 894,
           "duration": 39,
           "exercise_name": "high row",
-          "start_times": "00:14:15",
+          "start_time": "00:14:15",
           "end_time": "00:14:54",
           "total_time": "00:00:39"
         },
@@ -1840,7 +1840,7 @@
           "end_sec": 1075,
           "duration": 39,
           "exercise_name": "chest fly",
-          "start_times": "00:17:16",
+          "start_time": "00:17:16",
           "end_time": "00:17:55",
           "total_time": "00:00:39"
         },
@@ -1851,7 +1851,7 @@
           "end_sec": 1255,
           "duration": 41,
           "exercise_name": "floor row",
-          "start_times": "00:20:14",
+          "start_time": "00:20:14",
           "end_time": "00:20:55",
           "total_time": "00:00:41"
         },
@@ -1862,7 +1862,7 @@
           "end_sec": 1463,
           "duration": 38,
           "exercise_name": "split fly",
-          "start_times": "00:23:45",
+          "start_time": "00:23:45",
           "end_time": "00:24:23",
           "total_time": "00:00:38"
         },
@@ -1873,7 +1873,7 @@
           "end_sec": 1643,
           "duration": 39,
           "exercise_name": "triceps extensions",
-          "start_times": "00:26:44",
+          "start_time": "00:26:44",
           "end_time": "00:27:23",
           "total_time": "00:00:39"
         },
@@ -1884,7 +1884,7 @@
           "end_sec": 1825,
           "duration": 37,
           "exercise_name": "biceps clutch",
-          "start_times": "00:29:48",
+          "start_time": "00:29:48",
           "end_time": "00:30:25",
           "total_time": "00:00:37"
         },
@@ -1895,7 +1895,7 @@
           "end_sec": 2005,
           "duration": 39,
           "exercise_name": "close grip triceps press",
-          "start_times": "00:32:46",
+          "start_time": "00:32:46",
           "end_time": "00:33:25",
           "total_time": "00:00:39"
         },
@@ -1906,7 +1906,7 @@
           "end_sec": 2204,
           "duration": 28,
           "exercise_name": "PUMP: chest press",
-          "start_times": "00:36:16",
+          "start_time": "00:36:16",
           "end_time": "00:36:44",
           "total_time": "00:00:28"
         },
@@ -1917,7 +1917,7 @@
           "end_sec": 2325,
           "duration": 30,
           "exercise_name": "row",
-          "start_times": "00:38:15",
+          "start_time": "00:38:15",
           "end_time": "00:38:45",
           "total_time": "00:00:30"
         },
@@ -1928,7 +1928,7 @@
           "end_sec": 2444,
           "duration": 30,
           "exercise_name": "kneeling roll out",
-          "start_times": "00:40:14",
+          "start_time": "00:40:14",
           "end_time": "00:40:44",
           "total_time": "00:00:30"
         },
@@ -1939,7 +1939,7 @@
           "end_sec": 642,
           "duration": 596,
           "exercise_name": "warmup",
-          "start_times": "00:00:46",
+          "start_time": "00:00:46",
           "end_time": "00:10:42",
           "total_time": "00:09:56"
         },
@@ -1950,7 +1950,7 @@
           "end_sec": 714,
           "duration": 40,
           "exercise_name": "squat",
-          "start_times": "00:11:14",
+          "start_time": "00:11:14",
           "end_time": "00:11:54",
           "total_time": "00:00:40"
         },
@@ -1961,7 +1961,7 @@
           "end_sec": 895,
           "duration": 41,
           "exercise_name": "crossing lunge",
-          "start_times": "00:14:14",
+          "start_time": "00:14:14",
           "end_time": "00:14:55",
           "total_time": "00:00:41"
         },
@@ -1972,7 +1972,7 @@
           "end_sec": 1076,
           "duration": 41,
           "exercise_name": "stiff leg deadlift",
-          "start_times": "00:17:15",
+          "start_time": "00:17:15",
           "end_time": "00:17:56",
           "total_time": "00:00:41"
         },
@@ -1983,7 +1983,7 @@
           "end_sec": 1255,
           "duration": 42,
           "exercise_name": "back lunge",
-          "start_times": "00:20:13",
+          "start_time": "00:20:13",
           "end_time": "00:20:55",
           "total_time": "00:00:42"
         },
@@ -1994,7 +1994,7 @@
           "end_sec": 1465,
           "duration": 38,
           "exercise_name": "hip thrusters",
-          "start_times": "00:23:47",
+          "start_time": "00:23:47",
           "end_time": "00:24:25",
           "total_time": "00:00:38"
         },
@@ -2005,7 +2005,7 @@
           "end_sec": 1644,
           "duration": 39,
           "exercise_name": "hamstring curl",
-          "start_times": "00:26:45",
+          "start_time": "00:26:45",
           "end_time": "00:27:24",
           "total_time": "00:00:39"
         },
@@ -2016,7 +2016,7 @@
           "end_sec": 1824,
           "duration": 39,
           "exercise_name": "figure 4 squat",
-          "start_times": "00:29:45",
+          "start_time": "00:29:45",
           "end_time": "00:30:24",
           "total_time": "00:00:39"
         },
@@ -2027,7 +2027,7 @@
           "end_sec": 2006,
           "duration": 42,
           "exercise_name": "hip henge",
-          "start_times": "00:32:44",
+          "start_time": "00:32:44",
           "end_time": "00:33:26",
           "total_time": "00:00:42"
         },
@@ -2038,7 +2038,7 @@
           "end_sec": 2201,
           "duration": 26,
           "exercise_name": "pike",
-          "start_times": "00:36:15",
+          "start_time": "00:36:15",
           "end_time": "00:36:41",
           "total_time": "00:00:26"
         },
@@ -2049,7 +2049,7 @@
           "end_sec": 2323,
           "duration": 28,
           "exercise_name": "hamstring runners",
-          "start_times": "00:38:15",
+          "start_time": "00:38:15",
           "end_time": "00:38:43",
           "total_time": "00:00:28"
         },
@@ -2060,7 +2060,7 @@
           "end_sec": 2445,
           "duration": 28,
           "exercise_name": "plank jack",
-          "start_times": "00:40:17",
+          "start_time": "00:40:17",
           "end_time": "00:40:45",
           "total_time": "00:00:28"
         },
@@ -2071,7 +2071,7 @@
           "end_sec": 340,
           "duration": 293,
           "exercise_name": "warmup",
-          "start_times": "00:00:47",
+          "start_time": "00:00:47",
           "end_time": "00:05:40",
           "total_time": "00:04:53"
         },
@@ -2082,7 +2082,7 @@
           "end_sec": 383,
           "duration": 35,
           "exercise_name": "balance lunges",
-          "start_times": "00:05:48",
+          "start_time": "00:05:48",
           "end_time": "00:06:23",
           "total_time": "00:00:35"
         },
@@ -2093,7 +2093,7 @@
           "end_sec": 557,
           "duration": 27,
           "exercise_name": "hamstring curl",
-          "start_times": "00:08:50",
+          "start_time": "00:08:50",
           "end_time": "00:09:17",
           "total_time": "00:00:27"
         },
@@ -2104,7 +2104,7 @@
           "end_sec": 744,
           "duration": 37,
           "exercise_name": "hip raise",
-          "start_times": "00:11:47",
+          "start_time": "00:11:47",
           "end_time": "00:12:24",
           "total_time": "00:00:37"
         },
@@ -2115,7 +2115,7 @@
           "end_sec": 1013,
           "duration": 37,
           "exercise_name": "lunges",
-          "start_times": "00:16:16",
+          "start_time": "00:16:16",
           "end_time": "00:16:53",
           "total_time": "00:00:37"
         },
@@ -2126,7 +2126,7 @@
           "end_sec": 1193,
           "duration": 38,
           "exercise_name": "stiff leg deadlift",
-          "start_times": "00:19:15",
+          "start_time": "00:19:15",
           "end_time": "00:19:53",
           "total_time": "00:00:38"
         },
@@ -2137,7 +2137,7 @@
           "end_sec": 1373,
           "duration": 35,
           "exercise_name": "squat jack",
-          "start_times": "00:22:18",
+          "start_time": "00:22:18",
           "end_time": "00:22:53",
           "total_time": "00:00:35"
         },
@@ -2148,7 +2148,7 @@
           "end_sec": 1554,
           "duration": 36,
           "exercise_name": "knee walk",
-          "start_times": "00:25:18",
+          "start_time": "00:25:18",
           "end_time": "00:25:54",
           "total_time": "00:00:36"
         },
@@ -2159,7 +2159,7 @@
           "end_sec": 1840,
           "duration": 130,
           "exercise_name": "cooldown",
-          "start_times": "00:28:30",
+          "start_time": "00:28:30",
           "end_time": "00:30:40",
           "total_time": "00:02:10"
         }
