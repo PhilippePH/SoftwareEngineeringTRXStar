@@ -61,6 +61,7 @@ async function filterAll(indexedDB, userOptions) {
         console.error("Database filtering rejected", error);
 
     }
+}
 
 
 function diff_to_comp(difficulty) {
