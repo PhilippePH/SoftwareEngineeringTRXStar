@@ -7,14 +7,11 @@ import './RestPage.css'
 import { Link } from 'react-router-dom';
 import BasicButton from './BasicButton';
 
-const RestPage = () => {
-    const playlist = useSelector((state) => (state.playlist));
-    var clipList = playlist_to_clipList(playlist); 
-
-    console.log("clip list", clipList); 
+const RestPage = ({nextVideo, restData}) => {
 
     return (
         <>
+<<<<<<< src/components/playlist/RestPage.js
             <div className="message1">
                 <h1>Next up</h1>
                 </div>
@@ -22,13 +19,14 @@ const RestPage = () => {
                 <h1>Hamstring curl</h1>
             </div>
             <div className="RestPage">
-                <Timer onTimeout={handleTimeout} />
+                <Timer onTimeout={nextVideo} />
                 <Link to="/youtube">
                     <BasicButton
                         option={"Skip to next exercise"}
                         to = '/youtube'
                         />
                 </Link>
+>>>>>>> src/components/playlist/RestPage.js
             </div>
 
 
@@ -36,9 +34,5 @@ const RestPage = () => {
 
     )
 }
-
-function handleTimeout() {
-    console.log("Timer reached 0");
-  }
 
 export default RestPage;

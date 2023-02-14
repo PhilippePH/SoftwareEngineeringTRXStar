@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import './Timer.css'
 
 const SECOND = 1000;
-const COUNTDOWN_SECONDS = 20;
+const COUNTDOWN_SECONDS = 5;
 
 export const Timer = ({ onTimeout }) => {
     const parsedDeadline = useMemo(() => Date.now() + COUNTDOWN_SECONDS * SECOND, []);
