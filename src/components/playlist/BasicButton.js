@@ -4,17 +4,14 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 
-const BasicButton = ({option, to}) => {
+const BasicButton = ({option, next}) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const clickHandler = () => {
-        navigate(to);
-    }
 
   return (
         <button className='basic-button'
-            onClick={()=>clickHandler()}
+            onClick={next}
             style={{
                 width: "8rem",
                 paddingTop: "0.5rem",

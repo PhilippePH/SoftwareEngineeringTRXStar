@@ -19,12 +19,10 @@ const RestPage = ({nextVideo, restData}) => {
             </div>
             <div className="RestPage">
                 <Timer onTimeout={nextVideo} />
-                <Link to="/youtube">
                     <BasicButton
                         option={"Skip to next exercise"}
-                        to = '/youtube'
+                        next = {nextVideo}
                         />
-                </Link>
             </div>
 
 
