@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import './Timer.css'
 
 const SECOND = 1000;
 const COUNTDOWN_SECONDS = 20;
@@ -28,11 +29,10 @@ export const Timer = ({ onTimeout }) => {
                 Seconds: (time / SECOND) % 60,
             }).map(([label, value]) => (
                 <div key={label} className="col-4">
-                    <div className="box">
-                        <p>{`${Math.floor(value)}`.padStart(2, "0")}</p>
-                        <span className="text">{label}</span>
+                    <div className="circle">
+                            <p>{`${Math.floor(value)}`.padStart(2, "0")}</p>
+                        </div>
                     </div>
-                </div>
             ))}
         </div>
     );
