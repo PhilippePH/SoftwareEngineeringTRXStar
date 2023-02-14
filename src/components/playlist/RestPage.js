@@ -11,7 +11,6 @@ const RestPage = ({nextVideo, restData}) => {
 
     return (
         <>
-<<<<<<< src/components/playlist/RestPage.js
             <div className="message1">
                 <h1>Next up</h1>
                 </div>
@@ -26,7 +25,6 @@ const RestPage = ({nextVideo, restData}) => {
                         to = '/youtube'
                         />
                 </Link>
->>>>>>> src/components/playlist/RestPage.js
             </div>
 
 
