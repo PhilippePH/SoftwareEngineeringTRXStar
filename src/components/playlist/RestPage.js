@@ -4,17 +4,13 @@ import { DIFFICULTY } from "../utils/constants";
 import playlist_to_clipList from './playlist_to_clipList';
 import Timer from './Timer';
 
-const RestPage = () => {
-    const playlist = useSelector((state) => (state.playlist));
-    var clipList = playlist_to_clipList(playlist); 
-
-    console.log("clip list", clipList); 
+const RestPage = ({nextVideo, restData}) => {
 
     return (
         <>
             <h1>Rest page</h1>
             <div className="App">
-                <Timer onTimeout={handleTimeout} />
+                <Timer onTimeout={nextVideo} />
             </div>
 
 
@@ -22,9 +18,5 @@ const RestPage = () => {
 
     )
 }
-
-function handleTimeout() {
-    console.log("Timer reached 0");
-  }
 
 export default RestPage;
