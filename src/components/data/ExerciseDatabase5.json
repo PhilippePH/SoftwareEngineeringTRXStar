@@ -2675,7 +2675,7 @@
           "start_sec": 45,
           "end_sec": 644,
           "duration": 599,
-          "exercise_name": "warm-up",
+          "exercise_name": "warmup",
           "start_time": "00:00:45",
           "end_time": "00:10:44",
           "total_time": "00:09:59"
@@ -2730,7 +2730,7 @@
           "start_sec": 1424,
           "end_sec": 1456,
           "duration": 32,
-          "exercise_name": "single leg squats",
+          "exercise_name": "single leg squat",
           "start_time": "00:23:44",
           "end_time": "00:24:16",
           "total_time": "00:00:32"
@@ -3115,7 +3115,7 @@
           "start_sec": 676,
           "end_sec": 734,
           "duration": 58,
-          "exercise_name": "flutter kick squat ",
+          "exercise_name": "flutter kick squat",
           "start_time": "00:11:16",
           "end_time": "00:12:14",
           "total_time": "00:00:58"
@@ -3126,7 +3126,7 @@
           "start_sec": 755,
           "end_sec": 814,
           "duration": 59,
-          "exercise_name": "floor squat ",
+          "exercise_name": "floor squat",
           "start_time": "00:12:35",
           "end_time": "00:13:34",
           "total_time": "00:00:59"
@@ -3137,7 +3137,7 @@
           "start_sec": 835,
           "end_sec": 894,
           "duration": 59,
-          "exercise_name": "skater jump ",
+          "exercise_name": "skater jump",
           "start_time": "00:13:55",
           "end_time": "00:14:54",
           "total_time": "00:00:59"
@@ -3148,7 +3148,7 @@
           "start_sec": 915,
           "end_sec": 975,
           "duration": 60,
-          "exercise_name": "plank jack ",
+          "exercise_name": "plank jack",
           "start_time": "00:15:15",
           "end_time": "00:16:15",
           "total_time": "00:01:00"
@@ -3159,7 +3159,7 @@
           "start_sec": 995,
           "end_sec": 1044,
           "duration": 49,
-          "exercise_name": "flutter kick squat ",
+          "exercise_name": "flutter kick squat",
           "start_time": "00:16:35",
           "end_time": "00:17:24",
           "total_time": "00:00:49"
@@ -3170,7 +3170,7 @@
           "start_sec": 1065,
           "end_sec": 1114,
           "duration": 49,
-          "exercise_name": "floor squat ",
+          "exercise_name": "floor squat",
           "start_time": "00:17:45",
           "end_time": "00:18:34",
           "total_time": "00:00:49"
@@ -3181,7 +3181,7 @@
           "start_sec": 1134,
           "end_sec": 1184,
           "duration": 50,
-          "exercise_name": "skater jump ",
+          "exercise_name": "skater jump",
           "start_time": "00:18:54",
           "end_time": "00:19:44",
           "total_time": "00:00:50"
@@ -3192,7 +3192,7 @@
           "start_sec": 1205,
           "end_sec": 1254,
           "duration": 49,
-          "exercise_name": "plank jack ",
+          "exercise_name": "plank jack",
           "start_time": "00:20:05",
           "end_time": "00:20:54",
           "total_time": "00:00:49"
@@ -3203,7 +3203,7 @@
           "start_sec": 1275,
           "end_sec": 1314,
           "duration": 39,
-          "exercise_name": "flutter kick squat ",
+          "exercise_name": "flutter kick squat",
           "start_time": "00:21:15",
           "end_time": "00:21:54",
           "total_time": "00:00:39"
@@ -3214,7 +3214,7 @@
           "start_sec": 1335,
           "end_sec": 1374,
           "duration": 39,
-          "exercise_name": "floor squat ",
+          "exercise_name": "floor squat",
           "start_time": "00:22:15",
           "end_time": "00:22:54",
           "total_time": "00:00:39"
@@ -3225,7 +3225,7 @@
           "start_sec": 1396,
           "end_sec": 1435,
           "duration": 39,
-          "exercise_name": "skater jump ",
+          "exercise_name": "skater jump",
           "start_time": "00:23:16",
           "end_time": "00:23:55",
           "total_time": "00:00:39"
@@ -3236,7 +3236,7 @@
           "start_sec": 1455,
           "end_sec": 1495,
           "duration": 40,
-          "exercise_name": "plank jack ",
+          "exercise_name": "plank jack",
           "start_time": "00:24:15",
           "end_time": "00:24:55",
           "total_time": "00:00:40"
@@ -3247,7 +3247,7 @@
           "start_sec": 1515,
           "end_sec": 1544,
           "duration": 29,
-          "exercise_name": "flutter kick squat ",
+          "exercise_name": "flutter kick squat",
           "start_time": "00:25:15",
           "end_time": "00:25:44",
           "total_time": "00:00:29"
@@ -3258,7 +3258,7 @@
           "start_sec": 1565,
           "end_sec": 1595,
           "duration": 30,
-          "exercise_name": "floor squat ",
+          "exercise_name": "floor squat",
           "start_time": "00:26:05",
           "end_time": "00:26:35",
           "total_time": "00:00:30"
@@ -3269,7 +3269,7 @@
           "start_sec": 1615,
           "end_sec": 1645,
           "duration": 30,
-          "exercise_name": "skater jump ",
+          "exercise_name": "skater jump",
           "start_time": "00:26:55",
           "end_time": "00:27:25",
           "total_time": "00:00:30"
@@ -3280,7 +3280,7 @@
           "start_sec": 1665,
           "end_sec": 1695,
           "duration": 30,
-          "exercise_name": "plank jack ",
+          "exercise_name": "plank jack",
           "start_time": "00:27:45",
           "end_time": "00:28:15",
           "total_time": "00:00:30"
@@ -3291,7 +3291,7 @@
           "start_sec": 1715,
           "end_sec": 1735,
           "duration": 20,
-          "exercise_name": "flutter kick squat ",
+          "exercise_name": "flutter kick squat",
           "start_time": "00:28:35",
           "end_time": "00:28:55",
           "total_time": "00:00:20"
@@ -3302,7 +3302,7 @@
           "start_sec": 1755,
           "end_sec": 1775,
           "duration": 20,
-          "exercise_name": "floor squat ",
+          "exercise_name": "floor squat",
           "start_time": "00:29:15",
           "end_time": "00:29:35",
           "total_time": "00:00:20"
@@ -3313,7 +3313,7 @@
           "start_sec": 1796,
           "end_sec": 1814,
           "duration": 18,
-          "exercise_name": "skater jump ",
+          "exercise_name": "skater jump",
           "start_time": "00:29:56",
           "end_time": "00:30:14",
           "total_time": "00:00:18"
@@ -3324,7 +3324,7 @@
           "start_sec": 1835,
           "end_sec": 1855,
           "duration": 20,
-          "exercise_name": "plank jack ",
+          "exercise_name": "plank jack",
           "start_time": "00:30:35",
           "end_time": "00:30:55",
           "total_time": "00:00:20"
@@ -3621,7 +3621,7 @@
           "start_sec": 1155,
           "end_sec": 1186,
           "duration": 31,
-          "exercise_name": "close grip chestpress",
+          "exercise_name": "closegrip chestpress",
           "start_time": "00:19:15",
           "end_time": "00:19:46",
           "total_time": "00:00:31"
