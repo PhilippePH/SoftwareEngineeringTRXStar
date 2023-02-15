@@ -1,32 +1,33 @@
 import { useEffect, useMemo, useState } from "react";
-import './Timer.css'
+import './Timer.scss'
 
 const SECOND = 1000;
-const COUNTDOWN_SECONDS = 5;
+const COUNTDOWN_SECONDS = 10;
 
 export const Timer = ({ onTimeout }) => {
-    const parsedDeadline = useMemo(() => Date.now() + COUNTDOWN_SECONDS * SECOND, []);
-    const [time, setTime] = useState(parsedDeadline - Date.now());
+    const [timeLeft, setTime] = useState(COUNTDOWN_SECONDS);
+
 
     useEffect(() => {
         const interval = setInterval(() => {
-            const remainingTime = parsedDeadline - Date.now();
-            setTime(remainingTime < 0 ? 0 : remainingTime);
+            setTime(timeLeft-1);
         }, SECOND);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [timeLeft]);
 
+    
     useEffect(() => {
-        if (time === 0) {
+        if (timeLeft === 0) {
             onTimeout && onTimeout();
         }
-    }, [time, onTimeout]);
+    }, [timeLeft, onTimeout]);
+
 
     return (
         <div className="timer">
             {Object.entries({
-                Seconds: (time / SECOND) % 60,
+                Seconds: (timeLeft),
             }).map(([label, value]) => (
                 <div key={label} className="col-4">
                     <div className="circle">
@@ -37,5 +38,7 @@ export const Timer = ({ onTimeout }) => {
         </div>
     );
 };
+
+
 
 export default Timer;

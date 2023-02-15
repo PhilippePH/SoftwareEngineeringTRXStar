@@ -24,19 +24,27 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
     },
   };
     
-  return (
-    <>
-      <div
-        align="center" 
-        className='video'>
-        <YouTube videoId={exerciseData.videoId} opts={opts} onEnd={nextVideo}/>
-      </div>  
-      <BasicButton
-        option={"Skip to next exercise"}
-        next={nextVideo}
-      />
-    </>
-  );
+      return (
+        <>
+          <div
+            align="center"
+            className="video">
+            <YouTube videoId={exerciseData.videoId} opts={opts} onEnd={nextVideo}/>
+          </div>  
+          <div
+            style={{
+              display:"grid",
+              placeItems:"center",
+              justifyContent:"center",
+              alignContent:"center"
+              }}>
+          <BasicButton
+            option={"Skip to next exercise"}
+            next={nextVideo}
+          />
+          </div>
+        </>
+      );
       
 }
 
