@@ -4,7 +4,7 @@ var exerciseDict = {
     "time": null,
     "sets": 1,
     "rest_set": 0,
-    "intensity": 0,
+    "intensity": 1,
     "URL": "",
     "start_time": "",
     "end_time": ""
@@ -64,8 +64,10 @@ function generateHIT(split, totalTime)
 
     for(var i = 0; i<totalExercises; i++)
     {
-        var newExercise = exerciseDict; 
-        var newRest = restDict; 
+        let newExercise = {}; 
+        let newRest = {}; 
+        Object.assign(newExercise, exerciseDict); 
+        Object.assign(newRest, restDict); 
 
         Object.assign(newExercise, {time: split[0], intensity: 1, sets: 1, rest_set: 0}); 
         HIITPlaylist.push(exerciseDict); 
@@ -96,16 +98,18 @@ function generateStrength(totalTime, restPeriod)
     
         for(var i = 0; i<totalExercises; i++)
         {
-            if(i == Math.floor(totalExercises/2))
+            if(i == Math.floor(totalExercises/2) && i != 0)
             {
-                var newRest = restDict; 
+                let newRest = {}; 
+                Object.assign(newRest, restDict); 
                 Object.assign(newRest, {time: restPeriod});
                 StrengthPlaylist.push(newRest); 
             }
-            var newExercise = exerciseDict; 
-    
+
+            let newExercise = {}; 
+            Object.assign(newExercise, exerciseDict); 
             Object.assign(newExercise, {time: 40, rest_set: 20, sets: 3, intensity: 1}); 
-            StrengthPlaylist.push(exerciseDict); 
+            StrengthPlaylist.push(newExercise); 
         }
     
         // append cooldown
@@ -134,14 +138,16 @@ function generateEndurance(restPeriod, totalTime){
     {
         if(i == Math.floor(totalExercises/2))
         {
-            var newRest = restDict; 
+            let newRest = {}; 
+            Object.assign(newRest, restDict); 
             Object.assign(newRest, {time: restPeriod});
             EndurancePlaylist.push(newRest); 
         }
-        var newExercise = exerciseDict; 
 
+        let newExercise = {}; 
+        Object.assign(newExercise, exerciseDict); 
         Object.assign(newExercise, {time: 40, rest_set: 0, sets: 3, intensity: 1}); 
-        EndurancePlaylist.push(exerciseDict); 
+        EndurancePlaylist.push(newExercise); 
     }
 
     // append cooldown

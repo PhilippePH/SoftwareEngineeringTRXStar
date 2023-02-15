@@ -1,15 +1,8 @@
-import { useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
-import { DIFFICULTY } from "../utils/constants";
-import playlist_to_clipList from './playlist_to_clipList';
 import Timer from './Timer';
 import './RestPage.css'
-import { Link } from 'react-router-dom';
 import BasicButton from './BasicButton';
 
 const RestPage = ({nextVideo, restData, nextExerciseName}) => {
-
-    console.log("Next exercise", nextExerciseName)
 
     return (
         <>

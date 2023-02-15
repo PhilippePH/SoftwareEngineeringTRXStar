@@ -1,4 +1,5 @@
 import YouTube from 'react-youtube';
+import BasicButton from './BasicButton';
 
 const YouTubePage = ({nextVideo, exerciseData}) => {
       
@@ -18,6 +19,10 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
           <div className="App">
             <YouTube videoId={exerciseData.videoId} opts={opts} onEnd={nextVideo}/>
           </div>  
+          <BasicButton
+            option={"Skip to next exercise"}
+            next={nextVideo}
+          />
         </>
       );
       
