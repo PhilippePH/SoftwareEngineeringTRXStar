@@ -13,7 +13,7 @@ const ViewWorkout = () => {
 
     console.log("clip list", clipList); 
 
-    if (count == clipList.length-1) { // if end of video we display 'Finished' component
+    if (count == clipList.length) { // if end of video we display 'Finished' component
         return (
             <p>Finished !</p>
         )
@@ -33,7 +33,7 @@ const ViewWorkout = () => {
     } else { // if not we are resting
         // extract rest data
         return (
-            <RestPage nextVideo={() => setCount(count+1)} restData={clipList[count]} />
+            <RestPage nextVideo={() => setCount(count+1)} restData={clipList[count]} nextExerciseName = {clipList[count+1].exercise_name} />
         )
     }
 }

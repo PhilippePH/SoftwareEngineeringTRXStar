@@ -7,7 +7,9 @@ import './RestPage.css'
 import { Link } from 'react-router-dom';
 import BasicButton from './BasicButton';
 
-const RestPage = ({nextVideo, restData}) => {
+const RestPage = ({nextVideo, restData, nextExerciseName}) => {
+
+    console.log("Next exercise", nextExerciseName)
 
     return (
         <>
@@ -15,7 +17,7 @@ const RestPage = ({nextVideo, restData}) => {
                 <h1>Next up</h1>
                 </div>
                 <div className="message2">
-                <h1>Hamstring curl</h1>
+                <h1>{nextExerciseName}</h1>
             </div>
             <div className="RestPage">
                 <Timer onTimeout={nextVideo} />
