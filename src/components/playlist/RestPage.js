@@ -12,12 +12,34 @@ const RestPage = ({nextVideo, restData, nextExerciseName}) => {
                 <div className="message2">
                 <h1>{nextExerciseName}</h1>
             </div>
-            <div className="RestPage">
-                <Timer onTimeout={nextVideo} />
+            <div className="RestPage"
+                style={{
+                    display:"grid",
+                    height:"200%",
+                    placeItems:"center",
+                    justifyContent:"center",
+                    alignContent:"center"
+                    }}>
+                
+                <div>
+                    <Timer onTimeout={nextVideo} />
+                </div>
+                
+                
+                <div    
+                    style={{
+                    paddingTop:"50px",
+                    display:"grid",
+                    placeItems:"center",
+                    justifyContent:"center",
+                    alignContent:"center"
+                    }}>
                     <BasicButton
                         option={"Skip to next exercise"}
                         next = {nextVideo}
-                        />
+                    />
+                </div>
+                    
             </div>
 
 

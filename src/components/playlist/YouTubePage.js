@@ -19,10 +19,18 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
           <div className="App">
             <YouTube videoId={exerciseData.videoId} opts={opts} onEnd={nextVideo}/>
           </div>  
+          <div
+            style={{
+              display:"grid",
+              placeItems:"center",
+              justifyContent:"center",
+              alignContent:"center"
+              }}>
           <BasicButton
             option={"Skip to next exercise"}
             next={nextVideo}
           />
+          </div>
         </>
       );
       

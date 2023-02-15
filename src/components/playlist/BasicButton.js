@@ -19,16 +19,16 @@ const BasicButton = ({option, next}) => {
         <button className='basic-button'
             onClick={next}
             style={{
-                width: width > 768 ? "320px" : width < 500? "200px" : "260px",
-                height: width > 768 ? "6rem": width < 500? "3rem": "4rem",
-                fontSize: width > 768 ? "1.5rem": width < 500? "0.75rem":"1rem",                        paddingTop: "0.5rem",
+                //width: width > 768 ? "320px" : width < 500? "200px" : "260px",
+                //height: width > 768 ? "6rem": width < 500? "3rem": "4rem",
+                //fontSize: width > 768 ? "1.5rem": width < 500? "0.75rem":"1rem",                        paddingTop: "0.5rem",
                 paddingBottom: "0.5rem",
                 paddingLeft: "1rem",
                 paddingRight: "1rem",
-                margin: "1rem 1rem 1rem 4rem",
                 textAlign: "center",
                 border: "1px solid black",
                 borderRadius: "20px",
+                
             }}>
                 {option}
         </button>
