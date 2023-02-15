@@ -22,7 +22,6 @@ const BasicButton = ({option, next}) => {
                 cursor: "pointer",
                 border: "2px solid black",
                 borderRadius: "8px",
-                margin: "4rem 9.5rem"
             }}
         
         >

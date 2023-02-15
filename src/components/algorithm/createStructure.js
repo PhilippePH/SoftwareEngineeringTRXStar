@@ -67,7 +67,7 @@ function generateHIT(split, totalTime)
         var newExercise = exerciseDict; 
         var newRest = restDict; 
 
-        Object.assign(newExercise, {time: split[0], intensity: 4, sets: 1, rest_set: 0}); 
+        Object.assign(newExercise, {time: split[0], intensity: 1, sets: 1, rest_set: 0}); 
         HIITPlaylist.push(exerciseDict); 
         Object.assign(newRest, {time: split[1]}); 
         HIITPlaylist.push(newRest);
@@ -104,7 +104,7 @@ function generateStrength(totalTime, restPeriod)
             }
             var newExercise = exerciseDict; 
     
-            Object.assign(newExercise, {time: 40, rest_set: 20, sets: 3, intensity: 2}); 
+            Object.assign(newExercise, {time: 40, rest_set: 20, sets: 3, intensity: 1}); 
             StrengthPlaylist.push(exerciseDict); 
         }
     
@@ -140,7 +140,7 @@ function generateEndurance(restPeriod, totalTime){
         }
         var newExercise = exerciseDict; 
 
-        Object.assign(newExercise, {time: 40, rest_set: 0, sets: 3, intensity: 2}); 
+        Object.assign(newExercise, {time: 40, rest_set: 0, sets: 3, intensity: 1}); 
         EndurancePlaylist.push(exerciseDict); 
     }
 

@@ -140,7 +140,7 @@ export async function fillStructure(structure, indexedDB) {
             .then(async function(clip) {
 
                 console.log("clip", clip);
-                var video_of_clip = await filterOnKey("video", clip.video_ID, indexedDB, "FilteredDatabase", 1);
+                var video_of_clip = await filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1);
 
                 if(structureCopy[i].type === "exercise"){
                     structureCopy[i].exercise_name = clip.exercise_name; 
@@ -167,11 +167,11 @@ async function getClip(indexedDB, type, time, intensity) {
             break;
             
         case "warmup":
-            var warmup_clips = await filterDatabase("clip", "exercise_name", "warmup", indexedDB, "FilteredDatabase", 1);
+            var warmup_clips = await filterDatabase("clip", "exercise_name", "warmup", indexedDB, "ExerciseDatabase", 1);
             return warmup_clips[RandInt(0, warmup_clips.length)]; 
             
         case "cooldown":
-            var cooldown_clips = await filterDatabase("clip", "exercise_name", "cooldown", indexedDB, "FilteredDatabase", 1);
+            var cooldown_clips = await filterDatabase("clip", "exercise_name", "cooldown", indexedDB, "ExerciseDatabase", 1);
             return cooldown_clips[RandInt(0, cooldown_clips.length)]
 
         case "exercise":

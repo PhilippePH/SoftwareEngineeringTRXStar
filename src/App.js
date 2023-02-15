@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import './App.scss'; // need to run 'npm install sass'
 //import {loadDatabase} from "./components/Database/loadDatabase.js";
-import data from './components/data/ExerciseDatabase4.json'
+import data from './components/data/ExerciseDatabase5.json'
 
 // import components
 import Playlist from "./components/playlist/Playlist";
