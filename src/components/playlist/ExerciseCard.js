@@ -13,8 +13,8 @@ const ExerciseCard = ({exercise_name}) => {
       };
 
     return (
-        <>
-            <div className='exercise-card'>
+        <div style={{paddingBottom: "0.5rem"}}>
+            <div className='exercise-card' >
                 <div className='exercise-card__left-container'>
                     <FiChevronDown onClick={toggle} size={28} className='exercise-card__chevron'/>
                     <p>{exercise_name}</p>
@@ -24,7 +24,7 @@ const ExerciseCard = ({exercise_name}) => {
             {open && <div>additional exercise info</div>}
            
             
-        </>
+        </div>
     );
 }
 
