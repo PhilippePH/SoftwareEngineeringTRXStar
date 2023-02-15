@@ -27,7 +27,7 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
       return (
         <>
           <div
-            align:center
+            align="center"
             className="video">
             <YouTube videoId={exerciseData.videoId} opts={opts} onEnd={nextVideo}/>
           </div>  
