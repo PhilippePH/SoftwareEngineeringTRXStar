@@ -1,7 +1,5 @@
 import React from 'react';
 import './BasicButton.scss';
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
 

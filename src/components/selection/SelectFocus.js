@@ -1,12 +1,11 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import SelectedOptions from "../playlist/SelectedOptions";
 import { setActiveTab, setFocus } from "../../redux/slices/selectSlice";
-import NavButtons from "../layout/NavButtons";
+import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
 import { DIFFICULTY, DURATION, FOCUS } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
-import { BsArrowLeftShort } from "react-icons/gr";
+
 
 const SelectFocus = () => {
     const [width, setWidth] = useState(window.innerWidth);

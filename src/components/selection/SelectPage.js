@@ -1,4 +1,4 @@
-import SelectProgress from "../SelectProgress";
+import SelectProgress from "./SelectProgress";
 
 
 

@@ -1,0 +1,59 @@
+@import '../../sassStyles/variables';
+@import '../../sassStyles/mixins';
+
+.exercise-card {
+    display: flex;
+    flex-direction: row;
+   
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    background-color: $primary-colour;
+    border: 2px $border-lining-colour solid;
+    height: 50px;
+    font-size: large;
+    
+
+    &__left-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+  
+    }
+
+    &__three-dots {
+        margin-right: 20px;
+    }
+
+    &__chevron {
+        margin-left: 20px;
+        margin-right: 10px;
+
+        &__open {
+            transform: rotate(180deg);
+            transition: 0.8s;
+        }
+
+        &__closed {
+            transform: rotate(0deg);
+            transition: 0.8s;
+        }
+
+    }
+}
+
+.rest-card {
+
+    @include flex-center;
+    flex-direction: row;
+    border-radius: 10px;
+    height: 50px;
+    font-size: large;
+
+    &__text {
+        font-size: large;
+        padding-left: 5px;
+    }
+
+
+}

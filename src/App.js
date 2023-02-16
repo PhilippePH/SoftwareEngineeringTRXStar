@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import './App.scss'; // need to run 'npm install sass'
 //import {loadDatabase} from "./components/Database/loadDatabase.js";
-import data from './components/data/ExerciseDatabase5.json'
+import data from './data/ExerciseDatabase5.json'
 
 // import components
 import Playlist from "./components/playlist/Playlist";
@@ -13,10 +12,9 @@ import SelectFocus from "./components/selection/SelectFocus";
 import SelectMuscles from "./components/selection/SelectMuscles";
 import Welcome from "./components/intro/WelcomePage";
 import NavBar from "./components/layout/NavBar";
-import SelectPage from "./components/layout/pages/SelectPage";
+import SelectPage from "./components/selection/SelectPage";
 import { DIFFICULTY, DURATION, FOCUS, MUSCLES, MUSCLE_GROUPS } from "./components/utils/constants";
-import ViewWorkout from "./components/playlist/ViewWorkout";
-import RestPage from "./components/playlist/RestPage";
+import ViewWorkout from "./components/viewWorkout/ViewWorkout";
 
 const indexedDB =
     window.indexedDB ||
@@ -144,7 +142,6 @@ const App = () => {
                 <Route exact path={`/select/${FOCUS}`} element={<SelectPage selectForm={<SelectFocus/>}/>}/>
                 <Route exact path={`/select/${MUSCLES}`} element={<SelectPage selectForm={<SelectMuscles/>}/>}/>
                 <Route path="/youtube"element={<ViewWorkout/>} />
-                <Route path="/RestPage" element={ <RestPage/> } />
             </Routes>
         </div>
     );

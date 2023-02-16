@@ -1,0 +1,47 @@
+@import '../../sassStyles/variables';
+
+.playlist-window {
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+   
+
+    &__container {
+    padding-top: 30px;
+    padding-inline: 30px;
+    border: 3px $border-lining-colour;
+    background-color: $background-colour;
+    height: 400px;
+    width: 70%;
+    border-radius: 10px;
+    overflow-y: auto;
+    text-align: center;
+
+    // for above see: https://stackoverflow.com/questions/9811465/scrollable-div-inside-container
+    }
+
+}
+
+.workout-heading{
+    
+    font-size:x-large;
+    padding-bottom: 20px;
+    
+}
+
+.card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:flex-start;
+
+    background-color: $primary-colour;
+    padding: 10px;
+    height: 80px;
+    font-size: large; 
+    
+}
+
+.video {
+    padding-top: 50px;
+}

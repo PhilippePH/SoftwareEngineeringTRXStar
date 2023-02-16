@@ -1,11 +1,11 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import SelectedOptions from "../playlist/SelectedOptions";
 import { setActiveTab, setDuration } from "../../redux/slices/selectSlice";
-import NavButtons from "../layout/NavButtons";
+import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
 import { DURATION, FOCUS, MUSCLE_GROUPS } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
+import './SelectDuration.scss';
 
 const SelectDuration = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -35,7 +35,7 @@ const SelectDuration = () => {
 
     
     return (
-        <div style={{ display: 'grid', height: '100%', justifyContent: 'center', placeItems: "center", alignItems: "center", }}>
+        <div className="select-duration-div">
             DURATION
             <ul
                 style={{
