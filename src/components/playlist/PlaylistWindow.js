@@ -3,7 +3,7 @@ import './ExerciseCard'
 import ExerciseCard from './ExerciseCard';
 import NavButtons from '../layout/NavButtons';
 
-import './playlistWindow.scss'
+import './PlaylistWindow.scss'
 
 const PlaylistWindow = () => {
 

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import './timer.scss'
+import './Timer.scss'
 
 const SECOND = 1000;
 const COUNTDOWN_SECONDS = 10;

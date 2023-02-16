@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi'
 import { BsThreeDots } from 'react-icons/bs'
 import { RiTimerLine } from 'react-icons/ri'
-import './exerciseCard.scss'
+import './ExerciseCard.scss'
 
 const ExerciseCard = () => {
     const [open, setOPen] = useState(false);

@@ -6,7 +6,7 @@ import SelectButton from "../utils/SelectButton";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import './selectDifficulty.scss';
+import './SelectDifficulty.scss';
 
 
 const SelectDifficulty = () => {

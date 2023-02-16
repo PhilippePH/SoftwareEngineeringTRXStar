@@ -1,5 +1,5 @@
 import React from 'react';
-import './basicButton.scss';
+import './BasicButton.scss';
 import { useEffect, useState } from 'react';
 
 

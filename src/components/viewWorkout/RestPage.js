@@ -1,5 +1,5 @@
 import Timer from './Timer';
-import './restPage.scss'
+import './RestPage.scss'
 import BasicButton from './BasicButton';
 
 const RestPage = ({nextVideo, restData, nextExerciseName}) => {
