@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { RiSliceFill } from 'react-icons/ri';
 import { useSelector } from 'react-redux';
-import playlist_to_clipList from './playlist_to_clipList';
+import playlist_to_clipList from '../playlist/playlist_to_clipList';
 import RestPage from './RestPage';
 import YouTubePage from './YouTubePage';
 
