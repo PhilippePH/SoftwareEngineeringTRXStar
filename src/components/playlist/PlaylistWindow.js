@@ -1,7 +1,7 @@
 import React from 'react'
 import './ExerciseCard'
 import ExerciseCard from './ExerciseCard';
-import NavButtons from '../layout/NavButtons';
+import NavButtons from '../utils/NavButtons';
 
 import './PlaylistWindow.scss'
 

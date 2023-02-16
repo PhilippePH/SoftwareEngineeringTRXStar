@@ -3,9 +3,6 @@ import { setActiveTab } from "../../redux/slices/selectSlice";
 import { useEffect, useState } from "react";
 import { DIFFICULTY, FOCUS } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import './SelectDifficulty.scss';
 
 

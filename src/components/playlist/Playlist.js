@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { recommendationAlgorithm, filterDatabase, addToFilteredDB, reject, negFilterDatabase, fillStructure} from '../algorithm/algorithm.js';
-import { createStructure } from '../algorithm/createStructure.js';
+import { recommendationAlgorithm, filterDatabase, addToFilteredDB, reject, negFilterDatabase, fillStructure} from '../../scripts/algorithm.js';
+import { createStructure } from '../../scripts/createStructure.js';
 import { useSelector } from 'react-redux';
-import structure from "../data/workoutStructure.json"
 import { addPlaylist } from "../../redux/slices/playlistSlice.js"
 import { store } from "../../redux/store"
-import { dblClick } from '@testing-library/user-event/dist/click.js';
-import ExerciseCard from './ExerciseCard.js';
 import PlaylistWindow from './PlaylistWindow.js';
 
 // filter using async await

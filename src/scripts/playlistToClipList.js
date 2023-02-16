@@ -1,4 +1,4 @@
-function playlist_to_clipList(playlist) {
+function playlistToClipList(playlist) {
 
     const playlistArray = playlist.playlistData;
 
@@ -46,4 +46,4 @@ function playlist_to_clipList(playlist) {
     return clipList;
 }
 
-export default playlist_to_clipList; 
+export default playlistToClipList; 
