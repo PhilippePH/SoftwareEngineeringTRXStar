@@ -35,7 +35,7 @@ const SelectDuration = () => {
 
     
     return (
-        <div style={{ display: 'grid', height: '50vh', justifyContent: 'center', placeItems: "center", alignItems: "center", }}>
+        <div style={{ display: 'grid', height: '100%', justifyContent: 'center', placeItems: "center", alignItems: "center", }}>
             DURATION
             <ul
                 style={{
@@ -45,9 +45,12 @@ const SelectDuration = () => {
                     alignItems: "center",
                     maxWidth: "25rem",
                     width: "100%",
+                    marginTop: "10%",
+                    marginBottom: "5%",
                     padding: "0px",
                     gridTemplateColumns: width > 768 ? 'repeat(2, 1fr)' : '1fr',
-                    gridGap: '16px'
+                    gridRowGap: '10px',
+                    gridColumnGap: "10px",
                 }}
             >
                 {
@@ -64,10 +67,14 @@ const SelectDuration = () => {
                 }
             </ul>
             {/* <SelectedOptions/> */}
-            <NavButtons
-                prev={`/select/${FOCUS}`}
-                next={`/select/${MUSCLE_GROUPS}`}
-            />
+            <div
+                style={{width:"200%"}}
+                >
+                <NavButtons
+                    prev={`/select/${FOCUS}`}
+                    next={null}
+                />
+            </div>
         </div>
     )
 }

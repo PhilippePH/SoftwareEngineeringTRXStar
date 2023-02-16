@@ -60,11 +60,6 @@ const SelectDifficulty = () => {
                    
                 }
             </ul>
-            <NavButtons
-                prev={null}
-                next={`/select/${FOCUS}`}
-                completed={completed}
-            />
         </div>
     )
 }

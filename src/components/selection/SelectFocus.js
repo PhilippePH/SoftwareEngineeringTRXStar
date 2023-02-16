@@ -6,6 +6,7 @@ import NavButtons from "../layout/NavButtons";
 import { useEffect, useState } from "react";
 import { DIFFICULTY, DURATION, FOCUS } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
+import { BsArrowLeftShort } from "react-icons/gr";
 
 const SelectFocus = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -29,19 +30,23 @@ const SelectFocus = () => {
       }, []);
 
     return (
-        <div style={{ display: 'grid', height: '50vh', justifyContent: 'center', placeItems: "center", alignItems: "center", }}
+        <div style={{ display: 'grid', height: "auto", justifyContent: 'center', placeItems: "center", alignItems: "center"}}
             > FOCUS
             <ul
                 style={{
                     display: "grid",
                     justifyContent: "center",
                     placeItems: "center",
+                    marginTop: "10%",
+                    marginBottom: "5%",
                     alignItems: "center",
                     maxWidth: "25rem",
                     width: "100%",
+                    maxHeight:"100%",
                     padding: "0px",
                     gridTemplateColumns: width > 768 ? 'repeat(2, 1fr)' : '1fr',
-                    gridGap: '16px'
+                    gridRowGap: '10px',
+                    gridColumnGap: "10px",
                 }}
             >
                 {
@@ -58,10 +63,16 @@ const SelectFocus = () => {
                 }
             </ul>
             {/* <SelectedOptions/> */}
-            <NavButtons
-                prev={`/select/${DIFFICULTY}`}
-                next={`/select/${DURATION}`}
-            />
+            
+            <div
+                style={{width:"200%"}}
+                >
+                <NavButtons
+                    prev={`/select/${DIFFICULTY}`}
+                    next={null}
+                />
+            </div>
+            
         </div>
     )
 }
