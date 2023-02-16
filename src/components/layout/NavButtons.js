@@ -1,5 +1,6 @@
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom"
+import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 
 
 
@@ -12,22 +13,34 @@ const NavButtons = ({prev, next}) => {
     return (
         <div style={{
             display: "flex", 
-            justifyContent: "center", 
-            alignItems: "center"
+            // justifyContent: "center", 
+            // alignItems: "center"
+            
             }}>
             {
                 prev
                 &&
-                <button onClick={()=>{navigateHandler(prev)}}>
-                    Prev
-                </button>
+                <GoArrowLeft 
+                    style={{
+                        // borderRadius: "8px"
+                        fontSize:"50px",
+                        cursor: "pointer"
+                    }}
+                    onClick={()=>{navigateHandler(prev)}}
+                />
             }
             {
                 next 
                 &&
-                <button onClick={()=>{navigateHandler(next)}}>
+                <GoArrowRight 
+                    style={{
+                        // borderRadius: "8px"
+                        fontSize:"50px",
+                        cursor: "pointer"
+                    }}
+                    onClick={()=>{navigateHandler(next)}}
                     Next
-                </button>
+                />
             }
         </div>
     )

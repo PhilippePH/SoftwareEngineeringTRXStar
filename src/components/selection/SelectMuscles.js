@@ -70,11 +70,43 @@ const SelectMuscles = () => {
                     )})
                 }
             </ul>
-            {/* <SelectedOptions/> */}
-            <NavButtons
-                prev={`/select/${MUSCLE_GROUPS}`}
-                next="/playlist"
-            />
+            <div
+                style={{
+                    display:"flex",
+                    placeItems: "center",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width:"150%",
+                }}
+                
+                >
+                    <div
+                        style={{
+                            display:"flex",
+                            placeItems: "center",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            width:"50%",
+                        }} >
+                        <NavButtons
+                            prev={`/select/${MUSCLE_GROUPS}`}
+                        />
+                    </div>
+
+                    <div
+                        style={{
+                            display:"flex",
+                            placeItems: "center",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            width:"50%",
+                        }}>
+                        <NavButtons
+                            next="/playlist"
+                        />
+                    </div>
+               
+            </div>
         </div>
     )
 }
