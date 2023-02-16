@@ -15,11 +15,12 @@ const PlaylistWindow = () => {
 
 
     return (
+        <div>
         <div className='playlist-window'>
-
+               
             <div className='playlist-window__container'>
                 <div className='workout-heading'>WORKOUT 1</div>
-                <ul>
+                <div>
                     {
                         playlist.map((work, index) => {
                             if (playlist[index].type == "cooldown")
@@ -54,12 +55,13 @@ const PlaylistWindow = () => {
                         })
 
                     }
-                </ul>
+                </div>
             </div>
-            <NavButtons
+            
+        </div>
+        <NavButtons
                 next="/youtube" />
         </div>
-
     );
 
 }
