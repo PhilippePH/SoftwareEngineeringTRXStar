@@ -1,3 +1,6 @@
+@import '../../sassStyles/variables';
+@import '../../sassStyles/mixins';
+
 .exercise-card {
     display: flex;
     flex-direction: row;
@@ -5,8 +8,8 @@
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
-    background-color: #FFE600;
-    border: 2px black solid;
+    background-color: $primary-colour;
+    border: 2px $border-lining-colour solid;
     height: 50px;
     font-size: large;
     
@@ -41,10 +44,8 @@
 
 .rest-card {
 
-    display: flex;
+    @include flex-center;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
     border-radius: 10px;
     height: 50px;
     font-size: large;
