@@ -9,6 +9,7 @@ import { FaPlay } from "react-icons/fa";
 import './PlaylistWindow.scss';
 import NavButtons from '../utils/NavButtons'
 
+import './PlaylistWindow.scss'
 
 const PlaylistWindow = () => {
 
