@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { setActiveTab, setMuscleGroups } from "../../redux/slices/selectSlice";
-import NavButtons from "../layout/NavButtons";
+import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
 import { DURATION, MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
 import SelectMultipleButton from "../utils/SelectMultipleButton";

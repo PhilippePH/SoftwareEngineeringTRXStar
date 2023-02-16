@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 //import {loadDatabase} from "./components/Database/loadDatabase.js";
-import data from './components/data/ExerciseDatabase5.json'
+import data from './data/ExerciseDatabase5.json'
 
 // import components
 import Playlist from "./components/playlist/Playlist";
@@ -12,7 +12,7 @@ import SelectFocus from "./components/selection/SelectFocus";
 import SelectMuscles from "./components/selection/SelectMuscles";
 import Welcome from "./components/intro/WelcomePage";
 import NavBar from "./components/layout/NavBar";
-import SelectPage from "./components/layout/pages/SelectPage";
+import SelectPage from "./components/selection/SelectPage";
 import { DIFFICULTY, DURATION, FOCUS, MUSCLES, MUSCLE_GROUPS } from "./components/utils/constants";
 import ViewWorkout from "./components/viewWorkout/ViewWorkout";
 

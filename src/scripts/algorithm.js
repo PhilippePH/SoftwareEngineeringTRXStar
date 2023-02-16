@@ -1,20 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import Playlist from '../playlist/Playlist';
-
-/*
-export function recommendationAlgorithm(indexedDB, stateCb) {
-    
-    filterDatabase("video", "complexity", 2, indexedDB, "ExerciseDatabase")
-        .then(function(filteredObjects) {addToFilteredDB("video", filteredObjects)})
-        .catch(function(event) {reject(event)});
-
-}*/
-
-/*
-tableName: string specifying the name of the table to filter on
-indexNameArray: array of keys over which the table will be filtered
-valueArray: array of values, corresponding to each given key, for which entries will be kept
-*/ 
 export function filterDatabase (tableName, indexName, value, indexedDB, database, versionNumber) {
     
     return new Promise(function(resolve, reject) {
@@ -31,7 +14,6 @@ export function filterDatabase (tableName, indexName, value, indexedDB, database
             request.onerror = function(event) { reject(event); }
         } 
         dbPromise.onerror = (event) => { reject(event); }
-
     })
 
 }
