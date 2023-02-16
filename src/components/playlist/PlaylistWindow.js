@@ -1,16 +1,20 @@
-import React from 'react'
-import './ExerciseCard'
+import React from 'react';
+import './ExerciseCard';
 import ExerciseCard from './ExerciseCard';
-import NavButtons from '../utils/NavButtons';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import RestCard from './RestCard';
+import { FaPlay } from "react-icons/fa";
+import './PlaylistWindow.scss';
+import NavButtons from '../utils/NavButtons'
 
-import './PlaylistWindow.scss'
 
 const PlaylistWindow = () => {
+
     const [count, setCount] = useState(0);
     const navigate = useNavigate();
     const playlist = useSelector((state) => (state.playlist.playlistData));
-
-
 
     return (
         <div>
@@ -74,8 +78,8 @@ const PlaylistWindow = () => {
                 onClick={() => { navigate("/youtube") }}
                 />
         </div>
-        {/* <NavButtons
-                next="/youtube" /> */}
+        { <NavButtons
+                next="/youtube" /> }
         </div>
     );
 

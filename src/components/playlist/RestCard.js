@@ -1,6 +1,5 @@
-
 import { RiTimerLine } from 'react-icons/ri'
-import './index.scss'
+import './ExerciseCard.scss'
 
 const RestCard = ({time}) => {
     return(
