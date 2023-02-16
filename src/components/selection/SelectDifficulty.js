@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveTab } from "../../redux/slices/selectSlice";
-import NavButtons from "../layout/NavButtons";
 import { useEffect, useState } from "react";
 import { DIFFICULTY, FOCUS } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import './selectDifficulty.scss';
 
 
 const SelectDifficulty = () => {
     const [width, setWidth] = useState(window.innerWidth);
     const dispatch = useDispatch()
     const difficultyOptions = ["easy", "medium", "hard"];
-    // useSelector allows us to access the global state - retrieve state with callback function
+    
     const completed = useSelector((state) => (state.select.difficulty))
 
     useEffect(() => {
@@ -27,19 +27,11 @@ const SelectDifficulty = () => {
       }, []);
 
     return (
-        <div style={{ display: 'grid', height: '50vh', justifyContent: 'center', placeItems: "center", alignItems: "center",}}
-        > DIFFICULTY
-            <ul
-                style={{
-                    display: "grid",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: "100%",
-                    padding: "0px",
-                    gridTemplateColumns: width > 768 ? 'repeat(3, 1fr)' : '1fr',
-                    gridGap: '16px'
-                }}
-            >
+        <div className="selection-div" > 
+        
+            DIFFICULTY
+
+            <ul className="difficulty-list" >
                 { 
 
                     difficultyOptions?.map((option) => {

@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import SelectedOptions from "../playlist/SelectedOptions";
 import { setActiveTab, setMuscles } from "../../redux/slices/selectSlice";
 import NavButtons from "../layout/NavButtons";
 import { useEffect, useState } from "react";
@@ -8,6 +7,7 @@ import SelectMultipleButton from "../utils/SelectMultipleButton";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
 
 
 const SelectMuscles = () => {

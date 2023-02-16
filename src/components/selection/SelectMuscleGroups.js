@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import SelectedOptions from "../playlist/SelectedOptions";
 import { setActiveTab, setMuscleGroups } from "../../redux/slices/selectSlice";
 import NavButtons from "../layout/NavButtons";
 import { useEffect, useState } from "react";
