@@ -5,6 +5,7 @@ import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
 import { DIFFICULTY, DURATION, FOCUS } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
+import './style.scss'
 
 
 const SelectFocus = () => {
@@ -29,9 +30,36 @@ const SelectFocus = () => {
       }, []);
 
     return (
-        <div style={{ display: 'grid', height: "auto", justifyContent: 'center', placeItems: "center", alignItems: "center"}}
-            > FOCUS
-            <ul
+        <>
+        <div className="category-div"> 
+            FOCUS
+        </div>
+        <div className='container'>
+            <div className="left-arrow-div">
+                <NavButtons prev={`/select/${DIFFICULTY}`}/>
+            </div>
+            <div className="options-div">
+                {
+                    focusOptions?.map((option) => {
+                        return (
+                            <SelectButton 
+                                key={option} 
+                                type={FOCUS} 
+                                option={option}
+                                to={`/select/${DURATION}`} 
+                            />
+                        )
+                    })
+                }
+            </div>
+            <div className="right-arrow-div"></div>
+                    
+        </div>
+        </>
+
+    )
+
+            {/* <ul
                 style={{
                     display: "grid",
                     justifyContent: "center",
@@ -47,33 +75,21 @@ const SelectFocus = () => {
                     gridRowGap: '10px',
                     gridColumnGap: "10px",
                 }}
-            >
-                {
-                    focusOptions?.map((option) => {
-                        return (
-                            <SelectButton 
-                                key={option} 
-                                type={FOCUS} 
-                                option={option}
-                                to={`/select/${DURATION}`} 
-                            />
-                        )
-                    })
-                }
-            </ul>
+            > 
+                
+            </ul> */}
             {/* <SelectedOptions/> */}
             
-            <div
+            {/* <div
                 style={{width:"200%"}}
                 >
                 <NavButtons
                     prev={`/select/${DIFFICULTY}`}
                     next={null}
                 />
-            </div>
-            
-        </div>
-    )
+            </div> */}
+
+    
 }
 
 export default SelectFocus;

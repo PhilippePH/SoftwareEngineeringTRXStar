@@ -4,6 +4,7 @@ import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
 import { DURATION, MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
 import SelectMultipleButton from "../utils/SelectMultipleButton";
+import './style.scss'
 
 const SelectMuscleGroups = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -35,22 +36,16 @@ const SelectMuscleGroups = () => {
 
    
     return (
-        <div style={{ display: 'grid', height: '50vh', justifyContent: 'center', placeItems: "center", alignItems: "center", }}>
+        <>
+        <div className="category-div">
             PLEASE SELECT AT LEAST 
             ONE MUSCLE GROUP
-            <ul
-                style={{
-                    display: "grid",
-                    placeItems: "center",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    maxWidth: "25rem",
-                    width: "100%",
-                    padding: "0px",
-                    gridTemplateColumns: width > 768 ? 'repeat(3, 1fr)' : '1fr',
-                    gridGap: '16px'
-                }}
-            >
+        </div>
+        <div className="container">
+            <div className="left-arrow-div">
+                <NavButtons prev={`/select/${DURATION}`}/>
+            </div>
+            <div className="options-div">
                 {
                     muscleGroupOptions?.map((option) => {
                         return (
@@ -66,51 +61,71 @@ const SelectMuscleGroups = () => {
 
                     })
                 }
-            </ul>
-            {/* <SelectedOptions/> */}
-            <div
-                style={{
-                    display:"flex",
-                    placeItems: "center",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width:"150%",
-                }}
-                
-                >
-                    <div
-                        style={{
-                            display:"flex",
-                            placeItems: "center",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            width:"50%",
-                        }} >
-                        <NavButtons
-                            prev={`/select/${DURATION}`}
-                        />
-                    </div>
-
-                    <div
-                        style={{
-                            display:"flex",
-                            placeItems: "center",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            width:"50%",
-                        }}>
-                        <NavButtons
-                            next={`/select/${MUSCLES}`}
-                        />
-                    </div>
-               
             </div>
-            {/* <div>   
-                <button> 
-                    
-                </button>
-            </div> */}
+            <div className="right-arrow-div">
+                <NavButtons  next={`/select/${MUSCLES}`}/>
+            </div>
         </div>
+        </>
+        //     <ul
+        //         style={{
+        //             display: "grid",
+        //             placeItems: "center",
+        //             justifyContent: "center",
+        //             alignItems: "center",
+        //             maxWidth: "25rem",
+        //             width: "100%",
+        //             padding: "0px",
+        //             gridTemplateColumns: width > 768 ? 'repeat(3, 1fr)' : '1fr',
+        //             gridGap: '16px'
+        //         }}
+        //     >
+                
+        //     </ul>
+        //     {/* <SelectedOptions/> */}
+        //     <div
+        //         style={{
+        //             display:"flex",
+        //             placeItems: "center",
+        //             justifyContent: "center",
+        //             alignItems: "center",
+        //             width:"150%",
+        //         }}
+                
+        //         >
+        //             <div
+        //                 style={{
+        //                     display:"flex",
+        //                     placeItems: "center",
+        //                     justifyContent: "center",
+        //                     alignItems: "center",
+        //                     width:"50%",
+        //                 }} >
+        //                 <NavButtons
+        //                     prev={`/select/${DURATION}`}
+        //                 />
+        //             </div>
+
+        //             <div
+        //                 style={{
+        //                     display:"flex",
+        //                     placeItems: "center",
+        //                     justifyContent: "center",
+        //                     alignItems: "center",
+        //                     width:"50%",
+        //                 }}>
+        //                 <NavButtons
+        //                     next={`/select/${MUSCLES}`}
+        //                 />
+        //             </div>
+               
+        //     </div>
+        //     {/* <div>   
+        //         <button> 
+                    
+        //         </button>
+        //     </div> */}
+        // </div>
     )
 }
 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setDifficulty, setDuration, setFocus, setMuscleGroups, setMuscles } from "../../redux/slices/selectSlice";
@@ -28,29 +29,10 @@ const SelectButton = ({type, option, to}) => {
     }
 
     return (
-        <button className='button'
-            onClick={()=>clickHandler(type)}
-            style={{
-                width: "8rem",
-                paddingTop: "0.5rem",
-                paddingbottom: "0.5rem",
-                paddingLeft: "1rem",
-                paddingRight: "1rem",
-                margin: "1rem",
-                textAlign: "center",
-                cursor: "pointer",
-                //backgroundColor: "yellow",
-               
-                border: "2px solid black",
-                borderRadius: "8px"
-            }}
-        
-        >
-            <p
-                style={{
-                    fontSize: "1.1rem"
-                }}
-            >
+        <button 
+            className='button'
+            onClick={()=>clickHandler(type)}>
+            <p className="button-text">
                 {option}
             </p>
         </button>

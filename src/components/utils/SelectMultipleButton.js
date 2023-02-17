@@ -4,14 +4,14 @@ import { setMuscleGroups, setMuscles } from "../../redux/slices/selectSlice";
 import { MUSCLES, MUSCLE_GROUPS } from "./constants";
 import './style.scss';
 
-const selectedStyle = {
-    backgroundColor: "yellow",
-    border: "1px solid black",
-};
-const unselectedStyle = {
-    backgroundColor: "blue",
-    border: "1px solid black",
-};
+// const selectedStyle = {
+//     backgroundColor: "yellow",
+//     border: "1px solid black",
+// };
+// const unselectedStyle = {
+//     backgroundColor: "blue",
+//     border: "1px solid black",
+// };
 
 const SelectMultipleButton = ({type, option, width, height, fontSize}) => {
     const dispatch = useDispatch();
@@ -57,41 +57,13 @@ const SelectMultipleButton = ({type, option, width, height, fontSize}) => {
     },[])
 
     return (
-        <button className='mult-button'
+        <button className='multi-button'
             onClick={() => clickHandler(type)}
-            style={{
-                backgroundColor: selected? "":"whitesmoke",
-                width:width,
-                height:height,
-                paddingTop: "0.5rem",
-                paddingbottom: "0.5rem",
-                paddingLeft: "1rem",
-                paddingRight: "1rem",
-                margin: "1rem",
-                textAlign: "center",
-                cursor: "pointer",
-                //backgroundColor: "yellow",
-                border: "2px solid black",
-                borderRadius: "8px",
-                fontSize: fontSize,
-                padding: '10px 20px',
-                textAlign: 'center',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}
-        >
-            <p
-                // style={{
-                //     fontSize: "1rem"
-                // }}
-            >
+            style={{backgroundColor: selected? "":"whitesmoke"}}>
+            <p className="button-text">
                 {option}
             </p>
-            
-            
         </button>
-
     )
 }
 

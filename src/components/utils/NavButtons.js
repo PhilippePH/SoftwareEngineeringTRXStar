@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom"
-import { GoArrowLeft, GoArrowRight } from "react-icons/go";
+import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
 
 
@@ -20,11 +20,12 @@ const NavButtons = ({prev, next}) => {
             {
                 prev
                 &&
-                <GoArrowLeft 
+                <MdArrowBackIos 
                     style={{
                         // borderRadius: "8px"
                         fontSize:"50px",
-                        cursor: "pointer"
+                        cursor: "pointer",
+                        color: "gray"
                     }}
                     onClick={()=>{navigateHandler(prev)}}
                 />
@@ -32,11 +33,12 @@ const NavButtons = ({prev, next}) => {
             {
                 next 
                 &&
-                <GoArrowRight 
+                <MdArrowForwardIos 
                     style={{
                         // borderRadius: "8px"
                         fontSize:"50px",
-                        cursor: "pointer"
+                        cursor: "pointer",
+                        color: "gray"
                     }}
                     onClick={()=>{navigateHandler(next)}}
                     Next

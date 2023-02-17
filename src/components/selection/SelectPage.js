@@ -14,25 +14,31 @@ const style = {
 
 const SelectPage = ({ selectForm }) => {
     return (
-        <>
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                height: '100vh'
+            }}>
             <div
                 style={{
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    width: "100%",
-                    height: "100%",
                     alignItems: "center",
                     justifyContent: "center",
+                    flex: 1
                 }}
             >
                 <SelectProgress/>
                 
             </div>
-            <div>
-                {selectForm}
-            </div>
-        </>
+            
+            {selectForm}
+            
+        </div>
     )
 }
 
