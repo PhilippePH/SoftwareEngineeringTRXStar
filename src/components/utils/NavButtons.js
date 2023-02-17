@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom"
-import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 
 
@@ -20,12 +20,12 @@ const NavButtons = ({prev, next}) => {
             {
                 prev
                 &&
-                <MdArrowBackIos 
+                <IoIosArrowBack 
                     style={{
                         // borderRadius: "8px"
                         fontSize:"50px",
                         cursor: "pointer",
-                        color: "gray"
+                        color: "gray",
                     }}
                     onClick={()=>{navigateHandler(prev)}}
                 />
@@ -33,7 +33,7 @@ const NavButtons = ({prev, next}) => {
             {
                 next 
                 &&
-                <MdArrowForwardIos 
+                <IoIosArrowForward 
                     style={{
                         // borderRadius: "8px"
                         fontSize:"50px",
