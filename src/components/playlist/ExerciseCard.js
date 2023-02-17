@@ -16,7 +16,7 @@ const ExerciseCard = ({exercise_name}) => {
             <div className='exercise-card' >
                 <div className='exercise-card__left-container'>
                     <FiChevronDown onClick={toggle} size={28} className={`exercise-card__chevron  exercise-card__chevron${open ? "__open" : "__closed"}`}/>
-                    <p>Exercise name</p>
+                    <p>{exercise_name}</p>
                 </div>
                 <BsThreeDots size={28} className='exercise-card__three-dots'/>
             </div>
