@@ -81,11 +81,7 @@ const SelectMultipleButton = ({type, option, width, height, fontSize}) => {
                 justifyContent: 'center',
             }}
         >
-            <p
-                // style={{
-                //     fontSize: "1rem"
-                // }}
-            >
+            <p className="button-text">
                 {option}
             </p>
             

@@ -3,13 +3,13 @@ import { setActiveTab } from "../../redux/slices/selectSlice";
 import { useEffect, useState } from "react";
 import { DIFFICULTY, FOCUS } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
-import './SelectDifficulty.scss';
+import './style.scss'
 
 
 const SelectDifficulty = () => {
     const [width, setWidth] = useState(window.innerWidth);
     const dispatch = useDispatch()
-    const difficultyOptions = ["easy", "medium", "hard"];
+    const difficultyOptions = ["Easy", "Medium", "Hard"];
     
     const completed = useSelector((state) => (state.select.difficulty))
 
@@ -24,32 +24,28 @@ const SelectDifficulty = () => {
       }, []);
 
     return (
-        <div className="selection-div" > 
-        
+        <>
+        <div className="category-div">
             DIFFICULTY
-
-            <ul className="difficulty-list" >
-                { 
-
-                    difficultyOptions?.map((option) => {
-                        return (
-                          
-                            <SelectButton 
-                                key={option} 
-                                type={DIFFICULTY} 
-                                option={option}
-                                to={`/select/${FOCUS}`}
-                            />
-                        
-                        )
-                        
-                    })
-                   
-                
-                   
-                }
-            </ul>
         </div>
+        <div className="container">
+            <div className="left-arrow-div"></div>
+            <div className="options-div">
+                {difficultyOptions?.map((option) => {
+                    return (
+
+                        <SelectButton
+                            key={option}
+                            type={DIFFICULTY}
+                            option={option}
+                            to={`/select/${FOCUS}`} />
+
+                    );
+                })}
+            </div>
+            <div className="right-arrow-div"></div>
+        </div>
+        </>
     )
 }
 

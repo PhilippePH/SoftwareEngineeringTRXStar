@@ -1,8 +1,0 @@
-@import '../../sassStyles/variables';
-@import '../../sassStyles/mixins';
-
-.select-duration-div {
-    @include centered-grid;
-    height: 100%; 
-    place-items: center;
-}
