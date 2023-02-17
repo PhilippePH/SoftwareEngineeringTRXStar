@@ -7,7 +7,6 @@
     flex: 1;
     margin-left: 35px;
     margin-right: 35px;
-
 }
 
 .options-div {
@@ -49,4 +48,39 @@
     display: flex;
     flex: 1;
     justify-content: flex-start;
+}
+
+
+.progress-container {
+    display: "flex";
+    flex-direction: "column";
+    align-items: "center";
+    justify-content: "center";
+    font-size: 2rem;
+    padding: 2rem
+};
+
+.tab-container {
+    display: flex
+};
+
+.active-tab {
+    width: 3rem;
+    height: 0.5rem;
+    background-color: black;
+    border-radius: 8px;
+    margin: 0.5rem
+};
+
+.inactive-tab {
+    width: 3rem;
+    height: 0.5rem;
+    background-color: lightgrey;
+    border-radius: 8px;
+    margin: 0.5rem
+}
+
+.progress-text {
+    font-size: 100%;
+    text-align: center;
 }

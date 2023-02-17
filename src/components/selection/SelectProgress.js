@@ -1,64 +1,22 @@
 import { useSelector } from "react-redux";
 import { DIFFICULTY, DURATION, FOCUS, MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
-
-const containerStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: "2rem",
-    padding: "2rem"
-};
-
-const tabContainerStyle = {
-    display: "flex",
-};
-
-const activeTabStyle = {
-    width: "3rem",
-    height: "0.5rem",
-    backgroundColor: "black",
-    borderRadius: "8px",
-    margin: "0.5rem"
-};
-
-const inactiveTabStyle = {
-    width: "3rem",
-    height: "0.5rem",
-    backgroundColor: "lightgrey",
-    borderRadius: "8px",
-    margin: "0.5rem"
-}
+import './style.scss'
 
 const SelectProgress = () => {
 
     const activeTab = useSelector((state) => (state.select.activeTab));
 
     return (
-        <div
-            style={containerStyle}
-        >
-            <div>
+        <div className="progress-container">
+            <div className="progress-text">
                 {"Select your preferences"}
             </div>
-            <div 
-                style={tabContainerStyle}
-            >
-                <div
-                    style={activeTab==DIFFICULTY?activeTabStyle:inactiveTabStyle}
-                />
-                <div
-                    style={activeTab==FOCUS?activeTabStyle:inactiveTabStyle}
-                />
-                <div
-                    style={activeTab==DURATION?activeTabStyle:inactiveTabStyle}
-                />
-                <div
-                    style={activeTab==MUSCLE_GROUPS?activeTabStyle:inactiveTabStyle}
-                />
-                <div
-                    style={activeTab==MUSCLES?activeTabStyle:inactiveTabStyle}
-                />
+            <div className="tab-container">
+                <div className={activeTab==DIFFICULTY?"active-tab":"inactive-tab"}/>
+                <div className={activeTab==FOCUS?"active-tab":"inactive-tab"}/>
+                <div className={activeTab==DURATION?"active-tab":"inactive-tab"}/>
+                <div className={activeTab==MUSCLE_GROUPS?"active-tab":"inactive-tab"}/>
+                <div className={activeTab==MUSCLES?"active-tab":"inactive-tab"}/>
             </div>
         </div>
     )
