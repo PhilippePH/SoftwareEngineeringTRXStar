@@ -1,5 +1,7 @@
+@import '../../sassStyles/_mixins.scss';
+
 .category-div {
-    font-size: 26px;
+    font-size: 30px;
     display: flex;
     text-align: center;
     align-items: center;
@@ -7,6 +9,7 @@
     flex: 1;
     margin-left: 35px;
     margin-right: 35px;
+    @include font
 }
 
 .options-div {
@@ -61,7 +64,9 @@
 };
 
 .tab-container {
-    display: flex
+    display: flex;
+    align-items: center;
+    justify-content: center
 };
 
 .active-tab {
@@ -81,6 +86,7 @@
 }
 
 .progress-text {
-    font-size: 100%;
+    font-size: 30px;
     text-align: center;
+    @include font;
 }

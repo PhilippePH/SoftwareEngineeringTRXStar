@@ -4,6 +4,8 @@
     }
 }
 
+@import '../../sassStyles/_mixins.scss';
+
 .button {
     justify-content: center;
     align-items:center;
@@ -22,7 +24,8 @@
 
 .button-text {
     margin: 0px;
-    font-size: 18px;
+    font-size: 22px;
+    @include font
 }
 
 .mult-button:hover{
