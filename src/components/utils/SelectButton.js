@@ -1,4 +1,4 @@
-import { calculateNewValue } from "@testing-library/user-event/dist/utils";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setDifficulty, setDuration, setFocus, setMuscleGroups, setMuscles } from "../../redux/slices/selectSlice";
