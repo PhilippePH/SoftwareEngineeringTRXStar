@@ -8,24 +8,26 @@ const RestPage = ({ nextVideo, restData, nextExerciseName }) => {
         <>
             <div className='container-rest'>
             <div className="message-black1">
-                    <h1>Rest</h1>
-                    </div>
+                </div>
+                <div className="message-black1">
+                    Rest
+                </div>
                 <div className='timer-div'>
-                    <Timer onTimeout={nextVideo} />
+                    <Timer onTimeout={nextVideo}  restData = {restData}/>
+                </div>
+                <div className="message-black2">
+                    Next up
+                </div>
+                <div className="message-yellow">
+                    {nextExerciseName}
                 </div>
                 <div
-                className = "button-div">
+                    className="button-div">
                     <BasicButton
                         option={"Skip to next exercise"}
                         next={nextVideo}
                     />
-                    </div>
-                <div className="message-black2">
-                    Next up
-                    </div>
-                <div className="message-yellow">
-                    {nextExerciseName}
-                    </div>
+                </div>
 
 
             </div>

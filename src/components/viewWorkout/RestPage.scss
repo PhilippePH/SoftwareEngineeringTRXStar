@@ -10,12 +10,12 @@
     color: black;
     @include font; 
     font-weight: 700;
-    align-content: center;
     flex-flow: column nowrap;
-    flex:1; 
-    font-size: 20px;
-    justify-content: flex-end; 
+    flex:2; 
+    font-size: 40px;
+    justify-content: center; 
     text-transform: capitalize;
+    align-content: flex-end;
 
 }
 .message-black2 {
@@ -25,8 +25,11 @@
     font-weight: 700;
     align-content: center;
     flex-flow: column nowrap;
-    flex:1; 
+    flex:2; 
     font-size: 30px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow: hidden;
     justify-content: flex-end; 
     text-transform: capitalize;
 
@@ -44,10 +47,10 @@
 .timer-div {
     display: flex;
     flex-flow: row wrap;
-    flex: 3;
+    flex: 4;
     height: 100%;
     justify-content: center;
-    align-items: center;
+    align-content: flex-end;
 }
 
 .message-yellow {
@@ -55,10 +58,15 @@
     color: #FFE600;
     @include font; 
     font-weight: 700;
-    align-content: center;
-    flex:2; 
+    align-content: flex-start;
+    flex-wrap: nowrap;
+    flex:1.5; 
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow: hidden;
     font-size: 30px; 
     text-transform: capitalize;
+
 
 }
 
@@ -71,10 +79,11 @@ h1 {
 
 .button-div {
     display: flex;
-    flex-flow: row wrap;
-    flex: 2;
+    flex-flow: row;
+    flex: 4;
     justify-content: center;
     align-items: center;
+    align-content: stretch;
 }
 
 .button {
@@ -85,10 +94,11 @@ h1 {
     min-width: 150px;
     max-width: 250px;
     height: 8vh;
-    min-height: 10px;
+    min-height: 15px;
     max-height: 60px;
     text-align: center;
     cursor: pointer;
     border: 2px solid black;
+    flex-wrap: nowrap;
     border-radius: 8px
 }

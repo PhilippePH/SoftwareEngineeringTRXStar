@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import './Timer.scss'
 
-const SECOND = 1000;
-const COUNTDOWN_SECONDS = 1000000000;
 
-export const Timer = ({ onTimeout }) => {
-    const [timeLeft, setTime] = useState(COUNTDOWN_SECONDS);
+export const Timer = ({ onTimeout, restData }) => {
+    const SECOND = 1000;
+    console.log("Rest data", restData.time)
+    const COUNTDOWN_SECONDS = restData.time;
+    const [timeLeft, setTime] = useState(restData.time);
 
 
     useEffect(() => {
