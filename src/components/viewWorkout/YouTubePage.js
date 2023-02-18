@@ -30,7 +30,9 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
         <>
         <div className='container-youtube'>
         <div className="message1">
-                    <h1>{exerciseData.exerciseName}</h1>
+          </div>
+        <div className="message1">
+          {exerciseData.exerciseName}
                 </div>
           <div
             align="center"

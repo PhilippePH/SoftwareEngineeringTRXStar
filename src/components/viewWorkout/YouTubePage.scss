@@ -15,9 +15,11 @@
     @include font; 
     display: flex;
     text-align: center;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     flex: 2;
+    font-size: 40px;
+    text-transform: capitalize; 
 
 }
 
