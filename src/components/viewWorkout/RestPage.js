@@ -24,7 +24,7 @@ const RestPage = ({ nextVideo, restData, nextExerciseName }) => {
                 <div
                     className="button-div">
                     <BasicButton
-                        option={"Skip to next exercise"}
+                        option={"Next exercise"}
                         next={nextVideo}
                     />
                 </div>

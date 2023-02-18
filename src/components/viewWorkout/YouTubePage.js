@@ -42,7 +42,7 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
           <div
             className="div-button">
           <BasicButton
-            option={"Skip to next exercise"}
+            option={"Next exercise"}
             next={nextVideo}
           />
           </div>

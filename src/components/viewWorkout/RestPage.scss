@@ -27,9 +27,8 @@
     flex-flow: column nowrap;
     flex:2; 
     font-size: 30px;
-    flex-wrap: nowrap;
+    //flex-wrap: nowrap;
     white-space: nowrap;
-    overflow: hidden;
     justify-content: flex-end; 
     text-transform: capitalize;
 
@@ -59,12 +58,11 @@
     @include font; 
     font-weight: 700;
     align-content: flex-start;
-    flex-wrap: nowrap;
+    //flex-wrap: nowrap;
     flex:1.5; 
     flex-wrap: nowrap;
     white-space: nowrap;
-    overflow: hidden;
-    font-size: 30px; 
+    font-size: 40px; 
     text-transform: capitalize;
 
 
@@ -100,5 +98,6 @@ h1 {
     cursor: pointer;
     border: 2px solid black;
     flex-wrap: nowrap;
-    border-radius: 8px
+    border-radius: 8px; 
+    text-transform: capitalize;
 }
