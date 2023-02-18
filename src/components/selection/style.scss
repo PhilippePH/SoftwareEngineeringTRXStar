@@ -66,23 +66,34 @@
 .tab-container {
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    padding: 1rem;
 };
 
 .active-tab {
     width: 3rem;
-    height: 0.5rem;
-    background-color: black;
+    height: 2rem;
+    background-color: grey;
     border-radius: 8px;
-    margin: 0.5rem
+    margin: 0.2rem;
+    display: flex;
+    font-size: 90%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 };
 
 .inactive-tab {
     width: 3rem;
-    height: 0.5rem;
+    height: 2rem;
     background-color: lightgrey;
     border-radius: 8px;
-    margin: 0.5rem
+    margin: 0.2rem;
+    display: flex;
+    font-size: 90%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .progress-text {
