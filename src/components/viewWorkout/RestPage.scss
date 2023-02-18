@@ -11,11 +11,11 @@
     @include font; 
     font-weight: 700;
     flex-flow: column nowrap;
-    flex:2; 
+    flex:3; 
     font-size: 40px;
-    justify-content: center; 
+    justify-content: flex-start; 
     text-transform: capitalize;
-    align-content: flex-end;
+    align-content: flex-start;
 
 }
 .message-black2 {

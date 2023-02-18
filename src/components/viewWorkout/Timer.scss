@@ -12,14 +12,14 @@
     background: silver;
     display: flex;
     flex:4;
-    width: 40vw;
-    height: 40vw; 
-    min-width: 250px;
-    min-height: 250px;
-    max-width: 300px;
-    max-height: 300px;
+    width: 30vw;
+    height: 30vw; 
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 200px;
+    max-height: 200px;
     @include font; 
-    font-size: 50px; 
+    font-size: 60px; 
 }
 .timer {
     flex:10; 

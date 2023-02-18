@@ -16,7 +16,7 @@ const RestPage = ({ nextVideo, restData, nextExerciseName }) => {
                     <Timer onTimeout={nextVideo}  restData = {restData}/>
                 </div>
                 <div className="message-black2">
-                    Next up
+                    Next up:
                 </div>
                 <div className="message-yellow">
                     {nextExerciseName}

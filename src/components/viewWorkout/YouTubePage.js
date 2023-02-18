@@ -16,8 +16,8 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
   }, []);
 
   const opts = {
-    height: width * 9 / 16 * 0.7,
-    width: width * 0.7,
+    height: width * 9 / 16 * 0.5,
+    width: width * 0.5,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
