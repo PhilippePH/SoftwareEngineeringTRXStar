@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import '../utils/style.scss'
+import './BasicButton.scss'
 
 
 const BasicButton = ({option, next}) => {
@@ -17,9 +18,9 @@ const BasicButton = ({option, next}) => {
         <button className='button'
             onClick={next}
            >
-            <p className="button-text">
+            <div className="button-text">
                 {option}
-                </p>
+                </div>
         </button>
   );
 }
