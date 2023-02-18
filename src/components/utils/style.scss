@@ -1,8 +1,13 @@
 
-.button-unselected:hover {
+@media (hover: hover) {
+    .button-unselected:hover {
     background: #FFE600;
+    }
+    .multi-button-unselected:hover {
+    background: #FFE600;
+    }
+    
 }
-
 @import '../../sassStyles/_mixins.scss';
 
 .button-unselected {
@@ -66,9 +71,9 @@
     border: 2px solid black;
     border-radius: 8px;
 
-    &:hover {
-        background-color: #FFE600;
-    }
+    // &:hover {
+    //     background-color: #FFE600;
+    // }
 }
 
 .multi-button-selected {
