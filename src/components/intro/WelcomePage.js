@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DIFFICULTY } from "../utils/constants";
 import logo from "../../assets/logo.png";
+import './WelcomePage.scss';
 
 const Welcome = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -40,7 +41,7 @@ const Welcome = () => {
                     alt={"logo"}
                 />
            
-                <button className='button'
+                <button className='custom-button'
                     key={Welcome} 
                     onClick={()=>clickHandler()}
                     style={{
@@ -53,8 +54,9 @@ const Welcome = () => {
                         margin: "1rem",
                         textAlign: "center",
                         cursor: "pointer",
-                        border: "1px solid black",
+                        border: "3px solid black",
                         borderRadius: "20px",
+                     
                     }}>
                     Start Your Workout
                 </button>

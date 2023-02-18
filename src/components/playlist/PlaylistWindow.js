@@ -19,9 +19,12 @@ const PlaylistWindow = () => {
 
     return (
         <div>
+            
             <div className='playlist-window'>
+                
 
                 <div className='playlist-window__container'>
+                    
                     <div className='workout-heading'>WORKOUT 1</div>
                     <div>
                         {
@@ -79,9 +82,9 @@ const PlaylistWindow = () => {
                     }}
                     onClick={() => { navigate("/youtube") }}
                 />
+                
             </div>
-            {<NavButtons
-                next="/youtube" />}
+            
         </div>
     );
 

@@ -1,0 +1,15 @@
+@import '../../sassStyles/_mixins.scss';
+
+@media (hover: hover) {
+    .button:hover {
+    background: #f1d901;
+    }
+}
+
+.custom-button:hover{
+    background: #f1d901;
+}
+.custom-button {
+    background-color: #FFE600;
+    @include font;
+}

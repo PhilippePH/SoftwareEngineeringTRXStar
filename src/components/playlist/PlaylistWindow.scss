@@ -1,4 +1,5 @@
 @import '../../sassStyles/variables';
+@import '../../sassStyles/_mixins.scss';
 
 .playlist-window {
     padding-top: 100px;
@@ -16,7 +17,7 @@
     border-radius: 10px;
     overflow-y: auto;
     text-align: center;
-
+    @include font;
     // for above see: https://stackoverflow.com/questions/9811465/scrollable-div-inside-container
     }
 
@@ -45,3 +46,4 @@
 .video {
     padding-top: 50px;
 }
+
