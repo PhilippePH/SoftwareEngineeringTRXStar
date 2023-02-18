@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import './Timer.scss'
 
 const SECOND = 1000;
-const COUNTDOWN_SECONDS = 10;
+const COUNTDOWN_SECONDS = 1000000000;
 
 export const Timer = ({ onTimeout }) => {
     const [timeLeft, setTime] = useState(COUNTDOWN_SECONDS);
@@ -29,11 +29,11 @@ export const Timer = ({ onTimeout }) => {
             {Object.entries({
                 Seconds: (timeLeft),
             }).map(([label, value]) => (
-                <div key={label} className="col-4">
+                //<div key={label} className="col-4">
                     <div className="circle">
-                            <p>{`${Math.floor(value)}`.padStart(2, "0")}</p>
+                            {`${Math.floor(value)}`.padStart(2, "0")}
                         </div>
-                    </div>
+                    //</div>
             ))}
         </div>
     );

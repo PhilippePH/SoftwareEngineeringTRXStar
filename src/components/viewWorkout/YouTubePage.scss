@@ -1,0 +1,56 @@
+@import '../../sassStyles/_mixins.scss';
+
+.container-youtube {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    flex: 6;
+    width: 100%
+}
+
+
+.message1 {
+    color: black;
+    @include font; 
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex: 2;
+
+}
+
+.div-button {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    flex: 4;
+    width: 100%
+}
+
+.video {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    flex: 4;
+    width: 100%
+}
+
+.button {
+    justify-content: center;
+    align-items:center;
+    background-color: #FFE600;
+    width: 40vw;
+    min-width: 150px;
+    max-width: 250px;
+    height: 8vh;
+    min-height: 10px;
+    max-height: 60px;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 8px; 
+}

@@ -1,14 +1,32 @@
+@import '../../sassStyles/_mixins.scss';
 
 .circle {
-    width: 200px;
-    height: 200px;
-    line-height: 200px; 
+   // width: 250px;
+    //height: 250px;
+    //line-height: 40vw; 
     border-radius: 50%;
-    font-size: 50px;
     color: #FFE600;
-    font-family: Arial, Helvetica, sans-serif; 
     text-align: center;
+    align-items: center; 
+    justify-content: center;
     background: grey;
-    font-weight: bold;
-    margin: auto;
+    display: flex;
+    flex:4;
+    width: 40vw;
+    height: 40vw; 
+    min-width: 250px;
+    min-height: 250px;
+    @include font; 
+    font-size: 40px; 
+}
+.timer {
+    flex:10; 
+}
+
+h1 {
+    @include font; 
+    font-weight: 700;
+    text-transform: capitalize;
+    text-justify: center;
+    text-align: center;
 }

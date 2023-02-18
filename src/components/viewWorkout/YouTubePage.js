@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import YouTube from 'react-youtube';
 import BasicButton from './BasicButton';
-
+import './YouTubePage.scss'
+import '../utils/style.scss'
 
 const YouTubePage = ({nextVideo, exerciseData}) => {
       
   const [width, setWidth] = useState(window.innerWidth);
+  console.log("exercisedata", exerciseData)
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -26,24 +28,25 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
     
       return (
         <>
+        <div className='container-youtube'>
+        <div className="message1">
+                    <h1>{exerciseData.exerciseName}</h1>
+                </div>
           <div
             align="center"
             className="video">
             <YouTube videoId={exerciseData.videoId} opts={opts} onEnd={nextVideo}/>
           </div>  
           <div
-            style={{
-              display:"grid",
-              placeItems:"center",
-              justifyContent:"center",
-              alignContent:"center"
-              }}>
+            className="div-button">
           <BasicButton
             option={"Skip to next exercise"}
             next={nextVideo}
           />
           </div>
+          </div>
         </>
+        
       );
       
 }
