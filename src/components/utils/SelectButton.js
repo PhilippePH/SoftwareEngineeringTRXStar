@@ -12,7 +12,7 @@ import {TbAntennaBars3,TbAntennaBars4,TbAntennaBars5} from "react-icons/tb"
 
 
 
-const SelectButton = ({type, option, to}) => {
+const SelectButton = ({type, option, to, selected}) => {
 
     const optionIcons = {
         "15 min": WiTime3, 
@@ -54,7 +54,7 @@ const SelectButton = ({type, option, to}) => {
 
     return (
         <button 
-            className='button'
+            className={(option == selected)? 'button-selected':'button-unselected'}
             onClick={()=>clickHandler(type)}>
             <p className="button-text">
                 {option}

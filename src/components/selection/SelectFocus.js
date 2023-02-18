@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setActiveTab, setFocus } from "../../redux/slices/selectSlice";
 import NavButtons from "../utils/NavButtons";
@@ -13,6 +13,7 @@ const SelectFocus = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const focusOptions = ["HIIT", "Strength", "Endurance", "Recovery"];
+    const completed = useSelector((state) => (state.select.focus))
 
     const clickHandler = (option) => {
         dispatch(setFocus(option))
@@ -47,12 +48,15 @@ const SelectFocus = () => {
                                 type={FOCUS} 
                                 option={option}
                                 to={`/select/${DURATION}`} 
+                                selected = {completed}
                             />
                         )
                     })
                 }
             </div>
-            <div className="right-arrow-div"></div>
+            <div className="right-arrow-div">
+                {completed && <NavButtons next={`/select/${DURATION}`}/>}
+            </div>
                     
         </div>
         </>
