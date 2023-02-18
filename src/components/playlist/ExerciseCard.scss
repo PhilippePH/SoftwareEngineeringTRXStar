@@ -4,12 +4,12 @@
 .exercise-card {
     display: flex;
     flex-direction: row;
-   
+    cursor: pointer;
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
     background-color: $primary-colour;
-    border: 2px $border-lining-colour solid;
+    border: 3px $border-lining-colour solid;
     height: 50px;
     font-size: large;
     text-transform: capitalize;
@@ -22,10 +22,13 @@
   
     }
 
-    &__three-dots {
-        margin-right: 20px;
+    &__reload {
+        margin-right: 10px;
     }
 
+    &__trash {
+        margin-right: 10px;
+    }
     &__chevron {
         margin-left: 20px;
         margin-right: 10px;
