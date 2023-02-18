@@ -2,46 +2,35 @@ import Timer from './Timer';
 import './RestPage.scss'
 import BasicButton from './BasicButton';
 
-const RestPage = ({nextVideo, restData, nextExerciseName}) => {
+const RestPage = ({ nextVideo, restData, nextExerciseName }) => {
 
     return (
         <>
-            <div className="message1">
-                <h1>Next up</h1>
+            <div className='container-rest'>
+            <div className="message-black1">
                 </div>
-                <div className="message2">
-                <h1>{nextExerciseName}</h1>
-            </div>
-            <div className="RestPage"
-                style={{
-                    display:"grid",
-                    height:"200%",
-                    placeItems:"center",
-                    justifyContent:"center",
-                    alignContent:"center"
-                    }}>
-                
-                <div>
-                    <Timer onTimeout={nextVideo} />
+                <div className="message-black1">
+                    Rest
                 </div>
-                
-                
-                <div    
-                    style={{
-                    paddingTop:"50px",
-                    display:"grid",
-                    placeItems:"center",
-                    justifyContent:"center",
-                    alignContent:"center"
-                    }}>
+                <div className='timer-div'>
+                    <Timer onTimeout={nextVideo}  restData = {restData}/>
+                </div>
+                <div className="message-black2">
+                    Next up:
+                </div>
+                <div className="message-yellow">
+                    {nextExerciseName}
+                </div>
+                <div
+                    className="button-div">
                     <BasicButton
-                        option={"Skip to next exercise"}
-                        next = {nextVideo}
+                        option={"Next exercise"}
+                        next={nextVideo}
                     />
                 </div>
-                    
-            </div>
 
+
+            </div>
 
         </>
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import './BasicButton.scss';
 import { useEffect, useState } from 'react';
+import '../utils/style.scss'
+import './BasicButton.scss'
 
 
 const BasicButton = ({option, next}) => {
@@ -14,21 +15,12 @@ const BasicButton = ({option, next}) => {
 
 
   return (
-        <button className='basic-button'
+        <button className='button'
             onClick={next}
-            style={{
-                //width: width > 768 ? "320px" : width < 500? "200px" : "260px",
-                //height: width > 768 ? "6rem": width < 500? "3rem": "4rem",
-                //fontSize: width > 768 ? "1.5rem": width < 500? "0.75rem":"1rem",                        paddingTop: "0.5rem",
-                paddingBottom: "0.5rem",
-                paddingLeft: "1rem",
-                paddingRight: "1rem",
-                textAlign: "center",
-                border: "1px solid black",
-                borderRadius: "20px",
-                
-            }}>
+           >
+            <div className="button-text">
                 {option}
+                </div>
         </button>
   );
 }
