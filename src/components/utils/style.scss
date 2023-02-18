@@ -7,6 +7,7 @@
 @import '../../sassStyles/_mixins.scss';
 
 .button {
+    display: flex;
     justify-content: center;
     align-items:center;
     background-color: #FFE600;
@@ -23,7 +24,7 @@
 }
 
 .button-text {
-    margin: 0px;
+    margin: 10px;
     font-size: 22px;
     @include font
 }
@@ -52,4 +53,12 @@
     cursor: pointer;
     border: 2px solid black;
     border-radius: 8px;
+}
+
+.icon {
+    font-size: 30px;
+    margin: 0px;
+    justify-content: flex-end;
+    text-align: center;
+    align-items: flex-end;
 }
