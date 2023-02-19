@@ -48,7 +48,7 @@ export default function ExerciseCard({exercise_name}) {
                     <p>{exercise_name} </p>
 
                     <div className='exercise-card__additional-info'>
-                        <p> hey  </p>
+                        <p> OMG it kinda works! </p>
                     </div>
                 </div>
                 

@@ -27,10 +27,16 @@
         display: flex;
         flex-direction: row;
         align-items: flex-start;
+        width: 80%;
+        text-align: left;
     }
 
     &__exercise-name {
         font-size: medium;
+    }
+
+    &__additional-info {
+        font-size: small;
     }
 
     &__reload {
@@ -44,18 +50,18 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-
+        
         margin-left: 10px;
-        margin-right: 10px;
+        margin-right: 5px;
         margin-top: 10px;
 
         &__open {
-            transform: rotate(180deg);
+            transform: rotate(0deg);
             transition: 0.8s;
         }
 
         &__closed {
-            transform: rotate(0deg);
+            transform: rotate(-90deg);
             transition: 0.8s;
         }
 
