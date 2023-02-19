@@ -9,7 +9,7 @@ import {useRef} from 'react';
 const CLOSED_HEIGHT = 50;
 const OPENED_HEIGHT = 100;
 
-export default function ExerciseCard({exercise_name}) {
+export default function ExerciseCard({exercise_name, duration, sets, intensity}) {
     const [isOpen, setOPen] = useState(false);
     const outerHeight = useRef(CLOSED_HEIGHT);
     const containerRef = useRef(null);
@@ -48,7 +48,14 @@ export default function ExerciseCard({exercise_name}) {
                     <p>{exercise_name} </p>
 
                     <div className='exercise-card__additional-info'>
-                        <p> OMG it kinda works! </p>
+                       
+                        <span> Duration: {duration}s per set</span>
+                        <br/>
+                        <span> Sets: {sets} </span>
+                        <br/>
+                        {/*<span> Intensity: {intensity} </span>*/}
+                      
+                        
                     </div>
                 </div>
                 

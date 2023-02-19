@@ -1,7 +1,9 @@
 @import '../../sassStyles/variables';
 @import '../../sassStyles/mixins';
 
-
+:root {
+    --transition: 0.4s ease;
+}
 .exercise-card {
     display: flex;
     flex-direction: row;
@@ -46,6 +48,7 @@
     &__trash {
         margin-right: 10px;
     }
+
     &__chevron {
         display: flex;
         flex-direction: row;
