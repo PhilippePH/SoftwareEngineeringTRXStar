@@ -57,10 +57,10 @@ function generateHIT(split, totalTime)
 
     // Cooldown will be another 5 min  so take this from the totalTime
     var timeForExercises = timeConvertor(totalTime) - 10*60; // 10 minutes
-    console.log("HIIT Playlist time", timeForExercises); 
+    //console.log("HIIT Playlist time", timeForExercises); 
 
     var totalExercises = Math.floor(timeForExercises/(split[0] + split[1]))
-    console.log("HIIT total exercises", totalExercises); 
+    //console.log("HIIT total exercises", totalExercises); 
 
     for(var i = 0; i<totalExercises; i++)
     {
@@ -198,7 +198,7 @@ export async function createStructure(selectedOptions){
                 restPeriod = 90; 
 
             var StrengthPlaylist = generateStrength(selectedOptions.duration, restPeriod)
-            console.log("Strength Playlist", StrengthPlaylist);
+            //g("Strength Playlist", StrengthPlaylist);
             return StrengthPlaylist; 
 
         case ("HIIT"):
@@ -211,12 +211,12 @@ export async function createStructure(selectedOptions){
                 split = [45, 30]
 
             var HIITPlaylist = generateHIT(split, selectedOptions.duration);
-            console.log("HIIT Playlist", HIITPlaylist);
+            //console.log("HIIT Playlist", HIITPlaylist);
             return HIITPlaylist; 
 
         case ("Recovery"):
             var RecoveryPlaylist = generateRecovery(selectedOptions.duration); 
-            console.log("Recovery Playlist", RecoveryPlaylist); 
+            //console.log("Recovery Playlist", RecoveryPlaylist); 
             return RecoveryPlaylist; 
 
         case ("Endurance"):
@@ -229,7 +229,7 @@ export async function createStructure(selectedOptions){
                 restPeriod = 30; 
 
             var EndurancePlaylist = generateEndurance(restPeriod, selectedOptions.duration); 
-            console.log("Endurance Playlist", EndurancePlaylist);
+            //console.log("Endurance Playlist", EndurancePlaylist);
             return EndurancePlaylist; 
     }
 }
