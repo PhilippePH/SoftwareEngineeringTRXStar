@@ -3,8 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { DIFFICULTY } from "../utils/constants";
 import logo from "../../assets/logo.png";
 import './WelcomePage.scss';
+import { store } from "../../redux/store"
+import { initialiseVersion } from "../../redux/slices/selectSlice";
+import { initialisePlaylist } from "../../redux/slices/playlistSlice";
 
 const Welcome = () => {
+    store.dispatch(initialiseVersion(1));
+    store.dispatch(initialisePlaylist([]));
     const [width, setWidth] = useState(window.innerWidth);
     const navigate = useNavigate();
     const clickHandler = () => {

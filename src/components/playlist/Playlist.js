@@ -116,10 +116,6 @@ const Playlist = ({ indexedDB }) => {
     });
 }, []);
 
-
-const playlist = useSelector((state) => (state.playlist));
-console.log("here", playlist.playlistData[1]); 
-
     return (
         <>
             <PlaylistWindow />

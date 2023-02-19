@@ -1,21 +1,31 @@
 import React from 'react';
 import './ExerciseCard';
 import ExerciseCard from './ExerciseCard';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import RestCard from './RestCard';
 import { FaPlay } from "react-icons/fa";
+import { TfiReload } from "react-icons/tfi"
 import './PlaylistWindow.scss';
 import NavButtons from '../utils/NavButtons'
-
+import { increaseVersion } from "../../redux/slices/selectSlice"
+import { store } from "../../redux/store"
 import './PlaylistWindow.scss'
+import Playlist from './Playlist';
+
 
 const PlaylistWindow = () => {
 
     const [count, setCount] = useState(0);
     const navigate = useNavigate();
     const playlist = useSelector((state) => (state.playlist.playlistData));
+    const version = useSelector((state) => (state.select.version));
+
+    const handleIncreaseVersion = () => {
+        store.dispatch(increaseVersion());
+        window.location.reload(); 
+    }; 
 
     return (
         <div>
@@ -25,7 +35,7 @@ const PlaylistWindow = () => {
 
                 <div className='playlist-window__container'>
                     
-                    <div className='workout-heading'>WORKOUT 1</div>
+                    <div className='workout-heading'>WORKOUT {version}</div>
                     <div>
                         {
                             playlist.map((work, index) => {
@@ -73,7 +83,17 @@ const PlaylistWindow = () => {
                     justifyContent: "center",
                     paddingTop: "2%",
                     alignItems: "center",
+                    gap: '25%',
                 }}>
+                <TfiReload
+                    style={{
+                        // borderRadius: "8px"
+                        fontSize: "50px",
+                        cursor: "pointer"
+                    }}
+                    onClick={handleIncreaseVersion}
+                />
+
                 <FaPlay
                     style={{
                         // borderRadius: "8px"
@@ -82,6 +102,7 @@ const PlaylistWindow = () => {
                     }}
                     onClick={() => { navigate("/youtube") }}
                 />
+
                 
             </div>
             
