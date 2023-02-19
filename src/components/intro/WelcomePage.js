@@ -3,17 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { DIFFICULTY } from "../utils/constants";
 import logo from "../../assets/logo.png";
 import './WelcomePage.scss';
-<<<<<<< src/components/intro/WelcomePage.js
 import { useDispatch } from "react-redux";
 import { setNavDirection } from "../../redux/slices/selectSlice";
 import { store } from "../../redux/store"
 import { initialiseVersion } from "../../redux/slices/selectSlice";
 import { initialisePlaylist } from "../../redux/slices/playlistSlice";
-=======
 import { store } from "../../redux/store"
 import { initialiseVersion } from "../../redux/slices/selectSlice";
 import { initialisePlaylist } from "../../redux/slices/playlistSlice";
->>>>>>> src/components/intro/WelcomePage.js
 
 const Welcome = () => {
     store.dispatch(initialiseVersion(1));
