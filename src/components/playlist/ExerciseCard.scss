@@ -1,25 +1,36 @@
 @import '../../sassStyles/variables';
 @import '../../sassStyles/mixins';
 
+
 .exercise-card {
     display: flex;
     flex-direction: row;
     cursor: pointer;
     justify-content: space-between;
-    align-items: center;
     border-radius: 10px;
     background-color: $primary-colour;
     border: 3px $border-lining-colour solid;
-    height: 50px;
-    font-size: large;
+    max-height: 50px;
     text-transform: capitalize;
+    transition: min-height var(--transition);
+    overflow: hidden;
     
+    &__right-container {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        margin-top: 10px;
+        
+    }
 
     &__left-container {
         display: flex;
         flex-direction: row;
-        align-items: center;
-  
+        align-items: flex-start;
+    }
+
+    &__exercise-name {
+        font-size: medium;
     }
 
     &__reload {
@@ -30,8 +41,13 @@
         margin-right: 10px;
     }
     &__chevron {
-        margin-left: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        margin-left: 10px;
         margin-right: 10px;
+        margin-top: 10px;
 
         &__open {
             transform: rotate(180deg);
