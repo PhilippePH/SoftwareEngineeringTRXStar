@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setDifficulty, setDuration, setFocus, setMuscleGroups, setMuscles } from "../../redux/slices/selectSlice";
+import { setDifficulty, setDuration, setFocus, setMuscleGroups, setMuscles, setNavDirection } from "../../redux/slices/selectSlice";
 import { DIFFICULTY, DURATION, FOCUS } from "./constants";
 import './style.scss';
 import { GiJumpingRope,GiWeightLiftingUp} from "react-icons/gi";
@@ -47,6 +47,7 @@ const SelectButton = ({type, option, to, selected}) => {
             default: 
                 break;
         }
+        dispatch(setNavDirection("forwards"))
         navigate(to);
     }
 
@@ -61,7 +62,7 @@ const SelectButton = ({type, option, to, selected}) => {
                 
             </p>
             <Icon 
-                className ='icon' 
+                className ="icon"
                 />
         </button>
     )

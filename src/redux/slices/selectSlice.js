@@ -17,6 +17,8 @@ export const selectSlice = createSlice({
   initialState: {
     version : 1,
     activeTab: "",
+    navDirection: "forwards",
+    navigateForward: false,
     difficulty: "",
     focus: "",
     duration: "",
@@ -33,6 +35,13 @@ export const selectSlice = createSlice({
     },
     setActiveTab: (state, action) => {
       state.activeTab = action.payload;
+    },    
+    setNavigateForward: (state, action) => {
+      state.navigateForward = action.payload;
+    },
+    setNavDirection: (state, action) => {
+      console.log('hi');
+      state.navDirection = action.payload;
     },
     setDifficulty: (state, action) => {
       state.difficulty = action.payload;
@@ -70,6 +79,8 @@ export const selectSlice = createSlice({
   increaseVersion,
   initialiseVersion,
   setActiveTab,
+  setNavDirection,
+  setNavigateForward,
   setDifficulty, 
   setFocus, 
   setDuration, 

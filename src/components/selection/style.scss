@@ -12,6 +12,24 @@
     @include font
 }
 
+@keyframes slide-in-right {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+
+@keyframes slide-in-left {
+from {
+    transform: translateX(-100%);
+}
+to {
+    transform: translateX(0%);
+}
+}
+
 .options-div {
     display: flex;
     flex-flow: column nowrap;
@@ -20,6 +38,9 @@
     justify-content: center;
     align-items: center;
     gap: 30px 30px;
+    animation-name: "slide-in";
+    animation-duration: 0.5s ;
+    animation-fill-mode: forwards;
 }
 
 .muscles-div {
@@ -106,3 +127,5 @@
 .icon {
     color: black;
 }
+
+
