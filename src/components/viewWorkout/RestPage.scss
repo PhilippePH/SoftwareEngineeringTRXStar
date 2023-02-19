@@ -7,7 +7,6 @@
 }
 .message-black1 {
     display:flex;
-    color: black;
     @include font; 
     font-weight: 700;
     flex-flow: column nowrap;
@@ -20,7 +19,6 @@
 }
 .message-black2 {
     display:flex;
-    color: black;
     @include font; 
     font-weight: 700;
     align-content: center;
@@ -55,7 +53,7 @@
 .message-yellow {
     display:flex; 
     color: #FFE600;
-    @include font; 
+    @include font-no-colour; 
     font-weight: 700;
     align-content: flex-start;
     //flex-wrap: nowrap;
