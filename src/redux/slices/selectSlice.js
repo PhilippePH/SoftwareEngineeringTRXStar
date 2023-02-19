@@ -13,6 +13,8 @@ export const selectSlice = createSlice({
   name: 'select',
   initialState: {
     activeTab: "",
+    navDirection: "forwards",
+    navigateForward: false,
     difficulty: "",
     focus: "",
     duration: "",
@@ -23,6 +25,13 @@ export const selectSlice = createSlice({
   reducers: {
     setActiveTab: (state, action) => {
       state.activeTab = action.payload;
+    },    
+    setNavigateForward: (state, action) => {
+      state.navigateForward = action.payload;
+    },
+    setNavDirection: (state, action) => {
+      console.log('hi');
+      state.navDirection = action.payload;
     },
     setDifficulty: (state, action) => {
       state.difficulty = action.payload;
@@ -58,6 +67,8 @@ export const selectSlice = createSlice({
 // The "Actions" will be used to change the state from anywhere in application - e.g.: dispatch(action(param))
 export const { 
   setActiveTab,
+  setNavDirection,
+  setNavigateForward,
   setDifficulty, 
   setFocus, 
   setDuration, 

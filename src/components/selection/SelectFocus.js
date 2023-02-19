@@ -13,7 +13,8 @@ const SelectFocus = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const focusOptions = ["HIIT", "Strength", "Endurance", "Recovery"];
-    const completed = useSelector((state) => (state.select.focus))
+    const completed = useSelector((state) => (state.select.focus));
+    const direction = useSelector((state) => (state.select.navDirection));
 
     const clickHandler = (option) => {
         dispatch(setFocus(option))
@@ -39,7 +40,12 @@ const SelectFocus = () => {
             <div className="left-arrow-div">
                 <NavButtons prev={`/select/${DIFFICULTY}`}/>
             </div>
-            <div className="options-div">
+            <div 
+                className="options-div"
+                style={{
+                    animation: (direction=="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
+                }}
+            >
                 {
                     focusOptions?.map((option) => {
                         return (

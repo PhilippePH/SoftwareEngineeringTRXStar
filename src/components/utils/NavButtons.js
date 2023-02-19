@@ -1,13 +1,23 @@
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { setNavDirection } from "../../redux/slices/selectSlice";
 
-
+const fadeIn = `
+    @keyframes fade-in {
+        0%   { opacity: 0; }
+        50%  { opacity: 0; }
+        100% { opacity: 1; }
+    }`;
 
 const NavButtons = ({prev, next}) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const navigateHandler = (to) => {
+
+    const navigateHandler = (to, dir) => {
+        dispatch(setNavDirection(dir))
         navigate(to);
     }
     return (
@@ -17,6 +27,7 @@ const NavButtons = ({prev, next}) => {
             // alignItems: "center"
             
             }}>
+                <style children={fadeIn} /> 
             {
                 prev
                 &&
@@ -26,8 +37,9 @@ const NavButtons = ({prev, next}) => {
                         fontSize:"50px",
                         cursor: "pointer",
                         color: "gray",
+                        animation: "fade-in 1s"
                     }}
-                    onClick={()=>{navigateHandler(prev)}}
+                    onClick={()=>{navigateHandler(prev, "backwards")}}
                 />
             }
             {
@@ -38,9 +50,10 @@ const NavButtons = ({prev, next}) => {
                         // borderRadius: "8px"
                         fontSize:"50px",
                         cursor: "pointer",
-                        color: "gray"
+                        color: "gray",
+                        animation: "fade-in 1s"
                     }}
-                    onClick={()=>{navigateHandler(next)}}
+                    onClick={()=>{navigateHandler(next, "forwards")}}
                     Next
                 />
             }

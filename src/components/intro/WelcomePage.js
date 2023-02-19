@@ -3,11 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { DIFFICULTY } from "../utils/constants";
 import logo from "../../assets/logo.png";
 import './WelcomePage.scss';
+import { useDispatch } from "react-redux";
+import { setNavDirection } from "../../redux/slices/selectSlice";
 
 const Welcome = () => {
     const [width, setWidth] = useState(window.innerWidth);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const clickHandler = () => {
+        dispatch(setNavDirection("forwards"));
         navigate(`/select/${DIFFICULTY}`);
     }
     useEffect(() => {
