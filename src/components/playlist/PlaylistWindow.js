@@ -15,20 +15,25 @@ import './PlaylistWindow.scss'
 import Playlist from './Playlist';
 
 
-const PlaylistWindow = () => {
+const PlaylistWindow = ({ indexedDB }) => {
 
     const [count, setCount] = useState(0);
+    const [key, setKey] = useState(0);
     const navigate = useNavigate();
     const playlist = useSelector((state) => (state.playlist.playlistData));
     const version = useSelector((state) => (state.select.version));
 
+
+
     const handleIncreaseVersion = () => {
         store.dispatch(increaseVersion());
-        window.location.reload(); 
+        setKey(key + 1);
     }; 
 
     return (
+        
         <div>
+            <Playlist indexedDB={indexedDB} key={key}/>
             
             <div className='playlist-window'>
                 
@@ -91,9 +96,7 @@ const PlaylistWindow = () => {
                         fontSize: "50px",
                         cursor: "pointer"
                     }}
-                    onClick={handleIncreaseVersion}
-                />
-
+                    onClick={handleIncreaseVersion}/>
                 <FaPlay
                     style={{
                         // borderRadius: "8px"
