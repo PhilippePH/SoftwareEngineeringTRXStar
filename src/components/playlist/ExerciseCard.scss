@@ -15,7 +15,6 @@
     border-radius: 10px;
     background-color: $primary-colour;
     border: 3px $border-lining-colour solid;
-    width: 60vw;
     max-height: 50px;
 }
 .exercise-card {
@@ -23,7 +22,7 @@
     flex-direction: row;
     text-transform: capitalize;
     align-items: center;
-    height: 50px;
+    height: 44px;
 
     
         &__right-container {
@@ -45,8 +44,10 @@
         }
 
         &__exercise-name {
-          
-        font-size: large;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: large;
         }
 
         &__reload {

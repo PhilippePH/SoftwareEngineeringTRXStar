@@ -49,7 +49,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, intensity 
                     <div className='exercise-card__left-container'>
                        
                         <div className='exercise-card__exercise-name'>
-                            <p>{exercise_name} </p>
+                            {exercise_name}
 
 
                         </div>
