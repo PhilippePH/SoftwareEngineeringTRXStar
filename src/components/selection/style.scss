@@ -24,8 +24,7 @@
 
 .muscles-div {
     display: flex;
-    flex-flow: row wrap;
-    flex: 4;
+    flex-flow: column wrap;
     height: 100%;
     justify-content: center;
     align-items: center;
@@ -89,4 +88,41 @@
     font-size: 30px;
     text-align: center;
     @include font;
+}
+
+// .modal-height {
+//     max-height: 80vh;
+// }
+
+.save-button {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    background-color: whitesmoke;
+    width: 75px;
+    height: 6vh;
+    min-height: 30px;
+    max-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 8px;
+    @include font;
+    font-size: 18px
+}
+
+.modal-body {
+    display: flex;
+    overflow: hidden;
+    justify-content: center 
+}
+
+.modal-text {
+    @include font;
+    font-size: 24px;
+    text-align: center;
+}
+
+.modal-header {
+    justify-content: center;
 }

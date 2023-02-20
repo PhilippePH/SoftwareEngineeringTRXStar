@@ -57,7 +57,7 @@ const SelectMultipleButton = ({type, option, width, height, fontSize}) => {
     },[])
 
     return (
-        <button className='multi-button'
+        <button className='button'
             onClick={() => clickHandler(type)}
             style={{backgroundColor: selected? "":"whitesmoke"}}>
             <p className="button-text">

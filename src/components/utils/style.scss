@@ -25,7 +25,9 @@
 .button-text {
     margin: 0px;
     font-size: 22px;
-    @include font
+    @include font;
+    text-transform: capitalize
+
 }
 
 .mult-button:hover{
@@ -52,4 +54,24 @@
     cursor: pointer;
     border: 2px solid black;
     border-radius: 8px;
+}
+
+
+.small-button {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    background-color: #FFE600;
+    width: 25vw;
+    min-width: 110px;
+    max-width: 150px;
+    height: 6vh;
+    min-height: 10px;
+    max-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 8px;
+    @include font;
+    font-size: 18px
 }

@@ -41,7 +41,6 @@ const NavButtons = ({prev, next}) => {
                         color: "gray"
                     }}
                     onClick={()=>{navigateHandler(next)}}
-                    Next
                 />
             }
         </div>
