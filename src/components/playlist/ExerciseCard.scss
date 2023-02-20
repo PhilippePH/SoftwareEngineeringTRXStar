@@ -4,72 +4,81 @@
 :root {
     --transition: 0.4s ease;
 }
-.exercise-card {
-    display: flex;
-    flex-direction: row;
+.custom-container{
+
+    flex-direction: column;
+    transition: min-height var(--transition);
+    overflow: hidden;
     cursor: pointer;
     justify-content: space-between;
+    align-items: center;
     border-radius: 10px;
     background-color: $primary-colour;
     border: 3px $border-lining-colour solid;
+    width: 60vw;
     max-height: 50px;
+}
+.exercise-card {
+    display: flex;
+    flex-direction: row;
     text-transform: capitalize;
-    transition: min-height var(--transition);
-    overflow: hidden;
+    align-items: center;
+    height: 50px;
+
     
-    &__right-container {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        margin-top: 10px;
-        
-    }
+        &__right-container {
+       
+            display: flex;
+            flex-direction: row;
+            width: 80px;
+            justify-content: flex-end;
+            text-align: left;
+        }
 
-    &__left-container {
+        &__left-container {
         display: flex;
+        align-items: center;    
         flex-direction: row;
         align-items: flex-start;
-        width: 80%;
+        width: 90%;
         text-align: left;
-    }
+        }
 
-    &__exercise-name {
-        font-size: medium;
-    }
+        &__exercise-name {
+          
+        font-size: large;
+        }
 
-    &__additional-info {
-        font-size: small;
-    }
-
-    &__reload {
+        &__reload {
         margin-right: 10px;
-    }
+        }
 
-    &__trash {
+        &__trash {
         margin-right: 10px;
-    }
+        }
 
-    &__chevron {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        
-        margin-left: 10px;
-        margin-right: 5px;
-        margin-top: 10px;
+        &__chevron {
 
-        &__open {
+            &__open {
             transform: rotate(0deg);
             transition: 0.8s;
-        }
+            }
 
-        &__closed {
+            &__closed {
             transform: rotate(-90deg);
             transition: 0.8s;
-        }
+            }
 
     }
 }
+.additional-info{
+    display: flex;
+    font-size: small;
+    margin-left: 10px;
+    height: 50px;
+    flex-direction: row;
+}
+
 
 .rest-card {
 
