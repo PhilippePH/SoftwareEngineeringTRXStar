@@ -53,7 +53,7 @@ const NavButtons = ({prev, next}) => {
                         color: "gray",
                         animation: "fade-in 1s"
                     }}
-                    onClick={()=>{navigateHandler(next)}}
+                    onClick={()=>{navigateHandler(next, "forwards")}}
                 />
             }
         </div>
