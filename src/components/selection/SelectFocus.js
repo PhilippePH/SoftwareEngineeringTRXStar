@@ -36,7 +36,7 @@ const SelectFocus = () => {
         <div className="category-div"> 
             FOCUS
         </div>
-        <div className='container'>
+        <div className='selection-container'>
             <div className="left-arrow-div">
                 <NavButtons prev={`/select/${DIFFICULTY}`}/>
             </div>

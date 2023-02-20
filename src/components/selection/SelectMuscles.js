@@ -40,7 +40,7 @@ const SelectMuscles = () => {
         <div className="category-div">
             Deselect Muscles You Don't Want To Train
         </div>
-        <div className="container">
+        <div className="selection-container">
             <div className="left-arrow-div">
                 <NavButtons prev={`/select/${MUSCLE_GROUPS}`}/>
             </div>

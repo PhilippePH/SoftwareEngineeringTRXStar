@@ -30,7 +30,7 @@ const SelectDifficulty = () => {
         <div className="category-div">
             DIFFICULTY
         </div>
-        <div className="container">
+        <div className="selection-container">
             <div className="left-arrow-div"></div>
             <div className="options-div"
                 style={{

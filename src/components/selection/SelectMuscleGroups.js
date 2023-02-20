@@ -57,7 +57,7 @@ const SelectMuscleGroups = () => {
             PLEASE SELECT AT LEAST 
             ONE MUSCLE GROUP
         </div>
-        <div className="container">
+        <div className="selection-container">
             <div className="left-arrow-div">
                 <NavButtons prev={`/select/${DURATION}`}/>
             </div>

@@ -52,13 +52,13 @@ to {
     gap: 5px 5px;
 }
 
-.container {
+.selection-container {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
     flex: 6;
-    width: 100%
+    width: 100%;
 }
 
 .left-arrow-div {

@@ -41,7 +41,7 @@ const SelectDuration = () => {
         <div className="category-div">
             DURATION
         </div>
-        <div className="container">
+        <div className="selection-container">
             <div className="left-arrow-div">
                 <NavButtons prev={`/select/${FOCUS}`}/>
             </div>
