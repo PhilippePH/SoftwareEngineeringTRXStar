@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setActiveTab, setDuration } from "../../redux/slices/selectSlice";
 import NavButtons from "../utils/NavButtons";
@@ -17,6 +17,8 @@ const SelectDuration = () => {
         "45 min",
         "60 min"
     ];
+    const completed = useSelector((state) => (state.select.duration));
+    const direction = useSelector((state) => (state.select.navDirection));
 
     const clickHandler = (option) => {
         dispatch(setDuration(option));
@@ -43,7 +45,12 @@ const SelectDuration = () => {
             <div className="left-arrow-div">
                 <NavButtons prev={`/select/${FOCUS}`}/>
             </div>
-            <div className="options-div">
+            <div 
+                className="options-div"
+                style={{
+                    animation: (direction=="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
+                }}
+            >
                 {
                     durationOptions?.map((option) => {
                         return (
@@ -52,12 +59,15 @@ const SelectDuration = () => {
                                 type={DURATION} 
                                 option={option} 
                                 to={`/select/${MUSCLE_GROUPS}`}
+                                selected = {completed}
                             />
                         )
                     })
                 }
             </div>
-            <div className="right-arrow-div"></div>
+            <div className="right-arrow-div">
+                {completed && <NavButtons next={`/select/${MUSCLE_GROUPS}`}/>}
+            </div>
         </div>
         </>
         //     <ul

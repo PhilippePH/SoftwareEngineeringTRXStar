@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setActiveTab, setMuscleGroups } from "../../redux/slices/selectSlice";
 import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
@@ -21,6 +21,7 @@ const SelectMuscleGroups = () => {
 
     const [width, setWidth] = useState(window.innerWidth);
     const dispatch = useDispatch();
+    const direction = useSelector((state) => (state.select.navDirection));
     const muscleGroupKey = {
         "Core": "absCore",
         "Lower Body": "lowerBody",
@@ -60,7 +61,12 @@ const SelectMuscleGroups = () => {
             <div className="left-arrow-div">
                 <NavButtons prev={`/select/${DURATION}`}/>
             </div>
-            <div className="options-div">
+            <div 
+                className="options-div"
+                style={{
+                    animation: (direction=="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
+                }}
+            >
                 {
                     muscleGroupOptions?.map((option) => {
                         return (

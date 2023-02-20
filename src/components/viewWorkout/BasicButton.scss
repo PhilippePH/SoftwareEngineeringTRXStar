@@ -1,3 +1,6 @@
+@import '../../sassStyles/_mixins.scss';
+
+
 @media (hover: hover) {
     .basic-button:hover {
     background: #f1d901;
@@ -11,7 +14,7 @@
 .basic-button {
     background-color: #FFE600;
     color: black; 
-    font-size: 15px;
+    font-size: 13px;
     font-family: Arial, Helvetica, sans-serif; 
     font-weight: bold;
     padding: 10px; 
@@ -19,4 +22,11 @@
     height: 50px;
     margin: auto;
     text-align: center;
+}
+
+.button-text {
+    margin: 0px;
+    font-size: 18px;
+    text-transform: capitalize;
+    @include font
 }

@@ -1,12 +1,38 @@
-@media (hover: hover) {
-    .button:hover {
-    background: #f1d901;
-    }
-}
 
+@media (hover: hover) {
+    .button-unselected:hover {
+    background: #FFE600;
+    }
+    .multi-button-unselected:hover {
+    background: #FFE600;
+    }
+    
+}
 @import '../../sassStyles/_mixins.scss';
 
-.button {
+.button-unselected {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: whitesmoke;
+    width: 40vw;
+    min-width: 150px;
+    max-width: 250px;
+    height: 8vh;
+    min-height: 10px;
+    max-height: 60px;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 8px
+}
+
+.button-unselected:active {
+    background-color: #FFE600;
+}
+
+.button-selected {
+    display: flex;
     justify-content: center;
     align-items:center;
     background-color: #FFE600;
@@ -22,16 +48,16 @@
     border-radius: 8px
 }
 
+// .button-selected:active {
+//     background-color: #FFE600;
+// }
+
 .button-text {
-    margin: 0px;
+    margin: 10px;
     font-size: 22px;
     @include font;
     text-transform: capitalize
 
-}
-
-.mult-button:hover{
-    background: #f1d901;
 }
 
 .mult-button {
@@ -40,10 +66,30 @@
     background-color: #FFE600;
 }
 
-.multi-button {
+.multi-button-unselected {
     justify-content: center;
     align-items:center;
-    background-color: #FFE600;
+    background-color: whitesmoke;
+    width: 40vw;
+    min-width: 150px;
+    max-width: 250px;
+    height: 8vh;
+    min-height: 10px;
+    max-height: 60px;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 8px;
+
+    // &:hover {
+    //     background-color: #FFE600;
+    // }
+}
+
+.multi-button-selected {
+    justify-content: center;
+    align-items:center;
+    background-color:#FFE600;
     width: 40vw;
     min-width: 150px;
     max-width: 250px;
@@ -55,7 +101,6 @@
     border: 2px solid black;
     border-radius: 8px;
 }
-
 
 .small-button {
     display:flex;
@@ -74,4 +119,14 @@
     border-radius: 8px;
     @include font;
     font-size: 18px
+}
+
+.icon {
+    font-size: 30px;
+    margin: 0px;
+    color:black;
+    justify-content: flex-end;
+    text-align: center;
+    align-items: flex-end;
+
 }

@@ -16,8 +16,10 @@ function playlistToClipList(playlist) {
                 var restInfoTemp = {};
                 Object.assign(clipInfoTemp, { type: "clip", exercise_name: playlistArray[i].exercise_name, URL: playlistArray[i].URL, start_time: playlistArray[i].start_time, end_time: playlistArray[i].end_time });
                 clipList.push(clipInfoTemp);
-                Object.assign(restInfoTemp, { type: "rest", time: playlistArray[i].rest_set });
-                clipList.push(restInfoTemp);
+                if (playlistArray[i].rest_set > 0) {
+                    Object.assign(restInfoTemp, { type: "rest", time: playlistArray[i].rest_set });
+                    clipList.push(restInfoTemp);
+                }
             }
         }
 

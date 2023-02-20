@@ -4,14 +4,21 @@
 .exercise-card {
     display: flex;
     flex-direction: row;
-   
+    cursor: pointer;
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
     background-color: $primary-colour;
-    border: 2px $border-lining-colour solid;
-    height: 50px;
+    border: 3px $border-lining-colour solid;
+    width: 60vw;
+    min-width:360px;
+    max-width: 100%;
+    height: 10vh;
+    min-height: 30px;
+    max-height: 60px;
+
     font-size: large;
+    text-transform: capitalize;
     
 
     &__left-container {
@@ -21,10 +28,14 @@
   
     }
 
-    &__three-dots {
-        margin-right: 20px;
+    &__reload {
+        
+        margin-right: 10px;
     }
 
+    &__trash {
+        margin-right: 10px;
+    }
     &__chevron {
         margin-left: 20px;
         margin-right: 10px;

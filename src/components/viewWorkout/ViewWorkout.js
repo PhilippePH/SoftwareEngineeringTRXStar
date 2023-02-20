@@ -20,10 +20,12 @@ const ViewWorkout = () => {
         const videoId = extractVideoIdFromURL(clipList[count].URL)
         const startTime = parseTime(clipList[count].start_time)
         const endTime = parseTime(clipList[count].end_time)
+        const exerciseName = clipList[count].exercise_name
         const exerciseData = {
             videoId,
             startTime,
             endTime,
+            exerciseName
         }
         console.log("Exercise data parsed: ", exerciseData)
         return (

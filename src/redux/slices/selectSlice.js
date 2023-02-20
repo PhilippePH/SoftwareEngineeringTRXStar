@@ -1,4 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+
 
 // Javascript object to link body part selection with muscles
 const musclesOptions = {
@@ -12,7 +15,10 @@ const musclesOptions = {
 export const selectSlice = createSlice({
   name: 'select',
   initialState: {
+    version : 1,
     activeTab: "",
+    navDirection: "forwards",
+    navigateForward: false,
     difficulty: "",
     focus: "",
     duration: "",
@@ -21,8 +27,21 @@ export const selectSlice = createSlice({
 
   },
   reducers: {
+    increaseVersion: (state, action) =>{
+      state.version += 1;
+    },
+    initialiseVersion: (state, action) =>{
+      state.version = action.payload; 
+    },
     setActiveTab: (state, action) => {
       state.activeTab = action.payload;
+    },    
+    setNavigateForward: (state, action) => {
+      state.navigateForward = action.payload;
+    },
+    setNavDirection: (state, action) => {
+      console.log('hi');
+      state.navDirection = action.payload;
     },
     setDifficulty: (state, action) => {
       state.difficulty = action.payload;
@@ -56,8 +75,12 @@ export const selectSlice = createSlice({
 });
 
 // The "Actions" will be used to change the state from anywhere in application - e.g.: dispatch(action(param))
-export const { 
+ export const { 
+  increaseVersion,
+  initialiseVersion,
   setActiveTab,
+  setNavDirection,
+  setNavigateForward,
   setDifficulty, 
   setFocus, 
   setDuration, 
@@ -65,4 +88,14 @@ export const {
   setMuscles
  } = selectSlice.actions;
 
-export default selectSlice.reducer
+const selectPersistConfig = {
+  key: 'select',
+  storage: storage,
+  whitelist: ['version', 'activeTab', 'difficulty', 'focus', 'duration', 'muscleGroups', 'muscles']
+};
+
+export const persistedSelectReducer = persistReducer(selectPersistConfig, selectSlice.reducer);
+
+//export { selectSlice, persistedSelectReducer };
+
+//export default selectSlice.reducer

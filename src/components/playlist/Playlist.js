@@ -49,7 +49,7 @@ async function filterAll(indexedDB, userOptions) {
                     validClips.push(clip);
                 }
             })
-            console.log("Valid clips", validClips);
+            //ps", validClips);
             await addToFilteredDB("clip", validClips);
         }
 
@@ -102,10 +102,10 @@ const Playlist = ({ indexedDB }) => {
         try {
             createStructure(selectedOptions)
             .then(function (empty) {
-                console.log("Should be empty", empty);
+                //console.log("Should be empty", empty);
                 fillStructure(empty, indexedDB)
                 .then(function(filled) {
-                    console.log("Filled structure", filled);
+                    //console.log("Filled structure", filled);
                     setDisplayName(filled[1].exercise_name); 
                     store.dispatch(addPlaylist(filled));
                 })
@@ -116,16 +116,13 @@ const Playlist = ({ indexedDB }) => {
     });
 }, []);
 
-
-const playlist = useSelector((state) => (state.playlist));
-console.log("here", playlist.playlistData[1]); 
-
+/*
     return (
         <>
-            <PlaylistWindow />
-            
+            <PlaylistWindow />        
         </>
     );
+    */
 }   
 
 export default Playlist;
