@@ -4,9 +4,21 @@ import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
 import { DURATION, MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
 import SelectMultipleButton from "../utils/SelectMultipleButton";
+import ModalButton from "../utils/ModalButton"
+import MusclesModal from "./SelectMusclesModal"
 import './style.scss'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+const modal = document.querySelector(".modal");
+console.log("Modal", modal)
+const overlay = document.querySelector(".overlay");
 
 const SelectMuscleGroups = () => {
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+
     const [width, setWidth] = useState(window.innerWidth);
     const dispatch = useDispatch();
     const direction = useSelector((state) => (state.select.navDirection));
@@ -38,6 +50,9 @@ const SelectMuscleGroups = () => {
    
     return (
         <>
+        <MusclesModal
+            show={show}
+            unshow={handleClose}/>
         <div className="category-div">
             PLEASE SELECT AT LEAST 
             ONE MUSCLE GROUP
@@ -67,9 +82,13 @@ const SelectMuscleGroups = () => {
 
                     })
                 }
+                <ModalButton 
+                    showModal={setShow}
+                    text={"Advanced"}
+                />
             </div>
             <div className="right-arrow-div">
-                <NavButtons  next={`/select/${MUSCLES}`}/>
+                <NavButtons next="/playlist"/>
             </div>
         </div>
         </>
