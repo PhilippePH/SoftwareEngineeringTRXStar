@@ -15,6 +15,7 @@ import NavBar from "./components/layout/NavBar";
 import SelectPage from "./components/selection/SelectPage";
 import { DIFFICULTY, DURATION, FOCUS, MUSCLES, MUSCLE_GROUPS } from "./components/utils/constants";
 import ViewWorkout from "./components/viewWorkout/ViewWorkout";
+import FinishedWorkout from "./components/finishedPage/FinishedPage";
 import PlaylistWindow from "./components/playlist/PlaylistWindow";
 
 const indexedDB =
@@ -145,6 +146,7 @@ const App = () => {
                 <Route exact path={`/select/${FOCUS}`} element={<SelectPage selectForm={<SelectFocus/>}/>}/>
                 <Route exact path={`/select/${MUSCLES}`} element={<SelectPage selectForm={<SelectMuscles/>}/>}/>
                 <Route path="/youtube"element={<ViewWorkout/>} />
+                <Route path="/end"element={<FinishedWorkout/>} />
             </Routes>
         </div>
     );
