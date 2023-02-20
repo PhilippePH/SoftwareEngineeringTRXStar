@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { DIFFICULTY, DURATION, FOCUS, MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
 import './style.scss'
 import { useNavigate } from 'react-router-dom';
@@ -7,9 +7,11 @@ import {BiRun} from "react-icons/bi"
 import {GrYoga} from "react-icons/gr"
 import {WiTime12,WiTime6,WiTime3,WiTime9} from "react-icons/wi"
 import {TbAntennaBars3,TbAntennaBars4,TbAntennaBars5} from "react-icons/tb"
+import { setNavDirection } from "../../redux/slices/selectSlice";
 
 const SelectProgress = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const optionIcons = {
         "15 min": WiTime3, 
@@ -30,6 +32,37 @@ const SelectProgress = () => {
     const selectedDifficulty = useSelector((state) => (state.select.difficulty));
     const selectedFocus = useSelector((state) => (state.select.focus));
     const selectedDuration = useSelector((state) => (state.select.duration));
+    const selectedMuscleGroup = useSelector((state) => (state.select.muscleGroups));
+
+    const clickHandler = (to) => {
+        if(activeTab==DIFFICULTY){
+            dispatch(setNavDirection("forwards"));
+        }
+        else if(activeTab==MUSCLE_GROUPS){
+            dispatch(setNavDirection("backwards"));
+        }
+        else if(activeTab==FOCUS){
+            if(to==DIFFICULTY){
+                dispatch(setNavDirection("backwards"));
+            }
+            else{
+                dispatch(setNavDirection("forwards"));
+            }
+        }
+        else if(activeTab==DURATION){
+            if(to==MUSCLE_GROUPS){
+                dispatch(setNavDirection("forwards"));
+            }
+            else{
+                dispatch(setNavDirection("backwards"));
+            }
+        }
+
+        if(to != activeTab){
+            navigate(`/select/${to}`);
+        }
+        
+    }
 
     return (
         <div className="progress-container">
@@ -38,19 +71,25 @@ const SelectProgress = () => {
             </div>
             <div className="tab-container">
                 <div className={activeTab==DIFFICULTY?"active-tab":"inactive-tab"}
-                     onClick={() => { navigate(`/select/${DIFFICULTY}`) }}>
+                     onClick ={() => {selectedDifficulty && clickHandler(DIFFICULTY)}}
+                >
                     {selectedDifficulty && <Icon icon={optionIcons[selectedDifficulty]} />}
                 </div>
                 <div className={activeTab==FOCUS?"active-tab":"inactive-tab"}
-                     onClick={() => { navigate(`/select/${FOCUS}`) }}>
+                    onClick ={() => {selectedFocus && clickHandler(FOCUS)}}
+                    //  onClick={() => { navigate(`/select/${FOCUS}`) }}
+                     >
                     {selectedFocus && <Icon icon={optionIcons[selectedFocus]} />}
                 </div>
                 <div className={activeTab==DURATION?"active-tab":"inactive-tab"}
-                     onClick={() => { navigate(`/select/${DURATION}`) }}>
+                    onClick ={() => {selectedDuration && clickHandler(DURATION)}}
+                    //  onClick={() => { navigate(`/select/${DURATION}`) }}
+                     >
                     {selectedDuration && <Icon icon={optionIcons[selectedDuration]} />}
                 </div>
                 <div className={activeTab==MUSCLE_GROUPS?"active-tab":"inactive-tab"}
-                     onClick={() => { navigate(`/select/${MUSCLE_GROUPS}`) }}>
+                    onClick ={() => {selectedMuscleGroup.length!=0 && clickHandler(MUSCLE_GROUPS)}}
+                     >
                 </div>
                 {/* <div className={activeTab==MUSCLES?"active-tab":"inactive-tab"}/> */}
             </div>
@@ -62,5 +101,5 @@ export default SelectProgress;
 
 const Icon = ({ icon }) => {
     const IconComponent = icon;
-    return <IconComponent />;
+    return <IconComponent className ="icon"/>;
 };

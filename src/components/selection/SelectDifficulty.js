@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveTab } from "../../redux/slices/selectSlice";
+import { setActiveTab, setNavDirection } from "../../redux/slices/selectSlice";
 import { useEffect, useState } from "react";
 import { DIFFICULTY, FOCUS } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
@@ -13,6 +13,7 @@ const SelectDifficulty = () => {
     const difficultyOptions = ["Easy", "Medium", "Hard"];
     
     const completed = useSelector((state) => (state.select.difficulty))
+    const direction = useSelector((state) => (state.select.navDirection))
 
     useEffect(() => {
         dispatch(setActiveTab(DIFFICULTY));
@@ -29,9 +30,12 @@ const SelectDifficulty = () => {
         <div className="category-div">
             DIFFICULTY
         </div>
-        <div className="container">
+        <div className="selection-container">
             <div className="left-arrow-div"></div>
-            <div className="options-div">
+            <div className="options-div"
+                style={{
+                    animation: (direction=="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
+                }}>
                 {difficultyOptions?.map((option) => {
                     return (
 
@@ -46,7 +50,8 @@ const SelectDifficulty = () => {
                 })}
             </div>
             <div className="right-arrow-div">
-                {completed && <NavButtons next={`/select/${FOCUS}`}/>}
+                {completed && <NavButtons 
+                    next={`/select/${FOCUS}`}/>}
             </div>
         </div>
         </>

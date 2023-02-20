@@ -103,13 +103,13 @@ export function createStructure(){
 */
 export async function fillStructure(structure, indexedDB) {
     
-    console.log("Before fill", structure)
+    //("Before fill", structure)
     var structureCopy = JSON.parse(JSON.stringify(structure));
     // fill each object in workout array
     
     for (let i = 0; i < structureCopy.length; i++) {
 
-        console.log("Item", structureCopy[i])
+        //console.log("Item", structureCopy[i])
         try {
             var intensity = structureCopy[i].intensity;
         } catch (e) {
@@ -121,7 +121,7 @@ export async function fillStructure(structure, indexedDB) {
             await getClip(indexedDB, structureCopy[i].type, structureCopy[i].time, intensity)
             .then(async function(clip) {
 
-                console.log("clip", clip);
+                //("clip", clip);
                 var video_of_clip = await filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1);
 
                 if(structureCopy[i].type === "exercise"){
@@ -135,7 +135,7 @@ export async function fillStructure(structure, indexedDB) {
         }
     }
 
-    console.log("After fill", structureCopy);
+    //console.log("After fill", structureCopy);
     return structureCopy; 
 }
 
@@ -162,16 +162,16 @@ async function getClip(indexedDB, type, time, intensity) {
             var depth = 0; 
             while (exercise_clips.length === 0 && depth<20) {
                 var chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)]; 
-                console.log("Chosen_exercise", chosen_exercise);
+                //console.log("Chosen_exercise", chosen_exercise);
                 exercise_clips = await filterDatabase("clip", "exercise_name", chosen_exercise.exercise_name, indexedDB, "FilteredDatabase", 1);
-                console.log("Exercise clips: ", exercise_clips);
+                //console.log("Exercise clips: ", exercise_clips);
                 depth++; 
             }
             if(exercise_clips.length === 0)
             {
                 console.log("Error could not find valid clips"); 
             }
-            console.log("Selected exercise clip", exercise_clips[RandInt(0, exercise_clips.length)]);
+            //console.log("Selected exercise clip", exercise_clips[RandInt(0, exercise_clips.length)]);
             return exercise_clips[RandInt(0, exercise_clips.length)];
 
         default:

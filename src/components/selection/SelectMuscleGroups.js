@@ -1,14 +1,27 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setActiveTab, setMuscleGroups } from "../../redux/slices/selectSlice";
 import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
 import { DURATION, MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
 import SelectMultipleButton from "../utils/SelectMultipleButton";
+import ModalButton from "../utils/ModalButton"
+import MusclesModal from "./SelectMusclesModal"
 import './style.scss'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+const modal = document.querySelector(".modal");
+console.log("Modal", modal)
+const overlay = document.querySelector(".overlay");
 
 const SelectMuscleGroups = () => {
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+
     const [width, setWidth] = useState(window.innerWidth);
     const dispatch = useDispatch();
+    const direction = useSelector((state) => (state.select.navDirection));
     const muscleGroupKey = {
         "Core": "absCore",
         "Lower Body": "lowerBody",
@@ -37,15 +50,23 @@ const SelectMuscleGroups = () => {
    
     return (
         <>
+        <MusclesModal
+            show={show}
+            unshow={handleClose}/>
         <div className="category-div">
             PLEASE SELECT AT LEAST 
             ONE MUSCLE GROUP
         </div>
-        <div className="container">
+        <div className="selection-container">
             <div className="left-arrow-div">
                 <NavButtons prev={`/select/${DURATION}`}/>
             </div>
-            <div className="options-div">
+            <div 
+                className="options-div"
+                style={{
+                    animation: (direction=="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
+                }}
+            >
                 {
                     muscleGroupOptions?.map((option) => {
                         return (
@@ -61,9 +82,13 @@ const SelectMuscleGroups = () => {
 
                     })
                 }
+                <ModalButton 
+                    showModal={setShow}
+                    text={"Advanced"}
+                />
             </div>
             <div className="right-arrow-div">
-                <NavButtons  next={`/select/${MUSCLES}`}/>
+                <NavButtons next="/playlist"/>
             </div>
         </div>
         </>

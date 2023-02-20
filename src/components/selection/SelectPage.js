@@ -20,16 +20,18 @@ const SelectPage = ({ selectForm }) => {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                height: '100vh'
+                height: '100%',
+                paddingBottom:"10%",
             }}>
             <div
                 style={{
                     display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flex: 1
+                    // height: '100%',
+                    // flexDirection: "column",
+                    // alignItems: "center",
+                    // alignItems: "center",
+                    // justifyContent: "center",
+                    // flex: 1
                 }}
             >
                 <SelectProgress/>
