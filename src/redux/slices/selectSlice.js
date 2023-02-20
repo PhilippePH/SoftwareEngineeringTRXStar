@@ -30,8 +30,17 @@ export const selectSlice = createSlice({
     increaseVersion: (state, action) =>{
       state.version += 1;
     },
-    initialiseVersion: (state, action) =>{
-      state.version = action.payload; 
+    initialiseAll: (state, action) => {
+      state.version = 1;
+      state.version= 1;
+      state.activeTab= "";
+      state.navDirection= "forwards";
+      state.navigateForward= false;
+      state.difficulty= "";
+      state.focus= "";
+      state.duration= "";
+      state.muscleGroups= [];
+      state.muscles= [];
     },
     setActiveTab: (state, action) => {
       state.activeTab = action.payload;
@@ -77,7 +86,7 @@ export const selectSlice = createSlice({
 // The "Actions" will be used to change the state from anywhere in application - e.g.: dispatch(action(param))
  export const { 
   increaseVersion,
-  initialiseVersion,
+  initialiseAll,
   setActiveTab,
   setNavDirection,
   setNavigateForward,
