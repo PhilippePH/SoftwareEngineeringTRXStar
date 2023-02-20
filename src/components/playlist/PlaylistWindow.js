@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import RestCard from './RestCard';
-import { FaPlay } from "react-icons/fa";
+import { FaCentercode, FaPlay } from "react-icons/fa";
 import { TfiReload } from "react-icons/tfi"
 import './PlaylistWindow.scss';
 import NavButtons from '../utils/NavButtons'
@@ -13,39 +13,65 @@ import { increaseVersion } from "../../redux/slices/selectSlice"
 import { store } from "../../redux/store"
 import './PlaylistWindow.scss'
 import Playlist from './Playlist';
+import { ThreeDots } from 'react-loader-spinner'
 
 
 const PlaylistWindow = ({ indexedDB }) => {
 
     const [count, setCount] = useState(0);
     const [key, setKey] = useState(0);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const playlist = useSelector((state) => (state.playlist.playlistData));
     const version = useSelector((state) => (state.select.version));
 
 
+    useEffect(() => {
+        setIsLoading(false);
+    }, [playlist])
+
 
     const handleIncreaseVersion = () => {
+        setIsLoading(true);
         store.dispatch(increaseVersion());
         setKey(key + 1);
-    }; 
+    };
 
     return (
-        
+
         <div>
-            <Playlist indexedDB={indexedDB} key={key}/>
-            
+            <Playlist indexedDB={indexedDB} key={key} />
+
             <div className='playlist-window'>
-                
+
 
                 <div className='playlist-window__container'>
-                    
-                    <div className='workout-heading'>WORKOUT {version}</div>
-                    <div>
-                        {
-                            playlist.map((work, index) => {
+                    {isLoading ? (
+                        <div style=
+                        {{ display: 'flex',
+                         justifyContent: 'center',
+                          alignItems: 'center',
+                          height: '100%',
+                          paddingBottom: '30px' }}>
+                            <ThreeDots
+                                height="80"
+                                width="80"
+                                radius="9"
+                                color="black"
+                                ariaLabel="three-dots-loading"
+                                wrapperStyle={{}}
+                                wrapperClassName=""
+                                visible={true}
+                            />
+                        </div>
+                    ) :
+                        // Add your other content here
+
+
+                        <><div className='workout-heading'>WORKOUT {version}</div><div>
+                            {playlist.map((work, index) => {
                                 if (index + 1 < playlist.length && playlist[index + 1].type == "rest") {
-                                    return (<ExerciseCard exercise_name={playlist[index].exercise_name} />)
+                                    return (<ExerciseCard exercise_name={playlist[index].exercise_name} />);
                                 }
 
 
@@ -58,26 +84,27 @@ const PlaylistWindow = ({ indexedDB }) => {
                                         </div>
 
 
-                                    )
+                                    );
                                 }
                                 else if (playlist[index].type == "warmup")
                                     return (
 
                                         <ExerciseCard exercise_name='Warmup' />
-                                    )
+                                    );
                                 else if (playlist[index].type == "cooldown")
                                     return (
                                         <ExerciseCard exercise_name='Cooldown' />
-                                    )
+                                    );
+
                                 else
                                     return (
                                         <RestCard time={playlist[index].time} />
-                                    )
+                                    );
 
-                            })
+                            })}
 
-                        }
-                    </div>
+                        </div></>
+                    }
                 </div>
 
             </div>
@@ -96,7 +123,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                         fontSize: "50px",
                         cursor: "pointer"
                     }}
-                    onClick={handleIncreaseVersion}/>
+                    onClick={handleIncreaseVersion} />
                 <FaPlay
                     style={{
                         // borderRadius: "8px"
@@ -106,9 +133,9 @@ const PlaylistWindow = ({ indexedDB }) => {
                     onClick={() => { navigate("/youtube") }}
                 />
 
-                
+
             </div>
-            
+
         </div>
     );
 
