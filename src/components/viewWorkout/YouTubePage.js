@@ -3,8 +3,15 @@ import YouTube from 'react-youtube';
 import BasicButton from './BasicButton';
 import './YouTubePage.scss'
 import '../utils/style.scss'
+import { useDispatch } from "react-redux";
+import { setNavDirection } from "../../redux/slices/selectSlice";
+import { useNavigate } from "react-router-dom";
+import '../intro/WelcomePage.scss'
 
 const YouTubePage = ({nextVideo, exerciseData}) => {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
       
   const [width, setWidth] = useState(window.innerWidth);
   console.log("exercisedata", exerciseData)
@@ -14,6 +21,11 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const clickHandler = () => {
+    dispatch(setNavDirection("forwards"));
+    navigate(`/end`);
+}
 
   const opts = {
     height: width * 9 / 16 * 0.5,
@@ -44,8 +56,15 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
           <BasicButton
             option={"Next exercise"}
             next={nextVideo}
+            
           />
-          </div>
+              <button
+                onClick={() => clickHandler()}
+                className="button"
+              >
+                End Workout
+              </button>
+            </div>
           </div>
         </>
         
