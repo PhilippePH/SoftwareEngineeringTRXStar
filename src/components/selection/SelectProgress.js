@@ -32,6 +32,7 @@ const SelectProgress = () => {
     const selectedDifficulty = useSelector((state) => (state.select.difficulty));
     const selectedFocus = useSelector((state) => (state.select.focus));
     const selectedDuration = useSelector((state) => (state.select.duration));
+    const selectedMuscleGroup = useSelector((state) => (state.select.muscleGroups));
 
     const clickHandler = (to) => {
         if(activeTab==DIFFICULTY){
@@ -70,26 +71,24 @@ const SelectProgress = () => {
             </div>
             <div className="tab-container">
                 <div className={activeTab==DIFFICULTY?"active-tab":"inactive-tab"}
-                     onClick ={() => {clickHandler(DIFFICULTY)}}
-                    //  onClick={() => { navigate(`/select/${DIFFICULTY}`) }
+                     onClick ={() => {selectedDifficulty && clickHandler(DIFFICULTY)}}
                 >
                     {selectedDifficulty && <Icon icon={optionIcons[selectedDifficulty]} />}
                 </div>
                 <div className={activeTab==FOCUS?"active-tab":"inactive-tab"}
-                    onClick ={() => {clickHandler(FOCUS)}}
+                    onClick ={() => {selectedFocus && clickHandler(FOCUS)}}
                     //  onClick={() => { navigate(`/select/${FOCUS}`) }}
                      >
                     {selectedFocus && <Icon icon={optionIcons[selectedFocus]} />}
                 </div>
                 <div className={activeTab==DURATION?"active-tab":"inactive-tab"}
-                    onClick ={() => {clickHandler(DURATION)}}
+                    onClick ={() => {selectedDuration && clickHandler(DURATION)}}
                     //  onClick={() => { navigate(`/select/${DURATION}`) }}
                      >
                     {selectedDuration && <Icon icon={optionIcons[selectedDuration]} />}
                 </div>
                 <div className={activeTab==MUSCLE_GROUPS?"active-tab":"inactive-tab"}
-                    onClick ={() => {clickHandler(MUSCLE_GROUPS)}}
-                    //  onClick={() => { navigate(`/select/${MUSCLE_GROUPS}`) }}
+                    onClick ={() => {selectedMuscleGroup.length!=0 && clickHandler(MUSCLE_GROUPS)}}
                      >
                 </div>
                 {/* <div className={activeTab==MUSCLES?"active-tab":"inactive-tab"}/> */}
