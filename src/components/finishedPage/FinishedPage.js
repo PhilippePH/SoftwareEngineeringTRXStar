@@ -18,7 +18,7 @@ const FinishedWorkout = () => {
       }, []);
 
     return (
-        <div >
+        <div className='finish-page'>
             <ul className='finish-page__container'>
                 <div className='finish-page__congrats-text'>
                     Good job !
@@ -30,16 +30,16 @@ const FinishedWorkout = () => {
                     alt={"bicep"}
                 />
 
-                <div className="enjoy-text">
+                <div className="finish-page__enjoy-text">
                     Enjoyed your workout?
                 </div>
 
-                <button className='button'
+                <button className='finish-page__button'
                     // TO DO -- SAVE TO CACHE
                     //key={FinishedWorkout} 
                     //onClick={()=>clickHandler()} // Adds workout to cache
                     >
-                    <p className="button-text">
+                    <p className="finish-page__button-text">
                         Save Workout
                     </p>
                 </button>
