@@ -6,11 +6,11 @@ import './WelcomePage.scss';
 import { useDispatch } from "react-redux";
 import { setNavDirection } from "../../redux/slices/selectSlice";
 import { store } from "../../redux/store"
-import { initialiseVersion } from "../../redux/slices/selectSlice";
+import { initialiseAll } from "../../redux/slices/selectSlice";
 import { initialisePlaylist } from "../../redux/slices/playlistSlice";
 
 const Welcome = () => {
-    store.dispatch(initialiseVersion(1));
+    store.dispatch(initialiseAll());
     store.dispatch(initialisePlaylist([]));
     const [width, setWidth] = useState(window.innerWidth);
     const navigate = useNavigate();
