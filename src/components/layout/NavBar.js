@@ -30,9 +30,9 @@ const NavBar = () => {
             >
                 <img
                     style={{
-                        paddingLeft: 15,
+                        paddingLeft: "1rem",
                         height: "2.5rem",
-                        width: "2.5rem"
+                        width: "3.5rem"
                     }}
                     src={logo}
                     alt={"logo"}

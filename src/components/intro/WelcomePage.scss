@@ -6,6 +6,8 @@
         display: grid; 
         height: 90vh; 
         justify-content: center;
+        padding-left:0;
+        text-align: center;
         place-items: center;
         align-items: center;
     }
@@ -14,15 +16,17 @@
         place-items: center;
         justify-content: center;
         align-items: center;
-        padding: 0px; 
+        grid-gap: 20px;
+        padding:0;
+        // padding-bottom: 0px; 
     }
 
     &__img {
         
-        padding-left: 15px;
+        // padding-left: 15px;
         width: 10rem;
         height: 10rem;
-        padding-bottom: 5rem;
+        // padding-bottom: 5%;
     }
 
     @media (min-width: 501px) and (max-width: 768px) {
@@ -41,6 +45,7 @@
 
     &__button {
         background-color: $primary-colour;
+        display:flex;
         @include font;
         width: 200px;
         height: 4.5rem;
@@ -50,7 +55,9 @@
         padding-left: 1rem;
         padding-right: 1rem;
         margin: 1rem;
+        align-items: center;
         text-align: center;
+        justify-content: center;
         cursor: pointer;
         border: 3px solid $border-lining-colour;
         border-radius: 20px;          
