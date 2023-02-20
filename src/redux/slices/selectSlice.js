@@ -40,7 +40,6 @@ export const selectSlice = createSlice({
       state.navigateForward = action.payload;
     },
     setNavDirection: (state, action) => {
-      console.log('hi');
       state.navDirection = action.payload;
     },
     setDifficulty: (state, action) => {
