@@ -3,19 +3,19 @@ import { useSelector } from 'react-redux';
 import playlist_to_clipList from '../../scripts/playlistToClipList';
 import RestPage from './RestPage';
 import YouTubePage from './YouTubePage';
+import { useNavigate } from 'react-router-dom';
 
 const ViewWorkout = () => {
     const [count, setCount] = useState(0);
-
+    const navigate = useNavigate();
     const playlist = useSelector((state) => (state.playlist));
     var clipList = playlist_to_clipList(playlist); 
 
     console.log("clip list", clipList); 
 
-    if (count == clipList.length) { // if end of video we display 'Finished' component
-        return (
-            <p>Finished !</p>
-        )
+    if (count == clipList.length) { // if end of workout, navigate to FinishedPage        
+            navigate("/end");            
+
     } else if (clipList[count].type == 'clip') { // check if exercise 
         const videoId = extractVideoIdFromURL(clipList[count].URL)
         const startTime = parseTime(clipList[count].start_time)
