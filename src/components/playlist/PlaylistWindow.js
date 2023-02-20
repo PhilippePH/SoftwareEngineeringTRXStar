@@ -71,7 +71,8 @@ const PlaylistWindow = ({ indexedDB }) => {
                         <><div className='workout-heading'>WORKOUT {version}</div><div>
                             {playlist.map((work, index) => {
                                 if (index + 1 < playlist.length && playlist[index + 1].type == "rest") {
-                                    return (<ExerciseCard exercise_name={playlist[index].exercise_name} />);
+                                    return (<ExerciseCard exercise_name={playlist[index].exercise_name} 
+                                        duration={playlist[index].time} sets={playlist[index].sets} intensity={playlist[index].intensity}/>)
                                 }
 
 
@@ -79,7 +80,8 @@ const PlaylistWindow = ({ indexedDB }) => {
                                 else if (playlist[index].type == "exercise") {
                                     return (
                                         <div>
-                                            <ExerciseCard exercise_name={playlist[index].exercise_name} />
+                                            <ExerciseCard exercise_name={playlist[index].exercise_name}  duration={playlist[index].time} 
+                                            sets={playlist[index].sets} intensity={playlist[index].intensity} />
                                             <RestCard time={playlist[index].rest_set} />
                                         </div>
 
@@ -89,13 +91,12 @@ const PlaylistWindow = ({ indexedDB }) => {
                                 else if (playlist[index].type == "warmup")
                                     return (
 
-                                        <ExerciseCard exercise_name='Warmup' />
-                                    );
+                                        <ExerciseCard exercise_name='Warmup'  duration={playlist[index].time} sets ='1' intensity='N/A'/>
+                                    )
                                 else if (playlist[index].type == "cooldown")
                                     return (
-                                        <ExerciseCard exercise_name='Cooldown' />
-                                    );
-
+                                        <ExerciseCard exercise_name='Cooldown'  duration={playlist[index].time} sets ='1' intensity='N/A'/>
+                                    )
                                 else
                                     return (
                                         <RestCard time={playlist[index].time} />
