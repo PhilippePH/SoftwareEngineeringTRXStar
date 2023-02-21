@@ -71,12 +71,12 @@
 
             &__open {
             transform: rotate(0deg);
-            transition: 0.3s;
+            transition: var(--transition);
             }
 
             &__closed {
             transform: rotate(-90deg);
-            transition: 0.3s;
+            transition: var(--transition);
             }
 
     }

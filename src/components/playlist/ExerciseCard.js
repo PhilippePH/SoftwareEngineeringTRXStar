@@ -47,7 +47,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, intensity 
                     <div className='exercise-card'>
 
                         <div className='exercise-card__left-container'>
-                        <FiChevronDown size={28} className='exercise-card__chevron'/> {/*`exercise-card__chevron  exercise-card__chevron${isOpen ? "__open" : "__closed"}`*/} 
+                        <FiChevronDown size={28} className= {`exercise-card__chevron  exercise-card__chevron${isOpen ? "__open" : "__closed"}`}/> 
                             <div className='exercise-card__exercise-name'>
                                 {exercise_name}
 
