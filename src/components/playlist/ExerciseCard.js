@@ -47,7 +47,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, intensity 
                     <div className='exercise-card'>
 
                         <div className='exercise-card__left-container'>
-                        <FiChevronDown size={28} className={`exercise-card__chevron  exercise-card__chevron${isOpen ? "__open" : "__closed"}`} />
+                        <FiChevronDown size={28} className='exercise-card__chevron'/> {/*`exercise-card__chevron  exercise-card__chevron${isOpen ? "__open" : "__closed"}`*/} 
                             <div className='exercise-card__exercise-name'>
                                 {exercise_name}
 
@@ -56,10 +56,10 @@ export default function ExerciseCard({ exercise_name, duration, sets, intensity 
 
                         </div>
 
-                        <div className='exercise-card__right-container' onClick={handleIconClick}>
+                        <div className='exercise-card__right-container' >
                             
-                            <IoReload size={28} className='exercise-card__reload' />
-                            <IoTrashOutline size={28} className='exercise-card__trash' />
+                            <IoReload size={28} className='exercise-card__reload' onClick={handleIconClick}/>
+                            <IoTrashOutline size={28} className='exercise-card__trash' onClick={handleIconClick}/>
                         </div>
 
 
@@ -67,10 +67,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, intensity 
                     <div className='additional-info'>
 
                         <div> Duration: {duration}s per set</div>
-
-                        <br />
                         <div> Sets: {sets} </div>
-                        <br/>
                         <div> Total Duration: {sets*duration}s</div>
 
 
