@@ -4,7 +4,8 @@
 :root {
     --transition: 0.4s;
 }
-.custom-container{
+
+.custom-container {
 
     flex-direction: column;
     transition: min-height var(--transition);
@@ -17,6 +18,7 @@
     border: 3px $border-lining-colour solid;
     max-height: 50px;
 }
+
 .exercise-card {
     display: flex;
     flex-direction: row;
@@ -24,64 +26,65 @@
     align-items: center;
     height: 44px;
 
-    
-        &__right-container {
-       
-            display: flex;
-            flex-direction: row;
-            width: 30%;
-            justify-content: flex-end;
-            text-align: left;
-        }
 
-        &__left-container {
+    &__right-container {
+
         display: flex;
-        align-items: center;    
+        flex-direction: row;
+        width: 30%;
+        justify-content: flex-end;
+        text-align: left;
+    }
+
+    &__left-container {
+        display: flex;
+        align-items: center;
         flex-direction: row;
         width: 90%;
         text-align: left;
-        }
+    }
 
+    &__exercise-name {
+        font-size: small;
+    }
+
+    @media (min-width: 370px) {
         &__exercise-name {
-            font-size: small;
+
+            font-size: medium;
         }
-        @media (min-width: 370px) {
-            &__exercise-name {
-                
-                font-size: medium;
-            }
-            }
-        @media (min-width: 430px) {
-            &__exercise-name {
-                
-                font-size: large;
-            }
-            }
+    }
+
+    @media (min-width: 430px) {
+        &__exercise-name {
+
+            font-size: large;
+        }
+    }
 
 
-        &__reload {
-            margin-right: 10px;
+    &__reload {
+        margin-right: 10px;
+    }
+
+    &__trash {
+        margin-right: 10px;
+    }
+
+    &__chevron {
+        position: relative;
+        transition: transform var(--transition);
+
+        &__open {
+            transform: rotate(180deg);
+            //transition: var(--transition);
         }
 
-        &__trash {
-            margin-right: 10px;
-        }
-
-        &__chevron {
-
-            &__open {
-            transform: rotate(0deg);
-            transition: var(--transition);
-            }
-
-            &__closed {
-            transform: rotate(-90deg);
-            transition: var(--transition);
-            }
 
     }
 }
-.additional-info{
+
+.additional-info {
     display: flex;
     font-size: small;
     margin-left: 10px;
@@ -102,7 +105,7 @@
     &__text {
         font-size: large;
         padding-left: 5px;
-        padding-bottom: 0;    
+        padding-bottom: 0;
         margin-bottom: 0;
     }
 
