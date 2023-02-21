@@ -2,7 +2,7 @@
 @import '../../sassStyles/mixins';
 
 :root {
-    --transition: 0.4s ease;
+    --transition: 0.4s;
 }
 .custom-container{
 
@@ -71,12 +71,12 @@
 
             &__open {
             transform: rotate(0deg);
-            transition: 0.8s;
+            transition: 0.3s;
             }
 
             &__closed {
             transform: rotate(-90deg);
-            transition: 0.8s;
+            transition: 0.3s;
             }
 
     }
@@ -86,7 +86,8 @@
     font-size: small;
     margin-left: 10px;
     height: 50px;
-    flex-direction: row;
+    flex-direction: column;
+    text-align: left;
 }
 
 

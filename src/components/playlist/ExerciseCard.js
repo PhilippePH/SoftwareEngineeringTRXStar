@@ -7,7 +7,7 @@ import cn from "classnames";
 import { useRef } from 'react';
 
 const CLOSED_HEIGHT = 50;
-const OPENED_HEIGHT = 100;
+const OPENED_HEIGHT = 120;
 
 export default function ExerciseCard({ exercise_name, duration, sets, intensity }) {
     const [isOpen, setOPen] = useState(false);
@@ -29,50 +29,54 @@ export default function ExerciseCard({ exercise_name, duration, sets, intensity 
 
     return (
         <div style={{ paddingBottom: "0.5rem" }}>
-            <div     onClick={toggle}
-                    ref={containerRef}
-                    className={cn("custom-container", {
-                        open: isOpen,
-                        closed: !isOpen
-                    })}
-                    style={{
-                        //height:  isOpen ? '20vh' : '10vh',
-                        //minHeight: isOpen ? outerHeight.current-20 : CLOSED_HEIGHT-10,
-                        //maxHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT
-                        minHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT
-                    }}>
+            <div onClick={toggle}
+                ref={containerRef}
+                className={cn("custom-container", {
+                    open: isOpen,
+                    closed: !isOpen
+                })}
+                style={{
+                    //height:  isOpen ? '20vh' : '10vh',
+                    //minHeight: isOpen ? outerHeight.current-20 : CLOSED_HEIGHT-10,
+                    //maxHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT
+                    minHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT
+                }}>
                 <div
-                    
-                >
-                <div className='exercise-card'>
-                
-                    <div className='exercise-card__left-container'>
-                    <FiChevronDown size={28} className={`exercise-card__chevron  exercise-card__chevron${isOpen ? "__open" : "__closed"}`} />
-                        <div className='exercise-card__exercise-name'>
-                            {exercise_name}
 
+                >
+                    <div className='exercise-card'>
+
+                        <div className='exercise-card__left-container'>
+                        <FiChevronDown size={28} className={`exercise-card__chevron  exercise-card__chevron${isOpen ? "__open" : "__closed"}`} />
+                            <div className='exercise-card__exercise-name'>
+                                {exercise_name}
+
+
+                            </div>
 
                         </div>
 
+                        <div className='exercise-card__right-container' onClick={handleIconClick}>
+                            
+                            <IoReload size={28} className='exercise-card__reload' />
+                            <IoTrashOutline size={28} className='exercise-card__trash' />
+                        </div>
+
+
                     </div>
+                    <div className='additional-info'>
 
-                    <div className='exercise-card__right-container' onClick={handleIconClick}>
-                        <IoReload size={28} className='exercise-card__reload' />
-                        <IoTrashOutline size={28} className='exercise-card__trash' />
+                        <div> Duration: {duration}s per set</div>
+
+                        <br />
+                        <div> Sets: {sets} </div>
+                        <br/>
+                        <div> Total Duration: {sets*duration}s</div>
+
+
                     </div>
-
-
                 </div>
-                </div>
-                <div className='additional-info'>
 
-                    <span> Duration: {duration}s per set</span>
-                    <br />
-                    
-                    {/*<span> Intensity: {intensity} </span>*/}
-
-
-                </div>
             </div>
         </div>
     );
