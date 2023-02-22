@@ -6,10 +6,11 @@ import {BsArrowCounterclockwise} from 'react-icons/bs';
 import './ExerciseCard.scss';
 import cn from "classnames";
 import { useRef } from 'react';
+import {BsChevronRight} from 'react-icons/bs';
 
 
 const CLOSED_HEIGHT = 50;
-const OPENED_HEIGHT = 110;
+const OPENED_HEIGHT = 115;
 
 export default function ExerciseCard({ exercise_name, duration, sets, time }) {
     const [isOpen, setOPen] = useState(false);
@@ -49,7 +50,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time }) {
                     <div className='exercise-card'>
 
                         <div className='exercise-card__left-container'>
-                        <FiChevronDown size={28} className='exercise-card__chevron' /*{`exercise-card__chevron  exercise-card__chevron${isOpen ? "__open" : "__closed"}`}*//> 
+                        <BsChevronRight size={28} className={`exercise-card__chevron  exercise-card__chevron${isOpen ? "__open" : "__closed"}`}/> 
                             <div className='exercise-card__exercise-name'>
                                 {exercise_name}
 

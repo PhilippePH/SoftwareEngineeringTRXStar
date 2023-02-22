@@ -75,14 +75,14 @@
     }
 
     &__chevron {
-        position: relative;
+        stroke-width: 0.5;
         padding-right: 5px;
-        //transition: transform var(--transition);
+        transition: transform var(--transition);
 
-        /*&__open {
-            transform: rotate(180deg);
+        &__open {
+            transform: rotate(90deg);
             //transition: var(--transition);
-        }*/
+        }
 
 
     }
@@ -91,7 +91,7 @@
 .additional-info {
     display: flex;
     font-size:x-small;
-    height: 50px;
+    height: 55px;
     flex-direction: row;
     //text-align: left;
     border-top: 2px black solid;
