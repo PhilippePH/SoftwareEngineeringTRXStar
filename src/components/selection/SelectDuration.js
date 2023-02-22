@@ -39,7 +39,7 @@ const SelectDuration = () => {
     return (
         <>
         <div className="category-div">
-            DURATION
+            Duration
         </div>
         <div className="selection-container">
             <div className="left-arrow-div">

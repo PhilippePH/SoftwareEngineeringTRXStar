@@ -54,8 +54,7 @@ const SelectMuscleGroups = () => {
             show={show}
             unshow={handleClose}/>
         <div className="category-div">
-            PLEASE SELECT AT LEAST 
-            ONE MUSCLE GROUP
+            Muscle Group(s)
         </div>
         <div className="selection-container">
             <div className="left-arrow-div">
