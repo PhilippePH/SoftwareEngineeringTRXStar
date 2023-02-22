@@ -21,6 +21,7 @@ const SelectMuscleGroups = () => {
 
     const [width, setWidth] = useState(window.innerWidth);
     const dispatch = useDispatch();
+    const completed = useSelector((state) => (state.select.muscleGroups));
     const direction = useSelector((state) => (state.select.navDirection));
     const muscleGroupKey = {
         "Core": "absCore",
@@ -87,7 +88,7 @@ const SelectMuscleGroups = () => {
                 />
             </div>
             <div className="right-arrow-div">
-                <NavButtons next="/playlist"/>
+                {completed.length!=0 && <NavButtons next="/playlist"/>}
             </div>
         </div>
         </>
