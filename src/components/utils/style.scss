@@ -1,10 +1,17 @@
 
 @media (hover: hover) {
     .button-unselected:hover {
-    background: #FFE600;
+    background: #eed600;
     }
     .multi-button-unselected:hover {
-    background: #FFE600;
+    background: #eed600;
+    }
+
+    .button-selected:hover {
+        background: #eed600;
+    }
+    .multi-button-selected:hover {
+        background: #eed600;
     }
     
 }

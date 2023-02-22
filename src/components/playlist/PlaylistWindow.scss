@@ -25,6 +25,12 @@
     // for above see: https://stackoverflow.com/questions/9811465/scrollable-div-inside-container
     }
 
+    @media (min-width: 450px) {
+        &__container {
+            width: 70vw;
+        }
+    }
+
 }
 
 .workout-heading{
