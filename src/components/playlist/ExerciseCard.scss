@@ -77,7 +77,7 @@
     &__chevron {
         position: relative;
         padding-right: 5px;
-        transition: transform var(--transition);
+        //transition: transform var(--transition);
 
         /*&__open {
             transform: rotate(180deg);
@@ -90,7 +90,7 @@
 
 .additional-info {
     display: flex;
-    font-size: small;
+    font-size:x-small;
     height: 50px;
     flex-direction: row;
     //text-align: left;
@@ -98,6 +98,13 @@
     padding-inline: 5px;
     align-items:center;
     background-color: white;
+    
+}
+@media (min-width: 370px) {
+    .additional-info {
+
+        font-size: small;
+    }
 }
 
 .info-container {
