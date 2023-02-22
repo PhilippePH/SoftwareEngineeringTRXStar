@@ -25,6 +25,10 @@ const SelectProgress = () => {
         "Easy": TbAntennaBars3, 
         "Medium": TbAntennaBars4, 
         "Hard": TbAntennaBars5,
+        "Core": "C",
+        "Lower Body":"L",
+        "Upper Body":"U",
+
         
     };
 
@@ -89,7 +93,18 @@ const SelectProgress = () => {
                 </div>
                 <div className={activeTab==MUSCLE_GROUPS?"active-tab":"inactive-tab"}
                     onClick ={() => {selectedMuscleGroup.length!=0 && clickHandler(MUSCLE_GROUPS)}}
-                     >
+                     > 
+                     <div className="muscleGroup-bar">
+                        {
+                        selectedMuscleGroup?.map((muscleGroup) => {
+                            return (
+                                <div className = "muscleGroup-bar-text">
+                                    {optionIcons[muscleGroup]}
+                                </div>
+                            )
+    
+                        })}
+                    </div>
                 </div>
                 {/* <div className={activeTab==MUSCLES?"active-tab":"inactive-tab"}/> */}
             </div>

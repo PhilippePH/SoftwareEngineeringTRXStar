@@ -28,7 +28,7 @@ const SelectDifficulty = () => {
     return (
         <>
         <div className="category-div">
-            DIFFICULTY
+            Difficulty
         </div>
         <div className="selection-container">
             <div className="left-arrow-div"></div>

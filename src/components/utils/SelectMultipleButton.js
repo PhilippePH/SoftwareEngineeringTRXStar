@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setMuscleGroups, setMuscles } from "../../redux/slices/selectSlice";
 import { MUSCLES, MUSCLE_GROUPS } from "./constants";
+import {TiTick} from "react-icons/ti"
 import './style.scss';
 
 // const selectedStyle = {
@@ -59,11 +60,20 @@ const SelectMultipleButton = ({type, option, width, height, fontSize}) => {
     return (
         <button className= {selected? "multi-button-selected":"multi-button-unselected"}
             onClick={() => clickHandler(type)}
+            style={{ display: "flex", textAlign:"center" }}
             // style={{backgroundColor: selected? "":"whitesmoke"}}
             >
-            <p className="button-text">
-                {option}
-            </p>
+            <div className= "button-text-wrapper">
+                <div className="tick-wrapper"/>
+                <div className="multi-button-text">
+                    {option}
+                </div>
+                <div className = "tick-wrapper">
+                    {selected && <TiTick className = "tick-icon"/>}
+                </div>
+                
+            </div>
+           
         </button>
     )
 }

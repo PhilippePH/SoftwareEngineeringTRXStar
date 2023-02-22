@@ -34,7 +34,7 @@ const SelectFocus = () => {
     return (
         <>
         <div className="category-div"> 
-            FOCUS
+            Focus
         </div>
         <div className='selection-container'>
             <div className="left-arrow-div">

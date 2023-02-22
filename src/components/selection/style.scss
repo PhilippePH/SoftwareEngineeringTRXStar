@@ -163,3 +163,18 @@ to {
 .icon {
     color: black;
 }
+
+.muscleGroup-bar {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    padding:10%;
+}
+
+
+.muscleGroup-bar-text {
+    @include font;
+    font-size: 15px;
+    text-align: center;
+    margin-inline: 5%;
+}
