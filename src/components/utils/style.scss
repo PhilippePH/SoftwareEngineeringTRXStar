@@ -94,6 +94,7 @@
 }
 
 .multi-button-selected {
+    display:flex;
     justify-content: center;
     align-items:center;
     background-color:#FFE600;
@@ -109,6 +110,39 @@
     border-radius: 8px;
 }
 
+.button-text-wrapper {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.tick-wrapper {
+    display: flex;
+    width:20%;
+    align-items: center;
+    justify-content: center;
+}
+
+.tick-icon {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-size: 25px;
+    margin-right: 2%;
+}
+
+.multi-button-text {
+    display:inline-block;
+    vertical-align: middle;
+    width:80%;
+    margin: 10px;
+    font-size: 18px;
+    @include font;
+    text-transform: capitalize
+
+}
 .small-button {
     display:flex;
     justify-content: center;
