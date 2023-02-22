@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
-import { IoReload } from 'react-icons/io5';
-import { IoTrashOutline } from 'react-icons/io5';
+import { BsTrash } from 'react-icons/bs';
+import { BsHourglassSplit } from 'react-icons/bs';
+import {BsArrowCounterclockwise} from 'react-icons/bs';
 import './ExerciseCard.scss';
 import cn from "classnames";
 import { useRef } from 'react';
 
-const CLOSED_HEIGHT = 50;
-const OPENED_HEIGHT = 120;
 
-export default function ExerciseCard({ exercise_name, duration, sets, intensity }) {
+const CLOSED_HEIGHT = 50;
+const OPENED_HEIGHT = 110;
+
+export default function ExerciseCard({ exercise_name, duration, sets, time }) {
     const [isOpen, setOPen] = useState(false);
     const outerHeight = useRef(CLOSED_HEIGHT);
     const containerRef = useRef(null);
-
+    var remaining_secs = (sets*duration+(time*(sets-1)))%60;
 
     const toggle = () => {
         if (!isOpen) {
@@ -58,17 +60,17 @@ export default function ExerciseCard({ exercise_name, duration, sets, intensity 
 
                         <div className='exercise-card__right-container' >
                             
-                            <IoReload size={28} className='exercise-card__reload' onClick={handleIconClick}/>
-                            <IoTrashOutline size={28} className='exercise-card__trash' onClick={handleIconClick}/>
+                            <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleIconClick}/>
+                            <BsTrash size={28} className='exercise-card__trash' onClick={handleIconClick}/>
                         </div>
 
 
                     </div>
                     <div className='additional-info'>
 
-                        <div> Duration: {duration}s per set</div>
-                        <div> Sets: {sets} </div>
-                        <div> Total Duration: {sets*duration}s</div>
+                        <div className='info-container'> Duration: {duration}s per set</div>
+                        <div className='info-container'> Sets: {sets} </div>
+                        <div className='info-container'> {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs<10?'0':''}{remaining_secs} <BsHourglassSplit size={28}/></div>
 
 
                     </div>

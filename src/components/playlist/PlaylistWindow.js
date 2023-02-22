@@ -72,7 +72,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                             {playlist.map((work, index) => {
                                 if (index + 1 < playlist.length && playlist[index + 1].type == "rest") {
                                     return (<ExerciseCard exercise_name={playlist[index].exercise_name} 
-                                        duration={playlist[index].time} sets={playlist[index].sets} intensity={playlist[index].intensity}/>)
+                                        duration={playlist[index].time} sets={playlist[index].sets} time={playlist[index].rest_set}/>)
                                 }
 
 
@@ -81,7 +81,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                                     return (
                                         <div>
                                             <ExerciseCard exercise_name={playlist[index].exercise_name}  duration={playlist[index].time} 
-                                            sets={playlist[index].sets} intensity={playlist[index].intensity} />
+                                            sets={playlist[index].sets}  time={playlist[index].rest_set}/>
                                             <RestCard time={playlist[index].rest_set} />
                                         </div>
 
@@ -91,11 +91,11 @@ const PlaylistWindow = ({ indexedDB }) => {
                                 else if (playlist[index].type == "warmup")
                                     return (
 
-                                        <ExerciseCard exercise_name='Warmup'  duration={playlist[index].time} sets ='1' intensity='N/A'/>
+                                        <ExerciseCard exercise_name='Warmup'  duration={playlist[index].time} sets ='1' time='300'/>
                                     )
                                 else if (playlist[index].type == "cooldown")
                                     return (
-                                        <ExerciseCard exercise_name='Cooldown'  duration={playlist[index].time} sets ='1' intensity='N/A'/>
+                                        <ExerciseCard exercise_name='Cooldown'  duration={playlist[index].time} sets ='1' time='300'/>
                                     )
                                 else
                                     return (
@@ -116,19 +116,19 @@ const PlaylistWindow = ({ indexedDB }) => {
                     justifyContent: "center",
                     paddingTop: "2%",
                     alignItems: "center",
-                    gap: '25%',
+                    gap: '20%',
                 }}>
                 <TfiReload
                     style={{
                         // borderRadius: "8px"
-                        fontSize: "50px",
+                        fontSize: "40px",
                         cursor: "pointer"
                     }}
                     onClick={handleIncreaseVersion} />
                 <FaPlay
                     style={{
                         // borderRadius: "8px"
-                        fontSize: "50px",
+                        fontSize: "40px",
                         cursor: "pointer"
                     }}
                     onClick={() => { navigate("/youtube") }}
