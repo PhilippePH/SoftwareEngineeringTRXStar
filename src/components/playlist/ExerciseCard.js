@@ -7,16 +7,19 @@ import './ExerciseCard.scss';
 import cn from "classnames";
 import { useRef } from 'react';
 import {BsChevronRight} from 'react-icons/bs';
+import RestCard from './RestCard';
 
 
 const CLOSED_HEIGHT = 50;
 const OPENED_HEIGHT = 115;
 
-export default function ExerciseCard({ exercise_name, duration, sets, time }) {
+export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time }) {
     const [isOpen, setOPen] = useState(false);
     const outerHeight = useRef(CLOSED_HEIGHT);
     const containerRef = useRef(null);
     var remaining_secs = (sets*duration+(time*(sets-1)))%60;
+    const [key, setKey] = useState(0);
+    const [isLoading, setIsLoading] = useState(false);
 
     const toggle = () => {
         if (!isOpen) {
@@ -25,12 +28,21 @@ export default function ExerciseCard({ exercise_name, duration, sets, time }) {
         setOPen(!isOpen);
     };
 
-    const handleIconClick = (event) => {
+    const handleRemoveDiv = () => {
+        const divToRemove = document.getElementById(exercise_name);
+        divToRemove.remove();
+      };
+
+    const handleReplace = (event) => {
         // Handle icon click event
+        setIsLoading(true);
         event.stopPropagation();
     }
 
+
     return (
+        <div
+        id = {exercise_name}>
         <div style={{ paddingBottom: "0.5rem" }}>
             <div onClick={toggle}
                 ref={containerRef}
@@ -47,7 +59,8 @@ export default function ExerciseCard({ exercise_name, duration, sets, time }) {
                 <div
 
                 >
-                    <div className='exercise-card'>
+                    <div
+                    className='exercise-card'>
 
                         <div className='exercise-card__left-container'>
                         <BsChevronRight size={28} className={`exercise-card__chevron  exercise-card__chevron${isOpen ? "__open" : "__closed"}`}/> 
@@ -61,8 +74,8 @@ export default function ExerciseCard({ exercise_name, duration, sets, time }) {
 
                         <div className='exercise-card__right-container' >
                             
-                            <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleIconClick}/>
-                            <BsTrash size={28} className='exercise-card__trash' onClick={handleIconClick}/>
+                            <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace}/>
+                            <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv}/>
                         </div>
 
 
@@ -78,6 +91,10 @@ export default function ExerciseCard({ exercise_name, duration, sets, time }) {
                 </div>
 
             </div>
+            
         </div>
+        {rest_time > 0 && <RestCard time={rest_time} />}
+        </div>
+
     );
 }
