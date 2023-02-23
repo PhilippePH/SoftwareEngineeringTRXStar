@@ -42,8 +42,8 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
         event.stopPropagation();
         let clip = getClip(indexedDB, "exercise", 40, 1).then(
             async function(clip){
-        var video_of_clip = filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1);
-
+        var video_of_clip = filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1).then(
+            async function(video_of_clip){
         var clip_formatted = {
             "type": "exercise",
             "exercise_name": clip.exercise_name,
@@ -51,14 +51,15 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
             "sets": sets,
             "rest_set": rest_time,
             "intensity": 1,
-            "URL": video_of_clip.URL,
+            "URL": video_of_clip[0].URL,
             "start_time": clip.start_time,
             "end_time":clip.end_time
         }
     
         store.dispatch(inputToPlaylist([clip_formatted, ind]))
     })
-    }
+    })
+}
 
 
     return (
