@@ -39,6 +39,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
       };
 
     const handleReplace = (event) => {
+        event.stopPropagation();
         let clip = getClip(indexedDB, "exercise", 40, 1).then(
             async function(clip){
         var video_of_clip = filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1);
@@ -56,7 +57,6 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
         }
     
         store.dispatch(inputToPlaylist([clip_formatted, ind]))
-        event.stopPropagation();
     })
     }
 
