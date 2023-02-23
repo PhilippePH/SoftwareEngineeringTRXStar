@@ -4,6 +4,8 @@ import SelectMultipleButton from "../utils/SelectMultipleButton";
 import './style.scss'
 import { useSelector } from "react-redux";
 import { MUSCLES } from "../utils/constants";
+import { useEffect, useState } from 'react';
+import { useLinkClickHandler } from 'react-router-dom';
 
 
 const MusclesModal = ({show, unshow}) => {
@@ -15,6 +17,24 @@ const MusclesModal = ({show, unshow}) => {
         "Upper Body": ["lats", "back", "shoulders", "chest", "biceps", "triceps"]
     };
 
+    const [selected, setSelected] = useState(false);
+    const muscles = useSelector((state) => (state.select.muscles));
+
+    useEffect(() => {
+        if (muscles.length != 0) {
+            setSelected(true);
+        }
+        else {
+            setSelected(false);
+        }
+    }, [muscles])
+
+    const clickHandler = () => {
+        if (selected) {
+            unshow();
+        }
+    }
+
     return (
         <Modal
             show={show}
@@ -22,7 +42,6 @@ const MusclesModal = ({show, unshow}) => {
             backdrop="static"
             keyboard={false}
             scrollable={true}
-            // contentClassName="modal-height"
             centered>
             <Modal.Header>
                 <Modal.Title
@@ -52,9 +71,9 @@ const MusclesModal = ({show, unshow}) => {
             </Modal.Body>
             <Modal.Footer>
                 <button
-                    onClick={unshow}
-                    className="save-button"
-                    >
+                    onClick={() => clickHandler()}
+                    style = {{color: !selected? "darkgray":""}}
+                    className="small-button">
                     Save
                 </button>
             </Modal.Footer>

@@ -106,7 +106,7 @@
     display:flex;
     justify-content: center;
     align-items:center;
-    background-color: #FFE600;
+    background-color: lightgray;
     width: 25vw;
     min-width: 110px;
     max-width: 150px;
@@ -116,8 +116,9 @@
     text-align: center;
     cursor: pointer;
     border: 2px solid black;
-    border-radius: 8px;
+    border-radius: 20px;
     @include font;
+    font-weight: 600;
     font-size: 18px
 }
 
