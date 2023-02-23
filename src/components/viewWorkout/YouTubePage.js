@@ -27,9 +27,9 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
     navigate(`/end`);
 }
 
-  const opts = {
-    height: width * 9 / 16 * 0.5,
-    width: width * 0.5,
+const opts = {
+    width: '100%', // so that it takes the whole size of the container
+    height: 0.5625 * width,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
@@ -37,22 +37,22 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
       end: exerciseData.endTime,
     },
   };
+
+
     
       return (
         <>
         <div className='container-youtube'>
-        <div className="message1">
-          </div>
-        <div className="message1">
+        <div className='container-youtube__container-settings'>
+        <div className="container-youtube__message1">
           {exerciseData.exerciseName}
                 </div>
           <div
-            align="center"
-            className="video">
-            <YouTube videoId={exerciseData.videoId} opts={opts} onEnd={nextVideo}/>
+            className="container-youtube__wrap">
+            <YouTube className="container-youtube__iFrameYoutube" videoId={exerciseData.videoId} opts={opts} onEnd={nextVideo}></YouTube>
           </div>  
           <div
-            className="div-button">
+            className="container-youtube__div-button">
           <BasicButton
             option={"Next exercise"}
             next={nextVideo}
@@ -60,10 +60,11 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
           />
               <button
                 onClick={() => clickHandler()}
-                className="button"
+                className="container-youtube__button"
               >
                 End Workout
               </button>
+            </div>
             </div>
           </div>
         </>
