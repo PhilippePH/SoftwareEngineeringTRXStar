@@ -81,8 +81,8 @@ const PlaylistWindow = ({ indexedDB }) => {
                                     return (
                                         <div>
                                             <ExerciseCard exercise_name={playlist[index].exercise_name}  duration={playlist[index].time} 
-                                            sets={playlist[index].sets}  time={playlist[index].rest_set}/>
-                                            <RestCard time={playlist[index].rest_set} />
+                                            sets={playlist[index].sets}  time={playlist[index].rest_set} rest_time= {playlist[index].rest_set} />
+                
                                         </div>
 
 
@@ -101,6 +101,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                                     return (
                                         <RestCard time={playlist[index].time} />
                                     );
+                                    
 
                             })}
 
