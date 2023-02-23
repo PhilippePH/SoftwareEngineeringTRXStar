@@ -27,9 +27,21 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
     navigate(`/end`);
 }
 
+let be_width_plz = 0; 
+function check_width() {
+    if(document.documentElement.clientWidth > 1000) { be_width_plz = 1000}
+    else {be_width_plz = width}
+}
+window.onresize = check_width();
+//window.addEventListener('resize', function(){
+// })
+
+// maybe pass in a width parameter of the div??
+// https://www.codespeedy.com/retrieve-the-width-of-div-element-in-javascript/
+// https://www.w3schools.com/jsref/dom_obj_var.asp 
 const opts = {
     width: '100%', // so that it takes the whole size of the container
-    height: 0.5625 * width,
+    height: be_width_plz * 9 / 16 ,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
@@ -43,16 +55,17 @@ const opts = {
       return (
         <>
         <div className='container-youtube'>
-        <div className='container-youtube__container-settings'>
-        <div className="container-youtube__message1">
+        <div className='container-settings' id="divId">
+        <div className="container-settings__message1">
           {exerciseData.exerciseName}
                 </div>
+                
           <div
-            className="container-youtube__wrap">
-            <YouTube className="container-youtube__iFrameYoutube" videoId={exerciseData.videoId} opts={opts} onEnd={nextVideo}></YouTube>
+            className="container-settings__wrap">
+            <YouTube className="container-settings__iFrameYoutube" videoId={exerciseData.videoId} opts={opts} onEnd={nextVideo}></YouTube>
           </div>  
           <div
-            className="container-youtube__div-button">
+            className="container-settings__div-button">
           <BasicButton
             option={"Next exercise"}
             next={nextVideo}
@@ -60,7 +73,7 @@ const opts = {
           />
               <button
                 onClick={() => clickHandler()}
-                className="container-youtube__button"
+                className="container-settings__button"
               >
                 End Workout
               </button>
@@ -72,5 +85,7 @@ const opts = {
       );
       
 }
+
+
 
 export default YouTubePage;

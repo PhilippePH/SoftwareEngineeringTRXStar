@@ -1,9 +1,13 @@
 @import '../../sassStyles/_mixins.scss';
 
 .container-youtube {
-    &__container-settings{
+    display:grid;
+    place-items: center;
+}
+
+.container-settings{
     display: flex;
-    flex: 6;
+    // flex: 6;
     flex-flow: column nowrap; // creates the vertical component
     // justify-content: space-between;
     // justify-content: center;
@@ -11,25 +15,6 @@
     align-items: center; // keeps the button centerd
     width: 100vw;
     height: 90vh; // Can't do 100vh because of menu bar at the top. 
-    }
-
-
-    @media (min-width: 650px) and (max-width: 799px) {
-        &__container-settings {
-            width: 90vw;
-        }
-    }
-    @media (min-width: 800px) { // make the youtube player small if the screen is particularily large
-        &__container-settings {
-            width: 80vw;
-        }
-    }
-
-    @media (min-width: 1000px) { // make the youtube player small if the screen is particularily large
-        &__container-settings {
-            width: 70vw;
-        }
-    }
 
     &__message1 {
         color: black;
@@ -38,7 +23,7 @@
         // text-align: center;
         // align-items: flex-end;
         // justify-content: center;
-        flex: 1; // adds some space between player and title
+        // flex: 1; // adds some space between player and title
         font-size: 40px;
         text-transform: capitalize; // adds uppercases letter
         }
@@ -48,8 +33,9 @@
         flex-direction: row; // makes the two buttons be side by side
         justify-content: space-between; // makes the two buttons be side by side
         // align-items: center;
-        flex: 4; // makes it be right after the player, rather than at the bottom of the page
-        width: 75% // makes the button further apart when you have a wider screen
+        // flex: 4; // makes it be right after the player, rather than at the bottom of the page
+        width: 75%; // makes the button further apart when you have a wider screen
+        bottom: 0%
     }
 
     &__button {
@@ -77,14 +63,14 @@
 
 
  &__wrap{
-    flex: 3;
+    flex: 1;
     position: relative;
     align-items:center;
     justify-content: center;
 
     width: 100%; // this makes it take the whole width of the container
     // height: 0;
-    // padding-bottom: 56.25%;
+    //padding-bottom: 56.25%;
     }
 
     &__iFrameYoutube{
@@ -95,6 +81,22 @@
     width:100%; // this makes it responsive to the width of wrap
     align-items:center;
     justify-content: center;
+    }
+}
 
+@media (min-width: 650px) and (max-width: 799px) {
+    .container-settings {
+        width: 90vw;
+    }
+}
+@media (min-width: 800px) { // make the youtube player small if the screen is particularily large
+    .container-settings {
+        width: 80vw;
+    }
+}
+
+@media (min-width: 1000px) { // make the youtube player small if the screen is particularily large
+    .container-settings {
+        width: 70vw;
     }
 }
