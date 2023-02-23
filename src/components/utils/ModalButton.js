@@ -10,9 +10,7 @@ const ModalButton = ({showModal, text}) => {
 
     const [selected, setSelected] = useState(false);
 
-    const {
-        muscleGroups
-    } = useSelector((state) => (state.select))
+    const muscleGroups = useSelector((state) => (state.select.muscleGroups))
 
 
     useEffect(() => {
@@ -33,7 +31,7 @@ const ModalButton = ({showModal, text}) => {
     return (
         <button 
             className="small-button"
-            style={{backgroundColor: selected? "":"whitesmoke"}}
+            style={{color: selected? "black":"darkgray"}}
             onClick={()=>clickHandler()}>
             {text}
         </button>
