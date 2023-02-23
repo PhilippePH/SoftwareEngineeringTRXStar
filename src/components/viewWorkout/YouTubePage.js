@@ -29,7 +29,10 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
 
 let be_width_plz = 0; 
 function check_width() {
-    if(document.documentElement.clientWidth > 1000) { be_width_plz = 1000}
+    let w = document.documentElement.clientWidth;
+    if(w > 1000) { be_width_plz = 0.7 * w}
+    else if(w > 800) { be_width_plz = 0.8 * w}
+    else if(w > 650) { be_width_plz = 0.9 * w}
     else {be_width_plz = width}
 }
 window.onresize = check_width();
