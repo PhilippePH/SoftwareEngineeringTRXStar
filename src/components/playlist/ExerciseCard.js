@@ -8,12 +8,16 @@ import cn from "classnames";
 import { useRef } from 'react';
 import {BsChevronRight} from 'react-icons/bs';
 import RestCard from './RestCard';
+import { getClip } from '../../scripts/algorithm';
+import { inputToPlaylist } from "../../redux/slices/playlistSlice.js"
+import { store } from "../../redux/store"
+import playlistToClipList from '../../scripts/playlistToClipList';
 
 
 const CLOSED_HEIGHT = 50;
 const OPENED_HEIGHT = 115;
 
-export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time }) {
+export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time, ind }) {
     const [isOpen, setOPen] = useState(false);
     const outerHeight = useRef(CLOSED_HEIGHT);
     const containerRef = useRef(null);
@@ -29,20 +33,22 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     };
 
     const handleRemoveDiv = () => {
-        const divToRemove = document.getElementById(exercise_name);
+        const divToRemove = document.getElementById(ind);
         divToRemove.remove();
       };
 
     const handleReplace = (event) => {
-        // Handle icon click event
-        setIsLoading(true);
+        //let clip = getClip(indexedDB, "exercise", 40, 1)
+        //.then(async function(clip) {console.log("Clips", clip);
+        //let clip_formatted = playlistToClipList([clip])
+        //store.dispatch(inputToPlaylist([clip_formatted, ind])) })
         event.stopPropagation();
     }
 
 
     return (
         <div
-        id = {exercise_name}>
+        id = {ind}>
         <div style={{ paddingBottom: "0.5rem" }}>
             <div onClick={toggle}
                 ref={containerRef}

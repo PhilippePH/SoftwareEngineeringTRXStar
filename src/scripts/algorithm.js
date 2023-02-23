@@ -141,7 +141,7 @@ export async function fillStructure(structure, indexedDB) {
 
 
 
-async function getClip(indexedDB, type, time, intensity) {
+export async function getClip(indexedDB, type, time, intensity) {
 
     switch (type) {
     
