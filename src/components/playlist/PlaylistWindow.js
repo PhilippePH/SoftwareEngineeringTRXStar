@@ -72,7 +72,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                             {playlist.map((work, index) => {
                                 if (index + 1 < playlist.length && playlist[index + 1].type == "rest") {
                                     return (<ExerciseCard exercise_name={playlist[index].exercise_name} 
-                                        duration={playlist[index].time} sets={playlist[index].sets} time={playlist[index].rest_set} rest_time= {playlist[index].rest_set} ind = {index}/>)
+                                        duration={playlist[index].time} sets={playlist[index].sets} time={playlist[index].rest_set} ind = {index}/>)
                                 }
 
 
@@ -82,7 +82,6 @@ const PlaylistWindow = ({ indexedDB }) => {
                                         <div>
                                             <ExerciseCard exercise_name={playlist[index].exercise_name}  duration={playlist[index].time} 
                                             sets={playlist[index].sets}  time={playlist[index].rest_set} rest_time= {playlist[index].rest_set} ind = {index} />
-                
                                         </div>
 
 

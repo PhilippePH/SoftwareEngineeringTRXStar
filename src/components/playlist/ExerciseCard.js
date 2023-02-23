@@ -95,7 +95,8 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
                         <div className='exercise-card__right-container' >
                             
-                            <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace}/>
+                            
+                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace}/> }
                             <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv}/>
                         </div>
 
