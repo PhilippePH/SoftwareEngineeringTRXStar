@@ -97,11 +97,11 @@ const PlaylistWindow = ({ indexedDB }) => {
                                     return (
                                         <ExerciseCard exercise_name='Cooldown'  duration={playlist[index].time} sets ='1' time='300'/>
                                     )
-                                /*else
+                                else
                                     return (
                                         <RestCard time={playlist[index].time} />
                                     );
-                                    */
+                                    
 
                             })}
 
