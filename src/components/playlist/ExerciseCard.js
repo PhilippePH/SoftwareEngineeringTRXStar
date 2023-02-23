@@ -12,6 +12,7 @@ import { getClip } from '../../scripts/algorithm';
 import { inputToPlaylist } from "../../redux/slices/playlistSlice.js"
 import { store } from "../../redux/store"
 import playlistToClipList from '../../scripts/playlistToClipList';
+import { filterOnKey } from '../../scripts/algorithm';
 
 
 const CLOSED_HEIGHT = 50;
@@ -38,11 +39,25 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
       };
 
     const handleReplace = (event) => {
-        //let clip = getClip(indexedDB, "exercise", 40, 1)
-        //.then(async function(clip) {console.log("Clips", clip);
-        //let clip_formatted = playlistToClipList([clip])
-        //store.dispatch(inputToPlaylist([clip_formatted, ind])) })
         event.stopPropagation();
+        let clip = getClip(indexedDB, "exercise", 40, 1).then(
+            async function(clip){
+        var video_of_clip = filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1);
+
+        var clip_formatted = {
+            "type": "exercise",
+            "exercise_name": clip.exercise_name,
+            "time": time,
+            "sets": sets,
+            "rest_set": rest_time,
+            "intensity": 1,
+            "URL": video_of_clip.URL,
+            "start_time": clip.start_time,
+            "end_time":clip.end_time
+        }
+    
+        store.dispatch(inputToPlaylist([clip_formatted, ind]))
+    })
     }
 
 
@@ -80,7 +95,8 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
                         <div className='exercise-card__right-container' >
                             
-                            <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace}/>
+                            
+                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace}/> }
                             <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv}/>
                         </div>
 

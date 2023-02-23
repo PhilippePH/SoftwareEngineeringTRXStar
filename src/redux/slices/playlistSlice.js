@@ -18,7 +18,8 @@ const playlistSlice = createSlice({
       const updatedPlaylistData = [state.playlistData];
       updatedPlaylistData[0][index] = value;
       console.log("updated", updatedPlaylistData)
-      state.playlistData = updatedPlaylistData;
+      state.playlistData = []
+      state.playlistData = updatedPlaylistData[0];
     },
     initialisePlaylist: (state, action) => {
       state.playlistData = action.payload;
