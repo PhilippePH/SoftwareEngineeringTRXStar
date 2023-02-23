@@ -9,7 +9,7 @@ import { useRef } from 'react';
 import {BsChevronRight} from 'react-icons/bs';
 import RestCard from './RestCard';
 import { getClip } from '../../scripts/algorithm';
-import { inputToPlaylist } from "../../redux/slices/playlistSlice.js"
+import { inputToPlaylist, removeFromPlaylist } from "../../redux/slices/playlistSlice.js"
 import { store } from "../../redux/store"
 import playlistToClipList from '../../scripts/playlistToClipList';
 import { filterOnKey } from '../../scripts/algorithm';
@@ -33,9 +33,9 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
         setOPen(!isOpen);
     };
 
-    const handleRemoveDiv = () => {
-        const divToRemove = document.getElementById(ind);
-        divToRemove.remove();
+    const handleRemoveDiv = (event) => {
+        event.stopPropagation();
+        store.dispatch(removeFromPlaylist(ind));
       };
 
     const handleReplace = (event) => {
@@ -63,8 +63,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
 
     return (
-        <div
-        id = {ind}>
+        <div>
         <div style={{ paddingBottom: "0.5rem" }}>
             <div onClick={toggle}
                 ref={containerRef}
