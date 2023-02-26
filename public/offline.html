@@ -30,7 +30,7 @@
   </head>
   <body>
     <h1>You are offline</h1>
-    <img src="https://media.geeksforgeeks.org/wp-content/uploads/geeksforgeeks-6.png" />
+    <img id="logo" />
 
     <p>Click the button below to try reloading.</p>
     <button type="button">⤾ Reload</button>
@@ -65,6 +65,19 @@
         window.setTimeout(checkNetworkAndReload, 2500);
       }
 
+      // Retrieve the logo.png file from the cache and set its URL as the
+      // src attribute of the img tag.
+      async function loadLogoFromCache() {
+        const cache = await caches.open('version-1');
+        const logoResponse = await cache.match('logo.png');
+        if (logoResponse) {
+          const logoUrl = URL.createObjectURL(await logoResponse.blob());
+          const logoImg = document.getElementById('logo');
+          logoImg.src = logoUrl;
+        }
+      }
+
+      loadLogoFromCache();
     //   checkNetworkAndReload();
     </script>
   </body>
