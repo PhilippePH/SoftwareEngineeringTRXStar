@@ -83,6 +83,11 @@
     justify-content: center;
     }
 }
+@media (max-width: 649px){
+    .container-settings {
+        width: 98vw;
+    }
+}
 
 @media (min-width: 650px) and (max-width: 799px) {
     .container-settings {

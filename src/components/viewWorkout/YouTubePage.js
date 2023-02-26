@@ -33,7 +33,7 @@ function check_width() {
     if(w > 1000) { be_width_plz = 0.7 * w}
     else if(w > 800) { be_width_plz = 0.8 * w}
     else if(w > 650) { be_width_plz = 0.9 * w}
-    else {be_width_plz = width}
+    else {be_width_plz = 0.98 * w}
 }
 window.onresize = check_width();
 //window.addEventListener('resize', function(){
