@@ -40,14 +40,14 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
     const handleReplace = (event) => {
         event.stopPropagation();
-        let clip = getClip(indexedDB, "exercise", 40, 1).then(
+        let clip = getClip(indexedDB, "exercise", time, 1).then(
             async function(clip){
         var video_of_clip = filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1).then(
             async function(video_of_clip){
         var clip_formatted = {
             "type": "exercise",
             "exercise_name": clip.exercise_name,
-            "time": time,
+            "time": duration,
             "sets": sets,
             "rest_set": rest_time,
             "intensity": 1,
@@ -57,6 +57,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
         }
     
         store.dispatch(inputToPlaylist([clip_formatted, ind]))
+        console.log("Clip_formatted", clip_formatted); 
     })
     })
 }
