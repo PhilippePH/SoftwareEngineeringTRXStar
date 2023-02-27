@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveTab, setNavDirection } from "../../redux/slices/selectSlice";
 import { useEffect, useState } from "react";
-import { DIFFICULTY, FOCUS } from "../utils/constants";
+import { DIFFICULTY, DURATION } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
 import NavButtons from "../utils/NavButtons";
 import './style.scss'
@@ -43,7 +43,7 @@ const SelectDifficulty = () => {
                             key={option}
                             type={DIFFICULTY}
                             option={option}
-                            to={`/select/${FOCUS}`}
+                            to={`/select/${DURATION}`}
                             selected = {completed} />
 
                     );
@@ -51,7 +51,7 @@ const SelectDifficulty = () => {
             </div>
             <div className="right-arrow-div">
                 {completed && <NavButtons 
-                    next={`/select/${FOCUS}`}/>}
+                    next={`/select/${DURATION}`}/>}
             </div>
         </div>
         </>

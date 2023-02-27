@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { setActiveTab, setFocus } from "../../redux/slices/selectSlice";
 import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
-import { DIFFICULTY, DURATION, FOCUS } from "../utils/constants";
+import { FOCUS, MUSCLE_GROUPS } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
 import './style.scss'
 
@@ -18,7 +18,7 @@ const SelectFocus = () => {
 
     const clickHandler = (option) => {
         dispatch(setFocus(option))
-        navigate(`/select/${DURATION}`);
+        navigate(`/select/${MUSCLE_GROUPS}`);
     }
 
     useEffect(() => {
@@ -38,7 +38,7 @@ const SelectFocus = () => {
         </div>
         <div className='selection-container'>
             <div className="left-arrow-div">
-                <NavButtons prev={`/select/${DIFFICULTY}`}/>
+                <NavButtons prev={`/select/${MUSCLE_GROUPS}`}/>
             </div>
             <div 
                 className="options-div"
@@ -53,7 +53,7 @@ const SelectFocus = () => {
                                 key={option} 
                                 type={FOCUS} 
                                 option={option}
-                                to={`/select/${DURATION}`} 
+                                to={`/select/${MUSCLE_GROUPS}`} 
                                 selected = {completed}
                             />
                         )
@@ -61,7 +61,7 @@ const SelectFocus = () => {
                 }
             </div>
             <div className="right-arrow-div">
-                {completed && <NavButtons next={`/select/${DURATION}`}/>}
+                {completed && <NavButtons next={`/select/${MUSCLE_GROUPS}`}/>}
             </div>
                     
         </div>
@@ -94,7 +94,7 @@ const SelectFocus = () => {
                 style={{width:"200%"}}
                 >
                 <NavButtons
-                    prev={`/select/${DIFFICULTY}`}
+                    prev={`/select/${MUSCLE_GROUPS}`}
                     next={null}
                 />
             </div> */}

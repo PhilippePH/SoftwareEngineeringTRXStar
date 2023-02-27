@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActiveTab, setMuscleGroups } from "../../redux/slices/selectSlice";
 import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
-import { DURATION, MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
+import { DURATION, FOCUS, MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
 import SelectMultipleButton from "../utils/SelectMultipleButton";
 import ModalButton from "../utils/ModalButton"
 import MusclesModal from "./SelectMusclesModal"
@@ -59,7 +59,7 @@ const SelectMuscleGroups = () => {
         </div>
         <div className="selection-container">
             <div className="left-arrow-div">
-                <NavButtons prev={`/select/${DURATION}`}/>
+                <NavButtons prev={`/select/${FOCUS}`}/>
             </div>
             <div 
                 className="options-div"

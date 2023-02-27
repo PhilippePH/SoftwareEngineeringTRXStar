@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { setActiveTab, setDuration } from "../../redux/slices/selectSlice";
 import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
-import { DURATION, FOCUS, MUSCLE_GROUPS } from "../utils/constants";
+import { DURATION, FOCUS, DIFFICULTY} from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
 import './style.scss'
 
@@ -22,7 +22,7 @@ const SelectDuration = () => {
 
     const clickHandler = (option) => {
         dispatch(setDuration(option));
-        navigate(`/select/${MUSCLE_GROUPS}`);
+        navigate(`/select/${FOCUS}`);
     }
 
     useEffect(() => {
@@ -43,7 +43,7 @@ const SelectDuration = () => {
         </div>
         <div className="selection-container">
             <div className="left-arrow-div">
-                <NavButtons prev={`/select/${FOCUS}`}/>
+                <NavButtons prev={`/select/${DIFFICULTY}`}/>
             </div>
             <div 
                 className="options-div"
@@ -58,7 +58,7 @@ const SelectDuration = () => {
                                 key={option} 
                                 type={DURATION} 
                                 option={option} 
-                                to={`/select/${MUSCLE_GROUPS}`}
+                                to={`/select/${FOCUS}`}
                                 selected = {completed}
                             />
                         )
@@ -66,7 +66,7 @@ const SelectDuration = () => {
                 }
             </div>
             <div className="right-arrow-div">
-                {completed && <NavButtons next={`/select/${MUSCLE_GROUPS}`}/>}
+                {completed && <NavButtons next={`/select/${FOCUS}`}/>}
             </div>
         </div>
         </>
@@ -93,7 +93,7 @@ const SelectDuration = () => {
         //                         key={option} 
         //                         type={DURATION} 
         //                         option={option} 
-        //                         to={`/select/${MUSCLE_GROUPS}`}
+        //                         to={`/select/${FOCUS}`}
         //                     />
         //                 )
         //             })
