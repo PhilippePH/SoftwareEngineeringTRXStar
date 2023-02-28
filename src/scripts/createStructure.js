@@ -204,11 +204,11 @@ export async function createStructure(selectedOptions){
         case ("HIIT"):
             var split;
             if (selectedOptions.difficulty == "easy")
-                split = [30, 45];
+                split = [40, 40];
             else if (selectedOptions.difficulty == "medium")
-                split = [30, 30];
+                split = [40, 30];
             else
-                split = [45, 30]
+                split = [40, 20]
 
             var HIITPlaylist = generateHIT(split, selectedOptions.duration);
             //console.log("HIIT Playlist", HIITPlaylist);
