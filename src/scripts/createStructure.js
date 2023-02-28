@@ -48,9 +48,9 @@ function timeConvertor(time)
 }
 
 
-function generateHIT(split, totalTime)
+function generateHIT(split, totalTime, difficulty)
 {
-    var HIITPlaylist= [];
+    var HIITPlaylist= [{"playlist": "HIIT", "difficulty": difficulty}];
 
     // append warmup this is like 5 min
     HIITPlaylist.push(warmupDict); 
@@ -78,14 +78,16 @@ function generateHIT(split, totalTime)
     // append cooldown
     HIITPlaylist.push(cooldownDict);
 
+    console.log("HIIT", HIITPlaylist)
+
     return HIITPlaylist; 
 
 }
 
 
-function generateStrength(totalTime, restPeriod)
+function generateStrength(totalTime, restPeriod, difficulty)
 {
-        var StrengthPlaylist= [];
+        var StrengthPlaylist= [{"playlist": "Strength", "difficulty": difficulty}];
     
         // append warmup this is like 5 min
         StrengthPlaylist.push(warmupDict); 
@@ -121,9 +123,9 @@ function generateStrength(totalTime, restPeriod)
 }
 
 
-function generateEndurance(restPeriod, totalTime){
+function generateEndurance(restPeriod, totalTime, difficulty){
 
-    var EndurancePlaylist= [];
+    var EndurancePlaylist= [{"playlist": "Endurance", "difficulty": difficulty}];;
     
     // append warmup this is like 5 min
     EndurancePlaylist.push(warmupDict); 
@@ -158,13 +160,13 @@ function generateEndurance(restPeriod, totalTime){
 }
 
 
-function generateRecovery(totalTime){
+function generateRecovery(totalTime, difficulty){
 
     // assuming warmup and cooldown workouts are all around 5 minutes
 
     // have 75/25 split of warmup and cooldowns
 
-    var RecoveryPlaylist= [];
+    var RecoveryPlaylist= [{"playlist": "Recovery", "difficulty": difficulty}];;
 
     var numberWarmupClips = Math.floor((3*timeConvertor(totalTime)/4)/300); 
     var numberCooldownClips = Math.floor((1*timeConvertor(totalTime)/4)/300); 
@@ -210,12 +212,12 @@ export async function createStructure(selectedOptions){
             else
                 split = [40, 20]
 
-            var HIITPlaylist = generateHIT(split, selectedOptions.duration);
+            var HIITPlaylist = generateHIT(split, selectedOptions.duration, selectedOptions.difficulty );
             //console.log("HIIT Playlist", HIITPlaylist);
             return HIITPlaylist; 
 
         case ("Recovery"):
-            var RecoveryPlaylist = generateRecovery(selectedOptions.duration); 
+            var RecoveryPlaylist = generateRecovery(selectedOptions.duration, selectedOptions.difficulty); 
             //console.log("Recovery Playlist", RecoveryPlaylist); 
             return RecoveryPlaylist; 
 
@@ -228,7 +230,7 @@ export async function createStructure(selectedOptions){
             else
                 restPeriod = 30; 
 
-            var EndurancePlaylist = generateEndurance(restPeriod, selectedOptions.duration); 
+            var EndurancePlaylist = generateEndurance(restPeriod, selectedOptions.duration, selectedOptions.difficulty); 
             //console.log("Endurance Playlist", EndurancePlaylist);
             return EndurancePlaylist; 
     }

@@ -71,6 +71,9 @@ const PlaylistWindow = ({ indexedDB }) => {
                         <><div className='workout-heading'>WORKOUT {version}</div><div>
                             {playlist.map((work, index) => {
 
+                                if (index == 0)
+                                return; 
+
                                 if (playlist[index].type == "warmup")
                                     return (
 

@@ -7,7 +7,7 @@ function playlistToClipList(playlist) {
     var clipList = [];
 
     // for every element in the playlist array
-    for (var i = 0; i < playlistArray.length; i++) {
+    for (var i = 1; i < playlistArray.length; i++) {
         // if exercise check for rest set
         if (!playlistArray[i].type.localeCompare("exercise")) {
             for (var j = 0; j < playlistArray[i].sets; j++) {

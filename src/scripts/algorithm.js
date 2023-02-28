@@ -106,12 +106,14 @@ export async function fillStructure(structure, indexedDB) {
     //("Before fill", structure)
     var structureCopy = JSON.parse(JSON.stringify(structure));
     // fill each object in workout array
+
+    console.log("Structure copy 1", structureCopy)
     
-    for (let i = 0; i < structureCopy.length; i++) {
+    for (let i = 1; i < structureCopy.length; i++) {
 
         //console.log("Item", structureCopy[i])
         try {
-            var intensity = structureCopy[i].intensity;
+            var intensity = structureCopy[i].intensity; // computeRollingAverageIntensity(structureCopy)
         } catch (e) {
             var intensity = null;
         }
@@ -134,6 +136,8 @@ export async function fillStructure(structure, indexedDB) {
             })
         }
     }
+
+    console.log("Structure copy 2", structureCopy)
 
     //console.log("After fill", structureCopy);
     return structureCopy; 
