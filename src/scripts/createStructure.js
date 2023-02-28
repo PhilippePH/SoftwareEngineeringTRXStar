@@ -12,6 +12,7 @@ var exerciseDict = {
 
 var restDict = {
     "type": "rest",
+    "intensity": 0,
     "time": 30 // default 
 }
 
@@ -20,6 +21,7 @@ var warmupDict = {
     "time": 300,
     "URL": "",
     "start_time": "",
+    "intensity": 0,
     "end_time": ""
 }
 
@@ -29,6 +31,7 @@ var cooldownDict =
     "time": 300,
     "URL": "",
     "start_time": "",
+    "intensity": 0,
     "end_time": ""
 }
 
@@ -50,7 +53,7 @@ function timeConvertor(time)
 
 function generateHIT(split, totalTime, difficulty)
 {
-    var HIITPlaylist= [{"playlist": "HIIT", "difficulty": difficulty}];
+    var HIITPlaylist= [{"playlist": "HIIT", "difficulty": difficulty, "globalIntensity": 2.5}];
 
     // append warmup this is like 5 min
     HIITPlaylist.push(warmupDict); 
@@ -87,7 +90,7 @@ function generateHIT(split, totalTime, difficulty)
 
 function generateStrength(totalTime, restPeriod, difficulty)
 {
-        var StrengthPlaylist= [{"playlist": "Strength", "difficulty": difficulty}];
+        var StrengthPlaylist= [{"playlist": "Strength", "difficulty": difficulty, "globalIntensity": 1.5}];
     
         // append warmup this is like 5 min
         StrengthPlaylist.push(warmupDict); 
@@ -125,7 +128,7 @@ function generateStrength(totalTime, restPeriod, difficulty)
 
 function generateEndurance(restPeriod, totalTime, difficulty){
 
-    var EndurancePlaylist= [{"playlist": "Endurance", "difficulty": difficulty}];;
+    var EndurancePlaylist= [{"playlist": "Endurance", "difficulty": difficulty, "globalIntensity": 1.25}];;
     
     // append warmup this is like 5 min
     EndurancePlaylist.push(warmupDict); 
@@ -166,7 +169,7 @@ function generateRecovery(totalTime, difficulty){
 
     // have 75/25 split of warmup and cooldowns
 
-    var RecoveryPlaylist= [{"playlist": "Recovery", "difficulty": difficulty}];;
+    var RecoveryPlaylist= [{"playlist": "Recovery", "difficulty": difficulty, "globalIntensity": 1.25}];;
 
     var numberWarmupClips = Math.floor((3*timeConvertor(totalTime)/4)/300); 
     var numberCooldownClips = Math.floor((1*timeConvertor(totalTime)/4)/300); 
