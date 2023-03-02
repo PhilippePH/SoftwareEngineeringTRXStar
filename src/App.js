@@ -43,13 +43,13 @@ const createCollectionsInIndexedDB = () => {
     const request = indexedDB.open(schema.name, schema.version);
 
     // error checks before we create schema on database
-    request.onerror = function (event) {
+    request.onerror = function(event) {
         console.error("An error occurred with IndexedDB");
         console.error(event.target.error);
     };
 
     // create schema of database
-    request.onupgradeneeded = function (event) {
+    request.onupgradeneeded = function(event) {
         const db = request.result;
         if (event.oldVersion !== 0) {
             // user had an old version of ExerciseDatabase
@@ -79,7 +79,7 @@ const createCollectionsInIndexedDB = () => {
     };
     
     // handle version changes(adding to database)
-    request.onversionchange = function (event) {
+    request.onversionchange = function(event) {
         versionChangeInProgress = true;
         event.target.close();
     };
@@ -102,7 +102,7 @@ const createCollectionsInIndexedDB = () => {
         console.error(event.target.error);
     };
 
-    filtered.onupgradeneeded = function (event) {
+    filtered.onupgradeneeded = function(event) {
         const db = filtered.result;
         // FilteredDatabase always has version 1, only upgrade if did not have Database
         for (var i = 0; i < schema.tables.length; i++) {
@@ -116,6 +116,24 @@ const createCollectionsInIndexedDB = () => {
     };
 
     filtered.onversionchange = function (event) {
+        versionChangeInProgress = true;
+        event.target.close();
+    };
+
+    // create indexedDB to save playlists
+    const saved = indexedDB.open("SavedPlaylists", 1);
+
+    saved.onerror = function(event) {
+        console.error("An error occurred with IndexedDB");
+        console.error(event.target.error);
+    };
+
+    saved.onupgradeneeded = function(event) {
+        const db = saved.result;
+        var objectStore = db.createObjectStore("playlists", { keyPath: "name" });
+    };
+
+    saved.onversionchange = function (event) {
         versionChangeInProgress = true;
         event.target.close();
     };
@@ -146,7 +164,7 @@ const App = () => {
                 <Route exact path={`/select/${FOCUS}`} element={<SelectPage selectForm={<SelectFocus/>}/>}/>
                 <Route exact path={`/select/${MUSCLES}`} element={<SelectPage selectForm={<SelectMuscles/>}/>}/>
                 <Route path="/youtube"element={<ViewWorkout/>} />
-                <Route path="/end"element={<FinishedWorkout/>} />
+                <Route path="/end"element={<FinishedWorkout indexedDB={indexedDB}/>} />
             </Routes>
         </div>
     );

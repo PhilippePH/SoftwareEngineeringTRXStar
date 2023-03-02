@@ -4,13 +4,15 @@ import { useEffect, useState } from "react";
 import "./FinishedPage.scss"
 //import { GiFinishLine } from "react-icons/gi";
 import bicep from "../../assets/bicep.png";
+import SaveModal from "./SaveModal";
 
-const FinishedWorkout = () => {
+const FinishedWorkout = ({ indexedDB }) => {
+
     const [width, setWidth] = useState(window.innerWidth);
-    // const navigate = useNavigate();
-    // const clickHandler = () => {
-    //     navigate(`/select/${DIFFICULTY}`); // This will add workout to cache
-    // }
+    const [show, setShow] = useState(false);
+    const [ buttonText, setButtonText ] = useState("Save Workout");
+    const handleClose = () => setShow(false);
+
     useEffect(() => { // Resizes the webpage
         const handleResize = () => setWidth(window.innerWidth);
         window.addEventListener('resize', handleResize);
@@ -19,9 +21,14 @@ const FinishedWorkout = () => {
 
     return (
         <div className='finish-page'>
+            <SaveModal
+                show={show}
+                unshow={handleClose}
+                setButtonText={setButtonText}
+                indexedDB={indexedDB}/>
             <ul className='finish-page__container'>
                 <div className='finish-page__congrats-text'>
-                    Good job !
+                    Good Job!
                 </div>
                
                 <img
@@ -34,16 +41,14 @@ const FinishedWorkout = () => {
                     Enjoyed your workout?
                 </div>
 
-                <button className='finish-page__button'
-                    // TO DO -- SAVE TO CACHE
-                    //key={FinishedWorkout} 
-                    //onClick={()=>clickHandler()} // Adds workout to cache
-                    >
+                <button 
+                    className='finish-page__button' 
+                    onClick={() => setShow(true)}>
                     <p className="finish-page__button-text">
-                        Save Workout
+                        {buttonText}
                     </p>
                 </button>
-                </ul>
+            </ul>
         </div>
     )
 }
