@@ -4,6 +4,7 @@ const playlistSlice = createSlice({
   name: 'playlist',
   initialState: {
     playlistData: [],
+    playlistSaved: false
   },
   reducers: {
     addPlaylist: (state, action) => {
@@ -27,15 +28,18 @@ const playlistSlice = createSlice({
       state.playlistData = []
       state.playlistData = updatedPlaylistData[0];
     },
-
     initialisePlaylist: (state, action) => {
       state.playlistData = action.payload;
+      state.playlistSaved = false;
+    },
+    updateSaved: (state, action) => {
+      state.playlistSaved = action.payload;
     }
   }
 });
 
 const { actions, reducer } = playlistSlice;
-const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist } = actions;
+const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved } = actions;
 
 export default reducer;
-export { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist};
+export { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved};

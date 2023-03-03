@@ -3,10 +3,16 @@
 
 .finish-page {
 
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     &__container {
         @include centered-grid;
         place-items: center;
         padding: 0px;
+        margin: 0px;
     }
 
     &__congrats-text {
@@ -61,7 +67,15 @@
         cursor: pointer;
         border: 2px solid black;
         border-radius: 8px;
-        @include centered-grid
+        @include centered-grid;
+
+        &:hover {
+            background-color: #eed600;
+        }
+
+        &:disabled {
+            background-color: $background-colour;
+        }
     }
 
     &__button-text {
@@ -92,4 +106,61 @@
         margin-top: 35px;
         @include font
     }
+}
+
+.save-modal {
+
+    &__container {
+        @include flex-center;
+        flex-direction: column;
+    }
+
+    &__text {
+        @include font;
+        font-weight: 600;
+        font-size: 2rem;
+        margin: 12px 0px;
+    }
+
+    &__input {
+        @include font;
+        font-weight: 400;
+        width: 100%;
+        margin-top: 12px;
+        margin-bottom: 4px;
+        padding: 8px 12px;
+        font-size: 1.2rem;
+        border-radius: 4px;
+
+        &:valid {
+            border: 2px solid black;
+        }
+        &:invalid {
+            border: 2px solid red;
+        }
+
+    }
+
+    &__button {
+        padding: 6px 20px;
+        border-radius: 20px;
+        margin: 12px 0px
+    }
+
+    &__buttontext {
+        @include font;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    &__error {
+        @include font;
+        font-weight: 400;
+        font-size: 1rem;
+        color: red;
+        margin: 0;
+        min-height: 1rem;
+        opacity: 0;
+    }
+    
 }

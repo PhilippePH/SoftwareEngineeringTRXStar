@@ -4,24 +4,32 @@ import { useEffect, useState } from "react";
 import "./FinishedPage.scss"
 //import { GiFinishLine } from "react-icons/gi";
 import bicep from "../../assets/bicep.png";
+import SaveModal from "./SaveModal";
+import { useSelector } from "react-redux";
 
-const FinishedWorkout = () => {
-    const [width, setWidth] = useState(window.innerWidth);
-    // const navigate = useNavigate();
-    // const clickHandler = () => {
-    //     navigate(`/select/${DIFFICULTY}`); // This will add workout to cache
-    // }
-    useEffect(() => { // Resizes the webpage
-        const handleResize = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-      }, []);
+const FinishedWorkout = ({ indexedDB }) => {
+
+    // const [ width, setWidth ] = useState(window.innerWidth);
+    const [ show, setShow ] = useState(false);
+    const handleClose = () => setShow(false);
+
+    const savedState = useSelector((state) => (state.playlist.playlistSaved));
+
+    // useEffect(() => { // Resizes the webpage
+    //     const handleResize = () => setWidth(window.innerWidth);
+    //     window.addEventListener('resize', handleResize);
+    //     return () => window.removeEventListener('resize', handleResize);
+    // }, []);
 
     return (
         <div className='finish-page'>
+            <SaveModal
+                show={show}
+                unshow={handleClose}
+                indexedDB={indexedDB}/>
             <ul className='finish-page__container'>
                 <div className='finish-page__congrats-text'>
-                    Good job !
+                    Good Job!
                 </div>
                
                 <img
@@ -34,16 +42,15 @@ const FinishedWorkout = () => {
                     Enjoyed your workout?
                 </div>
 
-                <button className='finish-page__button'
-                    // TO DO -- SAVE TO CACHE
-                    //key={FinishedWorkout} 
-                    //onClick={()=>clickHandler()} // Adds workout to cache
-                    >
+                <button 
+                    className='finish-page__button' 
+                    onClick={() => setShow(true)}
+                    disabled={savedState}>
                     <p className="finish-page__button-text">
-                        Save Workout
+                        {savedState ? "Saved!" : "Save Workout"}
                     </p>
                 </button>
-                </ul>
+            </ul>
         </div>
     )
 }

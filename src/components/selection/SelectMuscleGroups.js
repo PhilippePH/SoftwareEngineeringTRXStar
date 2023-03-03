@@ -10,9 +10,9 @@ import './style.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const modal = document.querySelector(".modal");
-console.log("Modal", modal)
-const overlay = document.querySelector(".overlay");
+// const modal = document.querySelector(".modal");
+// console.log("Modal", modal)
+// const overlay = document.querySelector(".overlay");
 
 const SelectMuscleGroups = () => {
 
