@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import reducer from './slices/playlistSlice'
+import { persistedPlaylistReducer} from './slices/playlistSlice'
 import selectReducer from './slices/selectSlice'
 import { persistStore, persistReducer } from 'redux-persist';
 import {persistedSelectReducer} from './slices/selectSlice'
@@ -9,7 +9,7 @@ export const store = configureStore({
   reducer: {
     //select: selectReducer,
     select: persistedSelectReducer,
-    playlist: reducer,
+    playlist: persistedPlaylistReducer,
   },
 });
 

@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage';
+import {persistStore, persistReducer} from 'redux-persist'
 
 const playlistSlice = createSlice({
   name: 'playlist',
@@ -38,8 +40,17 @@ const playlistSlice = createSlice({
   }
 });
 
-const { actions, reducer } = playlistSlice;
-const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved } = actions;
+//const { actions, reducer } = playlistSlice;
+export const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved } = playlistSlice.actions;
 
-export default reducer;
-export { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved};
+const playlistPersistConfig = {
+  key: 'playlist',
+  storage: storage,
+  whitelist: ['playlistData', 'playlistSaved']
+};
+
+export const persistedPlaylistReducer = persistReducer(playlistPersistConfig, playlistSlice.reducer);
+
+
+//export default reducer;
+//export { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved};

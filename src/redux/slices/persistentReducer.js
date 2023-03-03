@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 import { persistedSelectReducer } from './selectSlice';
+import { persistedPlaylistReducer } from './playlistSlice';
 
 const persistConfig = {
   key: 'root',
@@ -15,8 +16,13 @@ const persistedSelectConfig = {
 };
 
 
-export const store = configureStore({
-  reducer: persistedSelectReducer,
-});
+const store = configureStore({
+
+  reducer: {
+    select: persistedSelectReducer, 
+    playlist: persistedPlaylistReducer
+  },
+
+})
 
 export const persistor = persistStore(store);
