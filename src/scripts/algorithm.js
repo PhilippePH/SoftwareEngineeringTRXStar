@@ -139,7 +139,7 @@ export function computeRollingAverageIntensity(structureCopy)
         var exerciseIntensity = ((exerciseIntensity < 1) ? 1 : exerciseIntensity);
     }
 
-    //console.log("Average", avg); 
+    //onsole.log("Average", avg); 
     //console.log("Count", count); 
     //console.log("ExerciseIntensity", exerciseIntensity); 
     return exerciseIntensity; 
@@ -169,6 +169,8 @@ export async function fillStructure(structure, indexedDB) {
         if (structureCopy[i].type !== "rest") {
 
             var excluded_exercise = ((i > 1) ? structureCopy[i-1].exercise_name : null);
+
+            //console.log("Structure copy", structureCopy); 
     
             await getClip(indexedDB, structureCopy[i].type, structureCopy[i].time, intensity, excluded_exercise)
             .then(async function(clip) {
@@ -213,29 +215,39 @@ export async function getClip(indexedDB, type, time, intensity, excluded_exercis
             return cooldown_clips[RandInt(0, cooldown_clips.length)]
 
         case "exercise":
-            var valid_exercises = await filterDatabase("exercises", "intensity", intensity, indexedDB, "FilteredDatabase", 1);
+            //console.log("Intensity", intensity); 
             var exercise_clips = []
             var depth = 0; 
             while (exercise_clips.length === 0 && depth<20) {
+
+                var valid_exercises = await filterDatabase("exercises", "intensity", intensity, indexedDB, "FilteredDatabase", 1);
                 var chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)]; 
+                //console.log("Chosen exercise", chosen_exercise)
 
                 //console.log("Chosen exercise", chosen_exercise)
                 //console.log("Excluded exercise", excluded_exercise)
-                while (chosen_exercise.exercise_name == excluded_exercise)
+                while (chosen_exercise != undefined && chosen_exercise.exercise_name == excluded_exercise && depth<20)
                 {
                     console.log("Try to replace", chosen_exercise)
                     chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)];
                     console.log("Replaced with", chosen_exercise)
+                    exercise_clips = await filterDatabase("clip", "exercise_name", chosen_exercise.exercise_name, indexedDB, "FilteredDatabase", 1);
+                    depth++; 
 
                 }
                 //console.log("Chosen_exercise", chosen_exercise);
-                exercise_clips = await filterDatabase("clip", "exercise_name", chosen_exercise.exercise_name, indexedDB, "FilteredDatabase", 1);
+                //exercise_clips = await filterDatabase("clip", "exercise_name", chosen_exercise.exercise_name, indexedDB, "FilteredDatabase", 1);
                 //console.log("Exercise clips: ", exercise_clips);
+                //depth++; 
                 depth++; 
             }
             if(exercise_clips.length === 0)
             {
-                console.log("Error could not find valid clips"); 
+
+                console.log("Error could not find valid clips, extending search"); 
+                var valid_exercises = await filterDatabase("exercises", "intensity", intensity, indexedDB, "ExerciseDatabase", 1);
+                var chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)]; 
+                exercise_clips = await filterDatabase("clip", "exercise_name", chosen_exercise.exercise_name, indexedDB, "ExerciseDatabase", 1);
             }
             //console.log("Selected exercise clip", exercise_clips[RandInt(0, exercise_clips.length)]);
             return exercise_clips[RandInt(0, exercise_clips.length)];
