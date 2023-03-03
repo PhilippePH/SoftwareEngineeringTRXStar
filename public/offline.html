@@ -70,10 +70,6 @@
         background-color: #f1d901;
       }
 
-      img {
-        height: 9rem;
-        width: 9rem;
-      }
     </style>
   </head>
   <body>
@@ -104,6 +100,8 @@
           const logoUrl = URL.createObjectURL(await logoResponse.blob());
           const logoImg = document.getElementById('logo');
           logoImg.src = logoUrl;
+          logoImg.style.height = "9rem";
+          logoImg.style.width = "9rem";
         }
       }
 
