@@ -1,8 +1,10 @@
-import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal'
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
+import { updateSaved } from '../../redux/slices/playlistSlice';
+import { store } from "../../redux/store"
 
-const SaveModal = ({show, unshow, setButtonText, indexedDB}) => {
+
+const SaveModal = ({show, unshow, indexedDB}) => {
 
     const playlist = useSelector((state) => (state.playlist.playlistData));
 
@@ -40,7 +42,7 @@ const SaveModal = ({show, unshow, setButtonText, indexedDB}) => {
         const event = await saveToDatabaseSucessful(pname)
         if (event.type == "success") {
             unshow();
-            setButtonText("Saved!");
+            store.dispatch(updateSaved(true));
         } else if (event.target.error.message.includes("Key already exists")) {
             console.log("Duplicate key error.");
             document.getElementById("msg").style.opacity = "1";
@@ -77,7 +79,7 @@ const SaveModal = ({show, unshow, setButtonText, indexedDB}) => {
                     <p 
                         id="msg"
                         className='save-modal__error'>
-                        A playlist with the same name already exists!
+                        A playlist with the same name already exists
                     </p>
                     <button 
                         type="submit"

@@ -5,26 +5,27 @@ import "./FinishedPage.scss"
 //import { GiFinishLine } from "react-icons/gi";
 import bicep from "../../assets/bicep.png";
 import SaveModal from "./SaveModal";
+import { useSelector } from "react-redux";
 
 const FinishedWorkout = ({ indexedDB }) => {
 
-    const [width, setWidth] = useState(window.innerWidth);
-    const [show, setShow] = useState(false);
-    const [ buttonText, setButtonText ] = useState("Save Workout");
+    // const [ width, setWidth ] = useState(window.innerWidth);
+    const [ show, setShow ] = useState(false);
     const handleClose = () => setShow(false);
 
-    useEffect(() => { // Resizes the webpage
-        const handleResize = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-      }, []);
+    const savedState = useSelector((state) => (state.playlist.playlistSaved));
+
+    // useEffect(() => { // Resizes the webpage
+    //     const handleResize = () => setWidth(window.innerWidth);
+    //     window.addEventListener('resize', handleResize);
+    //     return () => window.removeEventListener('resize', handleResize);
+    // }, []);
 
     return (
         <div className='finish-page'>
             <SaveModal
                 show={show}
                 unshow={handleClose}
-                setButtonText={setButtonText}
                 indexedDB={indexedDB}/>
             <ul className='finish-page__container'>
                 <div className='finish-page__congrats-text'>
@@ -43,9 +44,10 @@ const FinishedWorkout = ({ indexedDB }) => {
 
                 <button 
                     className='finish-page__button' 
-                    onClick={() => setShow(true)}>
+                    onClick={() => setShow(true)}
+                    disabled={savedState}>
                     <p className="finish-page__button-text">
-                        {buttonText}
+                        {savedState ? "Saved!" : "Save Workout"}
                     </p>
                 </button>
             </ul>
