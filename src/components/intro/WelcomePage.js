@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DIFFICULTY } from "../utils/constants";
-import logo from "../../assets/logo.png";
 import './WelcomePage.scss';
 import { useDispatch } from "react-redux";
 import { setNavDirection } from "../../redux/slices/selectSlice";
@@ -32,7 +31,7 @@ const Welcome = () => {
             >
                 <img
                     className="welcome__img"
-                    src={logo}
+                    src={"/logo.png"}
                     alt={"logo"}
                 />
            

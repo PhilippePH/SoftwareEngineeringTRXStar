@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/logo.png";
 import { GrHomeRounded } from "react-icons/gr";
 
 const NavBar = () => {
@@ -34,7 +33,7 @@ const NavBar = () => {
                         height: "2.5rem",
                         width: "3.5rem"
                     }}
-                    src={logo}
+                    src={"/logo.png"}
                     alt={"logo"}
                 />
             </div>

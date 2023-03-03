@@ -1,5 +1,5 @@
 const CACHE_NAME = "version-1";
-const urlsToCache = [ "index.hmtl", "offline.html" ];
+const urlsToCache = [ "offline.html", "logo.png", "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" ];
 
 const self = this;
 
