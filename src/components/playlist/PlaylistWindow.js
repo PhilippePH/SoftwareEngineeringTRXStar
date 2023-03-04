@@ -27,7 +27,7 @@ const PlaylistWindow = ({ indexedDB }) => {
 
 
     function convertMuscleList(array){
-        console.log("Array", array)
+        //console.log("Array", array)
         var list = array.muscles
         for(var i = 1; i< array.muscles.length; i++)
         {
@@ -82,8 +82,9 @@ const PlaylistWindow = ({ indexedDB }) => {
                         <><div className='workout-heading'>WORKOUT {version}</div><div>
                             {playlist.map((work, index) => {
 
+                                
                                 if (index == 0)
-                                return; 
+                                return;
 
                                 if (playlist[index].type == "warmup")
                                     return (
@@ -97,7 +98,7 @@ const PlaylistWindow = ({ indexedDB }) => {
 
                                 else if (index + 1 < playlist.length && playlist[index + 1].type == "rest") {
                                     return (<ExerciseCard exercise_name={playlist[index].exercise_name}
-                                        duration={playlist[index].time} sets={playlist[index].sets} time={playlist[index].rest_set} ind={index} muscle_types = {convertMuscleList(playlist[index])}/>)
+                                        duration={playlist[index].time} sets={playlist[index].sets} time={playlist[index].rest_set} ind={index} muscle_types = {convertMuscleList(playlist[index])} size = {playlist.length}/>)
                                 }
 
 
@@ -105,7 +106,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                                     return (
                                         <div>
                                             <ExerciseCard exercise_name={playlist[index].exercise_name} duration={playlist[index].time}
-                                                sets={playlist[index].sets} time={playlist[index].rest_set} rest_time={playlist[index].rest_set} ind={index} muscle_types = {convertMuscleList(playlist[index])} />
+                                                sets={playlist[index].sets} time={playlist[index].rest_set} rest_time={playlist[index].rest_set} ind={index} muscle_types = {convertMuscleList(playlist[index])} size = {playlist.length} />
                                         </div>
 
 
@@ -116,11 +117,13 @@ const PlaylistWindow = ({ indexedDB }) => {
                                         <RestCard time={playlist[index].time} />
                                     );
                                     
-
+                           
                             })}
+                          
 
                         </div></>
                     }
+           
                 </div>
 
             </div>

@@ -3,13 +3,14 @@ import { FiChevronDown } from 'react-icons/fi';
 import { BsTrash } from 'react-icons/bs';
 import { BsHourglassSplit } from 'react-icons/bs';
 import {BsArrowCounterclockwise} from 'react-icons/bs';
+import { BsArrowUp, BsArrowDown } from 'react-icons/bs'
 import './ExerciseCard.scss';
 import cn from "classnames";
 import { useRef } from 'react';
 import {BsChevronRight} from 'react-icons/bs';
 import RestCard from './RestCard';
 import { getClip } from '../../scripts/algorithm';
-import { inputToPlaylist, removeFromPlaylist } from "../../redux/slices/playlistSlice.js"
+import { inputToPlaylist, removeFromPlaylist, moveUpExercise, moveDownExercise } from "../../redux/slices/playlistSlice.js"
 import { store } from "../../redux/store"
 import playlistToClipList from '../../scripts/playlistToClipList';
 import { filterOnKey } from '../../scripts/algorithm';
@@ -18,7 +19,7 @@ import { filterOnKey } from '../../scripts/algorithm';
 const CLOSED_HEIGHT = 50;
 const OPENED_HEIGHT = 115;
 
-export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time, ind, muscle_types}) {
+export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time, ind, muscle_types, size}) {
     const [isOpen, setOPen] = useState(false);
     const outerHeight = useRef(CLOSED_HEIGHT);
     const containerRef = useRef(null);
@@ -27,11 +28,23 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     const [isLoading, setIsLoading] = useState(false);
     const [isFadingOut, setIsFadingOut] = useState(false);
     const [isSlidingIn, setIsSlidingIn] = useState(false);
+    const [isSlidingUp, setIsSlidingUp] = useState(false);
+    const [isSlidingDown, setIsSlidingDown] = useState(false);
 
     const slideIn = (event) => {
         //event.stopPropagation();
         setIsSlidingIn(true);
         //cb();
+    };
+
+    const slideUp = (event) => {
+        //event.stopPropagation();
+        setIsSlidingUp(true);
+        //cb();
+    };
+
+    const slideDown = (event) => {
+        setIsSlidingDown(true);
     };
 
     const fadeOut = (event) => {
@@ -57,18 +70,40 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
           }, 1000);
       };
 
+      const handleMoveDown = (event) => {
+        slideDown(); 
+        event.stopPropagation();
+        setTimeout(() => {
+            store.dispatch(moveDownExercise(ind)); 
+            setIsSlidingDown(false);
+          }, 500);
+    
+        
+      };
+
+      const handleMoveUp = (event) => {
+        slideUp(); 
+        event.stopPropagation();
+        setTimeout(() => {
+            store.dispatch(moveUpExercise(ind)); 
+            setIsSlidingUp(false);
+          }, 500);
+        
+      };
+
+
     const handleReplace = (event) => {
         event.stopPropagation();
         slideIn(); 
             let clip = getClip(indexedDB, "exercise", time, 1).then(
                 async function (clip) {
-                    console.log("Clip", clip)
+                    //console.log("Clip", clip)
                     var exercise = filterOnKey("exercises", clip.exercise_name, indexedDB, "ExerciseDatabase", 1).then(
                         async function (exercise) {
                             var video_of_clip = filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1).then(
                                 async function (video_of_clip) {
-                                    console.log("Exercise", exercise)
-                                    console.log("Exercise muscle", exercise[0].muscle_type)
+                                    //console.log("Exercise", exercise)
+                                    //console.log("Exercise muscle", exercise[0].muscle_type)
                                     var clip_formatted = {
                                         "type": "exercise",
                                         "exercise_name": clip.exercise_name,
@@ -99,7 +134,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     return (
         <div>
             <div>
-            <div className={isFadingOut ? 'item-fadeout': (isSlidingIn ? 'slide-in': 'item1')}>
+            <div className={isFadingOut ? 'item-fadeout': (isSlidingIn ? 'slide-in': (isSlidingUp ? 'slide-up': (isSlidingDown ? 'slide-down': 'item1')))}>
             <div onClick={toggle}
                 ref={containerRef}
                 className={cn("custom-container", {
@@ -127,10 +162,15 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                         </div>
 
                         <div className='exercise-card__right-container' >
-                            
-                            
-                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace}/> }
-                             <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv}/>
+
+                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown"  && ind > 2  &&
+                        <BsArrowUp size={28} className='exercise-card__up' onClick={handleMoveUp} style={{marginRight: '10px'}}/>}
+                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && ind < size - 2 &&
+                        <BsArrowDown size={28} className='exercise-card__down' onClick={handleMoveDown} style={{marginRight: '10px'}}/> 
+                        }
+                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && 
+                        <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace} style={{marginRight: '10px'}}/> }
+                        <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv} style={{marginRight: '10px'}}/>
                        
                         </div> 
 
