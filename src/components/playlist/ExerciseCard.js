@@ -109,7 +109,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                     className={'exercise-card'}>
 
                         <div className='exercise-card__left-container'>
-                        <BsChevronRight size={20} className={'exercise-card__chevron' + (isOpen ? "__open" : "__closed")}/> 
+                        <BsTrash size={20} className={'exercise-card__chevron' + (isOpen ? "__open" : "__closed")}/> 
                             <div className='exercise-card__exercise-name'>
                                 {exercise_name}
 
