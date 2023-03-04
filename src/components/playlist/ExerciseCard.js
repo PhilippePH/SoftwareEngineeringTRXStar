@@ -25,6 +25,21 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     var remaining_secs = (sets*duration+(time*(sets-1)))%60;
     const [key, setKey] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
+    const [isFadingOut, setIsFadingOut] = useState(false);
+    const [isSlidingIn, setIsSlidingIn] = useState(false);
+
+    const slideIn = (event) => {
+        //event.stopPropagation();
+        setIsSlidingIn(true);
+        //cb();
+    };
+
+    const fadeOut = (event) => {
+        //event.stopPropagation();
+        setIsFadingOut(true);
+        //cb();
+    };
+    
 
     const toggle = () => {
         if (!isOpen) {
@@ -35,37 +50,49 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
     const handleRemoveDiv = (event) => {
         event.stopPropagation();
-        store.dispatch(removeFromPlaylist(ind));
+        fadeOut(); 
+        setTimeout(() => {
+            store.dispatch(removeFromPlaylist(ind));
+            setIsFadingOut(false);
+          }, 1000);
       };
 
     const handleReplace = (event) => {
         event.stopPropagation();
-        let clip = getClip(indexedDB, "exercise", time, 1).then(
-            async function(clip){
-        var video_of_clip = filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1).then(
-            async function(video_of_clip){
-        var clip_formatted = {
-            "type": "exercise",
-            "exercise_name": clip.exercise_name,
-            "time": duration,
-            "sets": sets,
-            "rest_set": rest_time,
-            "intensity": 1,
-            "URL": video_of_clip[0].URL,
-            "start_time": clip.start_time,
-            "end_time":clip.end_time
-        }
-    
-        store.dispatch(inputToPlaylist([clip_formatted, ind]))
-        console.log("Clip_formatted", clip_formatted); 
-    })
-    })
-}
+        slideIn(); 
+            let clip = getClip(indexedDB, "exercise", time, 1).then(
+                async function (clip) {
+                    var video_of_clip = filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1).then(
+                        async function (video_of_clip) {
+                            var clip_formatted = {
+                                "type": "exercise",
+                                "exercise_name": clip.exercise_name,
+                                "time": duration,
+                                "sets": sets,
+                                "rest_set": rest_time,
+                                "intensity": 1,
+                                "URL": video_of_clip[0].URL,
+                                "start_time": clip.start_time,
+                                "end_time": clip.end_time
+                            }
+
+                            store.dispatch(inputToPlaylist([clip_formatted, ind]))
+                            console.log("Clip_formatted", clip_formatted);
+                            
+                        })
+                    })  
+                    setTimeout(() => {
+                        setIsSlidingIn(false);
+                      }, 1000);
+            };
+
+//<div className={isFadingOut ? 'item-fadeout': 'item'}>
 
 
     return (
         <div>
-        <div style={{ paddingBottom: "0.5rem" }}>
+            <div>
+            <div className={isFadingOut ? 'item-fadeout': (isSlidingIn ? 'slide-in': 'item1')}>
             <div onClick={toggle}
                 ref={containerRef}
                 className={cn("custom-container", {
@@ -78,11 +105,9 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                     //maxHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT
                     minHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT
                 }}>
-                <div
-
-                >
+                <div>
                     <div
-                    className='exercise-card'>
+                    className={'exercise-card'}>
 
                         <div className='exercise-card__left-container'>
                         <BsChevronRight size={28} className={`exercise-card__chevron  exercise-card__chevron${isOpen ? "__open" : "__closed"}`}/> 
@@ -98,8 +123,9 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                             
                             
                         {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace}/> }
-                            <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv}/>
-                        </div>
+                             <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv}/>
+                       
+                        </div> 
 
 
                     </div>
@@ -114,9 +140,10 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                 </div>
 
             </div>
-            
-        </div>
-        {rest_time > 0 && <RestCard time={rest_time} />}
+            </div>
+            {rest_time > 0 && <RestCard time={rest_time} />}
+            </div>
+        
         </div>
 
     );
