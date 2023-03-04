@@ -134,7 +134,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                         {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'> Muscles: {muscle_types} </div>}
                         <div className='info-container'> Duration: {duration}s per set</div>
                         <div className='info-container'> Sets: {sets} </div>
-                        <div className='info-container'> {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs<10?'0':''}{remaining_secs}</div>
+                        <div className='info-container'> {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs<10?'0':''}{remaining_secs} <BsHourglassSplit size={28}/></div>
 
 
                     </div>
