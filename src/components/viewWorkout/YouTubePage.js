@@ -7,8 +7,7 @@ import { useDispatch } from "react-redux";
 import { setNavDirection } from "../../redux/slices/selectSlice";
 import { useNavigate } from "react-router-dom";
 import '../intro/WelcomePage.scss'
-import { faForward, faBackward, faPause, faPlay, faStepBackward, faStepForward } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
 
 const YouTubePage = ({nextVideo, exerciseData}) => {
 
@@ -85,16 +84,16 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
                       onPause={() => setIsPlaying(false)} />
           </div>  
           <div className="youtube-controls">
-            <FontAwesomeIcon icon={faStepBackward} className="youtube-controls__icon"/>
-            <FontAwesomeIcon icon={faBackward} onClick={() => rewind()} className="youtube-controls__icon"/>
+            <FaStepBackward className="youtube-controls__icon"/>
+            <FaBackward onClick={() => rewind()} className="youtube-controls__icon"/>
             {
               isPlaying ?
-              <FontAwesomeIcon icon={faPause} onClick={() => pauseVideo()} className="youtube-controls__icon youtube-controls__icon__play-pause"/>
+              <FaPause onClick={() => pauseVideo()} className="youtube-controls__icon youtube-controls__icon__play-pause"/>
               :
-              <FontAwesomeIcon icon={faPlay} onClick={() => playVideo()} className="youtube-controls__icon youtube-controls__icon__play-pause"/>
+              <FaPlay onClick={() => playVideo()} className="youtube-controls__icon youtube-controls__icon__play-pause"/>
             }
-            <FontAwesomeIcon icon={faForward} onClick={() => fastForward()} className="youtube-controls__icon"/>
-            <FontAwesomeIcon icon={faStepForward} className="youtube-controls__icon"/>
+            <FaForward onClick={() => fastForward()} className="youtube-controls__icon"/>
+            < FaStepForward className="youtube-controls__icon"/>
           </div>
   
           <div
