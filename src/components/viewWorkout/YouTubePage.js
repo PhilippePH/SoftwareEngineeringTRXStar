@@ -88,12 +88,12 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
             <FaBackward onClick={() => rewind()} className="youtube-controls__icon"/>
             {
               isPlaying ?
-              <FaPause onClick={() => pauseVideo()} className="youtube-controls__icon youtube-controls__icon__play-pause"/>
+              <FaPause onClick={() => pauseVideo()} className="youtube-controls__icon"/>
               :
-              <FaPlay onClick={() => playVideo()} className="youtube-controls__icon youtube-controls__icon__play-pause"/>
+              <FaPlay onClick={() => playVideo()} className="youtube-controls__icon"/>
             }
             <FaForward onClick={() => fastForward()} className="youtube-controls__icon"/>
-            < FaStepForward className="youtube-controls__icon"/>
+            <FaStepForward className="youtube-controls__icon"/>
           </div>
   
           <div
