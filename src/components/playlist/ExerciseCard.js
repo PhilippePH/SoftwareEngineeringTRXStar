@@ -62,25 +62,32 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
         slideIn(); 
             let clip = getClip(indexedDB, "exercise", time, 1).then(
                 async function (clip) {
-                    var video_of_clip = filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1).then(
-                        async function (video_of_clip) {
-                            var clip_formatted = {
-                                "type": "exercise",
-                                "exercise_name": clip.exercise_name,
-                                "time": duration,
-                                "sets": sets,
-                                "rest_set": rest_time,
-                                "intensity": 1,
-                                "URL": video_of_clip[0].URL,
-                                "start_time": clip.start_time,
-                                "end_time": clip.end_time
-                            }
+                    console.log("Clip", clip)
+                    var exercise = filterOnKey("exercises", clip.exercise_name, indexedDB, "ExerciseDatabase", 1).then(
+                        async function (exercise) {
+                            var video_of_clip = filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1).then(
+                                async function (video_of_clip) {
+                                    console.log("Exercise", exercise)
+                                    console.log("Exercise muscle", exercise[0].muscle_type)
+                                    var clip_formatted = {
+                                        "type": "exercise",
+                                        "exercise_name": clip.exercise_name,
+                                        "time": duration,
+                                        "sets": sets,
+                                        "muscles": exercise[0].muscle_type,
+                                        "rest_set": rest_time,
+                                        "intensity": 1,
+                                        "URL": video_of_clip[0].URL,
+                                        "start_time": clip.start_time,
+                                        "end_time": clip.end_time
+                                    }
 
-                            store.dispatch(inputToPlaylist([clip_formatted, ind]))
-                            console.log("Clip_formatted", clip_formatted);
-                            
-                        })
-                    })  
+                                    store.dispatch(inputToPlaylist([clip_formatted, ind]))
+                                    console.log("Clip_formatted", clip_formatted);
+
+                                })
+                    }  )})
+
                     setTimeout(() => {
                         setIsSlidingIn(false);
                       }, 1000);

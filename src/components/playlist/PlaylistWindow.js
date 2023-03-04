@@ -27,7 +27,8 @@ const PlaylistWindow = ({ indexedDB }) => {
 
 
     function convertMuscleList(array){
-        var list = array.muscles[0]
+        console.log("Array", array)
+        var list = array.muscles
         for(var i = 1; i< array.muscles.length; i++)
         {
             list += ","
