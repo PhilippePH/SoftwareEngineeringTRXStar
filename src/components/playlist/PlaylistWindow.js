@@ -26,6 +26,16 @@ const PlaylistWindow = ({ indexedDB }) => {
     const version = useSelector((state) => (state.select.version));
 
 
+    function convertMuscleList(array){
+        var list = array.muscles[0]
+        for(var i = 1; i< array.muscles.length; i++)
+        {
+            list += ","
+            list += array.muscles[i]
+        }
+        return list; 
+    }
+
     useEffect(() => {
         setIsLoading(false);
     }, [playlist])
@@ -86,7 +96,7 @@ const PlaylistWindow = ({ indexedDB }) => {
 
                                 else if (index + 1 < playlist.length && playlist[index + 1].type == "rest") {
                                     return (<ExerciseCard exercise_name={playlist[index].exercise_name}
-                                        duration={playlist[index].time} sets={playlist[index].sets} time={playlist[index].rest_set} ind={index} />)
+                                        duration={playlist[index].time} sets={playlist[index].sets} time={playlist[index].rest_set} ind={index} muscle_types = {convertMuscleList(playlist[index])}/>)
                                 }
 
 
@@ -94,7 +104,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                                     return (
                                         <div>
                                             <ExerciseCard exercise_name={playlist[index].exercise_name} duration={playlist[index].time}
-                                                sets={playlist[index].sets} time={playlist[index].rest_set} rest_time={playlist[index].rest_set} ind={index} />
+                                                sets={playlist[index].sets} time={playlist[index].rest_set} rest_time={playlist[index].rest_set} ind={index} muscle_types = {convertMuscleList(playlist[index])} />
                                         </div>
 
 
