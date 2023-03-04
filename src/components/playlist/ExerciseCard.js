@@ -6,7 +6,7 @@ import {BsArrowCounterclockwise} from 'react-icons/bs';
 import './ExerciseCard.scss';
 import cn from "classnames";
 import { useRef } from 'react';
-import {BsChevronRight} from 'react-icons/bs';
+import {CgChevronRight} from 'react-icons/cg';
 import RestCard from './RestCard';
 import { getClip } from '../../scripts/algorithm';
 import { inputToPlaylist, removeFromPlaylist } from "../../redux/slices/playlistSlice.js"
@@ -100,24 +100,16 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
         <div>
             <div>
             <div className={isFadingOut ? 'item-fadeout': (isSlidingIn ? 'slide-in': 'item1')}>
-            <div onClick={toggle}
-                ref={containerRef}
-                className={cn("custom-container", {
-                    open: isOpen,
-                    closed: !isOpen
-                })}
-                style={{
-                    //height:  isOpen ? '20vh' : '10vh',
-                    //minHeight: isOpen ? outerHeight.current-20 : CLOSED_HEIGHT-10,
-                    //maxHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT
-                    minHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT
-                }}>
+            <div className={`custom-container ${isOpen ? 'open' : 'closed'}`}
+                style={{ minHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT }}
+                onClick={toggle}
+                ref={containerRef}>
                 <div>
                     <div
                     className={'exercise-card'}>
 
                         <div className='exercise-card__left-container'>
-                        <BsChevronRight size={28} className={`exercise-card__chevron  exercise-card__chevron${isOpen ? "__open" : "__closed"}`}/> 
+                        <CgChevronRight size={28} className={'exercise-card__chevron exercise-card__chevron' + (isOpen ? "__open" : "__closed")}/> 
                             <div className='exercise-card__exercise-name'>
                                 {exercise_name}
 
