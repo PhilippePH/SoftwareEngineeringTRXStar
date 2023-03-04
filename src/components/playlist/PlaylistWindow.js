@@ -6,6 +6,7 @@ import { redirect, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import RestCard from './RestCard';
 import { FaBlackTie, FaCentercode, FaPlay } from "react-icons/fa";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { TfiReload } from "react-icons/tfi"
 import './PlaylistWindow.scss';
 import NavButtons from '../utils/NavButtons'
@@ -127,9 +128,10 @@ const PlaylistWindow = ({ indexedDB }) => {
                     gap: '20%',
                 }}>
                     <style children={fadeIn} /> 
-                <NavButtons 
-                    className = "playlist-button-bottom"
-                    prev={`/select/${MUSCLE_GROUPS}`}/>
+                <IoIosArrowBack 
+                    className="playlist-button-bottom"
+                    style={{fontSize:"50px"}}
+                    onClick={() => { navigate(`/select/${MUSCLE_GROUPS}`)}} />
                 <TfiReload
                     className = "playlist-button-bottom"
                     onClick={handleIncreaseVersion} />
