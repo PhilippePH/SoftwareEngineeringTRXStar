@@ -1,6 +1,6 @@
 @import '../../sassStyles/_mixins.scss';
 
-.container-youtube {
+.youtube-container {
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
@@ -9,6 +9,18 @@
     width: 100%
 }
 
+.youtube-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    border: 1px solid red;
+
+    &__icon {
+        margin: 5px 3px;
+    }
+
+}
 
 .message1 {
     color: black;
