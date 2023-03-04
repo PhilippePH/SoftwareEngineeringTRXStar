@@ -18,7 +18,7 @@ import { filterOnKey } from '../../scripts/algorithm';
 const CLOSED_HEIGHT = 50;
 const OPENED_HEIGHT = 115;
 
-export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time, ind }) {
+export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time, ind, muscle_types}) {
     const [isOpen, setOPen] = useState(false);
     const outerHeight = useRef(CLOSED_HEIGHT);
     const containerRef = useRef(null);
@@ -130,7 +130,8 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
                     </div>
                     <div className='additional-info'>
-
+                        
+                        {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'> Muscles: {muscle_types} </div>}
                         <div className='info-container'> Duration: {duration}s per set</div>
                         <div className='info-container'> Sets: {sets} </div>
                         <div className='info-container'> {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs<10?'0':''}{remaining_secs} <BsHourglassSplit size={28}/></div>

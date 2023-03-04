@@ -5,6 +5,7 @@ var exerciseDict = {
     "sets": 1,
     "rest_set": 0,
     "intensity": 1,
+    "muscles": null, 
     "URL": "",
     "start_time": "",
     "end_time": ""

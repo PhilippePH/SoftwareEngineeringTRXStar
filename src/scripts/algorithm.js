@@ -181,6 +181,7 @@ export async function fillStructure(structure, indexedDB) {
 
                 if(structureCopy[i].type === "exercise"){
                     structureCopy[i].exercise_name = clip.exercise_name; 
+                    structureCopy[i].muscles =exercise_of_clip[0].muscle_type; 
                     structureCopy[i].intensity = exercise_of_clip[0].intensity; 
                 }
             
