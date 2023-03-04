@@ -8,8 +8,9 @@ import { setNavDirection } from "../../redux/slices/selectSlice";
 import { store } from "../../redux/store"
 import { initialiseAll } from "../../redux/slices/selectSlice";
 import { initialisePlaylist } from "../../redux/slices/playlistSlice";
+import LoadModal from "./LoadModal";
 
-const Welcome = () => {
+const Welcome = ({indexedDB}) => {
     store.dispatch(initialiseAll());
     store.dispatch(initialisePlaylist([]));
     const [width, setWidth] = useState(window.innerWidth);
@@ -23,7 +24,9 @@ const Welcome = () => {
         const handleResize = () => setWidth(window.innerWidth);
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
-      }, []);
+    }, []);
+    const [ show, setShow ] = useState(false);
+    const handleClose = () => setShow(false);
 
     return (
         <div className="welcome__img-container">
@@ -43,8 +46,16 @@ const Welcome = () => {
                     >
                     Start Your Workout
                 </button>
-                
+                <button
+                    onClick={() => setShow(true)}>
+                    Load Playlist
+                </button>
             </ul>
+            <LoadModal
+                show={show}
+                unshow={handleClose}
+                indexedDB={indexedDB}/>
+
         </div>
     )
 }
