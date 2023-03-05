@@ -7,11 +7,10 @@ import { store } from "../../redux/store"
 const SaveModal = ({show, unshow, indexedDB}) => {
 
     const playlist = useSelector((state) => (state.playlist.playlistData));
+    const select = useSelector((state) => (state.select));
 
     function saveToDatabaseSucessful(name) {
-        
         return new Promise(function (resolve) {
-
             const dbPromise = indexedDB.open("SavedPlaylists", 1);
             dbPromise.onsuccess = () => {
                 const db = dbPromise.result;
@@ -19,7 +18,8 @@ const SaveModal = ({show, unshow, indexedDB}) => {
                     .objectStore("playlists")
                     .add({
                         "name": name,
-                        "playlist": playlist
+                        "playlist": playlist,
+                        "select": select
                     });
                 request.onsuccess = (e) => {
                     resolve(e);
@@ -31,7 +31,6 @@ const SaveModal = ({show, unshow, indexedDB}) => {
             dbPromise.onerror = (e) =>{
                 resolve(e);
             }
-
         })
     }
 

@@ -53,26 +53,20 @@ const Welcome = ({indexedDB}) => {
 
     const [ buttonDisabled, setButtonDisabled ] = useState(true);
     const [ playlists, setPlaylists ] = useState([]);
-    const [ errorMsg, setErrorMsg ] = useState("");
 
     useEffect(() => {
         getSavedPlaylists(indexedDB)
         .then(function(e) {
             var playlists = e.target.result;
-            if (playlists.length === 0) {
-                setErrorMsg("No saved playlists!");
-                document.getElementById("error").style.opacity = "1";
-            } else {
+            if (playlists.length !== 0) {
                 setButtonDisabled(false);
                 setPlaylists(playlists);
             }
         })
         .catch(function(e) {
             console.error(e.target.error);
-            setErrorMsg("An error occured with indexedDB");
-            document.getElementById("error").style.opacity = "1";
         })
-    }, [buttonDisabled, errorMsg]);
+    }, [buttonDisabled]);
 
     return (
         <div className="welcome__img-container">
@@ -94,11 +88,6 @@ const Welcome = ({indexedDB}) => {
                     className="welcome__loadbutton">
                     Load Playlist
                 </button>
-                <p
-                    className="welcome__error"
-                    id="error">
-                    {errorMsg}
-                </p>
             </ul>
             <LoadModal
                 show={show}
