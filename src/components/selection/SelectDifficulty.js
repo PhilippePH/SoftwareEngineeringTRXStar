@@ -2,10 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActiveTab, setNavDirection } from "../../redux/slices/selectSlice";
 import { useEffect, useState } from "react";
 import { DIFFICULTY, DURATION } from "../utils/constants";
+import {AiFillInfoCircle, AiOutlineInfoCircle} from "react-icons/ai";
 import SelectButton from "../utils/SelectButton";
 import NavButtons from "../utils/NavButtons";
-import './style.scss'
-
+import './style.scss';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+// import InfoPopover from "../utils/InfoPopover";
+import Button from 'react-bootstrap/Button';
+import { Popover } from "react-bootstrap";
+import {BiRun} from "react-icons/bi";
 
 const SelectDifficulty = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -27,8 +32,15 @@ const SelectDifficulty = () => {
 
     return (
         <>
-        <div className="category-div">
-            Difficulty
+        <div className="title-div">
+            <div className="info-wrapper"/>
+            <div className="title-text" > Difficulty </div>
+            <OverlayTrigger trigger={['click', 'hover']} placement="top" overlay={popover}>
+                <div className="info-wrapper">
+                    <AiFillInfoCircle className='info-icon' size={20} />
+                </div>  
+            </OverlayTrigger>
+            
         </div>
         <div className="selection-container">
             <div className="left-arrow-div"></div>
@@ -59,3 +71,17 @@ const SelectDifficulty = () => {
 }
 
 export default SelectDifficulty;
+
+const popover = (
+    <Popover id="popover-basic" className="popover-display">
+      {/* <Popover.Header as="h3">Popover right</Popover.Header> */}
+      <Popover.Body className='popover-text'>
+        The difficulty determines the average intensity of your workout. 
+        <ul>
+        <li>Easy: </li>
+        <li>Medium: </li>
+        <li>Hard: </li>
+        </ul>
+      </Popover.Body>
+    </Popover>
+);

@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { DURATION, FOCUS, DIFFICULTY} from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
 import './style.scss'
+import { AiFillInfoCircle } from "react-icons/ai";
+import { OverlayTrigger, Popover } from "react-bootstrap";
 
 const SelectDuration = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -38,8 +40,15 @@ const SelectDuration = () => {
     
     return (
         <>
-        <div className="category-div">
-            Duration
+        <div className="title-div">
+            <div className="info-wrapper"/>
+            <div className="title-text" > Duration </div>
+            <OverlayTrigger trigger={['click', 'hover']} placement="top" overlay={popover}>
+                <div className="info-wrapper">
+                    <AiFillInfoCircle className='info-icon' size={20} />
+                </div>  
+            </OverlayTrigger>
+            
         </div>
         <div className="selection-container">
             <div className="left-arrow-div">
@@ -70,44 +79,16 @@ const SelectDuration = () => {
             </div>
         </div>
         </>
-        //     <ul
-        //         style={{
-        //             display: "grid",
-        //             placeItems: "center",
-        //             justifyContent: "center",
-        //             alignItems: "center",
-        //             maxWidth: "25rem",
-        //             width: "100%",
-        //             marginTop: "10%",
-        //             marginBottom: "5%",
-        //             padding: "0px",
-        //             gridTemplateColumns: width > 768 ? 'repeat(2, 1fr)' : '1fr',
-        //             gridRowGap: '10px',
-        //             gridColumnGap: "10px",
-        //         }}
-        //     >
-        //         {
-        //             durationOptions?.map((option) => {
-        //                 return (
-        //                     <SelectButton 
-        //                         key={option} 
-        //                         type={DURATION} 
-        //                         option={option} 
-        //                         to={`/select/${FOCUS}`}
-        //                     />
-        //                 )
-        //             })
-        //         }
-        //     </ul>
-        //     {/* <SelectedOptions/> */}
-        //     <div
-        //         style={{width:"200%"}}
-        //         >
-                
-        //     </div>
-        // </div>
-        // </>
     )
 }
 
 export default SelectDuration;
+
+const popover = (
+    <Popover id="popover-basic" className="popover-display">
+      {/* <Popover.Header as="h3">Popover right</Popover.Header> */}
+      <Popover.Body className='popover-text'>
+        The duration determines the maximum length of your workout.
+      </Popover.Body>
+    </Popover>
+);
