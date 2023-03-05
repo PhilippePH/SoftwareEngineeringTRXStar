@@ -2,6 +2,73 @@
 @import '../../sassStyles/mixins';
 
 
+
+.flipup {
+    display: flex;
+    padding-bottom: 0.5rem;
+    align-items: center;
+    animation: flipup 1s ease-in-out forwards;
+    animation-duration: 2s;
+    color: transparent;
+  }
+
+@keyframes flipup {
+    0% {
+      transform: rotate3d(0deg);
+      opacity: 1;
+    }
+    25% {
+        transform: rotate3d(1, 0, 0, 180deg);;
+      opacity: 1;
+    }
+    50% {
+        transform: rotate3d(1, 0, 0, 180deg);;
+      opacity: 0.8;
+    }
+    75% {
+        transform: rotate3d(1, 0, 0, 180deg);;
+      opacity: 0.4;
+    }
+    100% {
+      transform: rotate3d(0deg);
+      opacity: 0;
+    }
+  }
+
+
+  .flipdown {
+    display: flex;
+    padding-bottom: 0.5rem;
+    align-items: center;
+    animation: flipdown 1s ease-in-out forwards;
+    animation-duration: 2s;
+    color: transparent;
+  }
+
+@keyframes flipdown {
+    0% {
+      transform: rotate3d(0deg);
+      opacity: 1;
+    }
+    25% {
+        transform: rotate3d(1, 0, 0, 180deg);;
+      opacity: 1;
+    }
+    50% {
+        transform: rotate3d(1, 0, 0, 180deg);;
+      opacity: 0.8;
+    }
+    75% {
+        transform: rotate3d(1, 0, 0, 180deg);;
+      opacity: 0.4;
+    }
+    100% {
+      transform: rotate3d(0deg);
+      opacity: 0;
+    }
+  }
+
+
 .slide-in {
     display: flex;
     padding-bottom: 0.5rem;
@@ -14,7 +81,7 @@
     
 @keyframes slide-in {
         from {
-          transform: translateX(100%);
+          transform: translateX(100%);       
         }
         to {
           transform: translateX(0%);
@@ -22,6 +89,51 @@
     
 }
 
+.slide-up {
+    display: flex;
+    padding-bottom: 0.5rem;
+    align-items: center;
+    animation: slide-up 0.5s linear;
+    -webkit-animation: slide-up 0.5s linear; 
+    animation-duration: 0.75s;
+    transform-origin: left; 
+}
+    
+@keyframes slide-up {
+        from {
+          transform: translateY(0%);
+        }
+        to {
+          transform: translateY(-200%);
+        }
+    
+}
+
+.slide-down {
+    display: flex;
+    padding-bottom: 0.5rem;
+    align-items: center;
+    animation: slide-down 0.5s linear;
+    -webkit-animation: slide-down 0.5s linear; 
+    animation-duration: 1s;
+    transform-origin: left; 
+}
+    
+@keyframes slide-down {
+        from {
+        
+          transform: translateY(0%);
+     
+          
+        }
+        to {
+        
+          transform: translateY(200%);
+         
+         
+        }
+    
+}
 
 :root {
     --transition: 0.4s ease;
@@ -95,10 +207,15 @@
         
         display: flex;
         flex-direction: row;
-        width: 25%;
+        width: 50%;
         justify-content: flex-end;
         text-align: left;
     }
+
+    &__right-container svg {
+        width: 28px;
+        height: 28px;
+      }
 
     &__left-container {
         display: flex;

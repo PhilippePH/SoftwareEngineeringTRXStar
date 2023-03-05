@@ -2,10 +2,11 @@ import React from 'react';
 import './ExerciseCard';
 import ExerciseCard from './ExerciseCard';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import RestCard from './RestCard';
-import { FaCentercode, FaPlay } from "react-icons/fa";
+import { FaBlackTie, FaCentercode, FaPlay } from "react-icons/fa";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { TfiReload } from "react-icons/tfi"
 import './PlaylistWindow.scss';
 import NavButtons from '../utils/NavButtons'
@@ -14,7 +15,14 @@ import { store } from "../../redux/store"
 import './PlaylistWindow.scss'
 import Playlist from './Playlist';
 import { ThreeDots } from 'react-loader-spinner'
+import { MUSCLE_GROUPS } from '../utils/constants';
 
+const fadeIn = `
+    @keyframes fade-in {
+        0%   { opacity: 0; }
+        50%  { opacity: 0; }
+        100% { opacity: 1; }
+}`;
 
 const PlaylistWindow = ({ indexedDB }) => {
 
@@ -90,8 +98,9 @@ const PlaylistWindow = ({ indexedDB }) => {
                         <div>
                             {playlist.map((work, index) => {
 
+                                
                                 if (index == 0)
-                                return; 
+                                return;
 
                                 if (playlist[index].type == "warmup")
                                     return (
@@ -105,7 +114,7 @@ const PlaylistWindow = ({ indexedDB }) => {
 
                                 else if (index + 1 < playlist.length && playlist[index + 1].type == "rest") {
                                     return (<ExerciseCard exercise_name={playlist[index].exercise_name}
-                                        duration={playlist[index].time} sets={playlist[index].sets} time={playlist[index].rest_set} ind={index} muscle_types = {convertMuscleList(playlist[index])}/>)
+                                        duration={playlist[index].time} sets={playlist[index].sets} time={playlist[index].rest_set} ind={index} muscle_types = {convertMuscleList(playlist[index])} size = {playlist.length} no_warmup = {playlist[1] != "warmup" } no_cooldown = {playlist[playlist.length] != "cooldown"}/>)
                                 }
 
 
@@ -113,7 +122,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                                     return (
                                         <div>
                                             <ExerciseCard exercise_name={playlist[index].exercise_name} duration={playlist[index].time}
-                                                sets={playlist[index].sets} time={playlist[index].rest_set} rest_time={playlist[index].rest_set} ind={index} muscle_types = {convertMuscleList(playlist[index])} />
+                                                sets={playlist[index].sets} time={playlist[index].rest_set} rest_time={playlist[index].rest_set} ind={index} muscle_types = {convertMuscleList(playlist[index])} size = {playlist.length} no_warmup = {playlist[1] != "warmup" } no_cooldown = {playlist[playlist.length] != "cooldown"} />
                                         </div>
 
 
@@ -124,11 +133,13 @@ const PlaylistWindow = ({ indexedDB }) => {
                                         <RestCard time={playlist[index].time} />
                                     );
                                     
-
+                           
                             })}
+                          
 
                         </div></>
                     }
+           
                 </div>
 
             </div>
@@ -141,19 +152,16 @@ const PlaylistWindow = ({ indexedDB }) => {
                     alignItems: "center",
                     gap: '20%',
                 }}>
+                    <style children={fadeIn} /> 
+                <IoIosArrowBack 
+                    className="playlist-button-bottom"
+                    style={{fontSize:"50px"}}
+                    onClick={() => { navigate(`/select/${MUSCLE_GROUPS}`)}} />
                 <TfiReload
-                    style={{
-                        // borderRadius: "8px"
-                        fontSize: "40px",
-                        cursor: "pointer"
-                    }}
+                    className = "playlist-button-bottom"
                     onClick={handleIncreaseVersion} />
                 <FaPlay
-                    style={{
-                        // borderRadius: "8px"
-                        fontSize: "40px",
-                        cursor: "pointer"
-                    }}
+                    className = "playlist-button-bottom"
                     onClick={() => { navigate("/youtube") }}
                 />
 

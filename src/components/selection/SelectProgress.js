@@ -45,7 +45,7 @@ const SelectProgress = () => {
         else if(activeTab==MUSCLE_GROUPS){
             dispatch(setNavDirection("backwards"));
         }
-        else if(activeTab==FOCUS){
+        else if(activeTab==DURATION){
             if(to==DIFFICULTY){
                 dispatch(setNavDirection("backwards"));
             }
@@ -53,7 +53,7 @@ const SelectProgress = () => {
                 dispatch(setNavDirection("forwards"));
             }
         }
-        else if(activeTab==DURATION){
+        else if(activeTab==FOCUS){
             if(to==MUSCLE_GROUPS){
                 dispatch(setNavDirection("forwards"));
             }
@@ -79,17 +79,17 @@ const SelectProgress = () => {
                 >
                     {selectedDifficulty && <Icon icon={optionIcons[selectedDifficulty]} />}
                 </div>
-                <div className={activeTab==FOCUS?"active-tab":"inactive-tab"}
-                    onClick ={() => {selectedFocus && clickHandler(FOCUS)}}
-                    //  onClick={() => { navigate(`/select/${FOCUS}`) }}
-                     >
-                    {selectedFocus && <Icon icon={optionIcons[selectedFocus]} />}
-                </div>
                 <div className={activeTab==DURATION?"active-tab":"inactive-tab"}
                     onClick ={() => {selectedDuration && clickHandler(DURATION)}}
                     //  onClick={() => { navigate(`/select/${DURATION}`) }}
                      >
                     {selectedDuration && <Icon icon={optionIcons[selectedDuration]} />}
+                </div>
+                <div className={activeTab==FOCUS?"active-tab":"inactive-tab"}
+                    onClick ={() => {selectedFocus && clickHandler(FOCUS)}}
+                    //  onClick={() => { navigate(`/select/${FOCUS}`) }}
+                     >
+                    {selectedFocus && <Icon icon={optionIcons[selectedFocus]} />}
                 </div>
                 <div className={activeTab==MUSCLE_GROUPS?"active-tab":"inactive-tab"}
                     onClick ={() => {selectedMuscleGroup.length!=0 && clickHandler(MUSCLE_GROUPS)}}

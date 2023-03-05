@@ -36,12 +36,29 @@ const playlistSlice = createSlice({
     },
     updateSaved: (state, action) => {
       state.playlistSaved = action.payload;
+    },
+    moveDownExercise:(state, action) => {
+      const updatedPlaylistData = [state.playlistData];
+      var tempExercise =  updatedPlaylistData[0][action.payload +1];
+      updatedPlaylistData[0][action.payload+1] = updatedPlaylistData[0][action.payload];
+      updatedPlaylistData[0][action.payload] = tempExercise; 
+      state.playlistData = []
+      state.playlistData = updatedPlaylistData[0];
+    },
+    moveUpExercise:(state, action) => {
+      const updatedPlaylistData = [state.playlistData];
+      var tempExercise =  updatedPlaylistData[0][action.payload-1];
+      updatedPlaylistData[0][action.payload-1] = updatedPlaylistData[0][action.payload];
+      updatedPlaylistData[0][action.payload] = tempExercise; 
+      state.playlistData = []
+      state.playlistData = updatedPlaylistData[0];
     }
+
   }
 });
 
 //const { actions, reducer } = playlistSlice;
-export const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved } = playlistSlice.actions;
+export const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved, moveDownExercise, moveUpExercise } = playlistSlice.actions;
 
 const playlistPersistConfig = {
   key: 'playlist',

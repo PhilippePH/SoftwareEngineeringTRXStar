@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveTab, setNavDirection } from "../../redux/slices/selectSlice";
 import { useEffect, useState } from "react";
-import { DIFFICULTY, FOCUS } from "../utils/constants";
+import { DIFFICULTY, DURATION } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
 import NavButtons from "../utils/NavButtons";
-import './style.scss'
-
+import './style.scss';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import { Popover } from "react-bootstrap";
+import { RiInformationFill } from "react-icons/ri";
 
 const SelectDifficulty = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -27,8 +29,15 @@ const SelectDifficulty = () => {
 
     return (
         <>
-        <div className="category-div">
-            Difficulty
+        <div className="title-div">
+            <div className="info-wrapper"/>
+            <div className="title-text" > Difficulty </div>
+            <OverlayTrigger trigger={['click', 'hover']} placement="top" overlay={popover}>
+                <div className="info-wrapper">
+                    <RiInformationFill className='info-icon' size={20} />
+                </div>  
+            </OverlayTrigger>
+            
         </div>
         <div className="selection-container">
             <div className="left-arrow-div"></div>
@@ -43,7 +52,7 @@ const SelectDifficulty = () => {
                             key={option}
                             type={DIFFICULTY}
                             option={option}
-                            to={`/select/${FOCUS}`}
+                            to={`/select/${DURATION}`}
                             selected = {completed} />
 
                     );
@@ -51,7 +60,7 @@ const SelectDifficulty = () => {
             </div>
             <div className="right-arrow-div">
                 {completed && <NavButtons 
-                    next={`/select/${FOCUS}`}/>}
+                    next={`/select/${DURATION}`}/>}
             </div>
         </div>
         </>
@@ -59,3 +68,17 @@ const SelectDifficulty = () => {
 }
 
 export default SelectDifficulty;
+
+const popover = (
+    <Popover id="popover-basic" className="popover-display">
+      {/* <Popover.Header as="h3">Popover right</Popover.Header> */}
+      <Popover.Body className='popover-text'>
+        The difficulty determines the average intensity of your workout. 
+        <ul>
+        <li>Easy: </li>
+        <li>Medium: </li>
+        <li>Hard: </li>
+        </ul>
+      </Popover.Body>
+    </Popover>
+);
