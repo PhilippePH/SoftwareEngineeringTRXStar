@@ -19,7 +19,7 @@ import { filterOnKey } from '../../scripts/algorithm';
 const CLOSED_HEIGHT = 50;
 const OPENED_HEIGHT = 115;
 
-export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time, ind, muscle_types, size}) {
+export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time, ind, muscle_types, size, no_cooldown, no_warmup}) {
     const [isOpen, setOPen] = useState(false);
     const outerHeight = useRef(CLOSED_HEIGHT);
     const containerRef = useRef(null);
@@ -150,9 +150,9 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
                         <div className='exercise-card__right-container' >
 
-                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown"  && ind > 2  &&
+                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown"  && (no_warmup && ind>1 || ind > 2 )  &&
                         <BsArrowUp size={28} className='exercise-card__up' onClick={handleMoveUp} style={{marginRight: '10px'}}/>}
-                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && ind < size - 2 &&
+                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && (no_cooldown && ind < size - 1 || ind < size - 2 ) &&
                         <BsArrowDown size={28} className='exercise-card__down' onClick={handleMoveDown} style={{marginRight: '10px'}}/> 
                         }
                         {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && 
