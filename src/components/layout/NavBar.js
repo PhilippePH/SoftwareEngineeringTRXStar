@@ -1,9 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { GrHomeRounded } from "react-icons/gr";
+
+const withoutSidebarRoutes = ["/youtube"];
+
 
 const NavBar = () => {
     const navigate = useNavigate();
-
+    const {pathname} = useLocation();
+    if (withoutSidebarRoutes.some((item) => pathname.includes(item))) return null;
     return (
         <div 
             id="navbar-container"
