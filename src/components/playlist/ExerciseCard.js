@@ -7,7 +7,7 @@ import { BsArrowUp, BsArrowDown } from 'react-icons/bs'
 import './ExerciseCard.scss';
 import cn from "classnames";
 import { useRef } from 'react';
-import {BsChevronDown} from 'react-icons/bs';
+import {BsFillCaretDownFill} from 'react-icons/bs';
 import RestCard from './RestCard';
 import { getClip } from '../../scripts/algorithm';
 import { inputToPlaylist, removeFromPlaylist, moveUpExercise, moveDownExercise } from "../../redux/slices/playlistSlice.js"
@@ -147,7 +147,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                     className={'exercise-card'}>
 
                         <div className='exercise-card__left-container'>
-                        <BsChevronDown size={20} className={rotate ? 'chevron__open' : 'chevron__closed'}/>
+                        <BsFillCaretDownFill size={20} />
                             <div className='exercise-card__exercise-name'>
                                 {exercise_name}
 
@@ -159,13 +159,13 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                         <div className='exercise-card__right-container' >
 
                         {exercise_name != "Warmup" &&  exercise_name != "Cooldown"  && (no_warmup && ind>1 || ind > 2 )  &&
-                        <BsArrowUp size={28} className='exercise-card__up' onClick={handleMoveUp} style={{marginRight: '10px'}}/>}
+                        <BsArrowUp size={28} className='exercise-card__up' onClick={handleMoveUp} style={{marginRight: '10px', strokeWidth:'0.3'}}/>}
                         {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && (no_cooldown && ind < size - 1 || ind < size - 2 ) &&
-                        <BsArrowDown size={28} className='exercise-card__down' onClick={handleMoveDown} style={{marginRight: '10px'}}/> 
+                        <BsArrowDown size={28} className='exercise-card__down' onClick={handleMoveDown} style={{marginRight: '10px', strokeWidth:'0.3'}}/> 
                         }
                         {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && 
-                        <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace} style={{marginRight: '10px'}}/> }
-                        <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv} style={{marginRight: '10px'}}/>
+                        <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace} style={{marginRight: '10px', strokeWidth:'0.3'}}/> }
+                        <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv} style={{marginRight: '10px', strokeWidth:'0.3'}}/>
                        
                         </div> 
 
