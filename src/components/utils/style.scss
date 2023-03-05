@@ -150,8 +150,8 @@
     align-items:center;
     background-color: lightgray;
     width: 25vw;
-    min-width: 110px;
-    max-width: 150px;
+    min-width: 100px;
+    max-width: 120px;
     height: 6vh;
     min-height: 10px;
     max-height: 40px;
@@ -161,7 +161,7 @@
     border-radius: 20px;
     @include font;
     font-weight: 600;
-    font-size: 18px
+    font-size: 16px
 }
 
 .icon {

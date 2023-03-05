@@ -63,6 +63,7 @@
         border-radius: 20px;          
     }
 
+
     @media (min-width: 501px) and (max-width: 768px) {
         &__button {
             width: 260px;
@@ -82,4 +83,31 @@
     &__button:hover{
         background: #f1d901;
     }
+
+    &__aboutButton {
+        background-color: whitesmoke;
+        display:flex;
+        @include font;
+        color:dimgray;
+        width: 4.5rem;
+        height: 2rem;
+        font-size: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin: 1rem;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 2px solid grey;
+        border-radius: 20px;          
+    }
+
+    &__aboutPopover {
+        max-width: 70%;
+        text-align: center;
+    }
+
 }
