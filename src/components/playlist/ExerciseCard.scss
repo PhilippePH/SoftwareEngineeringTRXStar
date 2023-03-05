@@ -14,7 +14,7 @@
     
 @keyframes slide-in {
         from {
-          transform: translateX(100%);
+          transform: translateX(100%);       
         }
         to {
           transform: translateX(0%);
@@ -48,16 +48,22 @@
     align-items: center;
     animation: slide-down 0.5s linear;
     -webkit-animation: slide-down 0.5s linear; 
-    animation-duration: 0.75s;
+    animation-duration: 1s;
     transform-origin: left; 
 }
     
 @keyframes slide-down {
         from {
+        
           transform: translateY(0%);
+     
+          
         }
         to {
+        
           transform: translateY(200%);
+         
+         
         }
     
 }
