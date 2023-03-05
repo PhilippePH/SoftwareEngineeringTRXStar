@@ -31,7 +31,7 @@ const ModalButton = ({showModal, text}) => {
     return (
         <button 
             className="small-button"
-            style={{color: selected? "black":"darkgray"}}
+            style={{color: selected? "black":"darkgray", borderColor: selected? "black":"darkgray"}}
             onClick={()=>clickHandler()}>
             {text}
         </button>

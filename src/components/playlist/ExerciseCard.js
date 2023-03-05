@@ -7,7 +7,7 @@ import { BsArrowUp, BsArrowDown } from 'react-icons/bs'
 import './ExerciseCard.scss';
 import cn from "classnames";
 import { useRef } from 'react';
-import {BsChevronRight} from 'react-icons/bs';
+import {BsChevronDown} from 'react-icons/bs';
 import RestCard from './RestCard';
 import { getClip } from '../../scripts/algorithm';
 import { inputToPlaylist, removeFromPlaylist, moveUpExercise, moveDownExercise } from "../../redux/slices/playlistSlice.js"
@@ -139,7 +139,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                     className={'exercise-card'}>
 
                         <div className='exercise-card__left-container'>
-                        <BsChevronRight size={28} className={`exercise-card__chevron  exercise-card__chevron${isOpen ? "__open" : "__closed"}`}/> 
+                        <BsChevronDown size={20} /> {/*className={'exercise-card__chevron' + (isOpen ? "__open" : "__closed")}/> */}
                             <div className='exercise-card__exercise-name'>
                                 {exercise_name}
 

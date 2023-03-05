@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { setActiveTab, setFocus } from "../../redux/slices/selectSlice";
 import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
-import { DIFFICULTY, DURATION, FOCUS } from "../utils/constants";
+import { DURATION, FOCUS, MUSCLE_GROUPS } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
 import './style.scss'
-
+import { OverlayTrigger, Popover } from "react-bootstrap";
+import { RiInformationFill } from "react-icons/ri";
 
 const SelectFocus = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -18,7 +19,7 @@ const SelectFocus = () => {
 
     const clickHandler = (option) => {
         dispatch(setFocus(option))
-        navigate(`/select/${DURATION}`);
+        navigate(`/select/${MUSCLE_GROUPS}`);
     }
 
     useEffect(() => {
@@ -33,12 +34,19 @@ const SelectFocus = () => {
 
     return (
         <>
-        <div className="category-div"> 
-            Focus
+        <div className="title-div">
+            <div className="info-wrapper"/>
+            <div className="title-text" > Focus </div>
+            <OverlayTrigger trigger={['click', 'hover']} placement="top" overlay={popover}>
+                <div className="info-wrapper">
+                    <RiInformationFill className='info-icon' size={20} />
+                </div>  
+            </OverlayTrigger>
+            
         </div>
         <div className='selection-container'>
             <div className="left-arrow-div">
-                <NavButtons prev={`/select/${DIFFICULTY}`}/>
+                <NavButtons prev={`/select/${DURATION}`}/>
             </div>
             <div 
                 className="options-div"
@@ -53,7 +61,7 @@ const SelectFocus = () => {
                                 key={option} 
                                 type={FOCUS} 
                                 option={option}
-                                to={`/select/${DURATION}`} 
+                                to={`/select/${MUSCLE_GROUPS}`} 
                                 selected = {completed}
                             />
                         )
@@ -61,45 +69,28 @@ const SelectFocus = () => {
                 }
             </div>
             <div className="right-arrow-div">
-                {completed && <NavButtons next={`/select/${DURATION}`}/>}
+                {completed && <NavButtons next={`/select/${MUSCLE_GROUPS}`}/>}
             </div>
                     
         </div>
         </>
 
-    )
-
-            {/* <ul
-                style={{
-                    display: "grid",
-                    justifyContent: "center",
-                    placeItems: "center",
-                    marginTop: "10%",
-                    marginBottom: "5%",
-                    alignItems: "center",
-                    maxWidth: "25rem",
-                    width: "100%",
-                    maxHeight:"100%",
-                    padding: "0px",
-                    gridTemplateColumns: width > 768 ? 'repeat(2, 1fr)' : '1fr',
-                    gridRowGap: '10px',
-                    gridColumnGap: "10px",
-                }}
-            > 
-                
-            </ul> */}
-            {/* <SelectedOptions/> */}
-            
-            {/* <div
-                style={{width:"200%"}}
-                >
-                <NavButtons
-                    prev={`/select/${DIFFICULTY}`}
-                    next={null}
-                />
-            </div> */}
-
+    ) 
     
 }
 
 export default SelectFocus;
+
+const popover = (
+    <Popover id="popover-basic" className="popover-display">
+      <Popover.Body className='popover-text'>
+        The focus determines the type of exercises and the rest periods. 
+        <ul>
+        <li>HIIT: </li>
+        <li>Strength: </li>
+        <li>Endurance: </li>
+        <li>Recovery: </li>
+        </ul>
+      </Popover.Body>
+    </Popover>
+);
