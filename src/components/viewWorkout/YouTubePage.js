@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import YouTube from 'react-youtube';
-// import BasicButton from './BasicButton';
+import BasicButton from './BasicButton';
 import './YouTubePage.scss'
 import '../utils/style.scss'
 import { useDispatch } from "react-redux";
@@ -11,7 +11,7 @@ import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward }
 import WorkoutProgress from "./WorkoutProgress";
 
 
-const YouTubePage = ({nextVideo, exerciseData}) => {
+const YouTubePage = ({nextVideo, exerciseData, counter, totalWorkoutLength}) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -59,9 +59,9 @@ let updating_width = 0;
 
 function check_width() {
     let w = document.documentElement.clientWidth;
-    if(w > 1000) { updating_width = 0.7 * w}
-    else if(w > 800) { updating_width = 0.8 * w}
-    else if(w > 650) { updating_width = 0.9 * w}
+    if(w > 1000) { updating_width = 0.6 * w}
+    else if(w > 800) { updating_width = 0.7 * w}
+    else if(w > 650) { updating_width = 0.8 * w}
     else {updating_width = 0.98 * w}
 }
 
@@ -83,7 +83,7 @@ const opts = {
         <div className='container-youtube'>
         <div className='container-settings' id="divId">
         <div className='container-settings__progress-bar'> 
-          <WorkoutProgress completed={50} />
+          <WorkoutProgress completed={(Math.floor((counter/totalWorkoutLength)*100))} />
         </div>
         <div className="container-settings__message1">
           {exerciseData.exerciseName}
@@ -113,7 +113,7 @@ const opts = {
             <FaStepForward className="youtube-controls__icon"/>
           </div>
   
-          {/* <div
+          <div
             className="container-settings__div-button">
           <BasicButton
             option={"Next exercise"}
@@ -126,7 +126,7 @@ const opts = {
               >
                 End Workout
               </button>
-            </div> */}
+            </div>
 
           </div>
         </div>

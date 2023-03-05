@@ -20,21 +20,27 @@ const ViewWorkout = () => {
         const videoId = extractVideoIdFromURL(clipList[count].URL)
         const startTime = parseTime(clipList[count].start_time)
         const endTime = parseTime(clipList[count].end_time)
+        const counter = clipList[count].counter
+        const setNumber = clipList[count].set_number
+        const totalWorkoutLength = clipList.length
         const exerciseName = clipList[count].exercise_name
         const exerciseData = {
             videoId,
             startTime,
             endTime,
-            exerciseName
+            exerciseName,
+            counter,
+            setNumber,
+            totalWorkoutLength
         }
         console.log("Exercise data parsed: ", exerciseData)
         return (
-            <YouTubePage nextVideo={() => setCount(count+1)} exerciseData={exerciseData} />
+            <YouTubePage nextVideo={() => setCount(count+1)} exerciseData={exerciseData} counter={counter} totalWorkoutLength={totalWorkoutLength}/>
         )
     } else { // if not we are resting
         // extract rest data
         return (
-            <RestPage nextVideo={() => setCount(count+1)} restData={clipList[count]} nextExerciseName = {clipList[count+1].exercise_name} />
+            <RestPage nextVideo={() => setCount(count+1)} restData={clipList[count]} nextExerciseName = {clipList[count+1].exercise_name} counter={clipList[count].counter} totalWorkoutLength={clipList.length}/>
         )
     }
 }

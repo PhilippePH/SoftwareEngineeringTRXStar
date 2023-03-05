@@ -1,24 +1,29 @@
 import Timer from './Timer';
 import './RestPage.scss'
 import BasicButton from './BasicButton';
+import WorkoutProgress from "./WorkoutProgress";
 
-const RestPage = ({ nextVideo, restData, nextExerciseName }) => {
+const RestPage = ({ nextVideo, restData, nextExerciseName, counter, totalWorkoutLength}) => {
 
     return (
         <>
+        <div className='larger-container-rest'>
             <div className='container-rest'>
-            <div className="message-black1">
+            <div className='container-rest__progress-bar'> 
+                <WorkoutProgress completed={(Math.floor((counter/totalWorkoutLength)*100))} />
+            </div>
+            <div className="container-rest__message-black1">
                 </div>
-                <div className="message-black1">
+                <div className="container-rest__message-black1">
                     Rest
                 </div>
-                <div className='timer-div'>
-                    <Timer onTimeout={nextVideo}  restData = {restData}/>
+                <div className='container-rest__timer-div'>
+                    <Timer onTimeout={nextVideo} restData = {restData}/>
                 </div>
-                <div className="message-black2">
+                <div className="container-rest__message-black2">
                     Next up:
                 </div>
-                <div className="message-yellow">
+                <div className="container-rest__message-yellow">
                     {nextExerciseName}
                 </div>
                 <div
@@ -28,12 +33,9 @@ const RestPage = ({ nextVideo, restData, nextExerciseName }) => {
                         next={nextVideo}
                     />
                 </div>
-
-
+                </div>
             </div>
-
         </>
-
     )
 }
 
