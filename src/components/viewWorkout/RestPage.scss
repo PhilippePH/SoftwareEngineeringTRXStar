@@ -11,8 +11,6 @@
     flex-flow: column nowrap; // creates the vertical component
     align-items: center; // keeps the button centerd
     height: 100vh;
-    // justify-content: space-between;
-    // flex: 6;
     width: 100vh;
     
     &__progress-bar{
@@ -119,11 +117,11 @@
 
 @media (min-width: 1000px) { // make the youtube player small if the screen is particularily large
     .container-rest {
-        width: 60vw;
+        width: 55vw;
     }
 
     .youtube-controls {
-        width: 60vw;
+        width: 55vw;
 
         &__icon {
             height: 30%;

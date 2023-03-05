@@ -11,7 +11,7 @@
     align-items: center; // keeps the button centerd
     width: 100vw;
     height: 100vh;
-    
+
     &__progress-bar{
         padding-top: 2.5%;
         width: 100%;
@@ -20,14 +20,21 @@
     &__message1 {
         color: black;
         @include font; 
-        padding-top: 1%;
-        padding-bottom: 2.5%;
         font-size: 50px;
         text-transform: capitalize; // adds uppercases letter
+        display:grid;
+        place-items: center;
         }
 
+    &__sets{
+        color: #a15050c2; // change for import variable 
+        @include font; 
+        font-size: 25px;
+        text-transform: capitalize; // adds uppercases letter
+        padding-bottom: 5%;
+    }
+
     &__wrap{
-        flex: 1;
         position: relative;
         align-items:center;
         justify-content: center;
@@ -51,8 +58,7 @@
     justify-items: center;
     align-items: center;
     // border: 1px solid red;
-    // padding-bottom: 2.5%;
-    padding-top: 2.5%;
+    padding-top: 1%;
 
     &__icon {
         height: 50%;
@@ -109,10 +115,10 @@
 
 @media (min-width: 1000px) { // make the youtube player small if the screen is particularily large
     .container-settings {
-        width: 60vw;
+        width: 55vw;
     }
     .youtube-controls {
-        width: 60vw;
+        width: 55vw;
 
         &__icon {
             height: 30%;

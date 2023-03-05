@@ -11,7 +11,7 @@ import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward }
 import WorkoutProgress from "./WorkoutProgress";
 
 
-const YouTubePage = ({nextVideo, exerciseData, counter, totalWorkoutLength}) => {
+const YouTubePage = ({nextVideo, exerciseData}) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -59,7 +59,7 @@ let updating_width = 0;
 
 function check_width() {
     let w = document.documentElement.clientWidth;
-    if(w > 1000) { updating_width = 0.6 * w}
+    if(w > 1000) { updating_width = 0.55 * w}
     else if(w > 800) { updating_width = 0.7 * w}
     else if(w > 650) { updating_width = 0.8 * w}
     else {updating_width = 0.98 * w}
@@ -83,10 +83,13 @@ const opts = {
         <div className='container-youtube'>
         <div className='container-settings' id="divId">
         <div className='container-settings__progress-bar'> 
-          <WorkoutProgress completed={(Math.floor((counter/totalWorkoutLength)*100))} />
+          <WorkoutProgress completed={(Math.floor((exerciseData.counter /exerciseData.totalWorkoutLength)*100))} />
         </div>
         <div className="container-settings__message1">
           {exerciseData.exerciseName}
+          <div className="container-settings__sets">
+              set {exerciseData.setNumber+1} of {exerciseData.totalSets}
+                </div>
                 </div>
                 
           <div

@@ -15,11 +15,22 @@ function playlistToClipList(playlist) {
                 // apend to list
                 var clipInfoTemp = {};
                 var restInfoTemp = {};
-                Object.assign(clipInfoTemp, { type: "clip", exercise_name: playlistArray[i].exercise_name, URL: playlistArray[i].URL, start_time: playlistArray[i].start_time, end_time: playlistArray[i].end_time, counter: countMetric, set_number: j });
+                Object.assign(clipInfoTemp, { type: "clip", 
+                                            exercise_name: playlistArray[i].exercise_name,
+                                            URL: playlistArray[i].URL,
+                                            start_time: playlistArray[i].start_time,
+                                            end_time: playlistArray[i].end_time,
+                                            counter: countMetric,
+                                            set_number: j,
+                                            totalSets: playlistArray[i].sets});
+
                 clipList.push(clipInfoTemp);
                 countMetric += 1;
+
                 if (playlistArray[i].rest_set > 0) {
-                    Object.assign(restInfoTemp, { type: "rest", time: playlistArray[i].rest_set, counter: countMetric });
+                    Object.assign(restInfoTemp, { type: "rest",
+                                                time: playlistArray[i].rest_set,
+                                                counter: countMetric });
                     clipList.push(restInfoTemp);
                     countMetric += 1;
                 }
@@ -35,7 +46,9 @@ function playlistToClipList(playlist) {
             }
             // otherwise
             else {
-                Object.assign(restTemp, { type: "rest", time: playlistArray[i].time, counter: countMetric });
+                Object.assign(restTemp, { type: "rest",
+                                        time: playlistArray[i].time,
+                                        counter: countMetric });
                 clipList.push(restTemp);
                 countMetric += 1;
             }
@@ -44,7 +57,13 @@ function playlistToClipList(playlist) {
         else {
             // warmup or cooldown
             var clipInfoTemp = {};
-            Object.assign(clipInfoTemp, { type: "clip", exercise_name: playlistArray[i].type, URL: playlistArray[i].URL, start_time: playlistArray[i].start_time, end_time: playlistArray[i].end_time, counter:countMetric, set_number:1 });
+            Object.assign(clipInfoTemp, { type: "clip",
+                                        exercise_name: playlistArray[i].type,
+                                        URL: playlistArray[i].URL,
+                                        start_time: playlistArray[i].start_time,
+                                        end_time: playlistArray[i].end_time,
+                                        counter:countMetric,
+                                        });
             clipList.push(clipInfoTemp);
             countMetric += 1;
         }
