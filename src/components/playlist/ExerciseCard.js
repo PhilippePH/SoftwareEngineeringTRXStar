@@ -129,18 +129,11 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
         <div>
             <div>
             <div className={isFadingOut ? 'item-fadeout': (isSlidingIn ? 'slide-in': (isSlidingUp ? 'flipup': (isSlidingDown ? 'flipdown': 'item1')))}>
-            <div onClick={toggle}
-                ref={containerRef}
-                className={cn("custom-container", {
-                    open: isOpen,
-                    closed: !isOpen
-                })}
-                style={{
-                    //height:  isOpen ? '20vh' : '10vh',
-                    //minHeight: isOpen ? outerHeight.current-20 : CLOSED_HEIGHT-10,
-                    //maxHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT
-                    minHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT
-                }}>
+                <div className={`custom-container ${isOpen ? 'open' : 'closed'}`}
+                style={{ minHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT }}
+                onClick={toggle}
+                ref={containerRef}>
+
                 <div>
                     <div
                     className={'exercise-card'}>
@@ -185,8 +178,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
             </div>
             {rest_time > 0 && <RestCard time={rest_time} />}
             </div>
-        
-        </div>
+            </div>
 
     );
 }
