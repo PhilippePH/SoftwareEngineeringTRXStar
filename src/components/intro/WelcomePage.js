@@ -53,47 +53,57 @@ const Welcome = ({indexedDB}) => {
 
     const [ buttonDisabled, setButtonDisabled ] = useState(true);
     const [ playlists, setPlaylists ] = useState([]);
+    const [ errorMsg, setErrorMsg ] = useState("");
+
     useEffect(() => {
         getSavedPlaylists(indexedDB)
         .then(function(e) {
-            setPlaylists(e.target.result)
-            setButtonDisabled(false);
+            var playlists = e.target.result;
+            if (playlists.length === 0) {
+                setErrorMsg("No saved playlists!");
+                document.getElementById("error").style.opacity = "1";
+            } else {
+                setButtonDisabled(false);
+                setPlaylists(playlists);
+            }
         })
         .catch(function(e) {
             console.error(e.target.error);
+            setErrorMsg("An error occured with indexedDB");
+            document.getElementById("error").style.opacity = "1";
         })
-    }, [])
+    }, [buttonDisabled, errorMsg]);
 
     return (
         <div className="welcome__img-container">
             <ul
-            className="welcome__img-ul" 
-            >
+                className="welcome__img-ul">
                 <img
                     className="welcome__img"
                     src={logo}
-                    alt={"logo"}
-                />
-            
+                    alt={"logo"}/>
                 <button 
                     key={Welcome} 
                     onClick={()=>clickHandler()}
-                    className="welcome__button"
-                    >
+                    className="welcome__button">
                     Start Your Workout
                 </button>
                 <button
                     onClick={() => setShow(true)}
-                    disabled={buttonDisabled}>
+                    disabled={buttonDisabled}
+                    className="welcome__loadbutton">
                     Load Playlist
                 </button>
+                <p
+                    className="welcome__error"
+                    id="error">
+                    {errorMsg}
+                </p>
             </ul>
             <LoadModal
                 show={show}
                 unshow={handleClose}
-                indexedDB={indexedDB}
                 playlists={playlists}/>
-
         </div>
     )
 

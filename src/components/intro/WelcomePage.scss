@@ -82,4 +82,77 @@
     &__button:hover{
         background: #f1d901;
     }
+
+    &__loadbutton {
+        @include font;
+        font-size: 1rem;
+        width: 160px;
+        height: 50px;
+        cursor: pointer;
+        border-radius: 24px;
+        background-color: #f0f0f0;
+
+        &:hover {
+            background-color: lightgray;
+        }
+
+        &:disabled{
+            &:hover {
+                background-color: #f0f0f0;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__error {
+        @include font;
+        font-weight: 600;
+        font-size: 1rem;
+        color: red;
+        margin: 0;
+        min-height: 1rem;
+        opacity: 0;
+    }
+
+}
+
+.load-modal {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__button {
+
+        &__playlist {
+            @include font;
+            font-size: 1rem;
+            width: 90%;
+            height: 40px;
+            text-align: left;
+            border-radius: 6px;
+            margin: 8px 0px;
+            padding: 4px 12px;
+    
+            &:hover {
+                background-color: lightgray;
+            }
+        }
+
+        &__close {
+            @include font;
+            font-size: 1rem;
+            border-radius: 20px;
+            margin: 0px 0px;
+            padding: 4px 12px;
+            background-color: $primary-colour;
+    
+            &:hover {
+                background-color: #f1d901;
+            }
+        }
+    }
+
+    
+    
 }

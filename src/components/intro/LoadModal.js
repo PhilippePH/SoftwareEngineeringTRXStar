@@ -1,11 +1,11 @@
 import Modal from 'react-bootstrap/Modal'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { addPlaylist } from '../../redux/slices/playlistSlice';
 import { store } from '../../redux/store';
+import './WelcomePage.scss';
 
-const LoadModal = ({show, unshow, indexedDB, playlists}) => {
 
-    console.log("Playlist in modal", playlists);
+const LoadModal = ({show, unshow, playlists}) => {
 
     const navigate = useNavigate();
 
@@ -22,13 +22,15 @@ const LoadModal = ({show, unshow, indexedDB, playlists}) => {
             backdrop="static"
             scrollable={false}
             centered>
-            <Modal.Body>
+            <Modal.Body
+                className='load-modal'>
                 {
                     playlists.map((playlist) => {
                         return (
                             <button
                                 key={playlist.name}
-                                onClick={() => {clickHandler(playlist)}}>
+                                onClick={() => {clickHandler(playlist)}}
+                                className="load-modal__button__playlist">
                                 {playlist.name}
                             </button>
                         )
@@ -37,7 +39,8 @@ const LoadModal = ({show, unshow, indexedDB, playlists}) => {
             </Modal.Body>
             <Modal.Footer>
                 <button
-                    onClick={unshow}>
+                    onClick={unshow}
+                    className="load-modal__button__close">
                     Cancel
                 </button>
             </Modal.Footer>
