@@ -9,7 +9,7 @@ import MusclesModal from "./SelectMusclesModal"
 import './style.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { OverlayTrigger, Popover } from "react-bootstrap";
-import { AiFillInfoCircle } from "react-icons/ai";
+import { RiInformationFill } from "react-icons/ri";
 
 
 const modal = document.querySelector(".modal");
@@ -61,7 +61,7 @@ const SelectMuscleGroups = () => {
             <div className="title-text" > Muscle Group(s) </div>
             <OverlayTrigger trigger={['click','hover']} placement="top" overlay={popover}>
                 <div className="info-wrapper">
-                    <AiFillInfoCircle className='info-icon' size={20} />
+                    <RiInformationFill className='info-icon' size={20} />
                 </div>  
             </OverlayTrigger>
             

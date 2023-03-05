@@ -2,15 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActiveTab, setNavDirection } from "../../redux/slices/selectSlice";
 import { useEffect, useState } from "react";
 import { DIFFICULTY, DURATION } from "../utils/constants";
-import {AiFillInfoCircle, AiOutlineInfoCircle} from "react-icons/ai";
 import SelectButton from "../utils/SelectButton";
 import NavButtons from "../utils/NavButtons";
 import './style.scss';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-// import InfoPopover from "../utils/InfoPopover";
-import Button from 'react-bootstrap/Button';
 import { Popover } from "react-bootstrap";
-import {BiRun} from "react-icons/bi";
+import { RiInformationFill } from "react-icons/ri";
 
 const SelectDifficulty = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -37,7 +34,7 @@ const SelectDifficulty = () => {
             <div className="title-text" > Difficulty </div>
             <OverlayTrigger trigger={['click', 'hover']} placement="top" overlay={popover}>
                 <div className="info-wrapper">
-                    <AiFillInfoCircle className='info-icon' size={20} />
+                    <RiInformationFill className='info-icon' size={20} />
                 </div>  
             </OverlayTrigger>
             

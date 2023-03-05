@@ -7,8 +7,7 @@ import { DURATION, FOCUS, MUSCLE_GROUPS } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
 import './style.scss'
 import { OverlayTrigger, Popover } from "react-bootstrap";
-import { AiFillInfoCircle } from "react-icons/ai";
-
+import { RiInformationFill } from "react-icons/ri";
 
 const SelectFocus = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -40,7 +39,7 @@ const SelectFocus = () => {
             <div className="title-text" > Focus </div>
             <OverlayTrigger trigger={['click', 'hover']} placement="top" overlay={popover}>
                 <div className="info-wrapper">
-                    <AiFillInfoCircle className='info-icon' size={20} />
+                    <RiInformationFill className='info-icon' size={20} />
                 </div>  
             </OverlayTrigger>
             

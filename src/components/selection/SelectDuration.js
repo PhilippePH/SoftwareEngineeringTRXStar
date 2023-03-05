@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { DURATION, FOCUS, DIFFICULTY} from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
 import './style.scss'
-import { AiFillInfoCircle } from "react-icons/ai";
 import { OverlayTrigger, Popover } from "react-bootstrap";
+import { RiInformationFill } from "react-icons/ri";
 
 const SelectDuration = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -45,7 +45,7 @@ const SelectDuration = () => {
             <div className="title-text" > Duration </div>
             <OverlayTrigger trigger={['click', 'hover']} placement="top" overlay={popover}>
                 <div className="info-wrapper">
-                    <AiFillInfoCircle className='info-icon' size={20} />
+                    <RiInformationFill className='info-icon' size={20} />
                 </div>  
             </OverlayTrigger>
             
