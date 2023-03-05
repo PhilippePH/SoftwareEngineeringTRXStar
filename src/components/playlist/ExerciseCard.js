@@ -32,15 +32,11 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     const [isSlidingDown, setIsSlidingDown] = useState(false);
 
     const slideIn = (event) => {
-        //event.stopPropagation();
         setIsSlidingIn(true);
-        //cb();
     };
 
     const slideUp = (event) => {
-        //event.stopPropagation();
         setIsSlidingUp(true);
-        //cb();
     };
 
     const slideDown = (event) => {
@@ -48,9 +44,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     };
 
     const fadeOut = (event) => {
-        //event.stopPropagation();
         setIsFadingOut(true);
-        //cb();
     };
     
 
@@ -74,9 +68,9 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
         slideDown(); 
         event.stopPropagation();
         setTimeout(() => {
-            store.dispatch(moveDownExercise(ind)); 
+            store.dispatch(moveDownExercise(ind));
             setIsSlidingDown(false);
-          }, 500);
+          }, 1500);
     
         
       };
@@ -87,7 +81,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
         setTimeout(() => {
             store.dispatch(moveUpExercise(ind)); 
             setIsSlidingUp(false);
-          }, 500);
+          }, 1500);
         
       };
 
@@ -134,7 +128,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     return (
         <div>
             <div>
-            <div className={isFadingOut ? 'item-fadeout': (isSlidingIn ? 'slide-in': (isSlidingUp ? 'slide-up': (isSlidingDown ? 'slide-down': 'item1')))}>
+            <div className={isFadingOut ? 'item-fadeout': (isSlidingIn ? 'slide-in': (isSlidingUp ? 'flipup': (isSlidingDown ? 'flipdown': 'item1')))}>
             <div onClick={toggle}
                 ref={containerRef}
                 className={cn("custom-container", {

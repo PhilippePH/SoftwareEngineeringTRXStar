@@ -2,6 +2,73 @@
 @import '../../sassStyles/mixins';
 
 
+
+.flipup {
+    display: flex;
+    padding-bottom: 0.5rem;
+    align-items: center;
+    animation: flipup 1s ease-in-out forwards;
+    animation-duration: 2s;
+    color: transparent;
+  }
+
+@keyframes flipup {
+    0% {
+      transform: rotate3d(0deg);
+      opacity: 1;
+    }
+    25% {
+        transform: rotate3d(1, 0, 0, 180deg);;
+      opacity: 1;
+    }
+    50% {
+        transform: rotate3d(1, 0, 0, 180deg);;
+      opacity: 0.8;
+    }
+    75% {
+        transform: rotate3d(1, 0, 0, 180deg);;
+      opacity: 0.4;
+    }
+    100% {
+      transform: rotate3d(0deg);
+      opacity: 0;
+    }
+  }
+
+
+  .flipdown {
+    display: flex;
+    padding-bottom: 0.5rem;
+    align-items: center;
+    animation: flipdown 1s ease-in-out forwards;
+    animation-duration: 2s;
+    color: transparent;
+  }
+
+@keyframes flipdown {
+    0% {
+      transform: rotate3d(0deg);
+      opacity: 1;
+    }
+    25% {
+        transform: rotate3d(1, 0, 0, 180deg);;
+      opacity: 1;
+    }
+    50% {
+        transform: rotate3d(1, 0, 0, 180deg);;
+      opacity: 0.8;
+    }
+    75% {
+        transform: rotate3d(1, 0, 0, 180deg);;
+      opacity: 0.4;
+    }
+    100% {
+      transform: rotate3d(0deg);
+      opacity: 0;
+    }
+  }
+
+
 .slide-in {
     display: flex;
     padding-bottom: 0.5rem;
