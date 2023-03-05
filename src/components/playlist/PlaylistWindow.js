@@ -35,12 +35,16 @@ const PlaylistWindow = ({ indexedDB }) => {
 
 
     function convertMuscleList(array){
-        //console.log("Array", array)
-        var list = array.muscles
-        for(var i = 1; i< array.muscles.length; i++)
+        console.log("Array", array)
+        var list = []//array.muscles
+        for(var i = 0; i< array.muscles.length; i++)
         {
-            list += ","
+            if (i+1 == array.muscles.length)
             list += array.muscles[i]
+            else {
+                list += array.muscles[i]
+                list += ", "
+            }
         }
         return list; 
     }
@@ -87,7 +91,11 @@ const PlaylistWindow = ({ indexedDB }) => {
                         // Add your other content here
 
 
-                        <><div className='workout-heading'>WORKOUT {version}</div><div>
+                        <><div className='workout-heading'>WORKOUT {version}</div>
+                        <div className='workout-length'>
+
+                        </div>
+                        <div>
                             {playlist.map((work, index) => {
 
                                 
