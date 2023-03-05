@@ -39,7 +39,7 @@ const SelectFocus = () => {
             <div className="title-text" > Focus </div>
             <OverlayTrigger trigger={['click', 'hover']} placement="top" overlay={popover}>
                 <div className="info-wrapper">
-                    <RiInformationFill className='info-icon' size={20} />
+                    <RiInformationFill className='info-icon'/>
                 </div>  
             </OverlayTrigger>
             
