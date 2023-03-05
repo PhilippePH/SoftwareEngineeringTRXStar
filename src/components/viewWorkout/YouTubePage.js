@@ -53,35 +53,47 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
     navigate(`/end`);
 }
 
-  const opts = {
-    height: width * 9 / 16 * 0.5,
-    width: width * 0.5,
+let updating_width = 0; 
+
+function check_width() {
+    let w = document.documentElement.clientWidth;
+    if(w > 1000) { updating_width = 0.7 * w}
+    else if(w > 800) { updating_width = 0.8 * w}
+    else if(w > 650) { updating_width = 0.9 * w}
+    else {updating_width = 0.98 * w}
+}
+
+window.onresize = check_width();
+
+const opts = {
+    width: '100%', // so that it takes the whole size of the container
+    height: updating_width * 9 / 16 , // keeping the ratio
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
       start: exerciseData.startTime, 
       end: exerciseData.endTime,
-      disablekb: 1,
-      controls: 1, // switch to 0 to not show them
     },
   };
+
+
       return (
         <>
-        <div className='youtube-container'>
-        <div className="message1">
-        </div>
-        <div className="message1">
+        <div className='container-youtube'>
+        <div className='container-settings' id="divId">
+        <div className="container-settings__message1">
           {exerciseData.exerciseName}
                 </div>
+                
           <div
-            align="center"
-            className="video">
-            <YouTube  videoId={exerciseData.videoId} 
+            className="container-settings__wrap">
+            <YouTube className="container-settings__iFrameYoutube"
+                      videoId={exerciseData.videoId} 
                       opts={opts} 
                       onEnd={nextVideo} 
                       ref={playerRef}
                       onPlay={() => setIsPlaying(true)}
-                      onPause={() => setIsPlaying(false)} />
+                      onPause={() => setIsPlaying(false)}>
+                      </YouTube>
           </div>  
           <div className="youtube-controls">
             <FaStepBackward className="youtube-controls__icon"/>
@@ -96,8 +108,8 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
             <FaStepForward className="youtube-controls__icon"/>
           </div>
   
-          <div
-            className="div-button">
+          {/* <div
+            className="container-settings__div-button">
           <BasicButton
             option={"Next exercise"}
             next={nextVideo}
@@ -105,13 +117,15 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
           />
               <button
                 onClick={() => clickHandler()}
-                className="button"
+                className="container-settings__button"
               >
                 End Workout
               </button>
-            </div>
+            </div> */}
+
           </div>
-        </>
+        </div>
+      </>
         
       );
       
