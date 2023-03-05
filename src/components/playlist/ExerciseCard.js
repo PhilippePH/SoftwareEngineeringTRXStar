@@ -16,13 +16,13 @@ import { filterOnKey } from '../../scripts/algorithm';
 
 
 const CLOSED_HEIGHT = 50;
-const OPENED_HEIGHT = 115;
+const OPENED_HEIGHT = 135;
 
 export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time, ind, muscle_types}) {
     const [isOpen, setOPen] = useState(false);
     const outerHeight = useRef(CLOSED_HEIGHT);
     const containerRef = useRef(null);
-    var remaining_secs = (sets*duration+(time*(sets-1)))%60;
+    var remaining_secs_duration = (sets*duration+(time*(sets-1)))%60;
     const [key, setKey] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [isFadingOut, setIsFadingOut] = useState(false);
@@ -130,13 +130,29 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                     </div>
                     <div className='additional-info'>
                         
-                        {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'> Muscles: {muscle_types} </div>}
-                        <div className='info-container'> Duration: {duration}s per set</div>
-                        <div className='info-container'> Sets: {sets} </div>
-                        <div className='info-container'> {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs<10?'0':''}{remaining_secs} <BsHourglassSplit size={28}/></div>
+                
+                        
+                    {(exercise_name == "Warmup" || exercise_name == "Cooldown")&&<div className='warmup-cooldown-container'> <div><BsHourglassSplit size={28} color='gray'/></div>Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
+                    {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'> 
+                    
+                       <div>Work: {Math.floor((duration/60))}:{duration%60<10?'0':''}{duration%60}/set</div>
+                         <div> Rest: {Math.floor((time/60))}:{time%60<10?'0':''}{time%60}/set</div>
+                        <div>Sets: {sets} </div>
+                        </div>}
+                       
+       
+                       
 
+                   
+                        {exercise_name != "Warmup" && exercise_name != "Cooldown" &&<div className='info-container'> <div><BsHourglassSplit size={28} color='gray'/></div>Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
 
+                        {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'> Muscles: {muscle_types} </div>}   
+                   
                     </div>
+
+
+
+           
                 </div>
 
             </div>
