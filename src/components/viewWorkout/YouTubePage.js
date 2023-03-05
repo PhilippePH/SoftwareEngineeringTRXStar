@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import YouTube from 'react-youtube';
-import BasicButton from './BasicButton';
+// import BasicButton from './BasicButton';
 import './YouTubePage.scss'
 import '../utils/style.scss'
 import { useDispatch } from "react-redux";
@@ -83,7 +83,7 @@ const opts = {
         <div className='container-youtube'>
         <div className='container-settings' id="divId">
         <div className='container-settings__progress-bar'> 
-        <WorkoutProgress/>
+          <WorkoutProgress completed={50} />
         </div>
         <div className="container-settings__message1">
           {exerciseData.exerciseName}
