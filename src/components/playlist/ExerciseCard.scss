@@ -136,7 +136,7 @@
 }
 
 :root {
-    --transition: 0.4s ease;
+    --transition: 1s ease;
 }
 
 .item-fadein{
@@ -190,6 +190,7 @@
 }
     
 .item1 {
+
     padding-bottom: 0.5rem;
     //padding-top: 0.5rem;
 }
@@ -200,7 +201,7 @@
     align-items: center;
     height: 60px;
     transition: opacity 0.5s;
-    
+
 
 
     &__right-container {
@@ -263,7 +264,7 @@
     }
 
     &__closed{
-        transform: rotate(-90deg);
+    transform: rotate(-90deg);
     transition: transform var(--transition);
 
     }
