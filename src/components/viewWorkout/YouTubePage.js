@@ -8,6 +8,8 @@ import { setNavDirection } from "../../redux/slices/selectSlice";
 import { useNavigate } from "react-router-dom";
 import '../intro/WelcomePage.scss'
 import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
+import WorkoutProgress from "./WorkoutProgress";
+
 
 const YouTubePage = ({nextVideo, exerciseData}) => {
 
@@ -19,7 +21,7 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
 
   const playerRef = useRef(null); // create a ref for the YouTube component
 
-  console.log("exercisedata", exerciseData)
+  // console.log("exercisedata", exerciseData)
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -80,6 +82,9 @@ const opts = {
         <>
         <div className='container-youtube'>
         <div className='container-settings' id="divId">
+        <div className='container-settings__progress-bar'> 
+        <WorkoutProgress/>
+        </div>
         <div className="container-settings__message1">
           {exerciseData.exerciseName}
                 </div>

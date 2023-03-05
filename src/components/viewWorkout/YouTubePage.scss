@@ -12,6 +12,10 @@
     width: 100vw;
     height: 90vh; // Can't do 100vh because of menu bar at the top. 
 
+    &__progress-bar{
+        padding-top: 2.5%;
+        width: 100%;
+    }
     &__message1 {
         color: black;
         @include font; 
