@@ -254,20 +254,23 @@
         margin-right: 10px;
     }
 
-    &__chevron {
-        stroke-width: 0.5;
-        padding-right: 5px;
+    
+}
+.chevron {
+    stroke-width: 0.5;
+    padding-right: 5px;
+
+
+    &__open {
         transition: transform var(--transition);
+    }
 
-        &__open {
-            transform: rotate(90deg);
-            //transition: var(--transition);
-        }
-
+    &__closed{
+        transform: rotate(-90deg);
+    transition: transform var(--transition);
 
     }
 }
-
 
 .additional-info {
     display: flex;
