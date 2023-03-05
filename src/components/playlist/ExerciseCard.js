@@ -30,6 +30,11 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     const [isSlidingIn, setIsSlidingIn] = useState(false);
     const [isSlidingUp, setIsSlidingUp] = useState(false);
     const [isSlidingDown, setIsSlidingDown] = useState(false);
+    const [rotate, setRotate] = useState(false);
+
+    const handleClick = () => {
+        setRotate(!rotate);
+      };
 
     const slideIn = (event) => {
         setIsSlidingIn(true);
@@ -124,14 +129,17 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
 //<div className={isFadingOut ? 'item-fadeout': 'item'}>
 
-
+    const handleClickAndToggle = () => {
+    handleClick();
+    toggle();
+  };
     return (
         <div>
             <div>
             <div className={isFadingOut ? 'item-fadeout': (isSlidingIn ? 'slide-in': (isSlidingUp ? 'flipup': (isSlidingDown ? 'flipdown': 'item1')))}>
                 <div className={`custom-container ${isOpen ? 'open' : 'closed'}`}
                 style={{ minHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT }}
-                onClick={toggle}
+                onClick={handleClickAndToggle}
                 ref={containerRef}>
 
                 <div>
@@ -139,7 +147,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                     className={'exercise-card'}>
 
                         <div className='exercise-card__left-container'>
-                        <BsChevronDown size={20} className={'chevron' + (isOpen ? "__open" : "__closed")}/>
+                        <BsChevronDown size={20} className={rotate ? 'chevron__open' : 'chevron__closed'}/>
                             <div className='exercise-card__exercise-name'>
                                 {exercise_name}
 
