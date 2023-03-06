@@ -1,4 +1,3 @@
-import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useDispatch } from "react-redux";

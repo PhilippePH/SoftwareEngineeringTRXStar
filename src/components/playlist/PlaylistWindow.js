@@ -5,10 +5,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import RestCard from './RestCard';
-import { FaCentercode, FaPlay } from "react-icons/fa";
+import { FaPlay } from "react-icons/fa";
 import { TfiReload } from "react-icons/tfi"
 import './PlaylistWindow.scss';
-import NavButtons from '../utils/NavButtons'
 import { increaseVersion } from "../../redux/slices/selectSlice"
 import { store } from "../../redux/store"
 import './PlaylistWindow.scss'
