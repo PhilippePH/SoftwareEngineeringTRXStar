@@ -86,12 +86,12 @@ export default SelectFocus;
 const popover = (
     <Popover id="popover-basic" className="popover-display">
       <Popover.Body className='popover-text'>
-        The focus determines the type of exercises and the rest periods. 
+        The focus determines the type of exercises. 
         <ul>
-        <li>HIIT: </li>
-        <li>Strength: </li>
-        <li>Endurance: </li>
-        <li>Recovery: </li>
+        <li>HIIT: High intensity intervals of work and rest</li>
+        <li>Strength: Resistance training to build muscle and increase strength </li>
+        <li>Endurance: Low-to-moderate intensity exercises to build cardiovascular endurance</li>
+        <li>Recovery: Active recovery exercises to help with muscle soreness and prevent injury </li>
         </ul>
       </Popover.Body>
     </Popover>

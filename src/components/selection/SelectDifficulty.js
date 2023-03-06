@@ -75,7 +75,7 @@ const popover = (
     <Popover id="popover-basic" className="popover-display">
       {/* <Popover.Header as="h3">Popover right</Popover.Header> */}
       <Popover.Body className='popover-text'>
-        The difficulty determines the average intensity of your workout. 
+        The difficulty determines the average difficulty of your workout, including the length of rest periods. 
       </Popover.Body>
     </Popover>
 );
