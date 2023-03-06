@@ -153,6 +153,7 @@
     padding-bottom: 0.5rem;
     -webkit-animation: fadeout .3s linear forwards;
     animation: fadeout .3s linear forwards;
+    animation-duration: 20s;
 }
 
 @-webkit-keyframes fadeout {
@@ -281,7 +282,7 @@
     border-top: 2px black solid;
     padding-inline: 20px;
     align-items:center;
-    background-color: white;
+    background-color: $white-smoky;
   
 }
 @media (min-width: 400px) {

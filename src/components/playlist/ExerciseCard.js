@@ -66,7 +66,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
         setTimeout(() => {
             store.dispatch(removeFromPlaylist(ind));
             setIsFadingOut(false);
-          }, 1000);
+          }, 100000);
       };
 
       const handleMoveDown = (event) => {
@@ -134,8 +134,6 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     toggle();
   };
     return (
-        <div>
-            <div>
             <div className={isFadingOut ? 'item-fadeout': (isSlidingIn ? 'slide-in': (isSlidingUp ? 'flipup': (isSlidingDown ? 'flipdown': 'item1')))}>
                 <div className={`custom-container ${isOpen ? 'open' : 'closed'}`}
                 style={{ minHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT }}
@@ -175,32 +173,20 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                         
                 
                         
-                    {(exercise_name == "Warmup" || exercise_name == "Cooldown")&&<div className='warmup-cooldown-container'> <div><BsHourglassSplit size={28} color='gray'/></div>Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
+                    {(exercise_name == "Warmup" || exercise_name == "Cooldown")&&<div className='warmup-cooldown-container'> Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
                     {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'> 
                     
-                       <div>Work: {Math.floor((duration/60))}:{duration%60<10?'0':''}{duration%60}/set</div>
-                         <div> Rest: {Math.floor((time/60))}:{time%60<10?'0':''}{time%60}/set</div>
+                       <div>Work/Rest: {Math.floor((duration/60))}:{duration%60<10?'0':''}{duration%60}/ {Math.floor((time/60))}:{time%60<10?'0':''}{time%60} per set</div>
                         <div>Sets: {sets} </div>
                         </div>}
                        
-       
-                       
-
-                   
-                        {exercise_name != "Warmup" && exercise_name != "Cooldown" &&<div className='info-container'> <div><BsHourglassSplit size={28} color='gray'/></div>Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
+                        {exercise_name != "Warmup" && exercise_name != "Cooldown" &&<div className='info-container'>Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
 
                         {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'> Muscles: {muscle_types} </div>}   
                    
                     </div>
-
-
-
-           
                 </div>
 
-            </div>
-            </div>
-            {rest_time > 0 && <RestCard time={rest_time} />}
             </div>
             </div>
 

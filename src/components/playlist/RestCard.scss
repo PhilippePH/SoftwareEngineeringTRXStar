@@ -1,0 +1,42 @@
+:root {
+    --transition-rest: 0.7s ease;
+}
+
+.rest-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: pointer;
+    align-items: center;
+    border-radius: 20px;
+    background-color: whitesmoke;
+    transition: min-height var(--transition-rest);
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+    height: 60px; 
+    flex-direction: row; 
+    min-height: 50px;
+    min-width: 62vw;
+
+
+    &__right-container {
+        
+        display: flex;
+        flex-direction: row;
+        width: 40%;
+        justify-content: flex-end;
+        text-align: left;
+    }
+
+}
+
+@-webkit-keyframes fadeout-rest {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes fadeout-rest {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+

@@ -130,7 +130,9 @@ const PlaylistWindow = ({ indexedDB }) => {
                                 }
                                 else
                                     return (
-                                        <RestCard time={playlist[index].time} />
+                                        <div>
+                                        <RestCard time={playlist[index].time} index = {index} />
+                                        </div>
                                     );
                                     
                            

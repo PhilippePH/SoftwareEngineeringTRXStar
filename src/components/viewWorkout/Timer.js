@@ -9,6 +9,7 @@ export const Timer = ({ onTimeout, restData }) => {
     const COUNTDOWN_SECONDS = restData.time;
     const [timeLeft, setTime] = useState(restData.time);
     const [audio] = useState(new Audio(countdownSound));
+    
 
     useEffect(() => {
     if (timeLeft === 3 ||timeLeft === COUNTDOWN_SECONDS)
