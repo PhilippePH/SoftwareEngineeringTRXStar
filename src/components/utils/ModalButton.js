@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useLinkClickHandler } from "react-router-dom";
-import { setMuscleGroups, setMuscles } from "../../redux/slices/selectSlice";
-import { MUSCLES, MUSCLE_GROUPS } from "./constants";
+import { useSelector } from "react-redux";
 import './style.scss'
 
 

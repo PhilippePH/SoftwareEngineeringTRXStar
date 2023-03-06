@@ -3,7 +3,6 @@ import YouTube from 'react-youtube';
 import './YouTubePage.scss'
 import '../utils/style.scss'
 import { useDispatch } from "react-redux";
-import { setNavDirection } from "../../redux/slices/selectSlice";
 import { useNavigate } from "react-router-dom";
 import '../intro/WelcomePage.scss'
 import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";

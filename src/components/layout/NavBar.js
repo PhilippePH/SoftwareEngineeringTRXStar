@@ -51,15 +51,7 @@ const NavBar = () => {
                     cursor: "pointer"
                 }}
             >
-                <GrHomeRounded
-                    style={{
-                        fontSize: "30px",
-                        "&:hover": {
-                            backgroundColor: "red",
-                            color: "green"
-                          },
-                    }}
-                />
+                <p>RIP House</p>
             </div>  
         </div>
     )

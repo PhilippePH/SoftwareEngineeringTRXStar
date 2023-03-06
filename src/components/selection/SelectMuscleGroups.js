@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActiveTab, setMuscleGroups } from "../../redux/slices/selectSlice";
 import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
-import { DURATION, MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
+import { DURATION, MUSCLE_GROUPS } from "../utils/constants";
 import SelectMultipleButton from "../utils/SelectMultipleButton";
 import ModalButton from "../utils/ModalButton"
 import MusclesModal from "./SelectMusclesModal"
