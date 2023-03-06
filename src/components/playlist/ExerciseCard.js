@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { FiChevronDown } from 'react-icons/fi';
 import { BsTrash } from 'react-icons/bs';
 import { BsHourglassSplit } from 'react-icons/bs';
 import {BsArrowCounterclockwise} from 'react-icons/bs';
@@ -11,7 +10,6 @@ import RestCard from './RestCard';
 import { getClip } from '../../scripts/algorithm';
 import { inputToPlaylist, removeFromPlaylist } from "../../redux/slices/playlistSlice.js"
 import { store } from "../../redux/store"
-import playlistToClipList from '../../scripts/playlistToClipList';
 import { filterOnKey } from '../../scripts/algorithm';
 
 
