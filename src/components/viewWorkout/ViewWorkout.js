@@ -45,6 +45,7 @@ const ViewWorkout = () => {
         // extract rest data
         return (
             <RestPage nextVideo={() => setCount(count+1)}
+                    prevVideo={() => setCount(Math.max(0,count-1))}
                     restData={clipList[count]}
                     nextExerciseName = {clipList[count+1].exercise_name}
                     counter={clipList[count].counter}

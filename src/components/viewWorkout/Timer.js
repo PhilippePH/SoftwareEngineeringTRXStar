@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import './Timer.scss'
 import countdownSound from '../../assets/countdown.wav';
 
-export const Timer = ({ onTimeout, restData }) => {
+export const Timer = ({ onTimeout, restData, fastForward, rewind }) => {
 
     const SECOND = 1000;
     console.log("Rest data", restData.time)

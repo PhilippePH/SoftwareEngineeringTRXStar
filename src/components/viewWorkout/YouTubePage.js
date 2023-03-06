@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import YouTube from 'react-youtube';
-import BasicButton from './BasicButton';
 import './YouTubePage.scss'
 import '../utils/style.scss'
 import { useDispatch } from "react-redux";
@@ -113,7 +112,7 @@ const opts = {
             <div className="youtube-controls">
               <FaStepBackward onClick={backToPlaylist} className="youtube-controls__icon"/>
               <FaBackward onClick={prevVideo} className="youtube-controls__icon"/>
-              <MdOutlineReplay10 onClick={() => fastForward()} className="youtube-controls__icon"/>
+              <MdOutlineReplay10 onClick={() => rewind()} className="youtube-controls__icon"/>
               {
                 isPlaying ?
                 <FaPause onClick={() => pauseVideo()} className="youtube-controls__icon"/>
