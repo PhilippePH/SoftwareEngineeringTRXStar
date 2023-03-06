@@ -229,9 +229,9 @@ export async function getClip(indexedDB, type, time, intensity, excluded_exercis
                 //console.log("Excluded exercise", excluded_exercise)
                 while (chosen_exercise != undefined && chosen_exercise.exercise_name == excluded_exercise && depth<20)
                 {
-                    console.log("Try to replace", chosen_exercise)
+                    //console.log("Try to replace", chosen_exercise)
                     chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)];
-                    console.log("Replaced with", chosen_exercise)
+                    //console.log("Replaced with", chosen_exercise)
                     exercise_clips = await filterDatabase("clip", "exercise_name", chosen_exercise.exercise_name, indexedDB, "FilteredDatabase", 1);
                     depth++; 
 

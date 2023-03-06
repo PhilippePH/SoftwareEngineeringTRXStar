@@ -66,7 +66,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
         setTimeout(() => {
             store.dispatch(removeFromPlaylist(ind));
             setIsFadingOut(false);
-          }, 100000);
+          }, 1000);
       };
 
       const handleMoveDown = (event) => {
@@ -156,9 +156,9 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
                         <div className='exercise-card__right-container' >
 
-                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown"  && (no_warmup && ind>1 || ind > 2 )  &&
+                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown"  && ((no_warmup && ind>1) || ind > 2 )  &&
                         <BsArrowUp size={28} className='exercise-card__up' onClick={handleMoveUp} style={{marginRight: '10px', strokeWidth:'0.3'}}/>}
-                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && (no_cooldown && ind < size - 1 || ind < size - 2 ) &&
+                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && ((no_cooldown && ind < size - 3) || ind < size - 2) &&
                         <BsArrowDown size={28} className='exercise-card__down' onClick={handleMoveDown} style={{marginRight: '10px', strokeWidth:'0.3'}}/> 
                         }
                         {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && 
@@ -170,9 +170,6 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
                     </div>
                     <div className='additional-info'>
-                        
-                
-                        
                     {(exercise_name == "Warmup" || exercise_name == "Cooldown")&&<div className='warmup-cooldown-container'> Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
                     {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'> 
                     

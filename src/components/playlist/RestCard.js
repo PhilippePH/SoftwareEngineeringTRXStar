@@ -19,7 +19,7 @@ const RestCard = ({time, index}) => {
         setTimeout(() => {
             store.dispatch(removeFromPlaylist(index));
             setIsFadingOut(false);
-          }, 1000000);
+          }, 1000);
       };
 
     return(
