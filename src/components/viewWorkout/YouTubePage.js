@@ -51,7 +51,6 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
   };
 
   const endWorkout = () => {
-    dispatch(setNavDirection("forwards")); // what does this line do?
     navigate(`/end`);
   }
 
@@ -107,7 +106,7 @@ const opts = {
                         ref={playerRef}
                         onPlay={() => setIsPlaying(true)}
                         onPause={() => setIsPlaying(false)}>
-                        </YouTube>
+              </YouTube>
             </div>  
             <div className="youtube-controls">
               <FaStepBackward onClick={backToPlaylist} className="youtube-controls__icon"/>

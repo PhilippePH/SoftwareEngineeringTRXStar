@@ -63,6 +63,8 @@ function playlistToClipList(playlist) {
                                         start_time: playlistArray[i].start_time,
                                         end_time: playlistArray[i].end_time,
                                         counter:countMetric,
+                                        set_number: 0,
+                                        totalSets: 1
                                         });
             clipList.push(clipInfoTemp);
             countMetric += 1;

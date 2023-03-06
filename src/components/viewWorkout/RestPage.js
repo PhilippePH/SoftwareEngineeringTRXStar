@@ -9,28 +9,36 @@ import { useNavigate } from "react-router-dom";
 import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
 import { MdForward10, MdOutlineReplay10 } from "react-icons/md";
 
-const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, totalWorkoutLength}) => {
+const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, totalWorkoutLength }) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const [timeLeft, setTime] = useState(restData.time);
     const [isPlaying, setIsPlaying] = useState(true);
 
+    const fastForward = () => {
+        setTime(Math.min(restData.time, timeLeft+10));
+    }
+
+    const rewind = () => {
+        setTime(Math.max(0,timeLeft-10));
+    }
+
+    const pauseTimer = () => {
+        setIsPlaying(false);
+    }
+
+    const playTimer = () => {
+        setIsPlaying(true);
+    }
+
     const endWorkout = () => {
-        dispatch(setNavDirection("forwards")); // what does this line do?
         navigate(`/end`);
       }
     
     const backToPlaylist = () => {
         navigate(`/playlist`);
-    }
-
-    const fastForward = () => {
-
-    }
-
-    const rewind = () => {
-        
     }
 
     return (
@@ -46,7 +54,7 @@ const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, t
                     Rest
                 </div>
                 <div className='container-rest__timer-div'>
-                    <Timer onTimeout={nextVideo} restData = {restData} fastForward={fastForward} rewind={rewind}/>
+                    <Timer fastForward={fastForward} rewind={rewind} isPlaying={isPlaying} timeLeft={timeLeft} setTime={setTime} onTimeout={nextVideo} restData = {restData}/>
                 </div>
                 <div className="container-rest__message-black2">
                     Next up:
@@ -57,14 +65,14 @@ const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, t
                 <div className="rest-controls">
                     <FaStepBackward onClick={backToPlaylist} className="rest-controls__icon"/>
                     <FaBackward onClick={prevVideo} className="rest-controls__icon"/>
-                    <MdOutlineReplay10 className="rest-controls__icon"/>
+                    <MdOutlineReplay10 onClick={rewind} className="rest-controls__icon"/>
                     {
                         isPlaying ?
-                        <FaPause  className="rest-controls__icon"/>
+                        <FaPause onClick={pauseTimer} className="rest-controls__icon"/>
                         :
-                        <FaPlay  className="rest-controls__icon"/>
+                        <FaPlay onClick={playTimer} className="rest-controls__icon"/>
                     }
-                    <MdForward10 className="rest-controls__icon"/>
+                    <MdForward10 onClick={fastForward} className="rest-controls__icon"/>
                     <FaForward onClick={nextVideo} className="rest-controls__icon"/>
                     <FaStepForward onClick={endWorkout} className="rest-controls__icon"/>
                 </div>

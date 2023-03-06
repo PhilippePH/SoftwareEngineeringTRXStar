@@ -2,18 +2,17 @@ import { useEffect, useMemo, useState } from "react";
 import './Timer.scss'
 import countdownSound from '../../assets/countdown.wav';
 
-export const Timer = ({ onTimeout, restData, fastForward, rewind }) => {
-
+export const Timer = ({ isPlaying, timeLeft, setTime, onTimeout, restData, fastForward, rewind }) => {
+    console.log('isPlaying within Timer: ', isPlaying);
     const SECOND = 1000;
     console.log("Rest data", restData.time)
     const COUNTDOWN_SECONDS = restData.time;
-    const [timeLeft, setTime] = useState(restData.time);
     const [audio] = useState(new Audio(countdownSound));
 
     useEffect(() => {
     if (timeLeft === 3 ||timeLeft === COUNTDOWN_SECONDS)
     {
-        audio.play(); 
+        audio.play();
     }
     else if (timeLeft >3){
         audio.pause(); 
@@ -21,14 +20,15 @@ export const Timer = ({ onTimeout, restData, fastForward, rewind }) => {
   }, [timeLeft, audio]);
 
 
-
     useEffect(() => {
-        const interval = setInterval(() => {
-            setTime(timeLeft-1);
-        }, SECOND);
-
+        let interval;
+        if (isPlaying) {
+            interval = setInterval(() => {
+                setTime(timeLeft - 1);
+            }, SECOND);
+        }
         return () => clearInterval(interval);
-    }, [timeLeft]);
+    }, [isPlaying, timeLeft]);
 
     
     useEffect(() => {
