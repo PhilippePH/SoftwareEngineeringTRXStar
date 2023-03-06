@@ -115,7 +115,7 @@ const PlaylistWindow = ({ indexedDB }) => {
 
                                 else if (index + 1 < playlist.length && playlist[index + 1].type == "rest") {
                                     return (<ExerciseCard exercise_name={playlist[index].exercise_name}
-                                        duration={playlist[index].time} sets={playlist[index].sets} time={playlist[index].rest_set} ind={index} muscle_types = {convertMuscleList(playlist[index])} size = {playlist.length} no_warmup = {playlist[1] != "warmup" } no_cooldown = {playlist[playlist.length] != "cooldown"}/>)
+                                        duration={playlist[index].time} sets={playlist[index].sets} time={playlist[index].rest_set} ind={index} muscle_types = {convertMuscleList(playlist[index])} size = {playlist.length} no_warmup = {playlist[1].type != "warmup" } no_cooldown = {playlist[playlist.length-1].type != "cooldown"}/>)
                                 }
 
 
@@ -123,7 +123,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                                     return (
                                         <div>
                                             <ExerciseCard exercise_name={playlist[index].exercise_name} duration={playlist[index].time}
-                                                sets={playlist[index].sets} time={playlist[index].rest_set} rest_time={playlist[index].rest_set} ind={index} muscle_types = {convertMuscleList(playlist[index])} size = {playlist.length} no_warmup = {playlist[1] != "warmup" } no_cooldown = {playlist[playlist.length] != "cooldown"} />
+                                                sets={playlist[index].sets} time={playlist[index].rest_set} rest_time={playlist[index].rest_set} ind={index} muscle_types = {convertMuscleList(playlist[index])} size = {playlist.length} no_warmup = {playlist[1].type != "warmup" } no_cooldown = {playlist[playlist.length-1].type != "cooldown"} />
                                         </div>
 
 
