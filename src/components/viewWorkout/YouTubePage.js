@@ -8,10 +8,11 @@ import { setNavDirection } from "../../redux/slices/selectSlice";
 import { useNavigate } from "react-router-dom";
 import '../intro/WelcomePage.scss'
 import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
+import { MdForward10, MdOutlineReplay10 } from "react-icons/md";
 import WorkoutProgress from "./WorkoutProgress";
 
 
-const YouTubePage = ({nextVideo, exerciseData}) => {
+const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -50,10 +51,14 @@ const YouTubePage = ({nextVideo, exerciseData}) => {
     playerRef.current.internalPlayer.seekTo(Math.max(0, currentTime - 10), true); 
   };
 
-  const clickHandler = () => {
-    dispatch(setNavDirection("forwards"));
+  const endWorkout = () => {
+    dispatch(setNavDirection("forwards")); // what does this line do?
     navigate(`/end`);
-}
+  }
+
+  const backToPlaylist = () => {
+    navigate(`/playlist`);
+  }
 
 let updating_width = 0; 
 
@@ -72,6 +77,8 @@ const opts = {
     height: updating_width * 9 / 16 , // keeping the ratio
     playerVars: {
       autoplay: 1,
+      controls: 0,
+      disablekb: 1,
       start: exerciseData.startTime, 
       end: exerciseData.endTime,
     },
@@ -82,53 +89,40 @@ const opts = {
         <>
         <div className='container-youtube'>
         <div className='container-settings' id="divId">
-        <div className='container-settings__progress-bar'> 
-          <WorkoutProgress completed={(Math.floor((exerciseData.counter /exerciseData.totalWorkoutLength)*100))} />
-        </div>
-        <div className="container-settings__message1">
-          {exerciseData.exerciseName}
-          <div className="container-settings__sets">
-              set {exerciseData.setNumber+1} of {exerciseData.totalSets}
-                </div>
-                </div>
-                
-          <div
-            className="container-settings__wrap">
-            <YouTube className="container-settings__iFrameYoutube"
-                      videoId={exerciseData.videoId} 
-                      opts={opts} 
-                      onEnd={nextVideo} 
-                      ref={playerRef}
-                      onPlay={() => setIsPlaying(true)}
-                      onPause={() => setIsPlaying(false)}>
-                      </YouTube>
-          </div>  
-          <div className="youtube-controls">
-            <FaStepBackward className="youtube-controls__icon"/>
-            <FaBackward onClick={() => rewind()} className="youtube-controls__icon"/>
-            {
-              isPlaying ?
-              <FaPause onClick={() => pauseVideo()} className="youtube-controls__icon"/>
-              :
-              <FaPlay onClick={() => playVideo()} className="youtube-controls__icon"/>
-            }
-            <FaForward onClick={() => fastForward()} className="youtube-controls__icon"/>
-            <FaStepForward className="youtube-controls__icon"/>
+          <div className='container-settings__progress-bar'> 
+            <WorkoutProgress completed={(Math.floor((exerciseData.counter /exerciseData.totalWorkoutLength)*100))} />
           </div>
-  
-          <div
-            className="container-settings__div-button">
-          <BasicButton
-            option={"Next exercise"}
-            next={nextVideo}
-            
-          />
-              <button
-                onClick={() => clickHandler()}
-                className="container-settings__button"
-              >
-                End Workout
-              </button>
+          <div className="container-settings__message1">
+            {exerciseData.exerciseName}
+            <div className="container-settings__sets">
+                set {exerciseData.setNumber+1} of {exerciseData.totalSets}
+                  </div>
+                  </div>
+                  
+            <div
+              className="container-settings__wrap">
+              <YouTube className="container-settings__iFrameYoutube"
+                        videoId={exerciseData.videoId} 
+                        opts={opts} 
+                        onEnd={nextVideo} 
+                        ref={playerRef}
+                        onPlay={() => setIsPlaying(true)}
+                        onPause={() => setIsPlaying(false)}>
+                        </YouTube>
+            </div>  
+            <div className="youtube-controls">
+              <FaStepBackward onClick={backToPlaylist} className="youtube-controls__icon"/>
+              <FaBackward onClick={prevVideo} className="youtube-controls__icon"/>
+              <MdOutlineReplay10 onClick={() => fastForward()} className="youtube-controls__icon"/>
+              {
+                isPlaying ?
+                <FaPause onClick={() => pauseVideo()} className="youtube-controls__icon"/>
+                :
+                <FaPlay onClick={() => playVideo()} className="youtube-controls__icon"/>
+              }
+              <MdForward10 onClick={() => fastForward()} className="youtube-controls__icon"/>
+              <FaForward onClick={nextVideo} className="youtube-controls__icon"/>
+              <FaStepForward onClick={endWorkout} className="youtube-controls__icon"/>
             </div>
 
           </div>

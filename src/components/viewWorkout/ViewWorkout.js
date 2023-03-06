@@ -38,6 +38,7 @@ const ViewWorkout = () => {
         console.log("Exercise data parsed: ", exerciseData)
         return (
             <YouTubePage nextVideo={() => setCount(count+1)} 
+                        prevVideo={() => setCount(Math.max(0,count-1))}
                         exerciseData={exerciseData} />
         )
     } else { // if not we are resting
