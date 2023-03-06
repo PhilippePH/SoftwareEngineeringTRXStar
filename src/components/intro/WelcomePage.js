@@ -43,7 +43,9 @@ const Welcome = () => {
                     >
                     Start Your Workout
                 </button>
-                <OverlayTrigger trigger={['click', 'hover']} placement="bottom" overlay={popover}>
+                <OverlayTrigger 
+                    trigger={window.matchMedia('(hover: hover)').matches? 'hover': 'click'} 
+                    placement="bottom" overlay={popover}>
                     <button className="welcome__aboutButton"> About </button> 
                 </OverlayTrigger>
                 

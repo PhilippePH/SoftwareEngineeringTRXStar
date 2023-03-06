@@ -37,7 +37,9 @@ const SelectFocus = () => {
         <div className="title-div">
             <div className="info-wrapper"/>
             <div className="title-text" > Focus </div>
-            <OverlayTrigger trigger={['click', 'hover']} placement="top" overlay={popover}>
+            <OverlayTrigger 
+                trigger={window.matchMedia('(hover: hover)').matches? 'hover': 'click'}  
+                placement="top" overlay={popover}>
                 <div className="info-wrapper">
                     <RiInformationFill className='info-icon'/>
                 </div>  

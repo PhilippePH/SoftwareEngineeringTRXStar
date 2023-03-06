@@ -32,7 +32,9 @@ const SelectDifficulty = () => {
         <div className="title-div">
             <div className="info-wrapper"/>
             <div className="title-text" > Difficulty </div>
-            <OverlayTrigger trigger={['click', 'hover']} placement="top" overlay={popover}>
+            <OverlayTrigger 
+                trigger={window.matchMedia('(hover: hover)').matches? 'hover': 'click'} 
+                placement="top" overlay={popover}>
                 <div className="info-wrapper">
                     <RiInformationFill className='info-icon'/>
                 </div>  
@@ -74,11 +76,6 @@ const popover = (
       {/* <Popover.Header as="h3">Popover right</Popover.Header> */}
       <Popover.Body className='popover-text'>
         The difficulty determines the average intensity of your workout. 
-        <ul>
-        <li>Easy: </li>
-        <li>Medium: </li>
-        <li>Hard: </li>
-        </ul>
       </Popover.Body>
     </Popover>
 );
