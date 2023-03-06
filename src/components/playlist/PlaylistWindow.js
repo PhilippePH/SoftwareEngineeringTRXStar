@@ -3,14 +3,14 @@ import './ExerciseCard';
 import ExerciseCard from './ExerciseCard';
 import { useState, useEffect } from 'react';
 import { redirect, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import RestCard from './RestCard';
 import { FaBlackTie, FaCentercode, FaPlay } from "react-icons/fa";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { TfiReload } from "react-icons/tfi"
 import './PlaylistWindow.scss';
 import NavButtons from '../utils/NavButtons'
-import { increaseVersion } from "../../redux/slices/selectSlice"
+import { increaseVersion, setNavDirection } from "../../redux/slices/selectSlice"
 import { store } from "../../redux/store"
 import './PlaylistWindow.scss'
 import Playlist from './Playlist';
@@ -30,6 +30,7 @@ const PlaylistWindow = ({ indexedDB }) => {
     const [key, setKey] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch()
     const playlist = useSelector((state) => (state.playlist.playlistData));
     const version = useSelector((state) => (state.select.version));
 
@@ -156,7 +157,8 @@ const PlaylistWindow = ({ indexedDB }) => {
                 <IoIosArrowBack 
                     className="playlist-button-bottom"
                     style={{fontSize:"50px"}}
-                    onClick={() => { navigate(`/select/${MUSCLE_GROUPS}`)}} />
+                    onClick={() => {dispatch(setNavDirection("backwards")) && navigate(`/select/${MUSCLE_GROUPS}`)}} />
+                {/* <NavButtons prev={`/select/${MUSCLE_GROUPS}`}/> */}
                 <TfiReload
                     className = "playlist-button-bottom"
                     onClick={handleIncreaseVersion} />
