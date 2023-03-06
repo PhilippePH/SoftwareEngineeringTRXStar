@@ -32,6 +32,8 @@ build-job:       # This job runs in the build stage, which runs first.
     - export NVM_DIR="$HOME/../pp1722/.nvm" && . "$NVM_DIR/nvm.sh" --no-use #load nvm
     - nvm use v18.0.0
     - npm ci
+    - echo "TRYING SOMETHING"
+    - require('v8').getHeapStatistics().total_available_size
     - npm run build
 
 deploy_preview:
