@@ -111,14 +111,14 @@ const opts = {
             <div className="youtube-controls">
               <FaStepBackward onClick={backToPlaylist} className="youtube-controls__icon"/>
               <FaBackward onClick={prevVideo} className="youtube-controls__icon"/>
-              <MdOutlineReplay10 onClick={() => rewind()} className="youtube-controls__icon"/>
+              <MdOutlineReplay10 onClick={() => rewind()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/>
               {
                 isPlaying ?
                 <FaPause onClick={() => pauseVideo()} className="youtube-controls__icon"/>
                 :
                 <FaPlay onClick={() => playVideo()} className="youtube-controls__icon"/>
               }
-              <MdForward10 onClick={() => fastForward()} className="youtube-controls__icon"/>
+              <MdForward10 onClick={() => fastForward()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/>
               <FaForward onClick={nextVideo} className="youtube-controls__icon"/>
               <FaStepForward onClick={endWorkout} className="youtube-controls__icon"/>
             </div>
