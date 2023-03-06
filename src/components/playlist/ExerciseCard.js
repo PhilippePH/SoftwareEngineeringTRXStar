@@ -19,7 +19,7 @@ import { filterOnKey } from '../../scripts/algorithm';
 const CLOSED_HEIGHT = 50;
 const OPENED_HEIGHT = 135;
 
-export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time, ind, muscle_types, size, no_cooldown, no_warmup}) {
+export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time, ind, muscle_types, size, no_cooldown, no_warmup, type}) {
     const [isOpen, setOPen] = useState(false);
     const outerHeight = useRef(CLOSED_HEIGHT);
     const containerRef = useRef(null);
@@ -129,9 +129,13 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
 //<div className={isFadingOut ? 'item-fadeout': 'item'}>
 
-    const handleClickAndToggle = () => {
-    handleClick();
-    toggle();
+    const handleClickAndToggle = (type) => {
+        if(type!="rest"){
+            handleClick();
+            toggle();
+        }
+      
+
   };
     return (
         <div>
@@ -139,16 +143,20 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
             <div className={isFadingOut ? 'item-fadeout': (isSlidingIn ? 'slide-in': (isSlidingUp ? 'flipup': (isSlidingDown ? 'flipdown': 'item1')))}>
                 <div className={`custom-container ${isOpen ? 'open' : 'closed'}`}
                 style={{ minHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT }}
-                onClick={handleClickAndToggle}
+                onClick={()=>handleClickAndToggle(type)}
                 ref={containerRef}>
 
                 <div>
                     <div
-                    className={'exercise-card'}>
+                    className={'exercise-card'}
+                    
+                    style={{backgroundColor : type!= "rest" ? "":'whitesmoke'}}>
 
                         <div className='exercise-card__left-container'>
-                        <BsFillCaretDownFill size={20} />
+                        {type != "rest" &&
+                        <BsFillCaretDownFill size={20} />}
                             <div className='exercise-card__exercise-name'>
+                                {type == "rest" ?  <BsHourglassSplit style ={{marginRight : "10px"}} size={28} color={isSlidingUp || isSlidingDown ? 'transparent' : 'gray'}/> : ""}
                                 {exercise_name}
 
 
@@ -163,7 +171,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                         {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && (no_cooldown && ind < size - 1 || ind < size - 2 ) &&
                         <BsArrowDown size={28} className='exercise-card__down' onClick={handleMoveDown} style={{marginRight: '10px', strokeWidth:'0.3'}}/> 
                         }
-                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && 
+                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && type != "rest" &&
                         <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace} style={{marginRight: '10px', strokeWidth:'0.3'}}/> }
                         <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv} style={{marginRight: '10px', strokeWidth:'0.3'}}/>
                        
@@ -175,7 +183,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                         
                 
                         
-                    {(exercise_name == "Warmup" || exercise_name == "Cooldown")&&<div className='warmup-cooldown-container'> <div><BsHourglassSplit size={28} color='gray'/></div>Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
+                    {(exercise_name == "Warmup" || exercise_name == "Cooldown")&&<div className='warmup-cooldown-container'> Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
                     {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'> 
                     
                        <div>Work: {Math.floor((duration/60))}:{duration%60<10?'0':''}{duration%60}/set</div>
@@ -184,10 +192,8 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                         </div>}
                        
        
-                       
-
                    
-                        {exercise_name != "Warmup" && exercise_name != "Cooldown" &&<div className='info-container'> <div><BsHourglassSplit size={28} color='gray'/></div>Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
+                        {exercise_name != "Warmup" && exercise_name != "Cooldown" &&<div className='info-container'> Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
 
                         {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'> Muscles: {muscle_types} </div>}   
                    
@@ -200,7 +206,6 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
             </div>
             </div>
-            {rest_time > 0 && <RestCard time={rest_time} />}
             </div>
             </div>
 

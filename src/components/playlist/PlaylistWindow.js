@@ -33,10 +33,11 @@ const PlaylistWindow = ({ indexedDB }) => {
     const dispatch = useDispatch()
     const playlist = useSelector((state) => (state.playlist.playlistData));
     const version = useSelector((state) => (state.select.version));
+    console.log("Playlist", playlist)
 
 
     function convertMuscleList(array){
-        console.log("Array", array)
+        //console.log("Array", array)
         var list = []//array.muscles
         for(var i = 0; i< array.muscles.length; i++)
         {
@@ -96,8 +97,9 @@ const PlaylistWindow = ({ indexedDB }) => {
                         <div className='workout-length'>
 
                         </div>
-                        <div>
+                        <div className = "parent-exercise-cards">
                             {playlist.map((work, index) => {
+                                console.log(index); 
 
                                 
                                 if (index == 0)
@@ -131,7 +133,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                                 }
                                 else
                                     return (
-                                        <RestCard time={playlist[index].time} />
+                                        <ExerciseCard exercise_name={playlist[index].time + "s rest"} type = {playlist[index].type} ind = {index} size = {playlist.length}/>
                                     );
                                     
                            

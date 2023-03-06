@@ -5,7 +5,6 @@
 
 .flipup {
     display: flex;
-    padding-bottom: 0.5rem;
     align-items: center;
     animation: flipup 1s ease-in-out forwards;
     animation-duration: 2s;
@@ -38,7 +37,6 @@
 
   .flipdown {
     display: flex;
-    padding-bottom: 0.5rem;
     align-items: center;
     animation: flipdown 1s ease-in-out forwards;
     animation-duration: 2s;
@@ -71,7 +69,6 @@
 
 .slide-in {
     display: flex;
-    padding-bottom: 0.5rem;
     align-items: center;
     animation: slide-in 0.5s linear;
     -webkit-animation: slide-in 0.5s linear; 
@@ -91,7 +88,6 @@
 
 .slide-up {
     display: flex;
-    padding-bottom: 0.5rem;
     align-items: center;
     animation: slide-up 0.5s linear;
     -webkit-animation: slide-up 0.5s linear; 
@@ -111,7 +107,6 @@
 
 .slide-down {
     display: flex;
-    padding-bottom: 0.5rem;
     align-items: center;
     animation: slide-down 0.5s linear;
     -webkit-animation: slide-down 0.5s linear; 
@@ -142,7 +137,6 @@
 .item-fadein{
     display: flex;
     align-items: center;
-    padding-bottom: 0.5rem;
     -webkit-animation: fadein;
     animation: fadein;
 }
@@ -150,7 +144,6 @@
 .item-fadeout{
     display: flex;
     align-items: center;
-    padding-bottom: 0.5rem;
     -webkit-animation: fadeout .3s linear forwards;
     animation: fadeout .3s linear forwards;
 }
@@ -189,11 +182,6 @@
     100% { opacity: 1; }
 }
     
-.item1 {
-
-    padding-bottom: 0.5rem;
-    //padding-top: 0.5rem;
-}
 .exercise-card {
     display: flex;
     flex-direction: row;
@@ -281,7 +269,7 @@
     border-top: 2px black solid;
     padding-inline: 20px;
     align-items:center;
-    background-color: white;
+    background-color: whitesmoke;
   
 }
 @media (min-width: 400px) {

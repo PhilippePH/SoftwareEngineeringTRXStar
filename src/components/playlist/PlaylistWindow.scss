@@ -40,6 +40,14 @@
     
 }
 
+
+.parent-exercise-cards{
+    
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; 
+    
+}
 .card{
     display: flex;
     flex-direction: row;
