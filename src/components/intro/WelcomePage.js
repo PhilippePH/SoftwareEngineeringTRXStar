@@ -43,11 +43,6 @@ const Welcome = () => {
                     >
                     Start Your Workout
                 </button>
-                <OverlayTrigger 
-                    trigger={window.matchMedia('(hover: hover)').matches? 'hover': 'click'} 
-                    placement="bottom" overlay={popover}>
-                    <button className="welcome__aboutButton"> About </button> 
-                </OverlayTrigger>
                 
             </ul>
         </div>
@@ -55,13 +50,3 @@ const Welcome = () => {
 }
 
 export default Welcome;
-
-
-const popover = (
-    <Popover id="popover-basic" className="welcome__aboutPopover">
-      <Popover.Body className='popover-text'>
-        TRX STAR is an exercise app that generates a workout with trx bands based on your specific wants and needs. Simply select your preferences and let us create a curated playlist for you! 
-        <br></br>We want to thank Private GYM for the amazing YouTube videos, which you can find at @PrivateGYMFitness.
-      </Popover.Body>
-    </Popover>
-);
