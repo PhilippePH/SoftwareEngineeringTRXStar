@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+
 import { setActiveTab, setNavDirection } from "../../redux/slices/selectSlice";
 import { useEffect, useState } from "react";
 import { DIFFICULTY, FOCUS } from "../utils/constants";
