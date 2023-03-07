@@ -23,7 +23,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     const [isOpen, setOPen] = useState(false);
     const outerHeight = useRef(CLOSED_HEIGHT);
     const containerRef = useRef(null);
-    var remaining_secs_duration = (sets*duration+(time*(sets-1)))%60;
+    var remaining_secs_duration = (sets*duration+(time*(sets)))%60;
     const [key, setKey] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [isFadingOut, setIsFadingOut] = useState(false);
@@ -193,7 +193,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                        
        
                    
-                        {exercise_name != "Warmup" && exercise_name != "Cooldown" &&<div className='info-container'> Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
+                        {exercise_name != "Warmup" && exercise_name != "Cooldown" &&<div className='info-container'> Total Duration: {Math.floor((sets*duration+(time*(sets)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
 
                         {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'> Muscles: {muscle_types} </div>}   
                    
