@@ -32,13 +32,7 @@ const NavButtons = ({prev, next}) => {
                 prev
                 &&
                 <IoIosArrowBack 
-                    style={{
-                        // borderRadius: "8px"
-                        fontSize:"50px",
-                        cursor: "pointer",
-                        color: "gray",
-                        animation: "fade-in 1s"
-                    }}
+                    className="nav-button"
                     onClick={()=>{navigateHandler(prev, "backwards")}}
                 />
             }
@@ -46,13 +40,7 @@ const NavButtons = ({prev, next}) => {
                 next 
                 &&
                 <IoIosArrowForward 
-                    style={{
-                        // borderRadius: "8px"
-                        fontSize:"50px",
-                        cursor: "pointer",
-                        color: "gray",
-                        animation: "fade-in 1s"
-                    }}
+                    className="nav-button"
                     onClick={()=>{navigateHandler(next, "forwards")}}
                 />
             }

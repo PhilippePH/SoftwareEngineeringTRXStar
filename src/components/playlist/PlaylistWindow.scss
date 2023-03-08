@@ -25,7 +25,7 @@
     // for above see: https://stackoverflow.com/questions/9811465/scrollable-div-inside-container
     }
 
-    @media (min-width: 450px) {
+    @media (min-width: 650px) {
         &__container {
             width: 70vw;
         }
@@ -40,6 +40,14 @@
     
 }
 
+
+.parent-exercise-cards{
+    
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; 
+    
+}
 .card{
     display: flex;
     flex-direction: row;
@@ -56,5 +64,12 @@
 .video {
     padding-top: 25px;
     padding-bottom: 25px;
+}
+
+.playlist-button-bottom {
+    color:black;
+    font-size: 40px;
+    cursor:pointer;
+    animation: fade-in 1s;
 }
 

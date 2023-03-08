@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DIFFICULTY } from "../utils/constants";
-import logo from "../../assets/logo.png";
 import './WelcomePage.scss';
 import { useDispatch } from "react-redux";
 import { setNavDirection } from "../../redux/slices/selectSlice";
@@ -9,6 +8,8 @@ import { store } from "../../redux/store"
 import { initialiseAll } from "../../redux/slices/selectSlice";
 import { initialisePlaylist } from "../../redux/slices/playlistSlice";
 import LoadModal from "./LoadModal";
+import { OverlayTrigger, Popover } from "react-bootstrap";
+
 
 const Welcome = ({indexedDB}) => {
 
@@ -40,8 +41,9 @@ const Welcome = ({indexedDB}) => {
                 className="welcome__img-ul">
                 <img
                     className="welcome__img"
-                    src={logo}
-                    alt={"logo"}/>
+                    src={"/logo.png"}
+                    alt={"logo"}
+                />
                 <button 
                     key={Welcome} 
                     onClick={()=>clickHandler()}

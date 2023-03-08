@@ -1,10 +1,14 @@
-import { useNavigate } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import { useNavigate, useLocation } from "react-router-dom";
 import { GrHomeRounded } from "react-icons/gr";
+import './NavBar.scss';
+
+const withoutSidebarRoutes = ["/youtube"];
+
 
 const NavBar = () => {
     const navigate = useNavigate();
-
+    const {pathname} = useLocation();
+    if (withoutSidebarRoutes.some((item) => pathname.includes(item))) return null;
     return (
         <div 
             id="navbar-container"
@@ -34,11 +38,15 @@ const NavBar = () => {
                         height: "2.5rem",
                         width: "3.5rem"
                     }}
-                    src={logo}
+                    src={"/logo.png"}
                     alt={"logo"}
                 />
             </div>
-            <div 
+            <div className = 'nav-bar__links-div'>
+                <div className = 'nav-bar__link' onClick={() => { navigate("/about")}} > About </div>
+                <div className = 'nav-bar__link'onClick={() => { navigate("/development")}}>Development</div>
+            </div>
+            {/* <div 
                 id="navbar-home" 
                 onClick={() => { navigate("/") }}
                 style={{
@@ -55,7 +63,7 @@ const NavBar = () => {
                           },
                     }}
                 />
-            </div>  
+            </div>   */}
         </div>
     )
 }
