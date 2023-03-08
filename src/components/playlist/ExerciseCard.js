@@ -14,7 +14,7 @@ import { store } from "../../redux/store"
 import { filterOnKey } from '../../scripts/algorithm';
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { BsChevronRight } from "react-icons/bs";
+
 
 
 const CLOSED_HEIGHT = 50;
@@ -184,7 +184,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                         <div className='exercise-card__left-container'
                         onClick={(event)=>handleClickAndToggle(type, event)}>
                         {type != "rest" &&
-                        <BsChevronRight size={20} className={isOpen ? 'chevron__open' : 'chevron__closed'}/>}
+                        <BsFillCaretDownFill size={20} />}
                             <div className='exercise-card__exercise-name'>
                                 {type == "rest" ?  <BsHourglassSplit style ={{marginRight : "10px"}} size={28} color={isSlidingUp || isSlidingDown ? 'transparent' : 'gray'}/> : ""}
                                 {exercise_name}
