@@ -66,10 +66,11 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
   };
   
 
-  const handleExitFullscreenOnPortrait = () => {
+  const handleExitFullscreenOnPortrait = async () => {
     if (window.screen.orientation.type === "portrait-primary" || window.screen.orientation.type === "portrait-secondary") {
-      document.exitFullscreen();
-      setIsFullscreen(false)
+      const playerElement = await playerRef.current.internalPlayer.getIframe();
+      playerElement.exitFullscreen();
+      setIsFullscreen(false);
     }
   }
   
