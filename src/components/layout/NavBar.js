@@ -5,9 +5,6 @@ import './NavBar.scss';
 const withoutSidebarRoutes = ["/youtube"];
 
 
-const withoutSidebarRoutes = ["/youtube"];
-
-
 const NavBar = () => {
     const navigate = useNavigate();
     const {pathname} = useLocation();
