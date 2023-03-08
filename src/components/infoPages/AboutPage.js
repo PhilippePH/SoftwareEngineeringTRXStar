@@ -1,8 +1,7 @@
-import './AboutPage.scss';
+import './infoPages.scss';
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import styled from 'styled-components';
 import { Container } from "react-bootstrap";
 
 
@@ -57,10 +56,7 @@ const About = () => {
             <img className='about__member-photo' src="/images/philippePhoto.jpeg" />
             <div className='about__member-name'>Philippe</div>
             <a className='about__member-link' href="https://www.linkedin.com/in/philippe-paquin-hirtle/">LinkedIn</a>
-          </div>
-          
-          
-          
+          </div>  
         </div>
       </div>
     </Container>

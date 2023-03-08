@@ -18,6 +18,7 @@ import ViewWorkout from "./components/viewWorkout/ViewWorkout";
 import FinishedWorkout from "./components/finishedPage/FinishedPage";
 import PlaylistWindow from "./components/playlist/PlaylistWindow";
 import About from "./components/infoPages/AboutPage"
+import Development from "./components/infoPages/DevelopmentPage";
 
 const indexedDB =
     window.indexedDB ||
@@ -167,6 +168,7 @@ const App = () => {
                 <Route path="/youtube"element={<ViewWorkout/>} />
                 <Route path="/end"element={<FinishedWorkout indexedDB={indexedDB}/>} />
                 <Route path="/about" element={<About/>}/>
+                <Route path="/development" element={<Development/>}/>
             </Routes>
         </div>
     );

@@ -44,7 +44,7 @@ const NavBar = () => {
             </div>
             <div className = 'nav-bar__links-div'>
                 <div className = 'nav-bar__link' onClick={() => { navigate("/about")}} > About </div>
-                <div className = 'nav-bar__link'>Development</div>
+                <div className = 'nav-bar__link'onClick={() => { navigate("/development")}}>Development</div>
             </div>
             {/* <div 
                 id="navbar-home" 
