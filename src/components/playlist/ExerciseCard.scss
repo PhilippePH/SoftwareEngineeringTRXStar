@@ -197,7 +197,7 @@
         
         display: flex;
         flex-direction: row;
-        width: 50%;
+        flex : 0;
         justify-content: flex-end;
         text-align: left;
     }
@@ -211,7 +211,7 @@
         display: flex;
         align-items: center;
         flex-direction: row;
-        width: 90%;
+        flex: 1; 
         text-align: left;
         padding-left: 10px;
     }
@@ -313,4 +313,28 @@
     }
 
 
+}
+
+.extra-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem; 
+}
+
+.extra-icon{
+    color: black;
+    font-size: 50px;
+}
+
+.popover-display{
+  max-width: 90%;
+}
+
+.popover-text{
+  @include font;
+  color:black;
+  font-weight: 500;
+  font-size: 12px;
 }

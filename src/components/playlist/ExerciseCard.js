@@ -12,6 +12,9 @@ import { getClip } from '../../scripts/algorithm';
 import { inputToPlaylist, removeFromPlaylist, moveUpExercise, moveDownExercise } from "../../redux/slices/playlistSlice.js"
 import { store } from "../../redux/store"
 import { filterOnKey } from '../../scripts/algorithm';
+import { OverlayTrigger, Popover } from "react-bootstrap";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { BsCircleFill } from "react-icons/bs";
 
 
 const CLOSED_HEIGHT = 50;
@@ -65,6 +68,9 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
             store.dispatch(removeFromPlaylist(ind));
             setIsFadingOut(false);
           }, 1000);
+
+          document.body.click();
+
       };
 
       const handleMoveDown = (event) => {
@@ -74,8 +80,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
             store.dispatch(moveDownExercise(ind));
             setIsSlidingDown(false);
           }, 1500);
-    
-        
+          document.body.click();
       };
 
       const handleMoveUp = (event) => {
@@ -85,9 +90,10 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
             store.dispatch(moveUpExercise(ind)); 
             setIsSlidingUp(false);
           }, 1500);
+
+          document.body.click();
         
       };
-
 
     const handleReplace = (event) => {
         event.stopPropagation();
@@ -123,25 +129,50 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                     setTimeout(() => {
                         setIsSlidingIn(false);
                       }, 1000);
+                      document.body.click();
             };
 
 //<div className={isFadingOut ? 'item-fadeout': 'item'}>
 
-    const handleClickAndToggle = (type) => {
-        if(type!="rest"){
+    const handleClickAndToggle = (type, event) => {
+
+        console.log("This should be true", event.target.classList.contains('info-wrapper')); 
+        console.log("contains", event.target.classList); 
+
+
+        if (event.target.classList.contains('info-wrapper')) {
+            event.stopPropagation(); 
+          }
+        else if(type!="rest"){
             handleClick();
             toggle();
         }
+        
       
 
   };
+
+  const popover = (
+    <Popover id="popover-basic" className="popover-display">
+      <Popover.Body className='popover-text'>
+            {exercise_name != "Warmup" && exercise_name != "Cooldown" && (no_warmup && ind > 1 || ind > 2) &&
+                <BsArrowUp size={28} className='exercise-card__up' onClick={handleMoveUp} style={{ marginRight: '10px', strokeWidth: '0.3' }} />}
+            {exercise_name != "Warmup" && exercise_name != "Cooldown" && (no_cooldown && ind < size - 1 || ind < size - 2) &&
+                <BsArrowDown size={28} className='exercise-card__down' onClick={handleMoveDown} style={{ marginRight: '10px', strokeWidth: '0.3' }} />
+            }
+            {exercise_name != "Warmup" && exercise_name != "Cooldown" && type != "rest" &&
+                <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace} style={{ marginRight: '10px', strokeWidth: '0.3' }} />}
+            <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv} style={{ marginRight: '10px', strokeWidth: '0.3' }} />
+
+      </Popover.Body>
+    </Popover>
+);
     return (
         <div>
             <div>
             <div className={isFadingOut ? 'item-fadeout': (isSlidingIn ? 'slide-in': (isSlidingUp ? 'flipup': (isSlidingDown ? 'flipdown': 'item1')))}>
                 <div className={`custom-container ${isOpen ? 'open' : 'closed'}`}
                 style={{ minHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT }}
-                onClick={()=>handleClickAndToggle(type)}
                 ref={containerRef}>
 
                 <div>
@@ -150,7 +181,8 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                     
                     style={{backgroundColor : type!= "rest" ? "":'whitesmoke'}}>
 
-                        <div className='exercise-card__left-container'>
+                        <div className='exercise-card__left-container'
+                        onClick={(event)=>handleClickAndToggle(type, event)}>
                         {type != "rest" &&
                         <BsFillCaretDownFill size={20} />}
                             <div className='exercise-card__exercise-name'>
@@ -164,15 +196,12 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
                         <div className='exercise-card__right-container' >
 
-                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown"  && (no_warmup && ind>1 || ind > 2 )  &&
-                        <BsArrowUp size={28} className='exercise-card__up' onClick={handleMoveUp} style={{marginRight: '10px', strokeWidth:'0.3'}}/>}
-                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && (no_cooldown && ind < size - 1 || ind < size - 2 ) &&
-                        <BsArrowDown size={28} className='exercise-card__down' onClick={handleMoveDown} style={{marginRight: '10px', strokeWidth:'0.3'}}/> 
-                        }
-                        {exercise_name != "Warmup" &&  exercise_name != "Cooldown" && type != "rest" &&
-                        <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace} style={{marginRight: '10px', strokeWidth:'0.3'}}/> }
-                        <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv} style={{marginRight: '10px', strokeWidth:'0.3'}}/>
-                       
+                       <OverlayTrigger trigger={'click'} rootClose placement= "bottom" overlay={popover} ref = {popover}>
+                       <div className='extra-wrapper'>
+                        <BsThreeDotsVertical className='extra-icon'/>
+                        </div>
+                        </OverlayTrigger>
+                    
                         </div> 
 
 
@@ -210,3 +239,4 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
     );
 }
+
