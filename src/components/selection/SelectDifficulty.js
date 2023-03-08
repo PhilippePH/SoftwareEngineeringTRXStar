@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveTab, setNavDirection } from "../../redux/slices/selectSlice";
-import { useEffect, useState } from "react";
+import { setActiveTab } from "../../redux/slices/selectSlice";
+import { useEffect } from "react";
 import { DIFFICULTY, DURATION } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
 import NavButtons from "../utils/NavButtons";
@@ -10,7 +10,7 @@ import { Popover } from "react-bootstrap";
 import { RiInformationFill } from "react-icons/ri";
 
 const SelectDifficulty = () => {
-    const [width, setWidth] = useState(window.innerWidth);
+    
     const dispatch = useDispatch()
     const difficultyOptions = ["Easy", "Medium", "Hard"];
     
@@ -21,29 +21,22 @@ const SelectDifficulty = () => {
         dispatch(setActiveTab(DIFFICULTY));
     }, []);
 
-    useEffect(() => {
-        const handleResize = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-      }, []);
-
     return (
         <>
-        <div className="title-div">
-            <div className="info-wrapper"/>
-            <div className="title-text" > Difficulty </div>
+        <div className="title">
+            <div className="title__wrapper"/>
+            <div className="title__text" > Difficulty </div>
             <OverlayTrigger 
-                trigger={window.matchMedia('(hover: hover)').matches? 'hover': 'click'} 
-                placement="top" overlay={popover}>
-                <div className="info-wrapper">
-                    <RiInformationFill className='info-icon'/>
+                trigger={['hover', 'focus', 'click']} 
+                placement="bottom" overlay={popover}>
+                <div className="title__wrapper">
+                    <RiInformationFill className='title__icon'/>
                 </div>  
             </OverlayTrigger>
-            
         </div>
         <div className="selection-container">
-            <div className="left-arrow-div"></div>
-            <div className="options-div"
+            <div className="selection-container__left"></div>
+            <div className="selection-container__options"
                 style={{
                     animation: (direction=="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
                 }}>
@@ -60,7 +53,7 @@ const SelectDifficulty = () => {
                     );
                 })}
             </div>
-            <div className="right-arrow-div">
+            <div className="selection-container__right">
                 {completed && <NavButtons 
                     next={`/select/${DURATION}`}/>}
             </div>
@@ -72,9 +65,8 @@ const SelectDifficulty = () => {
 export default SelectDifficulty;
 
 const popover = (
-    <Popover id="popover-basic" className="popover-display">
-      {/* <Popover.Header as="h3">Popover right</Popover.Header> */}
-      <Popover.Body className='popover-text'>
+    <Popover id="popover-basic" className="popover">
+      <Popover.Body className='popover__text'>
         The difficulty determines the average difficulty of your workout, including the length of rest periods. 
       </Popover.Body>
     </Popover>

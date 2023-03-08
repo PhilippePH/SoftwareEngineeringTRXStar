@@ -10,6 +10,7 @@ import {TbAntennaBars3,TbAntennaBars4,TbAntennaBars5} from "react-icons/tb"
 import { setNavDirection } from "../../redux/slices/selectSlice";
 
 const SelectProgress = () => {
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -28,8 +29,6 @@ const SelectProgress = () => {
         "Core": "C",
         "Lower Body":"L",
         "Upper Body":"U",
-
-        
     };
 
     const activeTab = useSelector((state) => (state.select.activeTab));
@@ -61,52 +60,44 @@ const SelectProgress = () => {
                 dispatch(setNavDirection("backwards"));
             }
         }
-
         if(to != activeTab){
             navigate(`/select/${to}`);
         }
-        
     }
 
     return (
         <div className="progress-container">
-            <div className="progress-text">
+            <div className="progress-container__text">
                 {"Select your preferences"}
             </div>
-            <div className="tab-container">
-                <div className={activeTab==DIFFICULTY?"active-tab":"inactive-tab"}
-                     onClick ={() => {selectedDifficulty && clickHandler(DIFFICULTY)}}
-                >
+            <div className="progress-container__tab">
+                <div className={activeTab==DIFFICULTY?"progress-container__tab__active":"progress-container__tab__inactive"}
+                    onClick ={() => {selectedDifficulty && clickHandler(DIFFICULTY)}}>
                     {selectedDifficulty && <Icon icon={optionIcons[selectedDifficulty]} />}
                 </div>
-                <div className={activeTab==DURATION?"active-tab":"inactive-tab"}
-                    onClick ={() => {selectedDuration && clickHandler(DURATION)}}
-                    //  onClick={() => { navigate(`/select/${DURATION}`) }}
-                     >
+                <div className={activeTab==DURATION?"progress-container__tab__active":"progress-container__tab__inactive"}
+                    onClick ={() => {selectedDuration && clickHandler(DURATION)}}>
                     {selectedDuration && <Icon icon={optionIcons[selectedDuration]} />}
                 </div>
-                <div className={activeTab==FOCUS?"active-tab":"inactive-tab"}
-                    onClick ={() => {selectedFocus && clickHandler(FOCUS)}}
-                    //  onClick={() => { navigate(`/select/${FOCUS}`) }}
-                     >
+                <div className={activeTab==FOCUS?"progress-container__tab__active":"progress-container__tab__inactive"}
+                    onClick ={() => {selectedFocus && clickHandler(FOCUS)}}>
                     {selectedFocus && <Icon icon={optionIcons[selectedFocus]} />}
                 </div>
-                <div className={activeTab==MUSCLE_GROUPS?"active-tab":"inactive-tab"}
-                    onClick ={() => {selectedMuscleGroup.length!=0 && clickHandler(MUSCLE_GROUPS)}}
-                     > 
-                     <div className="muscleGroup-bar">
+                <div className={activeTab==MUSCLE_GROUPS?"progress-container__tab__active":"progress-container__tab__inactive"}
+                    onClick ={() => {selectedMuscleGroup.length!=0 && clickHandler(MUSCLE_GROUPS)}}> 
+                    <div className="progress-container__tab__bar">
                         {
-                        selectedMuscleGroup?.map((muscleGroup) => {
-                            return (
-                                <div className = "muscleGroup-bar-text">
-                                    {optionIcons[muscleGroup]}
-                                </div>
-                            )
-    
+                            selectedMuscleGroup?.map((muscleGroup) => {
+                                return (
+                                    <div 
+                                        className = "progress-container__tab__bar__text"
+                                        key={muscleGroup}>
+                                        {optionIcons[muscleGroup]}
+                                    </div>
+                                )
                         })}
                     </div>
                 </div>
-                {/* <div className={activeTab==MUSCLES?"active-tab":"inactive-tab"}/> */}
             </div>
         </div>
     )

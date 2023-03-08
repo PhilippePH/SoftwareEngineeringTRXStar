@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { setActiveTab, setFocus } from "../../redux/slices/selectSlice";
+import { setActiveTab } from "../../redux/slices/selectSlice";
 import NavButtons from "../utils/NavButtons";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { DURATION, FOCUS, MUSCLE_GROUPS } from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
 import './style.scss'
@@ -10,48 +9,36 @@ import { OverlayTrigger, Popover } from "react-bootstrap";
 import { RiInformationFill } from "react-icons/ri";
 
 const SelectFocus = () => {
-    const [width, setWidth] = useState(window.innerWidth);
+
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const focusOptions = ["HIIT", "Strength", "Endurance", "Recovery"];
+
     const completed = useSelector((state) => (state.select.focus));
     const direction = useSelector((state) => (state.select.navDirection));
-
-    const clickHandler = (option) => {
-        dispatch(setFocus(option))
-        navigate(`/select/${MUSCLE_GROUPS}`);
-    }
 
     useEffect(() => {
         dispatch(setActiveTab(FOCUS));
     }, []);
 
-    useEffect(() => {
-        const handleResize = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-      }, []);
-
     return (
         <>
-        <div className="title-div">
-            <div className="info-wrapper"/>
-            <div className="title-text" > Focus </div>
+        <div className="title">
+            <div className="title__wrapper"/>
+            <div className="title__text" > Focus </div>
             <OverlayTrigger 
-                trigger={window.matchMedia('(hover: hover)').matches? 'hover': 'click'}  
-                placement="top" overlay={popover}>
-                <div className="info-wrapper">
-                    <RiInformationFill className='info-icon'/>
+                trigger={['hover', 'focus', 'click']} 
+                placement="bottom" overlay={popover}>
+                <div className="title__wrapper">
+                    <RiInformationFill className='title__icon'/>
                 </div>  
             </OverlayTrigger>
-            
         </div>
         <div className='selection-container'>
-            <div className="left-arrow-div">
+            <div className="selection-container__left">
                 <NavButtons prev={`/select/${DURATION}`}/>
             </div>
             <div 
-                className="options-div"
+                className="selection-container__options"
                 style={{
                     animation: (direction=="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
                 }}
@@ -70,7 +57,7 @@ const SelectFocus = () => {
                     })
                 }
             </div>
-            <div className="right-arrow-div">
+            <div className="selection-container__right">
                 {completed && <NavButtons next={`/select/${MUSCLE_GROUPS}`}/>}
             </div>
                     
@@ -84,8 +71,8 @@ const SelectFocus = () => {
 export default SelectFocus;
 
 const popover = (
-    <Popover id="popover-basic" className="popover-display">
-      <Popover.Body className='popover-text'>
+    <Popover id="popover-basic" className="popover">
+      <Popover.Body className='popover__text'>
         The focus determines the type of exercises. 
         <ul>
         <li>HIIT: High intensity intervals of work and rest</li>
