@@ -10,24 +10,6 @@ import { initialiseAll } from "../../redux/slices/selectSlice";
 import { initialisePlaylist } from "../../redux/slices/playlistSlice";
 import LoadModal from "./LoadModal";
 
-function getSavedPlaylists(indexedDB) {
-    return new Promise(function(resolve, reject) {
-        const dbPromise = indexedDB.open("SavedPlaylists", 1)
-        dbPromise.onsuccess = () => {
-            const db = dbPromise.result;
-            const request = db.transaction("playlists", "readonly")
-            .objectStore("playlists")
-            .getAll();
-            request.onsuccess = (e) => {
-                resolve(e);
-            }
-        }
-        dbPromise.onerror = (e) => {
-            reject(e);
-        }
-    })
-}
-
 const Welcome = ({indexedDB}) => {
 
     store.dispatch(initialiseAll());
@@ -49,24 +31,8 @@ const Welcome = ({indexedDB}) => {
 
     // Modal show unshow hooks
     const [ show, setShow ] = useState(false);
-    const handleClose = () => setShow(false);
-
     const [ buttonDisabled, setButtonDisabled ] = useState(true);
-    const [ playlists, setPlaylists ] = useState([]);
-
-    useEffect(() => {
-        getSavedPlaylists(indexedDB)
-        .then(function(e) {
-            var playlists = e.target.result;
-            if (playlists.length !== 0) {
-                setButtonDisabled(false);
-                setPlaylists(playlists);
-            }
-        })
-        .catch(function(e) {
-            console.error(e.target.error);
-        })
-    }, [buttonDisabled]);
+    const handleClose = () => setShow(false);
 
     return (
         <div className="welcome__img-container">
@@ -92,7 +58,8 @@ const Welcome = ({indexedDB}) => {
             <LoadModal
                 show={show}
                 unshow={handleClose}
-                playlists={playlists}/>
+                indexedDB={indexedDB}
+                setButtonDisabled={setButtonDisabled}/>
         </div>
     )
 

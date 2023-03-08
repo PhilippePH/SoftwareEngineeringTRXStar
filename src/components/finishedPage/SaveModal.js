@@ -55,9 +55,13 @@ const SaveModal = ({show, unshow, indexedDB}) => {
         <Modal
             show={show}
             onHide={unshow}
-            backdrop="static"
             scrollable={false}
             centered>
+            <Modal.Header 
+                className='save-modal__header'
+                closeButton>
+                Save your playlist!
+            </Modal.Header>
             <Modal.Body>
                 <form 
                     onSubmit={handleSubmit}

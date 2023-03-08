@@ -110,6 +110,12 @@
 
 .save-modal {
 
+    &__header {
+        @include font;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
     &__container {
         @include flex-center;
         flex-direction: column;
