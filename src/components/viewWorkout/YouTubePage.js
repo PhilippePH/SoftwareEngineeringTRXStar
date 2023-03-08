@@ -16,7 +16,7 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
   const dispatch = useDispatch();
   
   const [width, setWidth] = useState(window.innerWidth);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const playerRef = useRef(null); // create a ref for the YouTube component
 
