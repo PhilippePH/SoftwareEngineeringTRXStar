@@ -14,10 +14,9 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-      
+  
   const [width, setWidth] = useState(window.innerWidth);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const playerRef = useRef(null); // create a ref for the YouTube component
 
@@ -28,15 +27,6 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  useEffect(() => {
-    window.addEventListener('orientationchange', handleFullscreen);
-    window.addEventListener('orientationchange', handleExitFullscreenOnPortrait);
-    return () => {
-      window.removeEventListener('orientationchange', handleFullscreen);
-      window.removeEventListener('orientationchange', handleExitFullscreenOnPortrait);
-    };
-  }, [isFullscreen]);
 
   const handleFastForward = async () => {
     const currentTime = await playerRef.current.internalPlayer.getCurrentTime(); 
@@ -62,18 +52,7 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
   const handleFullscreen = async () => {
     const playerElement = await playerRef.current.internalPlayer.getIframe();
     playerElement.requestFullscreen();
-    setIsFullscreen(true);
   };
-  
-
-  const handleExitFullscreenOnPortrait = async () => {
-    if (window.screen.orientation.type === "portrait-primary" || window.screen.orientation.type === "portrait-secondary") {
-      const playerElement = await playerRef.current.internalPlayer.getIframe();
-      playerElement.exitFullscreen();
-      setIsFullscreen(false);
-    }
-  }
-  
 
   const endWorkout = () => {
     navigate(`/end`);
@@ -100,11 +79,10 @@ const opts = {
     height: updating_width * 9 / 16 , // keeping the ratio
     playerVars: {
       autoplay: 1,
-      controls: 0,
-      disablekb: 1,
+      controls: 1,
+      disablekb: 0,
       start: exerciseData.startTime, 
       end: exerciseData.endTime,
-      fs: 1,
     },
   };
 

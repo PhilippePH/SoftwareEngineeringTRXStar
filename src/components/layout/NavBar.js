@@ -51,7 +51,7 @@ const NavBar = () => {
                     cursor: "pointer"
                 }}
             >
-                <p>RIP House</p>
+                <p>House</p>
             </div>  
         </div>
     )
