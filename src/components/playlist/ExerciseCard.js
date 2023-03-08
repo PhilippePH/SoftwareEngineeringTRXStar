@@ -184,7 +184,8 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                 
                         
                     {(exercise_name == "Warmup" || exercise_name == "Cooldown")&&<div className='warmup-cooldown-container'> Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
-                    {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'> 
+                    {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'
+                    style = {{color: type == 'rest' ? 'transparent' : ''}}> 
                     
                        <div>Work: {Math.floor((duration/60))}:{duration%60<10?'0':''}{duration%60}/set</div>
                          <div> Rest: {Math.floor((time/60))}:{time%60<10?'0':''}{time%60}/set</div>
