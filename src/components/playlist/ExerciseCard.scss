@@ -217,20 +217,20 @@
 
     &__exercise-name {
         padding-left: 5px;
-        font-size: small;
+        font-size: medium;
     }
 
     @media (min-width: 370px) {
         &__exercise-name {
 
-            font-size: medium;
+            font-size: large;
         }
     }
 
     @media (min-width: 625px) {
         &__exercise-name {
 
-            font-size: large;
+            font-size: x-large;
         }
     }
 
@@ -265,7 +265,6 @@
     width: 100%;
     justify-content: center;
     flex-direction: row;
-    //text-align: left;
     border-top: 2px black solid;
     padding-inline: 20px;
     align-items:center;
@@ -285,6 +284,7 @@
     width: 30vw;
 }
 .warmup-cooldown-container{
+    font-size: 150%;
     width: 100vw;
 }
 .rest-card {

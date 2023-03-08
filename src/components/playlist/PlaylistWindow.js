@@ -42,9 +42,9 @@ const PlaylistWindow = ({ indexedDB }) => {
         for(var i = 0; i< array.muscles.length; i++)
         {
             if (i+1 == array.muscles.length)
-            list += array.muscles[i]
+            list += (array.muscles[i].charAt(0).toUpperCase() + array.muscles[i].slice(1))
             else {
-                list += array.muscles[i]
+                list += (array.muscles[i].charAt(0).toUpperCase() + array.muscles[i].slice(1))
                 list += ", "
             }
         }
