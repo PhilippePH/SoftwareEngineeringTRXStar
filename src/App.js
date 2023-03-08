@@ -159,7 +159,7 @@ const App = () => {
             <Routes>
                 
                 <Route path="/playlist" element={ <PlaylistWindow indexedDB={indexedDB}/> } />
-                <Route path="/" element={<Welcome/>} />
+                <Route path="/" element={<Welcome indexedDB={indexedDB}/>} />
                 <Route exact path={`/select/${MUSCLE_GROUPS}`} element={<SelectPage selectForm={<SelectMuscleGroups/>}/>}/>
                 <Route exact path={`/select/${DIFFICULTY}`} element={<SelectPage selectForm={<SelectDifficulty/>}/>}/>
                 <Route exact path={`/select/${DURATION}`} element={<SelectPage selectForm={<SelectDuration/>}/>}/>
