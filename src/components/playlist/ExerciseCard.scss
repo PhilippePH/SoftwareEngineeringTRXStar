@@ -217,20 +217,20 @@
 
     &__exercise-name {
         padding-left: 5px;
-        font-size: medium;
+        font-size: small;
     }
 
     @media (min-width: 370px) {
         &__exercise-name {
 
-            font-size: large;
+            font-size: medium;
         }
     }
 
     @media (min-width: 625px) {
         &__exercise-name {
 
-            font-size: x-large;
+            font-size: large;
         }
     }
 
