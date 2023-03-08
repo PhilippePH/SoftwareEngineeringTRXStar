@@ -18,7 +18,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 
 
 const CLOSED_HEIGHT = 50;
-const OPENED_HEIGHT = 135;
+const OPENED_HEIGHT = 155;
 
 export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time, ind, muscle_types, size, no_cooldown, no_warmup, type}) {
     const [isOpen, setOPen] = useState(false);
