@@ -105,14 +105,14 @@ const opts = {
       return (
         <>
         <div className='container-youtube'>
-        <div className='container-settings' id="divId">
-          <div className='container-settings__progress-bar'> 
+          <div className='container-youtube__progress-bar'> 
             <WorkoutProgress completed={(Math.floor((exerciseData.counter /exerciseData.totalWorkoutLength)*100))} />
           </div>
+          <div className='container-settings' id="divId">
           <div className="container-settings__message1">
             {exerciseData.exerciseName}
             <div className="container-settings__sets">
-                set {exerciseData.setNumber+1} of {exerciseData.totalSets}
+                Set {exerciseData.setNumber+1} of {exerciseData.totalSets}
                   </div>
                   </div>
                   
