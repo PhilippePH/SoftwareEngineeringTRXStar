@@ -17,6 +17,7 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
   
   const [width, setWidth] = useState(window.innerWidth);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [key, setKey] = useState(0);
 
   const playerRef = useRef(null); // create a ref for the YouTube component
 
@@ -27,6 +28,16 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const handleNextVideo = () => {
+    setKey(key+1);
+    nextVideo();
+  }
+
+  const handlePrevVideo = () => {
+    setKey(key-1);
+    prevVideo();
+  }
 
   const handleStateChange = async () => {
     const currentTime = await playerRef.current.internalPlayer.getCurrentTime(); 
@@ -106,6 +117,7 @@ const opts = {
             <div
               className="container-settings__wrap">
               <YouTube className="container-settings__iFrameYoutube"
+                        key={key}
                         videoId={exerciseData.videoId} 
                         opts={opts} 
                         onEnd={nextVideo} 
@@ -117,7 +129,7 @@ const opts = {
             </div>  
             <div className="youtube-controls">
               <FaStepBackward onClick={backToPlaylist} className="youtube-controls__icon"/>
-              <FaBackward onClick={prevVideo} className="youtube-controls__icon"/>
+              <FaBackward onClick={handlePrevVideo} className="youtube-controls__icon"/>
               <MdOutlineReplay10 onClick={() => handleRewind()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/>
               {
                 isPlaying ?
@@ -126,7 +138,7 @@ const opts = {
                 <FaPlay onClick={() => playVideo()} className="youtube-controls__icon"/>
               }
               <MdForward10 onClick={() => handleFastForward()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/>
-              <FaForward onClick={nextVideo} className="youtube-controls__icon"/>
+              <FaForward onClick={handleNextVideo} className="youtube-controls__icon"/>
               <FaStepForward onClick={endWorkout} className="youtube-controls__icon"/>
             </div>
 
