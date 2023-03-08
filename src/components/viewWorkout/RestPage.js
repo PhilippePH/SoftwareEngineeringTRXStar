@@ -65,14 +65,14 @@ const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, t
                 <div className="rest-controls">
                     <FaStepBackward onClick={backToPlaylist} className="rest-controls__icon"/>
                     <FaBackward onClick={prevVideo} className="rest-controls__icon"/>
-                    <MdOutlineReplay10 onClick={rewind} className="rest-controls__icon rest-controls__icon__ten-seconds"/>
+                    <MdOutlineReplay10 onClick={fastForward} className="rest-controls__icon rest-controls__icon__ten-seconds"/>
                     {
                         isPlaying ?
                         <FaPause onClick={pauseTimer} className="rest-controls__icon"/>
                         :
                         <FaPlay onClick={playTimer} className="rest-controls__icon"/>
                     }
-                    <MdForward10 onClick={fastForward} className="rest-controls__icon rest-controls__icon__ten-seconds"/>
+                    <MdForward10 onClick={rewind} className="rest-controls__icon rest-controls__icon__ten-seconds"/>
                     <FaForward onClick={nextVideo} className="rest-controls__icon"/>
                     <FaStepForward onClick={endWorkout} className="rest-controls__icon"/>
                 </div>

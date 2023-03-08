@@ -5,7 +5,7 @@ import '../utils/style.scss'
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import '../intro/WelcomePage.scss'
-import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward, FaExpand } from "react-icons/fa";
+import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
 import { MdForward10, MdOutlineReplay10 } from "react-icons/md";
 import WorkoutProgress from "./WorkoutProgress";
 
@@ -28,10 +28,17 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const handleStateChange = async () => {
+    const currentTime = await playerRef.current.internalPlayer.getCurrentTime(); 
+    if(currentTime >= exerciseData.endTime) {
+      nextVideo();
+    }
+  }
+
   const handleFastForward = async () => {
     const currentTime = await playerRef.current.internalPlayer.getCurrentTime(); 
     // ADD logic such that we cannot go beyond the bounds of our current video
-    playerRef.current.internalPlayer.seekTo(currentTime + 10, true); 
+    playerRef.current.internalPlayer.seekTo(Math.min(exerciseData.endTime, currentTime + 10), true); 
   };
 
   const playVideo = async () => {
@@ -47,11 +54,6 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
     const currentTime = await playerRef.current.internalPlayer.getCurrentTime(); 
     // ADD logic such that we cannot go beyond the bounds of our current video
     playerRef.current.internalPlayer.seekTo(Math.max(0, currentTime - 10), true); 
-  };
-
-  const handleFullscreen = async () => {
-    const playerElement = await playerRef.current.internalPlayer.getIframe();
-    playerElement.requestFullscreen();
   };
 
   const endWorkout = () => {
@@ -109,6 +111,7 @@ const opts = {
                         onEnd={nextVideo} 
                         ref={playerRef}
                         onPlay={() => setIsPlaying(true)}
+                        onStateChange={handleStateChange}
                         onPause={() => setIsPlaying(false)}>
               </YouTube>
             </div>  
@@ -125,7 +128,6 @@ const opts = {
               <MdForward10 onClick={() => handleFastForward()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/>
               <FaForward onClick={nextVideo} className="youtube-controls__icon"/>
               <FaStepForward onClick={endWorkout} className="youtube-controls__icon"/>
-              <FaExpand onClick={handleFullscreen} className="youtube-controls__icon"/>
             </div>
 
           </div>
