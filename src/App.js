@@ -1,19 +1,16 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-//import {loadDatabase} from "./components/Database/loadDatabase.js";
 import data from './data/ExerciseDatabase5.json'
 
 // import components
-import Playlist from "./components/playlist/Playlist";
 import SelectMuscleGroups from "./components/selection/SelectMuscleGroups";
 import SelectDifficulty from "./components/selection/SelectDifficulty";
 import SelectDuration from "./components/selection/SelectDuration";
 import SelectFocus from "./components/selection/SelectFocus";
-import SelectMuscles from "./components/selection/SelectMuscles";
 import Welcome from "./components/intro/WelcomePage";
 import NavBar from "./components/layout/NavBar";
 import SelectPage from "./components/selection/SelectPage";
-import { DIFFICULTY, DURATION, FOCUS, MUSCLES, MUSCLE_GROUPS } from "./components/utils/constants";
+import { DIFFICULTY, DURATION, FOCUS, MUSCLE_GROUPS } from "./components/utils/constants";
 import ViewWorkout from "./components/viewWorkout/ViewWorkout";
 import FinishedWorkout from "./components/finishedPage/FinishedPage";
 import PlaylistWindow from "./components/playlist/PlaylistWindow";
@@ -154,17 +151,14 @@ const App = () => {
                 height: "100vh"
             }}
         >
-        <NavBar></NavBar>
-       
+            <NavBar/>
             <Routes>
-                
                 <Route path="/playlist" element={ <PlaylistWindow indexedDB={indexedDB}/> } />
                 <Route path="/" element={<Welcome indexedDB={indexedDB}/>} />
                 <Route exact path={`/select/${MUSCLE_GROUPS}`} element={<SelectPage selectForm={<SelectMuscleGroups/>}/>}/>
                 <Route exact path={`/select/${DIFFICULTY}`} element={<SelectPage selectForm={<SelectDifficulty/>}/>}/>
                 <Route exact path={`/select/${DURATION}`} element={<SelectPage selectForm={<SelectDuration/>}/>}/>
                 <Route exact path={`/select/${FOCUS}`} element={<SelectPage selectForm={<SelectFocus/>}/>}/>
-                <Route exact path={`/select/${MUSCLES}`} element={<SelectPage selectForm={<SelectMuscles/>}/>}/>
                 <Route path="/youtube"element={<ViewWorkout/>} />
                 <Route path="/end"element={<FinishedWorkout indexedDB={indexedDB}/>} />
                 <Route path="/about" element={<About/>}/>
@@ -175,5 +169,3 @@ const App = () => {
 }
 
 export default App;
-
-// <Route path="/playlist" element={ <Playlist indexedDB={indexedDB}/> } />
