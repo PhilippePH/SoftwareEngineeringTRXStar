@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { MUSCLES } from "../utils/constants";
 import { useEffect, useState } from 'react';
 
-
 const MusclesModal = ({show, unshow}) => {
 
     const muscleGroups = useSelector((state) => (state.select.muscleGroups));

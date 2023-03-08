@@ -1,25 +1,15 @@
-import { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { DIFFICULTY } from "../utils/constants";
+import { useState } from "react";
 import "./FinishedPage.scss"
-//import { GiFinishLine } from "react-icons/gi";
 import bicep from "../../assets/bicep.png";
 import SaveModal from "./SaveModal";
 import { useSelector } from "react-redux";
 
 const FinishedWorkout = ({ indexedDB }) => {
 
-    // const [ width, setWidth ] = useState(window.innerWidth);
     const [ show, setShow ] = useState(false);
     const handleClose = () => setShow(false);
 
     const savedState = useSelector((state) => (state.playlist.playlistSaved));
-
-    // useEffect(() => { // Resizes the webpage
-    //     const handleResize = () => setWidth(window.innerWidth);
-    //     window.addEventListener('resize', handleResize);
-    //     return () => window.removeEventListener('resize', handleResize);
-    // }, []);
 
     return (
         <div className='finish-page'>
