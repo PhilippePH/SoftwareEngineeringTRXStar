@@ -76,13 +76,6 @@ const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, t
                     <FaForward onClick={nextVideo} className="rest-controls__icon"/>
                     <FaStepForward onClick={endWorkout} className="rest-controls__icon"/>
                 </div>
-                <div
-                    className="button-div">
-                    <BasicButton
-                        option={"Next exercise"}
-                        next={nextVideo}
-                    />
-                </div>
                 </div>
             </div>
         </>

@@ -86,6 +86,7 @@
     align-items: center;
     // border: 1px solid red;
     padding-top: 1%;
+    margin-bottom: 10%;
 
     &__icon {
         height: 50%;
@@ -94,6 +95,7 @@
         &__ten-seconds {
             width: 13%;
         }
+        cursor: pointer;
     }
 
 }

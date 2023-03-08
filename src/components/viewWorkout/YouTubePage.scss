@@ -59,7 +59,6 @@
     align-items: center;
     // border: 1px solid red;
     padding-top: 1%;
-    cursor: pointer;
 
     &__icon {
         height: 50%;
@@ -68,6 +67,7 @@
         &__ten-seconds {
             width: 13%;
         }
+        cursor: pointer;
     }
 
 }
