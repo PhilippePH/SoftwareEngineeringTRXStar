@@ -31,7 +31,6 @@ export const selectSlice = createSlice({
     },
     initialiseAll: (state, action) => {
       state.version = 1;
-      state.version= 1;
       state.activeTab= "";
       state.navDirection= "forwards";
       state.difficulty= "";
@@ -45,6 +44,7 @@ export const selectSlice = createSlice({
     },    
     setNavDirection: (state, action) => {
       state.navDirection = action.payload;
+      state.version = 1;
     },
     setDifficulty: (state, action) => {
       state.difficulty = action.payload;
@@ -67,6 +67,7 @@ export const selectSlice = createSlice({
       }
     },
     setMuscles: (state, action) => {
+      state.version = 1;
       if (state.muscles.includes(action.payload)) {
         state.muscles = state.muscles.filter((muscle) => (muscle!=action.payload));
       } else {
