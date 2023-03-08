@@ -17,11 +17,8 @@ self.addEventListener('install', (event) => {
 // Listen for requests
 self.addEventListener('fetch', (event) => {
     event.respondWith(
-        caches.match(event.request)
-            .then(() => {
-                return fetch(event.request) // if we cannot fetch because not everything has been cached and there is no internet, we display offline.html
-                    .catch(() => caches.match('offline.html'))
-            })
+        fetch(event.request) // if we cannot fetch because there is no internet, we display offline.html
+            .catch(() => caches.match('offline.html'))       
     )
 });
 
