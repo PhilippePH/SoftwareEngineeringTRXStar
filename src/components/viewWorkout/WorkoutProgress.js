@@ -3,7 +3,7 @@ import './WorkoutProgress.scss'
 
 const WorkoutProgress = (props) => {
   const {completed} = props;
-  
+
   const fillerStyles = {
     width: `${completed}%`,
   }
