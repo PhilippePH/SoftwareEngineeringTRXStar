@@ -4,10 +4,8 @@ import { BsHourglassSplit } from 'react-icons/bs';
 import {BsArrowCounterclockwise} from 'react-icons/bs';
 import { BsArrowUp, BsArrowDown } from 'react-icons/bs'
 import './ExerciseCard.scss';
-import cn from "classnames";
 import { useRef } from 'react';
 import {BsFillCaretDownFill} from 'react-icons/bs';
-import RestCard from './RestCard';
 import { getClip } from '../../scripts/algorithm';
 import { inputToPlaylist, removeFromPlaylist, moveUpExercise, moveDownExercise } from "../../redux/slices/playlistSlice.js"
 import { store } from "../../redux/store"
@@ -15,45 +13,43 @@ import { filterOnKey } from '../../scripts/algorithm';
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
-
-
 const CLOSED_HEIGHT = 50;
 const OPENED_HEIGHT = 155;
 
 export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time, ind, muscle_types, size, no_cooldown, no_warmup, type}) {
+
+    var remaining_secs_duration = (sets * duration + (time * (sets))) % 60;
+
     const [isOpen, setOPen] = useState(false);
-    const outerHeight = useRef(CLOSED_HEIGHT);
-    const containerRef = useRef(null);
-    var remaining_secs_duration = (sets*duration+(time*(sets)))%60;
-    const [key, setKey] = useState(0);
-    const [isLoading, setIsLoading] = useState(false);
     const [isFadingOut, setIsFadingOut] = useState(false);
     const [isSlidingIn, setIsSlidingIn] = useState(false);
     const [isSlidingUp, setIsSlidingUp] = useState(false);
     const [isSlidingDown, setIsSlidingDown] = useState(false);
     const [rotate, setRotate] = useState(false);
 
+    const outerHeight = useRef(CLOSED_HEIGHT);
+    const containerRef = useRef(null);
+    
     const handleClick = () => {
         setRotate(!rotate);
-      };
+    };
 
-    const slideIn = (event) => {
+    const slideIn = () => {
         setIsSlidingIn(true);
     };
 
-    const slideUp = (event) => {
+    const slideUp = () => {
         setIsSlidingUp(true);
     };
 
-    const slideDown = (event) => {
+    const slideDown = () => {
         setIsSlidingDown(true);
     };
 
-    const fadeOut = (event) => {
+    const fadeOut = () => {
         setIsFadingOut(true);
     };
     
-
     const toggle = () => {
         if (!isOpen) {
             outerHeight.current = OPENED_HEIGHT;
@@ -67,175 +63,141 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
         setTimeout(() => {
             store.dispatch(removeFromPlaylist(ind));
             setIsFadingOut(false);
-          }, 1000);
+        }, 1000);
+        document.body.click();
+    };
 
-          document.body.click();
-
-      };
-
-      const handleMoveDown = (event) => {
-        slideDown(); 
+    const handleMoveDown = (event) => {
         event.stopPropagation();
+        slideDown(); 
         setTimeout(() => {
             store.dispatch(moveDownExercise(ind));
             setIsSlidingDown(false);
-          }, 1500);
-          document.body.click();
-      };
+        }, 1500);
+        document.body.click();
+    };
 
-      const handleMoveUp = (event) => {
-        slideUp(); 
+    const handleMoveUp = (event) => {
         event.stopPropagation();
+        slideUp(); 
         setTimeout(() => {
             store.dispatch(moveUpExercise(ind)); 
             setIsSlidingUp(false);
-          }, 1500);
-
-          document.body.click();
-        
-      };
+        }, 1500);
+        document.body.click();
+    };
 
     const handleReplace = (event) => {
         event.stopPropagation();
         slideIn(); 
-            let clip = getClip(indexedDB, "exercise", time, 1).then(
-                async function (clip) {
-                    //console.log("Clip", clip)
-                    var exercise = filterOnKey("exercises", clip.exercise_name, indexedDB, "ExerciseDatabase", 1).then(
-                        async function (exercise) {
-                            var video_of_clip = filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1).then(
-                                async function (video_of_clip) {
-                                    //console.log("Exercise", exercise)
-                                    //console.log("Exercise muscle", exercise[0].muscle_type)
-                                    var clip_formatted = {
-                                        "type": "exercise",
-                                        "exercise_name": clip.exercise_name,
-                                        "time": duration,
-                                        "sets": sets,
-                                        "muscles": exercise[0].muscle_type,
-                                        "rest_set": time,
-                                        "intensity": 1,
-                                        "URL": video_of_clip[0].URL,
-                                        "start_time": clip.start_time,
-                                        "end_time": clip.end_time
-                                    }
-
-                                    store.dispatch(inputToPlaylist([clip_formatted, ind]))
-                                    console.log("Clip_formatted", clip_formatted);
-
-                                })
-                    }  )})
-
-                    setTimeout(() => {
-                        setIsSlidingIn(false);
-                      }, 1000);
-                      document.body.click();
-            };
-
-//<div className={isFadingOut ? 'item-fadeout': 'item'}>
+        getClip(indexedDB, "exercise", time, 1).then(
+            async function (clip) {
+                filterOnKey("exercises", clip.exercise_name, indexedDB, "ExerciseDatabase", 1).then(
+                    async function (exercise) {
+                        filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1).then(
+                            async function (video_of_clip) {
+                                var clip_formatted = {
+                                    "type": "exercise",
+                                    "exercise_name": clip.exercise_name,
+                                    "time": duration,
+                                    "sets": sets,
+                                    "muscles": exercise[0].muscle_type,
+                                    "rest_set": time,
+                                    "intensity": 1,
+                                    "URL": video_of_clip[0].URL,
+                                    "start_time": clip.start_time,
+                                    "end_time": clip.end_time
+                                }
+                                store.dispatch(inputToPlaylist([clip_formatted, ind]))
+                            }
+                        )
+                    }
+                )
+            }
+        )
+        setTimeout(() => {
+            setIsSlidingIn(false);
+        }, 1000);
+        document.body.click();
+    };
 
     const handleClickAndToggle = (type, event) => {
-
-        console.log("This should be true", event.target.classList.contains('info-wrapper')); 
-        console.log("contains", event.target.classList); 
-
-
         if (event.target.classList.contains('info-wrapper')) {
             event.stopPropagation(); 
-          }
-        else if(type!="rest"){
+        }
+        else if(type !== "rest"){
             handleClick();
             toggle();
         }
-        
-      
+    };
 
-  };
+    const popover = (
+        <Popover id="popover-basic" className="popover-display">
+            <Popover.Body className='popover-text'>
+                {exercise_name !== "Warmup" && exercise_name !== "Cooldown" && (no_warmup && ind > 1 || ind > 2) &&
+                    <BsArrowUp size={28} className='exercise-card__up' onClick={handleMoveUp} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />}
+                {exercise_name !== "Warmup" && exercise_name !== "Cooldown" && (no_cooldown && ind < size - 1 || ind < size - 2) &&
+                    <BsArrowDown size={28} className='exercise-card__down' onClick={handleMoveDown} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />
+                }
+                {exercise_name !== "Warmup" && exercise_name !== "Cooldown" && type !== "rest" &&
+                    <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />}
+                <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />
+            </Popover.Body>
+        </Popover>
+    );
 
-  const popover = (
-    <Popover id="popover-basic" className="popover-display">
-      <Popover.Body className='popover-text'>
-            {exercise_name != "Warmup" && exercise_name != "Cooldown" && (no_warmup && ind > 1 || ind > 2) &&
-                <BsArrowUp size={28} className='exercise-card__up' onClick={handleMoveUp} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />}
-            {exercise_name != "Warmup" && exercise_name != "Cooldown" && (no_cooldown && ind < size - 1 || ind < size - 2) &&
-                <BsArrowDown size={28} className='exercise-card__down' onClick={handleMoveDown} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />
-            }
-            {exercise_name != "Warmup" && exercise_name != "Cooldown" && type != "rest" &&
-                <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />}
-            <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />
-
-      </Popover.Body>
-    </Popover>
-);
     return (
-        <div>
-            <div>
-            <div className={isFadingOut ? 'item-fadeout': (isSlidingIn ? 'slide-in': (isSlidingUp ? 'flipup': (isSlidingDown ? 'flipdown': 'item1')))}>
-                <div className={`custom-container ${isOpen ? 'open' : 'closed'}`}
+
+        <div 
+            className={isFadingOut ? 'item-fadeout': 
+                (isSlidingIn ? 'slide-in': 
+                (isSlidingUp ? 'flipup': 
+                (isSlidingDown ? 'flipdown': '')))}>
+            <div 
+                className={`custom-container ${isOpen ? 'open' : 'closed'}`}
                 style={{ minHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT }}
                 ref={containerRef}>
-
-                <div>
-                    <div
+                <div
                     className={'exercise-card'}
-                    
-                    style={{backgroundColor : type!= "rest" ? "":'whitesmoke'}}>
-
-                        <div className='exercise-card__left-container'
+                    style={{backgroundColor : type !== "rest" ? "" :'whitesmoke'}}>
+                    <div 
+                        className='exercise-card__left-container'
                         onClick={(event)=>handleClickAndToggle(type, event)}>
-                        {type != "rest" &&
-                        <BsFillCaretDownFill size={20} />}
-                            <div className='exercise-card__exercise-name'>
-                                {type == "rest" ?  <BsHourglassSplit style ={{marginRight : "10px"}} size={28} color={isSlidingUp || isSlidingDown ? 'transparent' : 'gray'}/> : ""}
-                                {exercise_name}
-
-
+                        {type === "rest" ? <BsHourglassSplit size={20} color={isSlidingUp || isSlidingDown ? 'transparent' : 'gray'}/> : <BsFillCaretDownFill size={20}/>}
+                        <div className='exercise-card__exercise-name'>
+                            {exercise_name}
+                        </div>
+                    </div>
+                    <div 
+                        className='exercise-card__right-container' >
+                        <OverlayTrigger trigger={'click'} rootClose placement= "bottom" overlay={popover} ref={popover}>
+                            <div className='extra-wrapper'>
+                                <BsThreeDotsVertical className='extra-icon'/>
                             </div>
-
-                        </div>
-
-                        <div className='exercise-card__right-container' >
-
-                       <OverlayTrigger trigger={'click'} rootClose placement= "bottom" overlay={popover} ref = {popover}>
-                       <div className='extra-wrapper'>
-                        <BsThreeDotsVertical className='extra-icon'/>
-                        </div>
                         </OverlayTrigger>
-                    
-                        </div> 
-
-
-                    </div>
-                    <div className='additional-info'>
-                        
-                
-                        
-                    {(exercise_name == "Warmup" || exercise_name == "Cooldown")&&<div className='warmup-cooldown-container'> Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
-                    {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'
-                    style = {{color: type == 'rest' ? 'transparent' : ''}}> 
-                    
-                       <div>Work: {Math.floor((duration/60))}:{duration%60<10?'0':''}{duration%60}/set</div>
-                         <div> Rest: {Math.floor((time/60))}:{time%60<10?'0':''}{time%60}/set</div>
-                        <div>Sets: {sets} </div>
-                        </div>}
-                       
-       
-                   
-                        {exercise_name != "Warmup" && exercise_name != "Cooldown" &&<div className='info-container'> Total Duration: {Math.floor((sets*duration+(time*(sets)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration}</div>}
-
-                        {exercise_name != "Warmup" && exercise_name != "Cooldown" && <div className='info-container'> Muscles: {muscle_types} </div>}   
-                   
-                    </div>
-
-
-
-           
+                    </div> 
                 </div>
+                <div 
+                    className='additional-info'>
 
+                    {(exercise_name === "Warmup" || exercise_name === "Cooldown") && 
+                    <div className='warmup-cooldown-container'> Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration} </div>}
+
+                    {exercise_name !== "Warmup" && exercise_name !== "Cooldown" && 
+                    <div className='info-container' style = {{color: type === 'rest' ? 'transparent' : ''}}> 
+                        <div> Work: {Math.floor((duration/60))}:{duration%60<10?'0':''}{duration%60}/set </div>
+                        <div> Rest: {Math.floor((time/60))}:{time%60<10?'0':''}{time%60}/set </div>
+                        <div> Sets: {sets} </div>
+                    </div>}
+                    
+                    {exercise_name !== "Warmup" && exercise_name !== "Cooldown" &&
+                    <div className='info-container'> Total Duration: {Math.floor((sets*duration+(time*(sets)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration} </div>}
+
+                    {exercise_name !== "Warmup" && exercise_name !== "Cooldown" && 
+                    <div className='info-container'> Muscles: {muscle_types} </div>}   
+                </div>
             </div>
-            </div>
-            </div>
-            </div>
+        </div>
 
     );
 }
