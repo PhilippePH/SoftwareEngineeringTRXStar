@@ -131,7 +131,7 @@
 }
 
 :root {
-    --transition: 0.7s ease;
+    --transition: 0.5s ease;
 }
 
 .item-fadein{
@@ -210,6 +210,7 @@
         align-items: center;
         flex-direction: row;
         flex: 1; 
+        height: 100%;
         text-align: left;
         padding-left: 10px;
     }
@@ -244,18 +245,19 @@
 
     
 }
-/* .chevron {
+.chevron {
 
     &__open {
+        transform: rotate(90deg);
         transition: transform var(--transition);
     }
 
     &__closed{
-    transform: rotate(-90deg);
+    
     transition: transform var(--transition);
 
     }
-} */
+} 
 
 .additional-info {
     display: flex;
