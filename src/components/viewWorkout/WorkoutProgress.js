@@ -11,7 +11,7 @@ const WorkoutProgress = (props) => {
   return (
     <div className="progBarContainer">
       <div className="filler" style={fillerStyles}>
-       <p> {`${completed}%`} </p>
+       {`${completed}%`}
       </div>
     </div>
   );

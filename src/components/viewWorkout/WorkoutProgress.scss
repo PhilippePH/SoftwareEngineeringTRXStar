@@ -1,8 +1,12 @@
 .progBarContainer {
+    // display:flex;
+    height: 30px;
     width: 100%;
     background-color: #e0e0de;
-    border-radius: 50px;
-  }
+    // border-radius: 50px;
+    // align-items: center;
+}
+
 
 .filler{
     height: 100%;
@@ -13,5 +17,6 @@
     font-weight: bold;
     line-height: 2;
     vertical-align: middle;
+    padding-left: 5px;
     padding-right: 10px;
- }
+}
