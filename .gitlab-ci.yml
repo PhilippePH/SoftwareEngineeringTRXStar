@@ -23,17 +23,16 @@ variables:
     VERCEL_PROJECT_ID: prj_Po18EFe36ruMtfk9hiKQUTM5ruMU
     
 stages:          # List of stages for jobs, and their order of execution
-  # - build
+  - build
   - deploy
 
-# build-job:       # This job runs in the build stage, which runs first.
-#   stage: build
-#   script:
-#     - export NVM_DIR="$HOME/../pp1722/.nvm" && . "$NVM_DIR/nvm.sh" --no-use #load nvm
-#     - nvm use v18.0.0
-#     - npm ci
-#     - npm run build
-
+build-job:       # This job runs in the build stage, which runs first.
+  stage: build
+  script:
+    - export NVM_DIR="$HOME/../pp1722/.nvm" && . "$NVM_DIR/nvm.sh" --no-use #load nvm
+    - nvm use v18.0.0
+    - npm ci
+    - npm run build
 
 deploy_preview:
   stage: deploy
