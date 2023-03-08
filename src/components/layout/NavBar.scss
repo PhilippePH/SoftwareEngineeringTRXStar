@@ -1,0 +1,28 @@
+@import '../../sassStyles/variables';
+@import '../../sassStyles/mixins';
+
+.nav-bar {
+   
+    &__link {
+        
+        padding-right: 15px;
+        cursor: pointer;
+        @include font;
+        color:black;
+
+        &:hover {
+            text-decoration: underline;
+          }
+
+    }
+
+    &__links-div{
+        display:flex;
+    }
+
+    &__link:active{
+        color: $primary-colour;
+    }
+
+
+}

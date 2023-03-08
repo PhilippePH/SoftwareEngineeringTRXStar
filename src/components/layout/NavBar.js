@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { GrHomeRounded } from "react-icons/gr";
+import './NavBar.scss';
 
 const withoutSidebarRoutes = ["/youtube"];
 
@@ -41,7 +42,11 @@ const NavBar = () => {
                     alt={"logo"}
                 />
             </div>
-            <div 
+            <div className = 'nav-bar__links-div'>
+                <div className = 'nav-bar__link' onClick={() => { navigate("/about")}} > About </div>
+                <div className = 'nav-bar__link'onClick={() => { navigate("/development")}}>Development</div>
+            </div>
+            {/* <div 
                 id="navbar-home" 
                 onClick={() => { navigate("/") }}
                 style={{
@@ -58,7 +63,7 @@ const NavBar = () => {
                           },
                     }}
                 />
-            </div>  
+            </div>   */}
         </div>
     )
 }
