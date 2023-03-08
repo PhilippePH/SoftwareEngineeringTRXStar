@@ -3,6 +3,7 @@ import { persistedPlaylistReducer} from './slices/playlistSlice'
 import selectReducer from './slices/selectSlice'
 import { persistStore, persistReducer } from 'redux-persist';
 import {persistedSelectReducer} from './slices/selectSlice'
+import thunk from 'redux-thunk'
 
 // configure global store 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
     select: persistedSelectReducer,
     playlist: persistedPlaylistReducer,
   },
+  middleware: [thunk]
 });
 
 export const persistor = persistStore(store);
