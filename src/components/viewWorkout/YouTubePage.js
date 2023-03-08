@@ -5,8 +5,8 @@ import '../utils/style.scss'
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import '../intro/WelcomePage.scss'
-import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
-import { MdForward10, MdOutlineReplay10 } from "react-icons/md";
+import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward, FaExpand } from "react-icons/fa";
+// import { MdForward10, MdOutlineReplay10 } from "react-icons/md";
 import WorkoutProgress from "./WorkoutProgress";
 
 
@@ -17,6 +17,7 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
       
   const [width, setWidth] = useState(window.innerWidth);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const playerRef = useRef(null); // create a ref for the YouTube component
 
@@ -28,7 +29,16 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const fastForward = async () => {
+  useEffect(() => {
+    window.addEventListener('orientationchange', handleFullscreen);
+    window.addEventListener('orientationchange', handleExitFullscreenOnPortrait);
+    return () => {
+      window.removeEventListener('orientationchange', handleFullscreen);
+      window.removeEventListener('orientationchange', handleExitFullscreenOnPortrait);
+    };
+  }, [isFullscreen]);
+
+  const handleFastForward = async () => {
     const currentTime = await playerRef.current.internalPlayer.getCurrentTime(); 
     // ADD logic such that we cannot go beyond the bounds of our current video
     playerRef.current.internalPlayer.seekTo(currentTime + 10, true); 
@@ -42,12 +52,27 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
     playerRef.current.internalPlayer.pauseVideo(); 
   }
 
-  const rewind = async () => {
+  const handleRewind = async () => {
     console.log(playerRef.current.internalPlayer);
     const currentTime = await playerRef.current.internalPlayer.getCurrentTime(); 
     // ADD logic such that we cannot go beyond the bounds of our current video
     playerRef.current.internalPlayer.seekTo(Math.max(0, currentTime - 10), true); 
   };
+
+  const handleFullscreen = async () => {
+    const playerElement = await playerRef.current.internalPlayer.getIframe();
+    playerElement.requestFullscreen();
+    setIsFullscreen(true);
+  };
+  
+
+  const handleExitFullscreenOnPortrait = () => {
+    if (window.screen.orientation.type === "portrait-primary" || window.screen.orientation.type === "portrait-secondary") {
+      document.exitFullscreen();
+      setIsFullscreen(false)
+    }
+  }
+  
 
   const endWorkout = () => {
     navigate(`/end`);
@@ -78,6 +103,7 @@ const opts = {
       disablekb: 1,
       start: exerciseData.startTime, 
       end: exerciseData.endTime,
+      fs: 1,
     },
   };
 
@@ -110,16 +136,19 @@ const opts = {
             <div className="youtube-controls">
               <FaStepBackward onClick={backToPlaylist} className="youtube-controls__icon"/>
               <FaBackward onClick={prevVideo} className="youtube-controls__icon"/>
-              <MdOutlineReplay10 onClick={() => rewind()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/>
+              {/* <MdOutlineReplay10 onClick={() => handleRewind()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/> */}
+              <button onClick={handleRewind} className="youtube-controls__icon">10</button>
               {
                 isPlaying ?
                 <FaPause onClick={() => pauseVideo()} className="youtube-controls__icon"/>
                 :
                 <FaPlay onClick={() => playVideo()} className="youtube-controls__icon"/>
               }
-              <MdForward10 onClick={() => fastForward()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/>
+              {/* <MdForward10 onClick={() => handleFastForward()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/> */}
+              <button onClick={handleFastForward} className="youtube-controls__icon">10</button>
               <FaForward onClick={nextVideo} className="youtube-controls__icon"/>
               <FaStepForward onClick={endWorkout} className="youtube-controls__icon"/>
+              <FaExpand onClick={handleFullscreen} className="youtube-controls__icon"/>
             </div>
 
           </div>
