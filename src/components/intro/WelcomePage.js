@@ -8,8 +8,6 @@ import { store } from "../../redux/store"
 import { initialiseAll } from "../../redux/slices/selectSlice";
 import { initialisePlaylist } from "../../redux/slices/playlistSlice";
 import LoadModal from "./LoadModal";
-import { OverlayTrigger, Popover } from "react-bootstrap";
-
 
 const Welcome = ({indexedDB}) => {
 
@@ -28,7 +26,7 @@ const Welcome = ({indexedDB}) => {
         const handleResize = () => setWidth(window.innerWidth);
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
-    }, []);
+      }, []);
 
     // Modal show unshow hooks
     const [ show, setShow ] = useState(false);
@@ -64,7 +62,6 @@ const Welcome = ({indexedDB}) => {
                 setButtonDisabled={setButtonDisabled}/>
         </div>
     )
-
 }
 
 export default Welcome;
