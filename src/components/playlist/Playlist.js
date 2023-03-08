@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { recommendationAlgorithm, filterDatabase, addToFilteredDB, reject, negFilterDatabase, fillStructure} from '../../scripts/algorithm.js';
+import { useEffect, useState } from 'react';
+import { filterDatabase, addToFilteredDB, fillStructure} from '../../scripts/algorithm.js';
 import { createStructure } from '../../scripts/createStructure.js';
 import { useSelector } from 'react-redux';
 import { addPlaylist } from "../../redux/slices/playlistSlice.js"
 import { store } from "../../redux/store"
-import PlaylistWindow from './PlaylistWindow.js';
 
 // filter using async await
 async function filterAll(indexedDB, userOptions) {
@@ -38,8 +37,6 @@ async function filterAll(indexedDB, userOptions) {
                 }
             })
         }
-
-        console.log("Full exercises", fullExercises); 
         
         for (i = 0; i < video_IDs.length; i++) {
             let filteredClips = await filterDatabase("clip", "video_ID", video_IDs[i], indexedDB, "ExerciseDatabase", 1);
@@ -49,7 +46,6 @@ async function filterAll(indexedDB, userOptions) {
                     validClips.push(clip);
                 }
             })
-            //ps", validClips);
             await addToFilteredDB("clip", validClips);
         }
 
@@ -60,7 +56,6 @@ async function filterAll(indexedDB, userOptions) {
     }
 }
 
-
 function diff_to_comp(difficulty) {
     if (difficulty === "easy") 
         return 0;
@@ -70,14 +65,7 @@ function diff_to_comp(difficulty) {
         return 2;
 }
 
-async function callFilterAll(indexedDB, selectedOptions) {
-    await filterAll(indexedDB, selectedOptions);
-}
-
 const Playlist = ({ indexedDB }) => {
-
-    
-    const [ displayName, setDisplayName ] = useState('');
 
     const { 
         difficulty,
@@ -95,34 +83,28 @@ const Playlist = ({ indexedDB }) => {
         muscles
     }
 
-    
     useEffect(() => {// make sure not re-rendering all the time
-    filterAll(indexedDB, selectedOptions)
-    .then(function() {
-        try {
+        filterAll(indexedDB, selectedOptions)
+        .then(function() {
             createStructure(selectedOptions)
             .then(function (empty) {
-                //console.log("Should be empty", empty);
                 fillStructure(empty, indexedDB)
                 .then(function(filled) {
-                    //console.log("Filled structure", filled);
-                    setDisplayName(filled[1].exercise_name); 
                     store.dispatch(addPlaylist(filled));
                 })
-            });
-        } catch (e) {
+                .catch(function(e) {
+                    console.error(e);
+                })
+            })
+            .catch(function(e) {
+                console.error(e);
+            })
+        })
+        .catch(function(e) {
             console.error(e);
-        }
-    });
-}, []);
+        })
+    }, []);
 
-/*
-    return (
-        <>
-            <PlaylistWindow />        
-        </>
-    );
-    */
 }   
 
 export default Playlist;
