@@ -156,13 +156,13 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     <Popover id="popover-basic" className="popover-display">
       <Popover.Body className='popover-text'>
             {exercise_name != "Warmup" && exercise_name != "Cooldown" && (no_warmup && ind > 1 || ind > 2) &&
-                <BsArrowUp size={28} className='exercise-card__up' onClick={handleMoveUp} style={{ marginRight: '10px', strokeWidth: '0.3' }} />}
+                <BsArrowUp size={28} className='exercise-card__up' onClick={handleMoveUp} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />}
             {exercise_name != "Warmup" && exercise_name != "Cooldown" && (no_cooldown && ind < size - 1 || ind < size - 2) &&
-                <BsArrowDown size={28} className='exercise-card__down' onClick={handleMoveDown} style={{ marginRight: '10px', strokeWidth: '0.3' }} />
+                <BsArrowDown size={28} className='exercise-card__down' onClick={handleMoveDown} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />
             }
             {exercise_name != "Warmup" && exercise_name != "Cooldown" && type != "rest" &&
-                <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace} style={{ marginRight: '10px', strokeWidth: '0.3' }} />}
-            <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv} style={{ marginRight: '10px', strokeWidth: '0.3' }} />
+                <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />}
+            <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />
 
       </Popover.Body>
     </Popover>
