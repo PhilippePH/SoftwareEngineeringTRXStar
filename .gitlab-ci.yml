@@ -34,6 +34,7 @@ stages:          # List of stages for jobs, and their order of execution
 #     - npm ci
 #     - npm run build
 
+
 deploy_preview:
   stage: deploy
   except:   # This creates preview environments on commits pushed to a git branch
