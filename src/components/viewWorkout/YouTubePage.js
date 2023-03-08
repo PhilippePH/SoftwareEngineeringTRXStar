@@ -32,11 +32,13 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
   const handleNextVideo = () => {
     setKey(key+1);
     nextVideo();
+    setIsPlaying(false);
   }
 
   const handlePrevVideo = () => {
     setKey(key-1);
     prevVideo();
+    setIsPlaying(false);
   }
 
   const handleStateChange = async () => {
