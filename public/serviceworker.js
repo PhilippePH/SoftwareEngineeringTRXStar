@@ -17,8 +17,11 @@ self.addEventListener('install', (event) => {
 // Listen for requests
 self.addEventListener('fetch', (event) => {
     event.respondWith(
-        fetch(event.request) // if we cannot fetch because there is no internet, we display offline.html
-            .catch(() => caches.match('offline.html'))       
+        caches.match(event.request)
+            .then(() => {
+                return fetch(event.request) // if not one of our desginated cached assets or not found we make a network request
+                    .catch(() => caches.match('offline.html')) // if network request unsuccessful, we are offline and display offline.html
+            })
     )
 });
 
