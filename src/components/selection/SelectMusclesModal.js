@@ -5,8 +5,6 @@ import './style.scss'
 import { useSelector } from "react-redux";
 import { MUSCLES } from "../utils/constants";
 import { useEffect, useState } from 'react';
-import { useLinkClickHandler } from 'react-router-dom';
-
 
 const MusclesModal = ({show, unshow}) => {
 
