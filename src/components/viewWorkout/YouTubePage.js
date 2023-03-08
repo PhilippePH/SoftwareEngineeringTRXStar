@@ -104,17 +104,18 @@ const opts = {
 
       return (
         <>
-        <div className='container-youtube'>
-          <div className='container-youtube__progress-bar'> 
+        <div className='progress-bar'> 
             <WorkoutProgress completed={(Math.floor((exerciseData.counter /exerciseData.totalWorkoutLength)*100))} />
-          </div>
-          <div className='container-settings' id="divId">
+        </div>
+        
+        <div className='container-settings' id="divId">
+            
           <div className="container-settings__message1">
             {exerciseData.exerciseName}
-            <div className="container-settings__sets">
+            <div className="container-settings__message1__sets">
                 Set {exerciseData.setNumber+1} of {exerciseData.totalSets}
-                  </div>
-                  </div>
+            </div>
+          </div>
                   
             <div
               className="container-settings__wrap">
@@ -129,23 +130,23 @@ const opts = {
                         onPause={() => setIsPlaying(false)}>
               </YouTube>
             </div>  
-            <div className="youtube-controls">
-              <FaStepBackward onClick={backToPlaylist} className="youtube-controls__icon"/>
-              <FaBackward onClick={handlePrevVideo} className="youtube-controls__icon"/>
-              <MdOutlineReplay10 onClick={() => handleRewind()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/>
+
+            <div className="container-settings__youtube-controls">
+              <FaStepBackward onClick={backToPlaylist} className="container-settings__youtube-controls__icon"/>
+              <FaBackward onClick={handlePrevVideo} className="container-settings__youtube-controls__icon"/>
+              <MdOutlineReplay10 onClick={() => handleRewind()} className="container-settings__youtube-controls__icon container-youtube__youtube-controls__icon__ten-seconds"/>
               {
                 isPlaying ?
-                <FaPause onClick={() => pauseVideo()} className="youtube-controls__icon"/>
+                <FaPause onClick={() => pauseVideo()} className="container-settings__youtube-controls__icon"/>
                 :
-                <FaPlay onClick={() => playVideo()} className="youtube-controls__icon"/>
+                <FaPlay onClick={() => playVideo()} className="container-settings__youtube-controls__icon"/>
               }
-              <MdForward10 onClick={() => handleFastForward()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/>
-              <FaForward onClick={handleNextVideo} className="youtube-controls__icon"/>
-              <FaStepForward onClick={endWorkout} className="youtube-controls__icon"/>
+              <MdForward10 onClick={() => handleFastForward()} className="container-settings__youtube-controls__icon container-youtube__youtube-controls__icon__ten-seconds"/>
+              <FaForward onClick={handleNextVideo} className="container-settings__youtube-controls__icon"/>
+              <FaStepForward onClick={endWorkout} className="container-settings__youtube-controls__icon"/>
             </div>
 
           </div>
-        </div>
       </>
         
       );

@@ -1,22 +1,16 @@
 @import '../../sassStyles/_mixins.scss';
 
-
-.larger-container-rest{
-    display:grid;
-    place-items: center;
-    }
+.progress-bar{
+    width: 100%;
+}
 
 .container-rest{
+    height: 100%;
+    margin: auto;
     display: flex;
-    flex-flow: column nowrap; // creates the vertical component
-    align-items: center; // keeps the button centerd
-    height: 100vh;
-    width: 100vh;
-    
-    &__progress-bar{
-        padding-top: 2.5%;
-        width: 100%;
-    }
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; // keeps stuff centered
 
     &__message-black1 {
         color: black;
@@ -25,36 +19,45 @@
         text-transform: capitalize; // adds uppercases letter
         }
 
-    &__timer-div {
-        display: flex;
-        flex-flow: row wrap;
-        flex: 4;
-        height: 100%;
-        justify-content: center;
-        align-content: center;
-    }
-
     &__message-black2 {
         color: black;
         @include font; 
         font-size: 30px;
         text-transform: capitalize; // adds uppercases letter
-        }
 
-    &__message-yellow {
-        display:flex; 
-        color: #FFE600;
-        @include font-no-colour; 
-        font-weight: 700;
-        align-content: flex-start;
-        //flex-wrap: nowrap;
-        flex:1.5; 
-        flex-wrap: nowrap;
-        white-space: nowrap;
-        font-size: 50px; 
-        text-transform: capitalize;
+        // Keeps text centered
+        display: grid; 
+        place-items: center;
+
+        &__message-yellow {
+            
+            color: #FFE600;
+            @include font-no-colour; 
+            font-weight: 700;
+            // flex:1.5; 
+            // white-space: nowrap;
+            font-size: 50px; 
+            text-transform: capitalize;
+        }
+    }
+
+    &__rest-controls {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__icon {
+            width: 10%; // how far apart icons are from each other
+
+            &__ten-seconds {
+                width: 13%;
+            }
+            cursor: pointer;
+        }
     }
 }
+
 
 @media (max-width: 649px){
     .container-rest {
@@ -66,38 +69,18 @@
 
         &__message-black2 {
             font-size: 30px;
-        }
 
-        &__message-yellow {
-            font-size: 40px;
+            &__message-yellow {
+                font-size: 40px;
+            }
+        }
+        
+        &__rest-controls {
+            &__icon {
+                height: 50%;
+            }
         }
     }
-
-    .rest-controls {
-        width: 98vw;
-    }
-}
-
-.rest-controls {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    // border: 1px solid red;
-    padding-top: 1%;
-    margin-bottom: 10%;
-
-    &__icon {
-        height: 50%;
-        width: 10%;
-        // margin: 5px;
-        &__ten-seconds {
-            width: 13%;
-        }
-        cursor: pointer;
-    }
-
 }
 
 @media (min-width: 650px) and (max-width: 799px) {
@@ -110,29 +93,27 @@
 
         &__message-black2 {
             font-size: 30px;
+
+            &__message-yellow {
+                font-size: 40px;
+            }
         }
 
-        &__message-yellow {
-            font-size: 40px;
-        }
-    }
-    .rest-controls {
-        width: 80vw;
-
-        &__icon {
-            height: 44%;
+        &__rest-controls {
+            &__icon {
+                height: 44%;
+            }
         }
     }
 }
+
 @media (min-width: 800px) { // make the youtube player small if the screen is particularily large
     .container-rest {
         width: 70vw;
-    }
-    .rest-controls {
-        width: 70vw;
-
-        &__icon {
-            height: 37%;
+        &__rest-controls {
+            &__icon {
+                height: 37%;
+            }
         }
     }
 }
@@ -140,13 +121,10 @@
 @media (min-width: 1000px) { // make the youtube player small if the screen is particularily large
     .container-rest {
         width: 55vw;
-    }
-
-    .rest-controls {
-        width: 55vw;
-
-        &__icon {
-            height: 30%;
+        &__rest-controls {
+            &__icon {
+                height: 30%;
+            }
         }
     }
 }

@@ -43,41 +43,41 @@ const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, t
 
     return (
         <>
-        <div className='larger-container-rest'>
-            <div className='container-rest'>
-            <div className='container-rest__progress-bar'> 
-                <WorkoutProgress completed={(Math.floor((counter/totalWorkoutLength)*100))} />
-            </div>
+        <div className='progress-bar'> 
+            <WorkoutProgress completed={(Math.floor((counter/totalWorkoutLength)*100))} />
+        </div>
+        
+        <div className='container-rest'>
             <div className="container-rest__message-black1">
-                </div>
-                <div className="container-rest__message-black1">
-                    Rest
-                </div>
-                <div className='container-rest__timer-div'>
-                    <Timer fastForward={fastForward} rewind={rewind} isPlaying={isPlaying} timeLeft={timeLeft} setTime={setTime} onTimeout={nextVideo} restData = {restData}/>
-                </div>
-                <div className="container-rest__message-black2">
-                    Next up:
-                </div>
-                <div className="container-rest__message-yellow">
+                Rest
+            </div>
+
+            <div className='container-rest__timer-div'>
+                <Timer fastForward={fastForward} rewind={rewind} isPlaying={isPlaying} timeLeft={timeLeft} setTime={setTime} onTimeout={nextVideo} restData = {restData}/>
+            </div>
+            
+            <div className="container-rest__message-black2">
+                Next up:
+                <div className="container-rest__message-black2__message-yellow">
                     {nextExerciseName}
                 </div>
-                <div className="rest-controls">
-                    <FaStepBackward onClick={backToPlaylist} className="rest-controls__icon"/>
-                    <FaBackward onClick={prevVideo} className="rest-controls__icon"/>
-                    <MdOutlineReplay10 onClick={fastForward} className="rest-controls__icon rest-controls__icon__ten-seconds"/>
-                    {
-                        isPlaying ?
-                        <FaPause onClick={pauseTimer} className="rest-controls__icon"/>
-                        :
-                        <FaPlay onClick={playTimer} className="rest-controls__icon"/>
-                    }
-                    <MdForward10 onClick={rewind} className="rest-controls__icon rest-controls__icon__ten-seconds"/>
-                    <FaForward onClick={nextVideo} className="rest-controls__icon"/>
-                    <FaStepForward onClick={endWorkout} className="rest-controls__icon"/>
-                </div>
-                </div>
             </div>
+            
+            <div className="container-rest__rest-controls">
+                <FaStepBackward onClick={backToPlaylist} className="container-rest__rest-controls__icon"/>
+                <FaBackward onClick={prevVideo} className="container-rest__rest-controls__icon"/>
+                <MdOutlineReplay10 onClick={fastForward} className="container-rest__rest-controls__icon container-rest__rest-controls__icon__ten-seconds"/>
+                {
+                    isPlaying ?
+                    <FaPause onClick={pauseTimer} className="container-rest__rest-controls__icon"/>
+                    :
+                    <FaPlay onClick={playTimer} className="container-rest__rest-controls__icon"/>
+                }
+                <MdForward10 onClick={rewind} className="container-rest__rest-controls__icon container-rest__rest-controls__icon__ten-seconds"/>
+                <FaForward onClick={nextVideo} className="container-rest__rest-controls__icon"/>
+                <FaStepForward onClick={endWorkout} className="container-rest__rest-controls__icon"/>
+            </div>
+        </div>
         </>
     )
 }

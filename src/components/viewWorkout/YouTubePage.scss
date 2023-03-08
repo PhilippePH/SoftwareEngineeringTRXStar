@@ -1,76 +1,48 @@
 @import '../../sassStyles/_mixins.scss';
 
-.container-youtube {
-    display:grid;
-    place-items: center;
-
-    &__progress-bar{
-        width: 100%;
-    }
+.progress-bar{
+    width: 100%;
 }
 
 .container-settings{
+    height: 100%;
+    margin: auto;
     display: flex;
-    flex-flow: column nowrap; // creates the vertical component
-    align-items: center; // keeps the button centerd
-    width: 100vw;
-    height: 100vh;
-
-
-
+    flex-direction: column;
+    justify-content: space-around;
+    
     &__message1 {
         color: black;
         @include font; 
         font-size: 50px;
         text-transform: capitalize; // adds uppercases letter
-        display:grid;
+        
+        // For sets
+        display:grid; 
         place-items: center;
-        }
 
-    &__sets{
-        color: #a15050c2; // change for import variable 
-        @include font; 
-        font-size: 25px;
-        padding-bottom: 5%;
-        text-transform: none;
+        &__sets{
+            color: #a15050c2; // change for import variable 
+            @include font; 
+            font-size: 25px;
+            text-transform: none;
+        }
     }
 
-    &__wrap{
-        position: relative;
-        align-items:center;
+    &__youtube-controls {
+        display: flex;
         justify-content: center;
+        align-items: center;
+        
+        &__icon {
+            width: 10%; // how far apart icons are from each other
 
-        width: 100%; // this makes it take the whole width of the container
-
+            &__ten-seconds {
+                width: 13%;
+            }
+            cursor: pointer;
         }
-
-    &__iFrameYoutube{
-        width:100%; // this makes it responsive to the width of wrap
-        align-items:center;
-        justify-content: center;
-        }
-}
-
-
-.youtube-controls {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    // border: 1px solid red;
-    padding-top: 1%;
-
-    &__icon {
-        height: 50%;
-        width: 10%;
-        // margin: 5px;
-        &__ten-seconds {
-            width: 13%;
-        }
-        cursor: pointer;
     }
-
 }
 
 
@@ -81,10 +53,11 @@
         &__message1 {
             font-size: 40px;
         }
-    }
-
-    .youtube-controls {
-        width: 98vw;
+        &__youtube-controls {
+            &__icon {
+                height: 50%;
+            }
+        }
     }
 }
 
@@ -96,24 +69,20 @@
             font-size: 45px;
         }
 
-    }
-    .youtube-controls {
-        width: 80vw;
-
-        &__icon {
-            height: 44%;
+        &__youtube-controls {
+            &__icon {
+                height: 44%;
+            }
         }
     }
 }
 @media (min-width: 800px) { // make the youtube player small if the screen is particularily large
     .container-settings {
         width: 70vw;
-    }
-    .youtube-controls {
-        width: 70vw;
-
-        &__icon {
-            height: 37%;
+        &__youtube-controls {
+            &__icon {
+                height: 37%;
+            }
         }
     }
 }
@@ -121,12 +90,10 @@
 @media (min-width: 1000px) { // make the youtube player small if the screen is particularily large
     .container-settings {
         width: 55vw;
-    }
-    .youtube-controls {
-        width: 55vw;
-
-        &__icon {
-            height: 30%;
+        &__youtube-controls {
+            &__icon {
+                height: 30%;
+            }
         }
     }
 }
