@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import '../intro/WelcomePage.scss'
 import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward, FaExpand } from "react-icons/fa";
-// import { MdForward10, MdOutlineReplay10 } from "react-icons/md";
+import { MdForward10, MdOutlineReplay10 } from "react-icons/md";
 import WorkoutProgress from "./WorkoutProgress";
 
 
@@ -137,16 +137,16 @@ const opts = {
             <div className="youtube-controls">
               <FaStepBackward onClick={backToPlaylist} className="youtube-controls__icon"/>
               <FaBackward onClick={prevVideo} className="youtube-controls__icon"/>
-              {/* <MdOutlineReplay10 onClick={() => handleRewind()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/> */}
-              <button onClick={handleRewind} className="youtube-controls__icon">10</button>
+              <MdOutlineReplay10 onClick={() => handleRewind()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/>
+              {/* <button onClick={handleRewind} className="youtube-controls__icon">10</button> */}
               {
                 isPlaying ?
                 <FaPause onClick={() => pauseVideo()} className="youtube-controls__icon"/>
                 :
                 <FaPlay onClick={() => playVideo()} className="youtube-controls__icon"/>
               }
-              {/* <MdForward10 onClick={() => handleFastForward()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/> */}
-              <button onClick={handleFastForward} className="youtube-controls__icon">10</button>
+              <MdForward10 onClick={() => handleFastForward()} className="youtube-controls__icon youtube-controls__icon__ten-seconds"/>
+              {/* <button onClick={handleFastForward} className="youtube-controls__icon">10</button> */}
               <FaForward onClick={nextVideo} className="youtube-controls__icon"/>
               <FaStepForward onClick={endWorkout} className="youtube-controls__icon"/>
               <FaExpand onClick={handleFullscreen} className="youtube-controls__icon"/>
