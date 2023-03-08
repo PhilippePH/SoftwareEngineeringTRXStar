@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { setActiveTab, setDuration } from "../../redux/slices/selectSlice";
 import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
-import { DURATION, FOCUS, MUSCLE_GROUPS } from "../utils/constants";
+import { DURATION, FOCUS, DIFFICULTY} from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
 import './style.scss'
+import { OverlayTrigger, Popover } from "react-bootstrap";
+import { RiInformationFill } from "react-icons/ri";
 
 const SelectDuration = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -22,7 +24,7 @@ const SelectDuration = () => {
 
     const clickHandler = (option) => {
         dispatch(setDuration(option));
-        navigate(`/select/${MUSCLE_GROUPS}`);
+        navigate(`/select/${FOCUS}`);
     }
 
     useEffect(() => {
@@ -38,12 +40,21 @@ const SelectDuration = () => {
     
     return (
         <>
-        <div className="category-div">
-            Duration
+        <div className="title-div">
+            <div className="info-wrapper"/>
+            <div className="title-text" > Duration </div>
+            <OverlayTrigger 
+                trigger={window.matchMedia('(hover: hover)').matches? 'hover': 'click'} 
+                placement="top" overlay={popover}>
+                <div className="info-wrapper">
+                    <RiInformationFill className='info-icon' />
+                </div>  
+            </OverlayTrigger>
+            
         </div>
         <div className="selection-container">
             <div className="left-arrow-div">
-                <NavButtons prev={`/select/${FOCUS}`}/>
+                <NavButtons prev={`/select/${DIFFICULTY}`}/>
             </div>
             <div 
                 className="options-div"
@@ -58,7 +69,7 @@ const SelectDuration = () => {
                                 key={option} 
                                 type={DURATION} 
                                 option={option} 
-                                to={`/select/${MUSCLE_GROUPS}`}
+                                to={`/select/${FOCUS}`}
                                 selected = {completed}
                             />
                         )
@@ -66,48 +77,20 @@ const SelectDuration = () => {
                 }
             </div>
             <div className="right-arrow-div">
-                {completed && <NavButtons next={`/select/${MUSCLE_GROUPS}`}/>}
+                {completed && <NavButtons next={`/select/${FOCUS}`}/>}
             </div>
         </div>
         </>
-        //     <ul
-        //         style={{
-        //             display: "grid",
-        //             placeItems: "center",
-        //             justifyContent: "center",
-        //             alignItems: "center",
-        //             maxWidth: "25rem",
-        //             width: "100%",
-        //             marginTop: "10%",
-        //             marginBottom: "5%",
-        //             padding: "0px",
-        //             gridTemplateColumns: width > 768 ? 'repeat(2, 1fr)' : '1fr',
-        //             gridRowGap: '10px',
-        //             gridColumnGap: "10px",
-        //         }}
-        //     >
-        //         {
-        //             durationOptions?.map((option) => {
-        //                 return (
-        //                     <SelectButton 
-        //                         key={option} 
-        //                         type={DURATION} 
-        //                         option={option} 
-        //                         to={`/select/${MUSCLE_GROUPS}`}
-        //                     />
-        //                 )
-        //             })
-        //         }
-        //     </ul>
-        //     {/* <SelectedOptions/> */}
-        //     <div
-        //         style={{width:"200%"}}
-        //         >
-                
-        //     </div>
-        // </div>
-        // </>
     )
 }
 
 export default SelectDuration;
+
+const popover = (
+    <Popover id="popover-basic" className="popover-display">
+      {/* <Popover.Header as="h3">Popover right</Popover.Header> */}
+      <Popover.Body className='popover-text'>
+        The duration determines the maximum length of your workout.
+      </Popover.Body>
+    </Popover>
+);

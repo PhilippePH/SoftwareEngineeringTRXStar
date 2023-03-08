@@ -92,7 +92,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 3
+          "intensity": 1
         },
         {
           "exercise_name": "bent leg raise",
@@ -103,7 +103,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "biceps clutch",
@@ -145,7 +145,7 @@
           ],
           "position": 1,
           "focus": 0,
-          "intensity": 3
+          "intensity": 1
         },
         {
           "exercise_name": "chest fly",
@@ -155,7 +155,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "chest press",
@@ -166,7 +166,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "chest press + reach out",
@@ -188,7 +188,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "closegrip chestpress",
@@ -200,7 +200,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "cooldown",
@@ -227,7 +227,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "crunch",
@@ -248,7 +248,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "figure 4 squat",
@@ -259,7 +259,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "floor row",
@@ -270,7 +270,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "floor squat",
@@ -303,7 +303,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "fly",
@@ -316,7 +316,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "front squat",
@@ -374,7 +374,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "hip drop",
@@ -430,7 +430,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "i-fly",
@@ -443,7 +443,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "jab jab, hook",
@@ -455,7 +455,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 3
+          "intensity": 1
         },
         {
           "exercise_name": "jog",
@@ -466,7 +466,7 @@
           ],
           "position": 1,
           "focus": 0,
-          "intensity": 3
+          "intensity": 1
         },
         {
           "exercise_name": "jump back",
@@ -477,7 +477,7 @@
           ],
           "position": 1,
           "focus": 0,
-          "intensity": 3
+          "intensity": 1
         },
         {
           "exercise_name": "jump rope",
@@ -488,7 +488,7 @@
           ],
           "position": 1,
           "focus": 0,
-          "intensity": 3
+          "intensity": 1
         },
         {
           "exercise_name": "jumping jacks",
@@ -499,7 +499,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 3
+          "intensity": 1
         },
         {
           "exercise_name": "knee walk",
@@ -510,7 +510,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 3
+          "intensity": 1
         },
         {
           "exercise_name": "kneeling roll out",
@@ -522,7 +522,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "low chest press",
@@ -534,7 +534,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "low row",
@@ -545,7 +545,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "lunges",
@@ -569,7 +569,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "ministeps",
@@ -580,7 +580,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 3
+          "intensity": 1
         },
         {
           "exercise_name": "mountain climbers",
@@ -591,7 +591,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 3
+          "intensity": 1
         },
         {
           "exercise_name": "one arm row",
@@ -605,7 +605,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "one leg chest press",
@@ -619,7 +619,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "onearm chestpress",
@@ -633,7 +633,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "overhead back extensions",
@@ -669,7 +669,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "plank crunch",
@@ -692,7 +692,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "plank saw",
@@ -703,7 +703,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "power pull",
@@ -739,7 +739,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "pushup",
@@ -751,7 +751,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "row",
@@ -795,7 +795,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "side lunge",
@@ -819,7 +819,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "single leg squat",
@@ -830,7 +830,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "skater jump",
@@ -843,7 +843,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 3
+          "intensity": 1
         },
         {
           "exercise_name": "split fly",
@@ -854,7 +854,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "squat",
@@ -875,7 +875,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 3
+          "intensity": 1
         },
         {
           "exercise_name": "squat jump",
@@ -885,7 +885,7 @@
           ],
           "position": 1,
           "focus": 0,
-          "intensity": 3
+          "intensity": 1
         },
         {
           "exercise_name": "squeeze press",
@@ -909,7 +909,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "standing hip drop",
@@ -919,7 +919,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "standing roll out",
@@ -931,7 +931,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "stiff leg deadlift",
@@ -984,7 +984,7 @@
           ],
           "position": 1,
           "focus": 1,
-          "intensity": 2
+          "intensity": 1
         },
         {
           "exercise_name": "triceps extensions",

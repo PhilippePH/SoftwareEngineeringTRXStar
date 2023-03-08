@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage';
+import {persistStore, persistReducer} from 'redux-persist'
 
 const playlistSlice = createSlice({
   name: 'playlist',
@@ -34,12 +36,38 @@ const playlistSlice = createSlice({
     },
     updateSaved: (state, action) => {
       state.playlistSaved = action.payload;
+    },
+    moveDownExercise:(state, action) => {
+      const updatedPlaylistData = [state.playlistData];
+      var tempExercise =  updatedPlaylistData[0][action.payload +1];
+      updatedPlaylistData[0][action.payload+1] = updatedPlaylistData[0][action.payload];
+      updatedPlaylistData[0][action.payload] = tempExercise; 
+      state.playlistData = []
+      state.playlistData = updatedPlaylistData[0];
+    },
+    moveUpExercise:(state, action) => {
+      const updatedPlaylistData = [state.playlistData];
+      var tempExercise =  updatedPlaylistData[0][action.payload-1];
+      updatedPlaylistData[0][action.payload-1] = updatedPlaylistData[0][action.payload];
+      updatedPlaylistData[0][action.payload] = tempExercise; 
+      state.playlistData = []
+      state.playlistData = updatedPlaylistData[0];
     }
+
   }
 });
 
-const { actions, reducer } = playlistSlice;
-const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved } = actions;
+//const { actions, reducer } = playlistSlice;
+export const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved, moveDownExercise, moveUpExercise } = playlistSlice.actions;
 
-export default reducer;
-export { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved};
+const playlistPersistConfig = {
+  key: 'playlist',
+  storage: storage,
+  whitelist: ['playlistData', 'playlistSaved']
+};
+
+export const persistedPlaylistReducer = persistReducer(playlistPersistConfig, playlistSlice.reducer);
+
+
+//export default reducer;
+//export { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved};

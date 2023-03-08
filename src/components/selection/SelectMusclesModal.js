@@ -70,7 +70,7 @@ const MusclesModal = ({show, unshow}) => {
             <Modal.Footer>
                 <button
                     onClick={() => clickHandler()}
-                    style = {{color: !selected? "darkgray":""}}
+                    style = {{color: !selected? "darkgray":"", borderColor: selected? "black":"darkgray"}}
                     className="small-button">
                     Save
                 </button>

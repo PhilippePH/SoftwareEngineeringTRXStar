@@ -18,10 +18,9 @@ export const selectSlice = createSlice({
     version : 1,
     activeTab: "",
     navDirection: "forwards",
-    navigateForward: false,
     difficulty: "",
-    focus: "",
     duration: "",
+    focus: "",
     muscleGroups: [],
     muscles: []
 
@@ -32,10 +31,8 @@ export const selectSlice = createSlice({
     },
     initialiseAll: (state, action) => {
       state.version = 1;
-      state.version= 1;
       state.activeTab= "";
       state.navDirection= "forwards";
-      state.navigateForward= false;
       state.difficulty= "";
       state.focus= "";
       state.duration= "";
@@ -45,20 +42,18 @@ export const selectSlice = createSlice({
     setActiveTab: (state, action) => {
       state.activeTab = action.payload;
     },    
-    setNavigateForward: (state, action) => {
-      state.navigateForward = action.payload;
-    },
     setNavDirection: (state, action) => {
       state.navDirection = action.payload;
+      state.version = 1;
     },
     setDifficulty: (state, action) => {
       state.difficulty = action.payload;
     },
-    setFocus: (state, action) => {
-      state.focus = action.payload;
-    },
     setDuration: (state, action) => {
       state.duration = action.payload;
+    },
+    setFocus: (state, action) => {
+      state.focus = action.payload;
     },
     setMuscleGroups: (state, action) => {
       if (state.muscleGroups.includes(action.payload)) { // if bodyPart already selected
@@ -72,6 +67,7 @@ export const selectSlice = createSlice({
       }
     },
     setMuscles: (state, action) => {
+      state.version = 1;
       if (state.muscles.includes(action.payload)) {
         state.muscles = state.muscles.filter((muscle) => (muscle!=action.payload));
       } else {
@@ -88,10 +84,9 @@ export const selectSlice = createSlice({
   initialiseAll,
   setActiveTab,
   setNavDirection,
-  setNavigateForward,
   setDifficulty, 
-  setFocus, 
   setDuration, 
+  setFocus, 
   setMuscleGroups, 
   setMuscles
  } = selectSlice.actions;

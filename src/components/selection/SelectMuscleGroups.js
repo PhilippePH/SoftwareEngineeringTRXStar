@@ -2,12 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActiveTab, setMuscleGroups } from "../../redux/slices/selectSlice";
 import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
-import { DURATION, MUSCLE_GROUPS } from "../utils/constants";
+import { DURATION, FOCUS, MUSCLES, MUSCLE_GROUPS } from "../utils/constants";
 import SelectMultipleButton from "../utils/SelectMultipleButton";
 import ModalButton from "../utils/ModalButton"
 import MusclesModal from "./SelectMusclesModal"
 import './style.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { OverlayTrigger, Popover } from "react-bootstrap";
+import { RiInformationFill } from "react-icons/ri";
 
 
 // const modal = document.querySelector(".modal");
@@ -54,12 +56,21 @@ const SelectMuscleGroups = () => {
         <MusclesModal
             show={show}
             unshow={handleClose}/>
-        <div className="category-div">
-            Muscle Group(s)
+        <div className="title-div">
+            <div className="info-wrapper"/>
+            <div className="title-text" > Muscle Group(s) </div>
+            <OverlayTrigger 
+            trigger={window.matchMedia('(hover: hover)').matches? 'hover': 'click'} 
+            placement="top" overlay={popover}>
+                <div className="info-wrapper">
+                    <RiInformationFill className='info-icon' />
+                </div>  
+            </OverlayTrigger>
+            
         </div>
         <div className="selection-container">
             <div className="left-arrow-div">
-                <NavButtons prev={`/select/${DURATION}`}/>
+                <NavButtons prev={`/select/${FOCUS}`}/>
             </div>
             <div 
                 className="options-div"
@@ -92,66 +103,22 @@ const SelectMuscleGroups = () => {
             </div>
         </div>
         </>
-        //     <ul
-        //         style={{
-        //             display: "grid",
-        //             placeItems: "center",
-        //             justifyContent: "center",
-        //             alignItems: "center",
-        //             maxWidth: "25rem",
-        //             width: "100%",
-        //             padding: "0px",
-        //             gridTemplateColumns: width > 768 ? 'repeat(3, 1fr)' : '1fr',
-        //             gridGap: '16px'
-        //         }}
-        //     >
-                
-        //     </ul>
-        //     {/* <SelectedOptions/> */}
-        //     <div
-        //         style={{
-        //             display:"flex",
-        //             placeItems: "center",
-        //             justifyContent: "center",
-        //             alignItems: "center",
-        //             width:"150%",
-        //         }}
-                
-        //         >
-        //             <div
-        //                 style={{
-        //                     display:"flex",
-        //                     placeItems: "center",
-        //                     justifyContent: "center",
-        //                     alignItems: "center",
-        //                     width:"50%",
-        //                 }} >
-        //                 <NavButtons
-        //                     prev={`/select/${DURATION}`}
-        //                 />
-        //             </div>
-
-        //             <div
-        //                 style={{
-        //                     display:"flex",
-        //                     placeItems: "center",
-        //                     justifyContent: "center",
-        //                     alignItems: "center",
-        //                     width:"50%",
-        //                 }}>
-        //                 <NavButtons
-        //                     next={`/select/${MUSCLES}`}
-        //                 />
-        //             </div>
-               
-        //     </div>
-        //     {/* <div>   
-        //         <button> 
-                    
-        //         </button>
-        //     </div> */}
-        // </div>
     )
 }
 
 export default SelectMuscleGroups;
+
+const popover = (
+    <Popover id="popover-basic" className="popover-display">
+      <Popover.Body className='popover-text'>
+        The muscle groups determine the muscles your workout will train. 
+        If you wish to modify the specific muscles you 
+        want to train, press <strong>"Advanced"</strong>.
+        <ul>
+        <li>Core: Trains obliques and the abdomen.</li>
+        <li>Lower Body: Trains glutes, quads, hamstrings and calves.</li>
+        <li>Upper Body: Trains lats, the back, shoulders, the chest, biceps and triceps.</li>
+        </ul>
+      </Popover.Body>
+    </Popover>
+);
