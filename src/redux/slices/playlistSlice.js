@@ -6,7 +6,8 @@ const playlistSlice = createSlice({
   name: 'playlist',
   initialState: {
     playlistData: [],
-    playlistSaved: false
+    playlistSaved: false,
+    playlistLoaded: false,
   },
   reducers: {
     addPlaylist: (state, action) => {
@@ -33,9 +34,13 @@ const playlistSlice = createSlice({
     initialisePlaylist: (state, action) => {
       state.playlistData = action.payload;
       state.playlistSaved = false;
+      state.playlistLoaded = false;
     },
     updateSaved: (state, action) => {
       state.playlistSaved = action.payload;
+    },
+    updateLoaded: (state, action) => {
+      state.playlistLoaded = action.payload;
     },
     moveDownExercise:(state, action) => {
       const updatedPlaylistData = [state.playlistData];
@@ -53,12 +58,11 @@ const playlistSlice = createSlice({
       state.playlistData = []
       state.playlistData = updatedPlaylistData[0];
     }
-
   }
 });
 
 //const { actions, reducer } = playlistSlice;
-export const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved, moveDownExercise, moveUpExercise } = playlistSlice.actions;
+export const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved, updateLoaded, moveDownExercise, moveUpExercise } = playlistSlice.actions;
 
 const playlistPersistConfig = {
   key: 'playlist',
