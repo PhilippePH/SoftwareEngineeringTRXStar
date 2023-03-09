@@ -57,12 +57,7 @@
 
     &__button {
         background-color: $background-colour;
-        width: 40vw;
-        min-width: 150px;
-        max-width: 250px;
-        height: 8vh;
-        min-height: 10px;
-        max-height: 60px;
+        display: flex;
         text-align: center;
         cursor: pointer;
         border: 2px solid black;
@@ -76,13 +71,14 @@
         &:disabled {
             background-color: $background-colour;
         }
-    }
 
-    &__button-text {
-        margin: 0px;
+        &-text {
+            margin: 0px;
         font-size: 20px;
         color: rgba(0, 0, 0, 0.41);
-        @include font
+        @include font;
+        padding: 10px;
+        }
     }
 
     &__finished-page {

@@ -83,14 +83,21 @@ const Playlist = ({ indexedDB }) => {
         muscles
     }
 
+    const loaded = useSelector((state) => (state.playlist.playlistLoaded));
+
     useEffect(() => {// make sure not re-rendering all the time
-        filterAll(indexedDB, selectedOptions)
-        .then(function() {
-            createStructure(selectedOptions)
-            .then(function (empty) {
-                fillStructure(empty, indexedDB)
-                .then(function(filled) {
-                    store.dispatch(addPlaylist(filled));
+        if (!loaded) {
+            filterAll(indexedDB, selectedOptions)
+            .then(function() {
+                createStructure(selectedOptions)
+                .then(function (empty) {
+                    fillStructure(empty, indexedDB)
+                    .then(function(filled) {
+                        store.dispatch(addPlaylist(filled));
+                    })
+                    .catch(function(e) {
+                        console.error(e);
+                    })
                 })
                 .catch(function(e) {
                     console.error(e);
@@ -99,10 +106,7 @@ const Playlist = ({ indexedDB }) => {
             .catch(function(e) {
                 console.error(e);
             })
-        })
-        .catch(function(e) {
-            console.error(e);
-        })
+        }
     }, []);
 
 }   
