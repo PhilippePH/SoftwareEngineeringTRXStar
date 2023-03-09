@@ -8,6 +8,7 @@ import { store } from "../../redux/store"
 import { initialiseAll } from "../../redux/slices/selectSlice";
 import { initialisePlaylist } from "../../redux/slices/playlistSlice";
 import LoadModal from "./LoadModal";
+import InstallPWA from "../../prompt/installPWA";
 
 const Welcome = ({indexedDB}) => {
 
@@ -34,7 +35,10 @@ const Welcome = ({indexedDB}) => {
     const handleClose = () => setShow(false);
 
     return (
+        <>
+        <div className='install-prompt'> <InstallPWA> </InstallPWA> </div>
         <div className="welcome__img-container">
+                
             <ul
                 className="welcome__img-ul">
                 <img
@@ -61,6 +65,7 @@ const Welcome = ({indexedDB}) => {
                 indexedDB={indexedDB}
                 setButtonDisabled={setButtonDisabled}/>
         </div>
+        </>
     )
 }
 

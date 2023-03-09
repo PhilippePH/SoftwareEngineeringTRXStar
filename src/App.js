@@ -143,6 +143,7 @@ const App = () => {
     useEffect(() => {
         createCollectionsInIndexedDB();
     }, []);
+
     return (
         <div 
             style={{
