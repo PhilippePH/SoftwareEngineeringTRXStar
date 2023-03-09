@@ -39,7 +39,7 @@ const InstallPWA = () => {
               <CardText className="text-center">
                 Tap
                 <img
-                  src="appleShareIcon.png"
+                  src="/images/shareIcon.png"
                   style={{ margin: 'auto 8px 8px' }}
                   className=""
                 //   alt="Add to homescreen"
