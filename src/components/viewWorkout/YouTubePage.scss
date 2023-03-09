@@ -34,7 +34,7 @@
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        padding-bottom: 2%;
+        padding-bottom: 4%;
         
         &__icon {
             width: 10%; // how far apart icons are from each other
@@ -49,6 +49,10 @@
 
 
 @media (max-width: 499px){ 
+    .progress-bar{
+        padding-bottom: 4%;
+    }
+
     .container-settings {
         width: 98vw;
 
@@ -56,6 +60,7 @@
             font-size: 40px;
         }
         &__youtube-controls {
+            padding-bottom: 6%;
             &__icon {
                 width: 20%;
                 height: 60%;
