@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { filterDatabase, addToFilteredDB, fillStructure} from '../../scripts/algorithm.js';
 import { createStructure } from '../../scripts/createStructure.js';
 import { useSelector } from 'react-redux';
