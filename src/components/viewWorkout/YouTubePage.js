@@ -82,8 +82,7 @@ let updating_width = 0;
 function check_width() {
     let w = document.documentElement.clientWidth;
     if(w > 1000) { updating_width = 0.55 * w}
-    else if(w > 800) { updating_width = 0.7 * w}
-    else if(w > 650) { updating_width = 0.8 * w}
+    else if(w > 500) { updating_width = 0.8 * w}
     else {updating_width = 0.98 * w}
 }
 
