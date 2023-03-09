@@ -48,7 +48,7 @@
 }
 
 
-@media (max-width: 649px){
+@media (max-width: 499px){ 
     .container-settings {
         width: 98vw;
 
@@ -58,13 +58,13 @@
         &__youtube-controls {
             &__icon {
                 width: 20%;
-                height: 70%;
+                height: 60%;
             }
         }
     }
 }
 
-@media (min-width: 650px) and (max-width: 799px) {
+@media (min-width: 500px) and (max-width: 799px) {
     .container-settings {
         width: 80vw;
 
@@ -74,7 +74,7 @@
 
         &__youtube-controls {
             &__icon {
-                height: 44%;
+                height: 50%;
             }
         }
     }
