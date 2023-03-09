@@ -24,7 +24,7 @@ const InstallPWA = () => {
             marginTop: '-50px'
           }}
           width="100px"
-          src="content/images/appIcon-transparent.png"
+          src="../../public/images/logo.png"
           alt="Icon"
         />
         <CardBody>
@@ -36,7 +36,7 @@ const InstallPWA = () => {
               <CardText className="text-center">
                 Tap
                 <img
-                  src="content/images/Navigation_Action_2x.png"
+                  src="../../public/images/appleShareIcon.jpeg"
                   style={{ margin: 'auto 8px 8px' }}
                   className=""
                   alt="Add to homescreen"
