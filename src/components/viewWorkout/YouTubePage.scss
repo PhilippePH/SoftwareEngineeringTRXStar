@@ -2,7 +2,7 @@
 
 .progress-bar{
     width: 100%;
-    padding-bottom: 1%;
+    padding-bottom: 2%;
 }
 
 .container-settings{
@@ -31,11 +31,6 @@
     }
 
     &__youtube-controls {
-        // Be at bottom of page
-        // display: grid; 
-        // align-items: center;
-        // align-items: center;
-
         display: flex;
         justify-content: center;
         align-items: flex-end;
