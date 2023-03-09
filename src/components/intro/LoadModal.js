@@ -26,6 +26,11 @@ function deleteSavePlaylist(name, indexedDB) {
 function getSavedPlaylists(indexedDB) {
     return new Promise(function(resolve, reject) {
         const dbPromise = indexedDB.open("SavedPlaylists", 1)
+        dbPromise.onupgradeneeded = () => {
+            const db = dbPromise.result;
+            const request = db.createObjectStore("playlists", { keyPath: "name" });
+            reject("Created object store");
+        }
         dbPromise.onsuccess = () => {
             const db = dbPromise.result;
             const request = db.transaction("playlists", "readonly")

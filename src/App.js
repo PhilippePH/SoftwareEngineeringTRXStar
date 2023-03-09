@@ -33,24 +33,6 @@ const createCollectionsInIndexedDB = () => {
 
     console.log(indexedDB);
 
-    // create indexedDB to save playlists
-    const saved = indexedDB.open("SavedPlaylists", 1);
-
-    saved.onerror = function(event) {
-        console.error("An error occurred with IndexedDB");
-        console.error(event.target.error);
-    };
-
-    saved.onupgradeneeded = function(event) {
-        const db = saved.result;
-        var objectStore = db.createObjectStore("playlists", { keyPath: "name" });
-    };
-
-    saved.onversionchange = function (event) {
-        versionChangeInProgress = true;
-        event.target.close();
-    };
-
     var versionChangeInProgress = false;
     var jsonSchemaString = JSON.stringify(data);
     var schema = JSON.parse(jsonSchemaString);
