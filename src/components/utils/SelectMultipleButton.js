@@ -64,7 +64,6 @@ const SelectMultipleButton = ({type, option, width, height, fontSize}) => {
             // style={{backgroundColor: selected? "":"whitesmoke"}}
             >
             <div className= "button-text-wrapper">
-                <div className="tick-wrapper"/>
                 <div className="multi-button-text">
                     {option}
                 </div>
