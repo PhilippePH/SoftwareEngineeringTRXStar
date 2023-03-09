@@ -11,8 +11,10 @@ import LoadModal from "./LoadModal";
 
 const Welcome = ({indexedDB}) => {
 
-    store.dispatch(initialiseAll());
-    store.dispatch(initialisePlaylist([]));
+    useEffect(() => {
+        store.dispatch(initialiseAll());
+        store.dispatch(initialisePlaylist([]));
+    })
     const navigate = useNavigate();
     const dispatch = useDispatch();
     

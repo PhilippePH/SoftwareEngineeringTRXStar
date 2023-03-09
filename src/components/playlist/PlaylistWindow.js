@@ -25,6 +25,7 @@ const PlaylistWindow = ({ indexedDB }) => {
 
     const [key, setKey] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
+    const [closeAllCards, setCloseAll] = useState(false);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -85,21 +86,28 @@ const PlaylistWindow = ({ indexedDB }) => {
 
                                     if (playlist[index].type == "warmup") {
                                         return (
-                                            <ExerciseCard exercise_name='Warmup' 
+                                            <ExerciseCard exercise_name='Warmup'
+                                                key={index} 
                                                 duration={playlist[index].time} 
-                                                sets='1' time='300' ind={index} />
+                                                sets='1' time='300' ind={index} 
+                                                closeAll={closeAllCards}
+                                                setCloseAll={setCloseAll}/>
                                         )
                                     }
                                     else if (playlist[index].type == "cooldown") {
                                         return (
                                             <ExerciseCard exercise_name='Cooldown' 
+                                                key={index} 
                                                 duration={playlist[index].time} 
-                                                sets='1' time='300' ind={index} />
+                                                sets='1' time='300' ind={index} 
+                                                closeAll={closeAllCards}
+                                                setCloseAll={setCloseAll}/>
                                         )
                                     }
                                     else if (index + 1 < playlist.length && playlist[index + 1].type == "rest") {
                                         return (
                                             <ExerciseCard exercise_name={playlist[index].exercise_name}
+                                                key={index}
                                                 duration={playlist[index].time} 
                                                 sets={playlist[index].sets} 
                                                 time={playlist[index].rest_set} 
@@ -107,13 +115,16 @@ const PlaylistWindow = ({ indexedDB }) => {
                                                 muscle_types = {convertMuscleList(playlist[index])} 
                                                 size = {playlist.length} 
                                                 no_warmup = {playlist[1].type != "warmup" } 
-                                                no_cooldown = {playlist[playlist.length-1].type != "cooldown"} />
+                                                no_cooldown = {playlist[playlist.length-1].type != "cooldown"} 
+                                                closeAll={closeAllCards}
+                                                setCloseAll={setCloseAll}/>
                                         )
                                     }
 
                                     else if (playlist[index].type == "exercise") {
                                         return (
                                             <ExerciseCard exercise_name={playlist[index].exercise_name} 
+                                                key={index}
                                                 duration={playlist[index].time}
                                                 sets={playlist[index].sets} 
                                                 time={playlist[index].rest_set} 
@@ -122,15 +133,19 @@ const PlaylistWindow = ({ indexedDB }) => {
                                                 muscle_types = {convertMuscleList(playlist[index])} 
                                                 size = {playlist.length} 
                                                 no_warmup = {playlist[1].type != "warmup" } 
-                                                no_cooldown = {playlist[playlist.length-1].type != "cooldown"} />
+                                                no_cooldown = {playlist[playlist.length-1].type != "cooldown"} 
+                                                closeAll={closeAllCards}
+                                                setCloseAll={setCloseAll}/>
                                         )
                                     }
                                     else {
                                         return (
-                                            <ExerciseCard 
-                                                exercise_name={playlist[index].time + "s rest"} 
+                                            <ExerciseCard exercise_name={playlist[index].time + "s rest"}
+                                                key={index} 
                                                 type = {playlist[index].type} 
-                                                ind = {index} size = {playlist.length} />
+                                                ind = {index} size = {playlist.length} 
+                                                closeAll={closeAllCards}
+                                                setCloseAll={setCloseAll}/>
                                         )
                                     }
                                 })}

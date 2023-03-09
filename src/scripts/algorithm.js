@@ -111,17 +111,12 @@ export function computeRollingAverageIntensity(structureCopy)
     var count = 0; 
     while(count < structureCopy.length -2 && structureCopy[2 + count].exercise_name != '')
     {
-       //console.log("Structure", structureCopy[2 + count]); 
-
         tot += structureCopy[2+count].intensity
         count++; 
-
     }
 
     var avg = tot/count; 
     var goal = structureCopy[0].globalIntensity; 
-    //console.log("Average", avg)
-    //console.log("Goal", structureCopy[0].globalIntensity)
     
     if (count == 0)
     {
@@ -139,9 +134,6 @@ export function computeRollingAverageIntensity(structureCopy)
         var exerciseIntensity = ((exerciseIntensity < 1) ? 1 : exerciseIntensity);
     }
 
-    //onsole.log("Average", avg); 
-    //console.log("Count", count); 
-    //console.log("ExerciseIntensity", exerciseIntensity); 
     return exerciseIntensity; 
 }
 
@@ -151,7 +143,6 @@ export function computeRollingAverageIntensity(structureCopy)
 
 export async function fillStructure(structure, indexedDB) {
     
-    //("Before fill", structure)
     var structureCopy = JSON.parse(JSON.stringify(structure));
     // fill each object in workout array
     
@@ -229,9 +220,7 @@ export async function getClip(indexedDB, type, time, intensity, excluded_exercis
                 //console.log("Excluded exercise", excluded_exercise)
                 while (chosen_exercise != undefined && chosen_exercise.exercise_name == excluded_exercise && depth<20)
                 {
-                    console.log("Try to replace", chosen_exercise)
                     chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)];
-                    console.log("Replaced with", chosen_exercise)
                     exercise_clips = await filterDatabase("clip", "exercise_name", chosen_exercise.exercise_name, indexedDB, "FilteredDatabase", 1);
                     depth++; 
 
@@ -244,8 +233,6 @@ export async function getClip(indexedDB, type, time, intensity, excluded_exercis
             }
             if(exercise_clips.length === 0)
             {
-
-                console.log("Error could not find valid clips, extending search"); 
                 var valid_exercises = await filterDatabase("exercises", "intensity", intensity, indexedDB, "ExerciseDatabase", 1);
                 var chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)]; 
                 exercise_clips = await filterDatabase("clip", "exercise_name", chosen_exercise.exercise_name, indexedDB, "ExerciseDatabase", 1);

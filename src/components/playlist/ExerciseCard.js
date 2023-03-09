@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsTrash } from 'react-icons/bs';
 import { BsHourglassSplit } from 'react-icons/bs';
 import {BsArrowCounterclockwise} from 'react-icons/bs';
@@ -16,8 +16,8 @@ import './playlist.scss'
 const CLOSED_HEIGHT = 50;
 const OPENED_HEIGHT = 155;
 
-export default function ExerciseCard({ exercise_name, duration, sets, time, rest_time, ind, muscle_types, size, no_cooldown, no_warmup, type}) {
-
+const ExerciseCard = ({ exercise_name, duration, sets, time, rest_time, ind, muscle_types, size, no_cooldown, no_warmup, type, closeAll, setCloseAll}) => {
+         
     var remaining_secs_duration = (sets * duration + (time * (sets))) % 60;
 
     const [isOpen, setOPen] = useState(false);
@@ -30,6 +30,12 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     const outerHeight = useRef(CLOSED_HEIGHT);
     const containerRef = useRef(null);
     
+    useEffect(() => {
+        if (closeAll) {
+            setOPen(false);
+        }
+    }, [closeAll])
+
     const handleClick = () => {
         setRotate(!rotate);
     };
@@ -55,15 +61,18 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
             outerHeight.current = OPENED_HEIGHT;
         }
         setOPen(!isOpen);
+        
     };
 
     const handleRemoveDiv = (event) => {
         event.stopPropagation();
         setOPen(false);
+        setCloseAll(true);
         fadeOut(); 
         setTimeout(() => {
             store.dispatch(removeFromPlaylist(ind));
             setIsFadingOut(false);
+            setCloseAll(false);
         }, 500);
         document.body.click();
     };
@@ -71,10 +80,12 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     const handleMoveDown = (event) => {
         event.stopPropagation();
         setOPen(false);
+        setCloseAll(true);
         slideDown(); 
         setTimeout(() => {
             store.dispatch(moveDownExercise(ind));
             setIsSlidingDown(false);
+            setCloseAll(false);
         }, 1000);
         document.body.click();
     };
@@ -82,10 +93,12 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     const handleMoveUp = (event) => {
         event.stopPropagation();
         setOPen(false);
+        setCloseAll(true);
         slideUp(); 
         setTimeout(() => {
             store.dispatch(moveUpExercise(ind)); 
             setIsSlidingUp(false);
+            setCloseAll(false);
         }, 1000);
         document.body.click();
     };
@@ -121,6 +134,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
         )
         setTimeout(() => {
             setIsSlidingIn(false);
+            setCloseAll(false);
         }, 1000);
         document.body.click();
     };
@@ -150,14 +164,14 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     );
 
     return (
-
+        
         <div 
             className={isFadingOut ? 'item-fadeout': 
                 (isSlidingIn ? 'slide-in': 
                 (isSlidingUp ? 'flipup': 
                 (isSlidingDown ? 'flipdown': '')))}>
             <div 
-                className={`custom-container ${isOpen ? 'open' : 'closed'}`}
+                className={`custom-container ${ isOpen ? 'open' : 'closed'}`}
                 style={{ minHeight: isOpen ? outerHeight.current : CLOSED_HEIGHT }}
                 ref={containerRef}>
                 <div
@@ -173,7 +187,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                     </div>
                     <div 
                         className='exercise-card__right-container' >
-                        <OverlayTrigger trigger={'click'} rootClose placement= "bottom" overlay={popover} ref={popover}>
+                        <OverlayTrigger trigger={'click'} rootClose placement= "bottom" overlay={popover} innerRef={popover}>
                             <div className='extra-wrapper'>
                                 <BsThreeDotsVertical className='extra-wrapper__icon'/>
                             </div>
@@ -205,3 +219,4 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
     );
 }
 
+export default ExerciseCard;
