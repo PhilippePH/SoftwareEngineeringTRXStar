@@ -38,7 +38,6 @@ const Welcome = ({indexedDB}) => {
         <>
         <div className='install-prompt'> <InstallPWA> </InstallPWA> </div>
         <div className="welcome__img-container">
-                
             <ul
                 className="welcome__img-ul">
                 <img

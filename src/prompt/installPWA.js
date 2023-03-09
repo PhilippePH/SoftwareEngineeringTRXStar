@@ -1,3 +1,5 @@
+// Source to the guide used: https://dev.to/philhardwick/prompt-to-install-a-pwa-on-ios-and-android-with-react-hooks-dkf
+
 import React from 'react';
 import { Button, Modal, Card, CardText, CardBody, CardTitle } from 'reactstrap';
 import useIosInstallPrompt from './isIOS';
@@ -18,18 +20,6 @@ const InstallPWA = () => {
         style={{
             height: "100%"
         }}>
-        {/* <img
-          className="mx-auto"
-          style={{
-            borderTopRightRadius: '50%',
-            borderTopLeftRadius: '50%',
-            backgroundColor: '#fff',
-            marginTop: '-50px'
-          }}
-        //   width="100px"
-          src="../../public/images/logo_with_background.png"
-          alt="Icon"
-        /> */}
         <CardBody>
           <CardTitle className="text-center">
             <h3>Install App</h3>
@@ -42,7 +32,7 @@ const InstallPWA = () => {
                   src="/images/shareIcon.png"
                   style={{ margin: 'auto 8px 8px' }}
                   className=""
-                //   alt="Add to homescreen"
+                  alt="Add to homescreen"
                   width="20"
                 />
                 then &quot;Add to Home Screen&quot;
