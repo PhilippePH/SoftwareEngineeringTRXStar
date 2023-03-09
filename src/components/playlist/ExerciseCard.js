@@ -3,7 +3,6 @@ import { BsTrash } from 'react-icons/bs';
 import { BsHourglassSplit } from 'react-icons/bs';
 import {BsArrowCounterclockwise} from 'react-icons/bs';
 import { BsArrowUp, BsArrowDown } from 'react-icons/bs'
-import './ExerciseCard.scss';
 import { useRef } from 'react';
 import {BsFillCaretDownFill} from 'react-icons/bs';
 import { getClip } from '../../scripts/algorithm';
@@ -12,6 +11,7 @@ import { store } from "../../redux/store"
 import { filterOnKey } from '../../scripts/algorithm';
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import './playlist.scss'
 
 const CLOSED_HEIGHT = 50;
 const OPENED_HEIGHT = 155;
@@ -59,36 +59,40 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
     const handleRemoveDiv = (event) => {
         event.stopPropagation();
+        setOPen(false);
         fadeOut(); 
         setTimeout(() => {
             store.dispatch(removeFromPlaylist(ind));
             setIsFadingOut(false);
-        }, 1000);
+        }, 500);
         document.body.click();
     };
 
     const handleMoveDown = (event) => {
         event.stopPropagation();
+        setOPen(false);
         slideDown(); 
         setTimeout(() => {
             store.dispatch(moveDownExercise(ind));
             setIsSlidingDown(false);
-        }, 1500);
+        }, 1000);
         document.body.click();
     };
 
     const handleMoveUp = (event) => {
         event.stopPropagation();
+        setOPen(false);
         slideUp(); 
         setTimeout(() => {
             store.dispatch(moveUpExercise(ind)); 
             setIsSlidingUp(false);
-        }, 1500);
+        }, 1000);
         document.body.click();
     };
 
     const handleReplace = (event) => {
         event.stopPropagation();
+        setOPen(false);
         slideIn(); 
         getClip(indexedDB, "exercise", time, 1).then(
             async function (clip) {
@@ -133,15 +137,14 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
 
     const popover = (
         <Popover id="popover-basic" className="popover-display">
-            <Popover.Body className='popover-text'>
+            <Popover.Body>
                 {exercise_name !== "Warmup" && exercise_name !== "Cooldown" && (no_warmup && ind > 1 || ind > 2) &&
-                    <BsArrowUp size={28} className='exercise-card__up' onClick={handleMoveUp} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />}
+                    <BsArrowUp size={28} className='popover-display__button' onClick={handleMoveUp} />}
                 {exercise_name !== "Warmup" && exercise_name !== "Cooldown" && (no_cooldown && ind < size - 1 || ind < size - 2) &&
-                    <BsArrowDown size={28} className='exercise-card__down' onClick={handleMoveDown} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />
-                }
+                    <BsArrowDown size={28} className='popover-display__button' onClick={handleMoveDown} />}
                 {exercise_name !== "Warmup" && exercise_name !== "Cooldown" && type !== "rest" &&
-                    <BsArrowCounterclockwise size={28} className='exercise-card__reload' onClick={handleReplace} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />}
-                <BsTrash size={28} className='exercise-card__trash' onClick={handleRemoveDiv} style={{ marginRight: '5px', marginLeft: '5px', strokeWidth: '0.3' }} />
+                    <BsArrowCounterclockwise size={28} className='popover-display__button' onClick={handleReplace} />}
+                <BsTrash size={28} className='popover-display__button' onClick={handleRemoveDiv} />
             </Popover.Body>
         </Popover>
     );
@@ -172,7 +175,7 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                         className='exercise-card__right-container' >
                         <OverlayTrigger trigger={'click'} rootClose placement= "bottom" overlay={popover} ref={popover}>
                             <div className='extra-wrapper'>
-                                <BsThreeDotsVertical className='extra-icon'/>
+                                <BsThreeDotsVertical className='extra-wrapper__icon'/>
                             </div>
                         </OverlayTrigger>
                     </div> 
@@ -181,20 +184,20 @@ export default function ExerciseCard({ exercise_name, duration, sets, time, rest
                     className='additional-info'>
 
                     {(exercise_name === "Warmup" || exercise_name === "Cooldown") && 
-                    <div className='warmup-cooldown-container'> Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration} </div>}
+                    <div className='additional-info__warmup-cooldown'> Total Duration: {Math.floor((sets*duration+(time*(sets-1)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration} </div>}
 
                     {exercise_name !== "Warmup" && exercise_name !== "Cooldown" && 
-                    <div className='info-container' style = {{color: type === 'rest' ? 'transparent' : ''}}> 
+                    <div className='additional-info__exercise' style = {{color: type === 'rest' ? 'transparent' : ''}}> 
                         <div> Work: {Math.floor((duration/60))}:{duration%60<10?'0':''}{duration%60}/set </div>
                         <div> Rest: {Math.floor((time/60))}:{time%60<10?'0':''}{time%60}/set </div>
                         <div> Sets: {sets} </div>
                     </div>}
                     
                     {exercise_name !== "Warmup" && exercise_name !== "Cooldown" &&
-                    <div className='info-container'> Total Duration: {Math.floor((sets*duration+(time*(sets)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration} </div>}
+                    <div className='additional-info__exercise'> Total Duration: {Math.floor((sets*duration+(time*(sets)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration} </div>}
 
                     {exercise_name !== "Warmup" && exercise_name !== "Cooldown" && 
-                    <div className='info-container'> Muscles: {muscle_types} </div>}   
+                    <div className='additional-info__exercise'> Muscles: {muscle_types} </div>}   
                 </div>
             </div>
         </div>
