@@ -9,7 +9,7 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     
     &__message1 {
         color: black;
@@ -30,9 +30,15 @@
     }
 
     &__youtube-controls {
+        // Be at bottom of page
+        // display: grid; 
+        // align-items: center;
+        // align-items: center;
+
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-end;
+        padding-bottom: 2%;
         
         &__icon {
             width: 10%; // how far apart icons are from each other
