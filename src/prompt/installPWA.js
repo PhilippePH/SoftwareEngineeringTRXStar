@@ -14,8 +14,11 @@ const InstallPWA = () => {
 
   return (
     <Modal isOpen centered>
-      <Card>
-        <img
+      <Card
+        style={{
+            height: "100%"
+        }}>
+        {/* <img
           className="mx-auto"
           style={{
             borderTopRightRadius: '50%',
@@ -23,10 +26,10 @@ const InstallPWA = () => {
             backgroundColor: '#fff',
             marginTop: '-50px'
           }}
-          width="100px"
-          src="../../public/images/logo.png"
+        //   width="100px"
+          src="../../public/images/logo_with_background.png"
           alt="Icon"
-        />
+        /> */}
         <CardBody>
           <CardTitle className="text-center">
             <h3>Install App</h3>
@@ -36,10 +39,10 @@ const InstallPWA = () => {
               <CardText className="text-center">
                 Tap
                 <img
-                  src="../../public/images/appleShareIcon.jpeg"
+                  src="appleShareIcon.png"
                   style={{ margin: 'auto 8px 8px' }}
                   className=""
-                  alt="Add to homescreen"
+                //   alt="Add to homescreen"
                   width="20"
                 />
                 then &quot;Add to Home Screen&quot;
