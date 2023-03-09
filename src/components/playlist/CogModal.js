@@ -19,6 +19,10 @@ const CogModal = ({show, unshow}) => {
             onHide={unshow}
             scrollable={false}
             centered>
+            <Modal.Header 
+                className='save-modal__header'
+                closeButton>
+            </Modal.Header>
             <Modal.Body>
                 <form 
                     onSubmit={handleSubmit}
@@ -36,7 +40,7 @@ const CogModal = ({show, unshow}) => {
                             className='cog-modal__parent__input'
                             placeholder="e.g. 90" // HERE WE NEED THE CURRENT REST TIME PASSED IN AS INPUT
                             autoFocus
-                            required
+                            optional
                             />
                         <p className='cog-modal__parent__seconds'> sec </p>
                     </div>
