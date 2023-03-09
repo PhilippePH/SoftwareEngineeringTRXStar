@@ -57,12 +57,20 @@ const playlistSlice = createSlice({
       updatedPlaylistData[0][action.payload] = tempExercise; 
       state.playlistData = []
       state.playlistData = updatedPlaylistData[0];
+    },
+    updateRest:(state, newTime) => {
+      const updatedPlaylistData = [state.playlistData]; // fetches the most recent data
+      
+      // updatedPlaylistData[0]['rest']['time'] = newTime;
+      
+      state.playlistData = [] // empties the playlist
+      state.playlistData = updatedPlaylistData[0]; // saves updated playlist into original playlist attribute
     }
   }
 });
 
 //const { actions, reducer } = playlistSlice;
-export const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved, updateLoaded, moveDownExercise, moveUpExercise } = playlistSlice.actions;
+export const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved, updateLoaded, moveDownExercise, moveUpExercise, updateRest } = playlistSlice.actions;
 
 const playlistPersistConfig = {
   key: 'playlist',
