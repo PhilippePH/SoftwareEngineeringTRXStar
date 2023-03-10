@@ -202,8 +202,7 @@ const ExerciseCard = ({ exercise_name, duration, sets, time, rest_time, ind, mus
 
                     {exercise_name !== "Warmup" && exercise_name !== "Cooldown" && 
                     <div className='additional-info__exercise' style = {{color: type === 'rest' ? 'transparent' : ''}}> 
-                        <div> Work: {Math.floor((duration/60))}:{duration%60<10?'0':''}{duration%60}/set </div>
-                        <div> Rest: {Math.floor((time/60))}:{time%60<10?'0':''}{time%60}/set </div>
+                        <div> Work/Rest: {Math.floor((duration/60))}:{duration%60<10?'0':''}{duration%60}/{Math.floor((time/60))}:{time%60<10?'0':''}{time%60} per set </div>
                         <div> Sets: {sets} </div>
                     </div>}
                     
