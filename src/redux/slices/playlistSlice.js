@@ -57,12 +57,25 @@ const playlistSlice = createSlice({
       updatedPlaylistData[0][action.payload] = tempExercise; 
       state.playlistData = []
       state.playlistData = updatedPlaylistData[0];
+    },
+    updateRest:(state, action) => {
+      var newTime = action.payload;
+      console.log(newTime);
+      const updatedPlaylistData = [state.playlistData]; // fetches the most recent data
+      var playlistLength = updatedPlaylistData[0].length;
+      for(var i = 0; i < playlistLength; i++){
+        if(updatedPlaylistData[0][i].type == "rest")
+          console.log("Inside for loop");
+          updatedPlaylistData[0][i].time = newTime;
+      }
+      state.playlistData = [] // empties the playlist
+      state.playlistData = updatedPlaylistData[0]; // saves updated playlist into original playlist attribute
     }
   }
 });
 
 //const { actions, reducer } = playlistSlice;
-export const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved, updateLoaded, moveDownExercise, moveUpExercise } = playlistSlice.actions;
+export const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved, updateLoaded, moveDownExercise, moveUpExercise, updateRest } = playlistSlice.actions;
 
 const playlistPersistConfig = {
   key: 'playlist',
