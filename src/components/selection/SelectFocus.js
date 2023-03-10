@@ -27,7 +27,7 @@ const SelectFocus = () => {
             <div className="title__text" > Focus </div>
             <OverlayTrigger 
                 trigger={['hover', 'focus', 'click']} 
-                placement="bottom" overlay={popover}>
+                placement="top" overlay={popover}>
                 <div className="title__wrapper">
                     <RiInformationFill className='title__icon'/>
                 </div>  
@@ -71,7 +71,7 @@ const SelectFocus = () => {
 export default SelectFocus;
 
 const popover = (
-    <Popover id="popover-basic" className="popover">
+    <Popover id="popover-basic" className="popover__display">
       <Popover.Body className='popover__text'>
         The focus determines the type of exercises. 
         <ul>

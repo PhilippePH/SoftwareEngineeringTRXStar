@@ -3,6 +3,8 @@ import "./FinishedPage.scss"
 import bicep from "../../assets/bicep.png";
 import SaveModal from "./SaveModal";
 import { useSelector } from "react-redux";
+import { OverlayTrigger, Popover } from "react-bootstrap";
+import { RiInformationFill } from "react-icons/ri";
 
 const FinishedWorkout = ({ indexedDB }) => {
 
@@ -32,19 +34,38 @@ const FinishedWorkout = ({ indexedDB }) => {
                     Enjoyed your workout?
                 </div>
 
-                <button 
-                    className='finish-page__button' 
-                    onClick={() => setShow(true)}
-                    disabled={savedState}>
-                    <p className="finish-page__button-text">
-                        {savedState ? "Saved!" : "Save Workout"}
-                    </p>
-                </button>
+                <div className="finish-page__load-button-div">
+                    <div className = 'finish-page__load-button-wrapper'></div>
+                    <button 
+                        className='finish-page__button' 
+                        onClick={() => setShow(true)}
+                        disabled={savedState}>
+                        <p className="finish-page__button-text">
+                            {savedState ? "Saved!" : "Save Workout"}
+                        </p>
+                    </button>
+                    <OverlayTrigger 
+                        trigger={[ 'click','hover','focus']} 
+                        placement="bottom" overlay={popover}>
+                        <div className="finish-page__load-button-wrapper">
+                            <RiInformationFill className='finish-page__info-icon'/>
+                        </div>  
+                    </OverlayTrigger>
+                </div>
             </ul>
         </div>
     )
 }
 
 export default FinishedWorkout;
+
+const popover = (
+    <Popover id="popover-basic" className="popover__display">
+      <Popover.Body className='popover__text'>
+        Name your workout to save it. Once saved, it can be retrieved from the 'Load Playlist' button on the home page.
+      </Popover.Body>
+    </Popover>
+);
+
 
 

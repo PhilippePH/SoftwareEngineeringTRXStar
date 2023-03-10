@@ -108,6 +108,24 @@
         }
     }
 
+    &__load-button-div{
+        display:flex;
+        justify-content: center;
+    }
+
+    &__load-button-wrapper {
+        display: flex;
+        width:50px;
+        align-items: center;
+        justify-content: center;
+        padding-top: 1%;
+    }
+
+    &__info-icon {
+        color: grey;
+        font-size: 25px;
+    }
+
     &__error {
         @include font;
         font-weight: 600;
