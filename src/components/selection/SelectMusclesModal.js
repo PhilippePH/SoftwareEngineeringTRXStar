@@ -1,6 +1,6 @@
 import Modal from 'react-bootstrap/Modal'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SelectMultipleButton from "../utils/SelectMultipleButton";
+import SelectMultipleModalButton from "../utils/SelectMultipleModalButton";
 import './style.scss'
 import { useSelector } from "react-redux";
 import { MUSCLES } from "../utils/constants";
@@ -53,7 +53,7 @@ const MusclesModal = ({show, unshow}) => {
                         muscleGroups.map((muscleGroup) => {
                             return ( musclesOptions[muscleGroup]?.map((option) => {
                                 return (
-                                    <SelectMultipleButton 
+                                    <SelectMultipleModalButton 
                                         key={option} 
                                         type={MUSCLES} 
                                         option={option}
