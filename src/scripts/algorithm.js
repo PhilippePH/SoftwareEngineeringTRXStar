@@ -1,3 +1,6 @@
+import { store } from "../redux/store";
+import { inputToPlaylist } from "../redux/slices/playlistSlice";
+
 export function filterDatabase (tableName, indexName, value, indexedDB, database, versionNumber) {
     
     return new Promise(function(resolve, reject) {
@@ -248,4 +251,31 @@ export async function getClip(indexedDB, type, time, intensity, excluded_exercis
 
 function RandInt(min, max) {
     return Math.floor(Math.random() * max) + min; 
+}
+
+
+export function getCardio(ind){
+        filterDatabase ("exercises", "focus", 0, indexedDB, "ExerciseDatabase", 1) .then(
+                async function (exercise) {
+                    filterDatabase("clip", "exercise_name", exercise[RandInt(0, exercise.length)].exercise_name, indexedDB, "ExerciseDatabase", 1).then(
+                        async function (clip) {
+                            filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1).then(
+                                async function (video) {
+                            var clip_formatted = {
+                                "type": "exercise",
+                                "exercise_name": clip[0].exercise_name,
+                                "time": 40,
+                                "sets": 1,
+                                "muscles": exercise[0].muscle_type,
+                                "rest_set": 0,
+                                "intensity": 1,
+                                "URL": video[0].URL,
+                                "start_time": clip[0].start_time,
+                                "end_time": clip[0].end_time
+                            }
+                            store.dispatch(inputToPlaylist([clip_formatted, ind]))
+                        }
+                    )
+                })
+            })
 }

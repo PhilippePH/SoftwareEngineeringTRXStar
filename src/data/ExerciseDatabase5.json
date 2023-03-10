@@ -215,7 +215,7 @@
             "abdomen"
           ],
           "position": 0,
-          "focus": 0,
+          "focus": 1,
           "intensity": 0
         },
         {
@@ -1030,7 +1030,7 @@
             "abdomen"
           ],
           "position": 0,
-          "focus": 0,
+          "focus": 1,
           "intensity": 0
         },
         {

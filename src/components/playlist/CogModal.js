@@ -10,7 +10,9 @@ const CogModal = ({show, unshow}) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries())["restTime"];
-        store.dispatch(updateRest(data)); 
+
+        const replaceForCardio = 1; // Here replace this for whether replace cardio has been clicked some use state or smth
+        store.dispatch(updateRest([data, replaceForCardio])); 
         unshow(); 
         // data validation -- non negative numbers?   
     }
