@@ -33,7 +33,7 @@ const SelectDuration = () => {
             <div className="title__text" > Duration </div>
             <OverlayTrigger 
                 trigger={['hover', 'focus', 'click']} 
-                placement="bottom" overlay={popover}>
+                placement="top" overlay={popover}>
                 <div className="title__wrapper">
                     <RiInformationFill className='title__icon'/>
                 </div>  
@@ -74,7 +74,7 @@ const SelectDuration = () => {
 export default SelectDuration;
 
 const popover = (
-    <Popover id="popover-basic" className="popover">
+    <Popover id="popover-basic" className="popover__display">
       {/* <Popover.Header as="h3">Popover right</Popover.Header> */}
       <Popover.Body className='popover__text'>
         The duration determines the maximum length of your workout.

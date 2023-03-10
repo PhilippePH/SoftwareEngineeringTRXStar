@@ -8,6 +8,8 @@ import { store } from "../../redux/store"
 import { initialiseAll } from "../../redux/slices/selectSlice";
 import { initialisePlaylist } from "../../redux/slices/playlistSlice";
 import LoadModal from "./LoadModal";
+import { OverlayTrigger, Popover } from "react-bootstrap";
+import { RiInformationFill } from "react-icons/ri";
 
 const Welcome = ({indexedDB}) => {
 
@@ -50,20 +52,39 @@ const Welcome = ({indexedDB}) => {
                     className="welcome__button">
                     Start Your Workout
                 </button>
-                <button
-                    onClick={() => setShow(true)}
-                    disabled={buttonDisabled}
-                    className="welcome__loadbutton">
-                    Load Playlist
-                </button>
+                <div className="welcome__load-button-div">
+                    <div className = 'welcome__load-button-wrapper'></div>
+                    <button
+                        onClick={() => setShow(true)}
+                        disabled={buttonDisabled}
+                        className="welcome__loadbutton">
+                        Load Playlist
+                    </button>
+                    <OverlayTrigger 
+                        trigger={[ 'click','hover','focus']} 
+                        placement="bottom" overlay={popover}>
+                        <div className="welcome__load-button-wrapper">
+                            <RiInformationFill className='welcome__info-icon'/>
+                        </div>  
+                    </OverlayTrigger>
+                </div>
+                
             </ul>
             <LoadModal
-                show={show}
-                unshow={handleClose}
-                indexedDB={indexedDB}
-                setButtonDisabled={setButtonDisabled}/>
+            show={show}
+            unshow={handleClose}
+            indexedDB={indexedDB}
+            setButtonDisabled={setButtonDisabled}/>
         </div>
     )
 }
 
 export default Welcome;
+
+const popover = (
+    <Popover id="popover-basic" className="popover__display">
+      <Popover.Body className='popover__text'>
+        Load and navigate straight to a playlist you've saved. To save a playlist click the 'Save Workout' button after completing a workout.
+      </Popover.Body>
+    </Popover>
+);

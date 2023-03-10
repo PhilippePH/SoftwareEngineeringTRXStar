@@ -28,7 +28,7 @@ const SelectDifficulty = () => {
             <div className="title__text" > Difficulty </div>
             <OverlayTrigger 
                 trigger={['hover', 'focus', 'click']} 
-                placement="bottom" overlay={popover}>
+                placement="top" overlay={popover}>
                 <div className="title__wrapper">
                     <RiInformationFill className='title__icon'/>
                 </div>  
@@ -65,7 +65,7 @@ const SelectDifficulty = () => {
 export default SelectDifficulty;
 
 const popover = (
-    <Popover id="popover-basic" className="popover">
+    <Popover id="popover-basic" className="popover__display">
       <Popover.Body className='popover__text'>
         The difficulty determines the average difficulty of your workout, including the length of rest periods. 
       </Popover.Body>
