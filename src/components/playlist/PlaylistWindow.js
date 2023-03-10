@@ -15,6 +15,7 @@ import { MUSCLE_GROUPS } from '../utils/constants';
 import { IoMdSettings } from 'react-icons/io';
 import CogModal from './CogModal';
 import './playlist.scss';
+import { updateLoaded } from '../../redux/slices/playlistSlice';
 
 const fadeIn = `
     @keyframes fade-in {
@@ -58,6 +59,7 @@ const PlaylistWindow = ({ indexedDB }) => {
 
     const handleIncreaseVersion = () => {
         setIsLoading(true);
+        store.dispatch(updateLoaded(false));
         store.dispatch(increaseVersion());
         setKey(key + 1);
     };
