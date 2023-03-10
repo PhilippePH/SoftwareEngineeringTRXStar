@@ -18,6 +18,7 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
   const [width, setWidth] = useState(window.innerWidth);
   const [isPlaying, setIsPlaying] = useState(false);
   const [key, setKey] = useState(0);
+  const [isMobile, setIsMobile] = useState(/Mobile/.test(window.navigator.userAgent));
 
   const playerRef = useRef(null); // create a ref for the YouTube component
 
@@ -97,6 +98,9 @@ const opts = {
       disablekb: 0,
       start: exerciseData.startTime, 
       end: exerciseData.endTime,
+      mute: 1,
+      modestbranding: 1,  // Hide the Youtube Logo
+      showinfo: 0,
     },
   };
 
