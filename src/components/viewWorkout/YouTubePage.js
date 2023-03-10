@@ -18,7 +18,6 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
   const [width, setWidth] = useState(window.innerWidth);
   const [isPlaying, setIsPlaying] = useState(false);
   const [key, setKey] = useState(0);
-  const [isMobile, setIsMobile] = useState(/Mobile/.test(window.navigator.userAgent));
 
   const playerRef = useRef(null); // create a ref for the YouTube component
 
@@ -127,9 +126,7 @@ const opts = {
                         opts={opts} 
                         onEnd={nextVideo} 
                         ref={playerRef}
-                        onReady={() => {
-                          playVideo();
-                          setIsPlaying(true);}}
+                        onReady={playVideo}
                         onPlay={() => setIsPlaying(true)}
                         onStateChange={handleStateChange}
                         onPause={() => setIsPlaying(false)}>
