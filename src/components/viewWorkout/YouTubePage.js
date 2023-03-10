@@ -60,7 +60,10 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
 
   const startVideo = async () => {
     playerRef.current.internalPlayer.mute();
-    playerRef.current.internalPlayer.playVideo(); 
+    playerRef.current.internalPlayer.playVideo();
+    setTimeout(() => {
+      playerRef.current.internalPlayer.unMute();
+    }, 500);
   }
 
   const pauseVideo = async () => {
