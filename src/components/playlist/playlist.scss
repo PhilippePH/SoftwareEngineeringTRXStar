@@ -214,11 +214,11 @@
     background-color: whitesmoke; 
 
     &__exercise {
-        margin: 5px;
+        width: 30vw;
         display: flex;
         flex-direction: column;
-        flex: 1;
-    }
+        margin: 5px;
+ }
 
     &__warmup-cooldown {
         width: 100vw;
