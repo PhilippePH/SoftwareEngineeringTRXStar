@@ -98,7 +98,6 @@ const opts = {
       disablekb: 0,
       start: exerciseData.startTime, 
       end: exerciseData.endTime,
-      mute: 1,
       modestbranding: 1,  // Hide the Youtube Logo
       showinfo: 0,
     },
@@ -128,6 +127,9 @@ const opts = {
                         opts={opts} 
                         onEnd={nextVideo} 
                         ref={playerRef}
+                        onReady={() => {
+                          playVideo();
+                          setIsPlaying(true);}}
                         onPlay={() => setIsPlaying(true)}
                         onStateChange={handleStateChange}
                         onPause={() => setIsPlaying(false)}>
