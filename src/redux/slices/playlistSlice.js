@@ -58,11 +58,16 @@ const playlistSlice = createSlice({
       state.playlistData = []
       state.playlistData = updatedPlaylistData[0];
     },
-    updateRest:(state, newTime) => {
+    updateRest:(state, action) => {
+      var newTime = action.payload;
+      console.log(newTime);
       const updatedPlaylistData = [state.playlistData]; // fetches the most recent data
-      
-      // updatedPlaylistData[0]['rest']['time'] = newTime;
-      
+      var playlistLength = updatedPlaylistData[0].length;
+      for(var i = 0; i < playlistLength; i++){
+        if(updatedPlaylistData[0][i].type == "rest")
+          console.log("Inside for loop");
+          updatedPlaylistData[0][i].time = newTime;
+      }
       state.playlistData = [] // empties the playlist
       state.playlistData = updatedPlaylistData[0]; // saves updated playlist into original playlist attribute
     }
