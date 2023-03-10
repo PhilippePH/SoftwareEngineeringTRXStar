@@ -63,7 +63,7 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
     playerRef.current.internalPlayer.playVideo();
     setTimeout(() => {
       playerRef.current.internalPlayer.unMute();
-    }, 500);
+    }, 1000);
   }
 
   const pauseVideo = async () => {
