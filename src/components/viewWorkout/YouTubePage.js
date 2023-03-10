@@ -58,6 +58,11 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
     playerRef.current.internalPlayer.playVideo(); 
   }
 
+  const startVideo = async () => {
+    playerRef.current.internalPlayer.mute();
+    playerRef.current.internalPlayer.playVideo(); 
+  }
+
   const pauseVideo = async () => {
     playerRef.current.internalPlayer.pauseVideo(); 
   }
@@ -93,6 +98,7 @@ const opts = {
     height: updating_width * 9 / 16 , // keeping the ratio
     playerVars: {
       autoplay: 1,
+      playsinline: 1,
       controls: 1,
       disablekb: 0,
       start: exerciseData.startTime, 
@@ -126,7 +132,7 @@ const opts = {
                         opts={opts} 
                         onEnd={nextVideo} 
                         ref={playerRef}
-                        onReady={playVideo}
+                        onReady={startVideo}
                         onPlay={() => setIsPlaying(true)}
                         onStateChange={handleStateChange}
                         onPause={() => setIsPlaying(false)}>
