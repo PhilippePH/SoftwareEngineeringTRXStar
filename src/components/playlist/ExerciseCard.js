@@ -202,15 +202,22 @@ const ExerciseCard = ({ exercise_name, duration, sets, time, rest_time, ind, mus
 
                     {exercise_name !== "Warmup" && exercise_name !== "Cooldown" && 
                     <div className='additional-info__exercise' style = {{color: type === 'rest' ? 'transparent' : ''}}> 
-                        <div> Work/Rest: {Math.floor((duration/60))}:{duration%60<10?'0':''}{duration%60}/{Math.floor((time/60))}:{time%60<10?'0':''}{time%60} per set </div>
+                        <div> Work/Rest: </div>
+                        <div>{Math.floor((duration/60))}:{duration%60<10?'0':''}{duration%60}/{Math.floor((time/60))}:{time%60<10?'0':''}{time%60}</div>
                         <div> Sets: {sets} </div>
                     </div>}
                     
                     {exercise_name !== "Warmup" && exercise_name !== "Cooldown" &&
-                    <div className='additional-info__exercise'> Total Duration: {Math.floor((sets*duration+(time*(sets)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration} </div>}
+                    <div className='additional-info__exercise'> 
+                    <div>Total Duration: </div>
+                    <div>{Math.floor((sets*duration+(time*(sets)))/60)}:{remaining_secs_duration<10?'0':''}{remaining_secs_duration} </div>
+                    </div>}
 
                     {exercise_name !== "Warmup" && exercise_name !== "Cooldown" && 
-                    <div className='additional-info__exercise'> Muscles: {muscle_types} </div>}   
+                    <div className='additional-info__exercise'> 
+                    <div>Muscles: </div>
+                        <div> {muscle_types}  </div>
+                        </div>}   
                 </div>
             </div>
         </div>
