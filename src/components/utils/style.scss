@@ -23,7 +23,7 @@
     align-items:center;
     background-color: whitesmoke;
     width: 40vw;
-    min-width: 170px;
+    min-width: 150px;
     max-width: 250px;
     height: 8vh;
     min-height: 10px;
@@ -44,7 +44,7 @@
     align-items:center;
     background-color: #FFE600;
     width: 40vw;
-    min-width: 170px;
+    min-width: 150px;
     max-width: 250px;
     height: 8vh;
     min-height: 10px;
@@ -78,7 +78,7 @@
     align-items:center;
     background-color: whitesmoke;
     width: 40vw;
-    min-width: 170px;
+    min-width: 150px;
     max-width: 250px;
     height: 8vh;
     min-height: 10px;
@@ -99,7 +99,7 @@
     align-items:center;
     background-color:#FFE600;
     width: 40vw;
-    min-width: 170px;
+    min-width: 150px;
     max-width: 250px;
     height: 8vh;
     min-height: 10px;
@@ -128,21 +128,20 @@
     display:flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
     font-size: 25px;
     color: black;
     margin-right: 2%;
-    position: absolute;
 }
 
 .multi-button-text {
     display:inline-block;
     vertical-align: middle;
-    width:70%;
+    width:80%;
     margin: 10px;
     font-size: 18px;
     @include font;
-    text-transform: capitalize; 
-    white-space: nowrap;
+    text-transform: capitalize
 
 }
 .small-button {
