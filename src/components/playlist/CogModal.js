@@ -1,4 +1,6 @@
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal'
+import { BsDisplay } from 'react-icons/bs';
 // import { useSelector } from 'react-redux'
 // import { useEffect } from "react";
 import { updateRest } from '../../redux/slices/playlistSlice';
@@ -8,19 +10,55 @@ import { store } from "../../redux/store"
 // import { setActiveTab } from "../../redux/slices/selectSlice";
 import '../selection/style.scss';
 // import { Button } from 'react-bootstrap';
+import ModalButton from "../utils/ModalButton"
+import '../utils/style.scss'
 
 const CogModal = ({show, unshow}) => {
 
+
+    const [selected30, setSelected30] = useState(false);
+    const [selected60, setSelected60] = useState(false);
+    const [selected90, setSelected90] = useState(false);
+    const [replaceRest, setReplace] = useState(false);
+    const [rest, setRest] = useState(0);
+
+    const restTimeHandler30 = (event) => {
+        if (!replaceRest) {
+            setSelected30(true);
+            setSelected60(false);
+            setSelected90(false); 
+            setRest(30);  
+    }
+    };
+    const restTimeHandler60 = (event) => {
+        if (!replaceRest) {
+            setSelected60(true);
+            setSelected30(false);
+            setSelected90(false);
+            setRest(60);  
+        }
+     };
+    const restTimeHandler90 = (event) => {
+        if (!replaceRest) {
+            setSelected90(true);
+            setSelected30(false);
+            setSelected60(false);
+            setRest(90);  
+        }
+     };
+
     async function handleSubmit(e) {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const rest = Object.fromEntries(formData.entries())["rest"];
         // const cardio = Object.fromEntries(formData.entries())["cardio"];
 
         // Replace for cardio only when true
-        // var replaceForCardio = (cardio == "Yes");
+        var replaceForCardio = replaceRest ? 1 : 0;
+        console.log("replace cardio", replaceForCardio); 
+        console.log("rest", rest); 
 
-        store.dispatch(updateRest(rest)); 
+        if (selected30 || selected60 || selected90)
+        {
+            store.dispatch(updateRest([rest, replaceForCardio])); 
+        }
         unshow(); 
     }
 
@@ -36,90 +74,61 @@ const CogModal = ({show, unshow}) => {
                 closeButton>
             </Modal.Header>
             <Modal.Body>
-                <form 
-                    onSubmit={handleSubmit}
-                    autoComplete="off"
-                    className="cog-modal__container">
+                    <div className="cog-modal__container">
                         <label 
                             htmlFor="pname"
                             className='cog-modal__container__rest-text'>
                             Select desired rest time:
                         </label>
                         <div className='cog-modal__container__rest-text__input'>
-                            <div className='cog-modal__container__rest-text__input__choice'>
-                            <input 
-                                type="radio"
-                                id="30sec"
-                                name="rest"
-                                // className='cog-modal__container__rest-text__rest-text'
-                                className = 'cog-modal__container__rest-text__label'
-                                value="30"
-                                />
-                            <label
-                                // className='cog-modal__container__rest-text__rest-text'
-                                className = 'cog-modal__container__rest-text__choice__label'
-                                htmlFor = "30sec">
-                                    30 sec
-                                </label>
+                            <div className='cog-modal__container__rest-text__choice'>
+                                <button
+                                    className={selected30 && !selected60 && !selected90 && !replaceRest ? 'cog-modal__button-selected' : 'cog-modal__button-unselected'}
+                                    style = {{ width: ""}}
+                                    onClick={() => restTimeHandler30()}>
+                                    {"30 sec"}
+                                </button>
+                                <button
+                                    className={selected60 && !selected30 && !selected90 && !replaceRest  ? 'cog-modal__button-selected' : 'cog-modal__button-unselected'}
+                                    onClick={() => restTimeHandler60()}>
+                                    {"60 sec"}
+                                </button>
+                                <button
+                                    className={selected90  && !selected30 && !selected60 && !replaceRest  ? 'cog-modal__button-selected' : 'cog-modal__button-unselected'}
+                                    onClick={() => restTimeHandler90()}>
+                                    {"90 sec"}
+                                </button>
                             </div>
-                            <div className='cog-modal__container__rest-text__input__choice'>
-                            <input 
-                                type="radio"
-                                id="60sec"
-                                name="rest"
-                                // className='cog-modal__container__rest-text__rest-text'
-                                value="60"
-                                />
-                            <label
-                                // className='cog-modal__container__rest-text__rest-text'
-                                className = 'cog-modal__container__rest-text__choice__label'
-                                htmlFor = "60sec">
-                                    60 sec
-                                    
-                                </label>
-                            </div>
-                            
-                            <div className='cog-modal__container__rest-text__input__choice'>
-                            <input 
-                                type="radio"
-                                id="90sec"
-                                name="rest"
-                                // className='cog-modal__container__rest-text__rest-text'
-                                value="90"
-                                />
-                            <label
-                                // className='cog-modal__container__rest-text__rest-text'
-                                className = 'cog-modal__container__rest-text__choice__label'
-                                htmlFor = "90sec">
-                                    90 sec
-                                </label>
+                        </div>
 
-                            </div>
-                            <div className='cog-modal__container__rest-text__input__choice'>
-                            <input 
-                                type="radio"
-                                id="120sec"
-                                name="rest"
-                                // className='cog-modal__container__rest-text__rest-text'
-                                value="120"
-                                />
-                            <label
-                                // className='cog-modal__container__rest-text__rest-text'
-                                className = 'cog-modal__container__rest-text__choice__label'
-                                htmlFor = "120sec">
-                                    120 sec
-                                </label>
+
+                        <div className='cog-modal__container__rest-text'>
+                            {"Replace rest for cardio"}
+                            <div className='cog-modal__container__rest-text__input'
+                            style = {{display: 'flex',
+                            justifyContent: 'space-evenly'}}>
+                            <button
+                                    className={replaceRest ? 'cog-modal__button-selected' : 'cog-modal__button-unselected'}
+                                    style = {{ width: ""}}
+                                    onClick={(event) => setReplace(true)}>
+                                    {"Yes"}
+                                </button>
+                                <button
+                                    className={!replaceRest ? 'cog-modal__button-selected' : 'cog-modal__button-unselected'}
+                                    style = {{ width: ""}}
+                                    onClick={(event) => setReplace(false)}>
+                                    {"No"}
+                                </button>
                                 </div>
                         </div>
 
                     <button 
-                        type="submit"
-                        className='save-modal__button'>
-                        <p className='save-modal__buttontext'>
-                            Save
-                        </p>
+                        className='save-modal__button'
+                        onClick={() => handleSubmit()}>
+                            {"Save"}
+    
                     </button>
-                </form>
+                    </div>
                 </Modal.Body>
         </Modal>
         </>

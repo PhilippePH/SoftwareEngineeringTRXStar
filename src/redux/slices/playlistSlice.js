@@ -60,23 +60,22 @@ const playlistSlice = createSlice({
       state.playlistData = updatedPlaylistData[0];
     },
     updateRest:(state, action) => {
-      var newTime = action.payload; // removed [0] as test
-      // var changeForCardio = action.payload[1];
-      // console.log(newTime); 
+      var newTime = action.payload[0]; // removed [0] as test
+      var changeForCardio = action.payload[1];
 
       const updatedPlaylistData = [state.playlistData]; // fetches the most recent data
       var playlistLength = updatedPlaylistData[0].length;
 
       for(var i = 0; i < playlistLength; i++){
-        if(updatedPlaylistData[0][i].type == "rest" && newTime > 0)
+        if(updatedPlaylistData[0][i].type == "rest" && !changeForCardio)
           updatedPlaylistData[0][i].time = newTime;
 
-          // if user wants to replace rest for cardio
-        // else if(updatedPlaylistData[0][i].type == "rest" && changeForCardio)
-        // {
+        //if user wants to replace rest for cardio
+        else if(updatedPlaylistData[0][i].type == "rest" && changeForCardio)
+        {
           // This does all filtering and updating code is in algorithm.js
-          // getCardio(i); 
-        // }
+          getCardio(i); 
+        }
 
 
       }
