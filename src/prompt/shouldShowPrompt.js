@@ -24,6 +24,7 @@ const useShouldShowPrompt = (promptName, daysToWaitBeforePromptingAgain = 30) =>
     setInstallPromptSeenToday(promptName);
   };
 
-  return [userShouldBePromptedToInstall, handleUserSeeingInstallPrompt];
+  // return [userShouldBePromptedToInstall, handleUserSeeingInstallPrompt];
+  return [true, handleUserSeeingInstallPrompt];
 };
 export default useShouldShowPrompt;

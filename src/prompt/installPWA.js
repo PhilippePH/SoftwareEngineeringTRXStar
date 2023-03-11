@@ -8,22 +8,39 @@ import useWebInstallPrompt from './notIOS';
 
 const InstallPWA = () => {
   const [iosInstallPrompt, handleIOSInstallDeclined] = useIosInstallPrompt();
-  const [webInstallPrompt, handleWebInstallDeclined, handleWebInstallAccepted] = useWebInstallPrompt();
-
-  if (!iosInstallPrompt && !webInstallPrompt) {
+  const [installPromptEvent, handleInstallDeclined, handleInstallAccepted] = useWebInstallPrompt();
+  console.log(iosInstallPrompt);
+  console.log(installPromptEvent);
+  if (!iosInstallPrompt && !installPromptEvent) {
     return null;
   }
+
+  console.log("TOYOYOY");
+  console.log(iosInstallPrompt);
+  console.log(installPromptEvent);
 
   return (
     <Modal isOpen centered>
       <Card
         style={{
             height: "100%"
-        }}>
-        <CardBody>
+        }}
+        >
+        <CardBody height='90%'>
           <CardTitle className="text-center">
             <h3>Install App</h3>
           </CardTitle>
+          {installPromptEvent && (
+            <>
+            <div className="d-flex justify-content-around">
+              <Button color="primary" onClick={handleInstallAccepted}>
+                Install
+              </Button>
+              <Button onClick={handleInstallDeclined}>Close</Button>
+            </div>
+            </>
+          )}
+
           {iosInstallPrompt && (
             <>
               <CardText className="text-center">
@@ -42,14 +59,7 @@ const InstallPWA = () => {
               </div>
             </>
           )}
-          {webInstallPrompt && (
-            <div className="d-flex justify-content-around">
-              <Button color="primary" onClick={handleWebInstallAccepted}>
-                Install
-              </Button>
-              <Button onClick={handleWebInstallDeclined}>Close</Button>
-            </div>
-          )}
+          
         </CardBody>
       </Card>
     </Modal>
