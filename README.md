@@ -61,6 +61,38 @@ Here are some areas where other developers could contribute to this project:
 - Pre-load YouTube videos during rest section
 - Implement server-side rendering to improve performance and SEO
 
+## Folder Structure
+```
+/trx-exercise-app
+├── README.md
+├── database_scripts
+|  ├── csv
+|  ├── csv_to_json.py
+|  ├── json
+|  └── main.py
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+|  ├── images
+|  ├── index.html
+|  ├── logo.png
+|  ├── manifest.json
+|  ├── offline.html
+|  ├── robots.txt
+|  └── serviceworker.js
+└── src
+   ├── App.js
+   ├── assets
+   ├── components
+   ├── data
+   ├── index.css
+   ├── index.js
+   ├── redux
+   ├── sassStyles
+   └── scripts
+```
+
 ## Acknowledgments
 -  This project was bootstrapped with [Create React App](https://create-react-app.dev/).
 
