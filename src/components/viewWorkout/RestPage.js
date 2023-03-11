@@ -8,6 +8,8 @@ import { setNavDirection } from "../../redux/slices/selectSlice";
 import { useNavigate } from "react-router-dom";
 import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
 import { MdForward10, MdOutlineReplay10 } from "react-icons/md";
+import EndWorkoutModal from './EndWorkoutModal';
+import BackToPlaylistModal from './BackToPlaylistModal';
 
 const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, totalWorkoutLength }) => {
 
@@ -16,6 +18,8 @@ const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, t
 
     const [timeLeft, setTime] = useState(restData.time);
     const [isPlaying, setIsPlaying] = useState(true);
+    const [showEndOfWorkoutModal, setShowEndOfWorkoutModal] = useState(false);
+    const [showBackToPlaylistModal, setShowBackToPlaylistModal] = useState(false);
 
     const fastForward = () => {
         setTime(Math.min(restData.time, timeLeft+10));
@@ -43,6 +47,22 @@ const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, t
 
     return (
         <>
+        <EndWorkoutModal show={showEndOfWorkoutModal}
+                         unshow={() => {
+                          if(!isPlaying) {
+                            playTimer();
+                            setIsPlaying(true);
+                          }
+                          setShowEndOfWorkoutModal(false)
+                          }} endWorkout={endWorkout} />
+        <BackToPlaylistModal show={showBackToPlaylistModal}
+                         unshow={() => {
+                          if(!isPlaying) {
+                            playTimer();
+                            setIsPlaying(true);
+                          }
+                          setShowBackToPlaylistModal(false)
+                          }} backToPlaylist={backToPlaylist} />
         <div className='progress-bar'> 
             <WorkoutProgress completed={(Math.floor((counter/totalWorkoutLength)*100))} />
         </div>
@@ -64,7 +84,12 @@ const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, t
             </div>
             
             <div className="container-rest__rest-controls">
-                <FaStepBackward onClick={backToPlaylist} className="container-rest__rest-controls__icon"/>
+                <FaStepBackward onClick={() => {
+                    if(isPlaying) {
+                        setIsPlaying(false);
+                    }
+                    setShowBackToPlaylistModal(true);
+                }} className="container-rest__rest-controls__icon"/>
                 <FaBackward onClick={prevVideo} className="container-rest__rest-controls__icon"/>
                 <MdOutlineReplay10 onClick={fastForward} className="container-rest__rest-controls__icon container-rest__rest-controls__icon__ten-seconds"/>
                 {
@@ -75,7 +100,12 @@ const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, t
                 }
                 <MdForward10 onClick={rewind} className="container-rest__rest-controls__icon container-rest__rest-controls__icon__ten-seconds"/>
                 <FaForward onClick={nextVideo} className="container-rest__rest-controls__icon"/>
-                <FaStepForward onClick={endWorkout} className="container-rest__rest-controls__icon"/>
+                <FaStepForward onClick={() => {
+                    if(isPlaying) {
+                        setIsPlaying(false);
+                    }
+                    setShowEndOfWorkoutModal(true);
+                }} className="container-rest__rest-controls__icon"/>
             </div>
         </div>
         </>
