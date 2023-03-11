@@ -11,6 +11,10 @@ import WorkoutProgress from "./WorkoutProgress";
 import EndWorkoutModal from './EndWorkoutModal';
 import BackToPlaylistModal from './BackToPlaylistModal';
 
+// This concerns the Youtube Pages (where youtube players are embedded)
+// This includes the format of the page, the iframe (Youtube Player)
+// And the Youtube Control buttons
+
 
 const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
 
@@ -25,14 +29,16 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
 
   const playerRef = useRef(null); // create a ref for the YouTube component
 
-  // console.log("exercisedata", exerciseData)
 
+  // Tracking the resizing of pages
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+
+  // THE FOLLOWING SECTION IS YOUTUBE CONTROL BUTTONS
   const handleNextVideo = () => {
     setKey(key+1);
     nextVideo();
@@ -83,15 +89,17 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
 
 let updating_width = 0; 
 
+
+// THIS IS TO UPDATE THE WIDTH OF THE IFRAME ACCORDING TO PAGE SIZE
 function check_width() {
     let w = document.documentElement.clientWidth;
     if(w > 1000) { updating_width = 0.55 * w}
     else if(w > 500) { updating_width = 0.8 * w}
     else {updating_width = 0.98 * w}
 }
-
 window.onresize = check_width();
 
+// THOSE ARE IFRAME CHARACTERISTICS
 const opts = {
     width: '100%', // so that it takes the whole size of the container
     height: updating_width * 9 / 16 , // keeping the ratio

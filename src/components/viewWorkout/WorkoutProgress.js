@@ -1,11 +1,12 @@
 import './WorkoutProgress.scss'
 
+// This is the progress bar at the top of the youtube and rest pages
 
 const WorkoutProgress = (props) => {
   const {completed} = props;
 
   const fillerStyles = {
-    width: `${completed}%`,
+    width: `${completed}%`, // Completed is the % complete and the width of the filler
   }
   
   return (
