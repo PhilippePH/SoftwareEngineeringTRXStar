@@ -52,7 +52,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 Author: Your Name
 TRX exercise videos from TRX Training
 Demo
-You can check out a live demo of this app at https://yourapp.com.
+You can check out a live demo of this app at https://trxstar.co.uk.
 
 ## Roadmap
 Here are some areas where other developers could contribute to this project:
