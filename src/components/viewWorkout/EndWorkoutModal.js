@@ -21,16 +21,16 @@ const EndWorkoutModal = ({show, unshow, endWorkout}) => {
             <Modal.Body>
             <div className="d-flex justify-content-center">
                 <button
-                        onClick={endWorkout}
-                        style = {{color: "black", borderColor: "black", backgroundColor: "#FFE600"}}
-                        className="modal__button">
-                        Proceed
-                </button>
-                <button
                         onClick={unshow}
                         style = {{color: "black", borderColor: "black"}}
                         className="modal__button">
                         Go Back
+                </button>
+                <button
+                        onClick={endWorkout}
+                        style = {{color: "black", borderColor: "black", backgroundColor: "#FFE600"}}
+                        className="modal__button">
+                        Proceed
                 </button>
             </div>
             </Modal.Body>
