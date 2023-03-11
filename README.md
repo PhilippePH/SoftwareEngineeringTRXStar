@@ -4,62 +4,67 @@ This is a React-based web application designed to help users discover and learn 
 ## Installation
 To install the dependencies, run:
 
-bash
-Copy code
+```bash
 npm install
-Usage
+```
+## Usage
 To start the app, run:
 
-bash
-Copy code
+```bash
 npm start
+```
 Then, open http://localhost:3000 to view it in the browser.
 
 ## Technologies Used
-React
-Redux Toolkit
-React Bootstrap
-React Router
-React Icons
-React YouTube
-Sass
-Bootstrap
-
-Testing
-To run the test suite, run:
-
-bash
-Copy code
-npm test
+- React
+- IndexedDB
+- Redux Toolkit
+- React Router
+- React Bootstrap
+- Sass
+- YouTube API
 
 ## Deployment
 This app can be deployed to any hosting service that supports Node.js applications.
 
 To build the app for production, run:
 
-bash
-Copy code
+```bash
 npm run build
+```
 This will create an optimized production build of the app in the build folder.
 
-## Contributing
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Credits
-Author: Your Name
-TRX exercise videos from TRX Training
-Demo
+Authors: Eugene Ting, Adela Viskova, Daniel Doyle, Philippe Paquin-Hirtle, Soren Antebi and Sofia Hernandez Gelado 
+
+TRX videos: [PrivateGYMFitness](https://www.youtube.com/@PrivateGYMFitness)
+
+## Demo
 You can check out a live demo of this app at https://trxstar.co.uk.
 
 ## Roadmap
-Here are some areas where other developers could contribute to this project:
+We're excited to share some potential changes and improvements we're considering for future releases of the project, but we also welcome and encourage contributions from our community, so feel free to share your ideas and help us shape the direction of this project:
 
 - Use service worker to create a comprehensive offline experience up until YouTube pages
 - Pre-load YouTube videos during rest section
 - Implement server-side rendering to improve performance and SEO
+
+We're always looking for new contributors to help us bring these exciting changes to life, so if you're interested in getting involved, please check out our Contributing guidelines below and submit a pull request!
+
+## Contributing
+We welcome contributions from anyone interested in improving this project. If you'd like to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your changes.
+3. Make your changes and commit them with descriptive commit messages.
+4. Push your changes to your fork.
+5. Submit a pull request to the main repository.
+
+We will review your changes as soon as possible and may provide feedback or request additional changes before merging your pull request. By contributing to this project, you agree to abide by our code of conduct (insert link to your code of conduct document).
 
 ## Folder Structure
 ```
