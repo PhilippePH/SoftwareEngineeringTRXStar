@@ -95,7 +95,7 @@ const PlaylistWindow = ({ indexedDB }) => {
 
                                 <div className='playlist-window__heading__settings'
                                     onClick={() => setShow(true)}> 
-                                    <IoMdSettings size={28} />
+                                    <IoMdSettings size={28} /> 
                                 </div>
 
                             </div>

@@ -353,95 +353,58 @@
     &__container {
         @include flex-center;
         flex-direction: column;
+        flex-wrap:wrap; 
 
-        &__parent1{
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: left;
-            align-items: center;
-            gap: 5px;
+        &__rest-text {
+            @include font;
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 12px 0px;
+            
+            &__choice{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: left;
+                align-items: center;
+                gap: 5px;
 
-            &__rest-text {
-                @include font;
-                font-weight: 600;
-                font-size: 1rem;
-                margin: 12px 0px;
-            }
-
-            &__input {
-                @include font;
-                font-weight: 400;
-                width: 20%;
-                padding: 4px 6px;
-                font-size: 1rem;
-                border-radius: 4px;
-                text-align: right;
-        
-                &:valid {
-                    border: 1px solid black;
+                &__label{
+                    @include font;
+                    font-weight: 400;
+                    font-size: 1rem;
+                    margin: 6px 5px;
                 }
-                &:invalid {
-                    border: 2px solid red;
-                }
-            }
-
-            &__seconds{
-                @include font;
-                font-weight: 400;
-                font-size: 1rem;
-                margin: 12px 0px;
             }
         }
-
-        &__parent2{
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: left;
-            align-items: center;
-            gap: 5px;
-
-            &__set-text {
-                @include font;
-                font-weight: 600;
-                font-size: 1rem;
-                margin: 12px 0px;
-            }
-
-            &__input {
-                @include font;
-                font-weight: 400;
-                width: 20%;
-                padding: 4px 6px;
-                font-size: 1rem;
-                border-radius: 4px;
-                text-align: right;
-        
-                &:valid {
-                    border: 1px solid black;
-                }
-                &:invalid {
-                    border: 2px solid red;
-                }
-            }
-
-            &__seconds{
-                @include font;
-                font-weight: 400;
-                font-size: 1rem;
-                margin: 12px 0px;
-            }
-        }
-    
-}
-
-
+    }
 
     &__button {
         padding: 6px 20px;
         border-radius: 20px;
         margin: 12px 0px
+    }
+
+    &__button-unselected {
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        background-color: whitesmoke;
+        text-align: center;
+        cursor: pointer;
+        border: 2px solid black;
+        border-radius: 8px
+    }
+    
+    &__button-selected {
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        background-color: #FFE600;
+        text-align: center;
+        cursor: pointer;
+        border: 2px solid black;
+        border-radius: 8px
     }
 
     &__buttontext {
