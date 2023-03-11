@@ -1,39 +1,77 @@
-# Getting Started with Create React App
+# TRX Exercise App
+This is a React-based web application designed to help users discover and learn new TRX exercises.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation
+To install the dependencies, run:
 
-## How to install and run the project
-- Run command 'npm install' to install dependencies listed in package.json locally
-- Start up a development server with command 'npm start'
-- Create a build folder with 'npm run build' where compiled code to be used for a host will be contained
+bash
+Copy code
+npm install
+Usage
+To start the app, run:
 
-## File Structure
-__SUBJECT TO CHANGE WITH BOTH SASS AND BOOTSTRAP FILES__
+bash
+Copy code
+npm start
+Then, open http://localhost:3000 to view it in the browser.
 
-main/
-├── public/
-│   ├── index.html <- main HTML page with React code injected into <div> element with id="root"
-│   ├── offline.html <- HTML to be shown to user when no cache __and__ no internet
-│   ├── manifest.js <- mandatory specifications for app to be installable
-|   ├── serviceworker.js <- service worker logic linked to index.html through <script> element
-│   └── images <- folder to store image content
-|
-├── src/
-|   ├── index.js <- inject code into <div> element from index.html in /public
-│   ├── App.js <- component structure and main app logic with use of react-router-dom and initialisation of IndexedDB
-|   ├── App.scss 
-│   └── components <- folder to contain React components with the below naming convention
-|       └── ComponentName
-|           ├── index.js
-|           └── styles.scss
-|
-├── package.json <- List of dependencies, run 'npm install' to install
-|
-├── package-lock.json <- Auto-generated list of dependencies of dependencies from package.json
-|
-└── node_modules  <- installed node modules stored here from running 'npm install'
+## Technologies Used
+React
+Redux Toolkit
+React Bootstrap
+React Router
+React Icons
+React YouTube
+Sass
+Bootstrap
 
-# Project-specific technologies
+Testing
+To run the test suite, run:
+
+bash
+Copy code
+npm test
+
+## Deployment
+This app can be deployed to any hosting service that supports Node.js applications.
+
+To build the app for production, run:
+
+bash
+Copy code
+npm run build
+This will create an optimized production build of the app in the build folder.
+
+## Contributing
+Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Credits
+Author: Your Name
+TRX exercise videos from TRX Training
+Demo
+You can check out a live demo of this app at https://yourapp.com.
+
+## Roadmap
+Here are some areas where other developers could contribute to this project:
+
+- Use service worker to create a comprehensive offline experience up until YouTube pages
+- Pre-load YouTube videos during rest section
+- Implement server-side rendering to improve performance and SEO
+
+## Acknowledgments
+-  This project was bootstrapped with [Create React App](https://create-react-app.dev/).
+
+-  The [Redux Persist](https://github.com/rt2zz/redux-persist) library was used for local storage persistence of state data.
+
+-  The [react-loader-spinner](https://github.com/mhnpd/react-loader-spinner) library was used for loading spinners.
+
+-  The [web-vitals](https://github.com/GoogleChrome/web-vitals) library was used for monitoring app performance.
+
+
+# OLD
 
 ## Service Workers
 Service Workers act as a proxy between the web server and the browser (intercepting fetch requests made by the browser). We leverage Service Workers to:
@@ -52,9 +90,3 @@ Per the package.json, we are using version 6, [here is the intro tutorial from t
 
 ## SASS
 We use SASS, a CSS extension, for custom styling where needed, however most of our styling is taken from react-bootstrap. To read more about SASS please [click here](https://sass-lang.com/guide).
-
-## React-bootstrap
-TBA - (evaluate potential dependencies and the versioning of bootstrap we will be able to access while using the react-bootstrap library).
-
-## Hosting
-TBA - (add details about Vercel and GitLab CI/CD)
