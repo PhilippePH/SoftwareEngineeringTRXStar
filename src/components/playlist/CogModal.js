@@ -19,9 +19,9 @@ const CogModal = ({show, unshow}) => {
         const cardio = Object.fromEntries(formData.entries())["cardio"];
 
         // Replace for cardio only when true
-        var replaceForCardio = (cardio == "Yes");
+        // var replaceForCardio = (cardio == "Yes");
 
-        store.dispatch(updateRest([rest, replaceForCardio])); 
+        store.dispatch(updateRest([rest])); 
         unshow(); 
     }
 
@@ -47,19 +47,23 @@ const CogModal = ({show, unshow}) => {
                             Select desired rest time:
                         </label>
                         <div className='cog-modal__container__rest-text__input'>
+                            <div className='cog-modal__container__rest-text__input__choice'>
                             <input 
                                 type="radio"
                                 id="30sec"
                                 name="rest"
                                 // className='cog-modal__container__rest-text__rest-text'
+                                className = 'cog-modal__container__rest-text__label'
                                 value="30"
                                 />
                             <label
                                 // className='cog-modal__container__rest-text__rest-text'
+                                className = 'cog-modal__container__rest-text__choice__label'
                                 for = "30sec">
                                     30 sec
                                 </label>
-
+                            </div>
+                            <div className='cog-modal__container__rest-text__input__choice'>
                             <input 
                                 type="radio"
                                 id="60sec"
@@ -69,11 +73,14 @@ const CogModal = ({show, unshow}) => {
                                 />
                             <label
                                 // className='cog-modal__container__rest-text__rest-text'
+                                className = 'cog-modal__container__rest-text__choice__label'
                                 for = "60sec">
                                     60 sec
                                     
                                 </label>
-
+                            </div>
+                            
+                            <div className='cog-modal__container__rest-text__input__choice'>
                             <input 
                                 type="radio"
                                 id="90sec"
@@ -83,10 +90,13 @@ const CogModal = ({show, unshow}) => {
                                 />
                             <label
                                 // className='cog-modal__container__rest-text__rest-text'
+                                className = 'cog-modal__container__rest-text__choice__label'
                                 for = "90sec">
                                     90 sec
                                 </label>
 
+                            </div>
+                            <div className='cog-modal__container__rest-text__input__choice'>
                             <input 
                                 type="radio"
                                 id="120sec"
@@ -96,38 +106,11 @@ const CogModal = ({show, unshow}) => {
                                 />
                             <label
                                 // className='cog-modal__container__rest-text__rest-text'
+                                className = 'cog-modal__container__rest-text__choice__label'
                                 for = "120sec">
                                     120 sec
                                 </label>
-                        </div>
-
-                        <label 
-                            htmlFor="pname"
-                            className='cog-modal__container__cardio-text'>
-                            Replace mid-workout rest with cardio                        
-                            </label>
-                        <div className='cog-modal__container__cardio-text__input'>
-                            <input 
-                                type="radio"
-                                id="yes"
-                                name="cardio"
-                                value="Yes"
-                                />
-                            <label
-                                for = "yes">
-                                    Yes
-                                </label>
-
-                            <input 
-                                type="radio"
-                                id="no"
-                                name="cardio"
-                                value="No"
-                                />
-                            <label
-                                for = "no">
-                                    No
-                                </label>
+                                </div>
                         </div>
 
                     <button 
