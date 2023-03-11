@@ -60,9 +60,10 @@ const playlistSlice = createSlice({
       state.playlistData = updatedPlaylistData[0];
     },
     updateRest:(state, action) => {
-      var newTime = action.payload[0];
+      var newTime = action.payload; // removed [0] as test
       // var changeForCardio = action.payload[1];
-      // console.log(changeForCardio); 
+      // console.log(newTime); 
+
       const updatedPlaylistData = [state.playlistData]; // fetches the most recent data
       var playlistLength = updatedPlaylistData[0].length;
 

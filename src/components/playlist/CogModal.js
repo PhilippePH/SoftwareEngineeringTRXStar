@@ -1,27 +1,26 @@
 import Modal from 'react-bootstrap/Modal'
-import { useSelector } from 'react-redux'
-import { useEffect } from "react";
+// import { useSelector } from 'react-redux'
+// import { useEffect } from "react";
 import { updateRest } from '../../redux/slices/playlistSlice';
 import { store } from "../../redux/store"
-import SelectButton from "../utils/SelectButton";
-import { useDispatch } from "react-redux";
-import { setActiveTab } from "../../redux/slices/selectSlice";
+// import SelectButton from "../utils/SelectButton";
+// import { useDispatch } from "react-redux";
+// import { setActiveTab } from "../../redux/slices/selectSlice";
 import '../selection/style.scss';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 
 const CogModal = ({show, unshow}) => {
 
     async function handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
-
-        const rest = Object.fromEntries(formData.entries())["restTime"];
-        const cardio = Object.fromEntries(formData.entries())["cardio"];
+        const rest = Object.fromEntries(formData.entries())["rest"];
+        // const cardio = Object.fromEntries(formData.entries())["cardio"];
 
         // Replace for cardio only when true
         // var replaceForCardio = (cardio == "Yes");
 
-        store.dispatch(updateRest([rest])); 
+        store.dispatch(updateRest(rest)); 
         unshow(); 
     }
 
@@ -59,7 +58,7 @@ const CogModal = ({show, unshow}) => {
                             <label
                                 // className='cog-modal__container__rest-text__rest-text'
                                 className = 'cog-modal__container__rest-text__choice__label'
-                                for = "30sec">
+                                htmlFor = "30sec">
                                     30 sec
                                 </label>
                             </div>
@@ -74,7 +73,7 @@ const CogModal = ({show, unshow}) => {
                             <label
                                 // className='cog-modal__container__rest-text__rest-text'
                                 className = 'cog-modal__container__rest-text__choice__label'
-                                for = "60sec">
+                                htmlFor = "60sec">
                                     60 sec
                                     
                                 </label>
@@ -91,7 +90,7 @@ const CogModal = ({show, unshow}) => {
                             <label
                                 // className='cog-modal__container__rest-text__rest-text'
                                 className = 'cog-modal__container__rest-text__choice__label'
-                                for = "90sec">
+                                htmlFor = "90sec">
                                     90 sec
                                 </label>
 
@@ -107,7 +106,7 @@ const CogModal = ({show, unshow}) => {
                             <label
                                 // className='cog-modal__container__rest-text__rest-text'
                                 className = 'cog-modal__container__rest-text__choice__label'
-                                for = "120sec">
+                                htmlFor = "120sec">
                                     120 sec
                                 </label>
                                 </div>
