@@ -8,6 +8,8 @@ import '../intro/WelcomePage.scss'
 import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
 import { MdForward10, MdOutlineReplay10 } from "react-icons/md";
 import WorkoutProgress from "./WorkoutProgress";
+import EndWorkoutModal from './EndWorkoutModal';
+import BackToPlaylistModal from './BackToPlaylistModal';
 
 
 const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
@@ -18,6 +20,8 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
   const [width, setWidth] = useState(window.innerWidth);
   const [isPlaying, setIsPlaying] = useState(false);
   const [key, setKey] = useState(0);
+  const [showEndOfWorkoutModal, setShowEndOfWorkoutModal] = useState(false);
+  const [showBackToPlaylistModal, setShowBackToPlaylistModal] = useState(false);
 
   const playerRef = useRef(null); // create a ref for the YouTube component
 
@@ -103,6 +107,22 @@ const opts = {
 
       return (
         <>
+        <EndWorkoutModal show={showEndOfWorkoutModal}
+                         unshow={() => {
+                          if(!isPlaying) {
+                            playVideo();
+                            setIsPlaying(true);
+                          }
+                          setShowEndOfWorkoutModal(false)
+                          }} endWorkout={endWorkout} />
+        <BackToPlaylistModal show={showBackToPlaylistModal}
+                         unshow={() => {
+                          if(!isPlaying) {
+                            playVideo();
+                            setIsPlaying(true);
+                          }
+                          setShowBackToPlaylistModal(false)
+                          }} backToPlaylist={backToPlaylist} />
         <div className='progress-bar'> 
             <WorkoutProgress completed={(Math.floor((exerciseData.counter /exerciseData.totalWorkoutLength)*100))} />
         </div>
@@ -124,6 +144,7 @@ const opts = {
                         opts={opts} 
                         onEnd={nextVideo} 
                         ref={playerRef}
+                        onReady={playVideo}
                         onPlay={() => setIsPlaying(true)}
                         onStateChange={handleStateChange}
                         onPause={() => setIsPlaying(false)}>
@@ -131,7 +152,13 @@ const opts = {
             </div>  
 
             <div className="container-settings__youtube-controls">
-              <FaStepBackward onClick={backToPlaylist} className="container-settings__youtube-controls__icon"/>
+              <FaStepBackward onClick={() => {
+                if(isPlaying) {
+                  pauseVideo();
+                  setIsPlaying(false);
+                }
+                setShowBackToPlaylistModal(true)
+                }} className="container-settings__youtube-controls__icon"/>
               <FaBackward onClick={handlePrevVideo} className="container-settings__youtube-controls__icon"/>
               <MdOutlineReplay10 onClick={() => handleRewind()} className="container-settings__youtube-controls__icon container-youtube__youtube-controls__icon__ten-seconds"/>
               {
@@ -142,7 +169,13 @@ const opts = {
               }
               <MdForward10 onClick={() => handleFastForward()} className="container-settings__youtube-controls__icon container-youtube__youtube-controls__icon__ten-seconds"/>
               <FaForward onClick={handleNextVideo} className="container-settings__youtube-controls__icon"/>
-              <FaStepForward onClick={endWorkout} className="container-settings__youtube-controls__icon"/>
+              <FaStepForward onClick={() => {
+                if(isPlaying) {
+                  pauseVideo();
+                  setIsPlaying(false);
+                }
+                setShowEndOfWorkoutModal(true)
+                }} className="container-settings__youtube-controls__icon"/>
             </div>
 
           </div>
