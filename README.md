@@ -15,7 +15,11 @@ npm start
 ```
 Then, open http://localhost:3000 to view it in the browser.
 
-## Technologies Used
+## Tech Stack
+
+![Tech Stack Image](./readme_images/system.png)
+
+### Technologies Used
 - React
 - IndexedDB
 - Redux Toolkit
@@ -39,9 +43,11 @@ This will create an optimized production build of the app in the build folder.
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Credits
-Authors: Eugene Ting, Adela Viskova, Daniel Doyle, Philippe Paquin-Hirtle, Soren Antebi and Sofia Hernandez Gelado 
+Authors: Eugene Ting, Adela Viskova, Daniel Doyle, Philippe Paquin-Hirtle, Soren Antebi and Sofia Hernandez Gelado.
 
-TRX videos: [PrivateGYMFitness](https://www.youtube.com/@PrivateGYMFitness)
+TRX videos: [PrivateGYMFitness](https://www.youtube.com/@PrivateGYMFitness).
+
+With special thanks to our project coordinators: Shubham Jain and Yves-Alexandre de Montjoye.
 
 ## Demo
 You can check out a live demo of this app at https://trxstar.co.uk.
@@ -49,7 +55,7 @@ You can check out a live demo of this app at https://trxstar.co.uk.
 ## Roadmap
 We're excited to share some potential changes and improvements we're considering for future releases of the project, but we also welcome and encourage contributions from our community, so feel free to share your ideas and help us shape the direction of this project:
 
-- Use service worker to create a comprehensive offline experience up until YouTube pages
+- Utilise service worker to create a comprehensive offline experience up until YouTube pages
 - Pre-load YouTube videos during rest section
 - Implement server-side rendering to improve performance and SEO
 
@@ -100,30 +106,3 @@ We will review your changes as soon as possible and may provide feedback or requ
 
 ## Acknowledgments
 -  This project was bootstrapped with [Create React App](https://create-react-app.dev/).
-
--  The [Redux Persist](https://github.com/rt2zz/redux-persist) library was used for local storage persistence of state data.
-
--  The [react-loader-spinner](https://github.com/mhnpd/react-loader-spinner) library was used for loading spinners.
-
--  The [web-vitals](https://github.com/GoogleChrome/web-vitals) library was used for monitoring app performance.
-
-
-# OLD
-
-## Service Workers
-Service Workers act as a proxy between the web server and the browser (intercepting fetch requests made by the browser). We leverage Service Workers to:
-1) Dictate what the browser caches (in our case, the whole website)
-2) Redirect fetch requests when files are not accessible (i.e. when there are both no files in browser cache __and__ the user is offline)
-[See here] (https://www.youtube.com/watch?v=IaJqMcOMuDM&list=LL&index=12) for the tutorial on the tutorial we followed to implement Service Workers
-
-## IndexedDB
-In browser NoSQL database which uses an object store model.
-See both:
-1) https://dev.to/alexeagleson/how-to-use-indexeddb-to-store-data-for-your-web-application-in-the-browser-1o90
-2) https://www.google.com/search?q=indexeddb+with+react&oq=indexeddb+with+react&aqs=chrome.0.69i59j0i22i30l4j0i390l2j69i60.5051j1j7&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:2cab3ea3,vid:G2CzVilvaXk
-
-## React router
-Per the package.json, we are using version 6, [here is the intro tutorial from the official docs] (https://reactrouter.com/en/main/start/tutorial).
-
-## SASS
-We use SASS, a CSS extension, for custom styling where needed, however most of our styling is taken from react-bootstrap. To read more about SASS please [click here](https://sass-lang.com/guide).
