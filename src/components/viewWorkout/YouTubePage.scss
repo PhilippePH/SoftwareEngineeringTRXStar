@@ -12,6 +12,7 @@
     flex-direction: column;
     justify-content: space-between;
     
+    
     &__message1 {
         color: black;
         @include font; 
@@ -28,21 +29,24 @@
             @include font; 
             font-size: 25px;
             text-transform: none;
+            padding-bottom: 1%;
         }
     }
 
     &__youtube-controls {
+        align-self: center; // keeps it centered
+        width: 790px;
+        height: 120px;
+        padding-bottom: 4%;
+        
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        padding-bottom: 4%;
         
         &__icon {
-            width: 10%; // how far apart icons are from each other
+            width: 90px; // how far apart icons are from each other
+            height: 31.5px;
 
-            &__ten-seconds {
-                width: 13%;
-            }
             cursor: pointer;
         }
     }
@@ -61,16 +65,17 @@
             font-size: 40px;
         }
         &__youtube-controls {
+            width: 100%;
             padding-bottom: 6%;
             &__icon {
-                width: 20%;
-                height: 60%;
+                width: 70px; // how far apart icons are from each other
+                height: 31.5px;
             }
         }
     }
 }
 
-@media (min-width: 500px) and (max-width: 999px) {
+@media (min-width: 500px) and (max-width: 649px) {
     .container-settings {
         width: 80vw;
 
@@ -78,10 +83,26 @@
             font-size: 45px;
         }
 
-        &__youtube-controls {
+        &__youtube-controls{
+            width: 650px;
+            height: 98px;
+            
             &__icon {
-                height: 50%;
+                width: 70px; // how far apart icons are from each other
+                height: 31.5px;
             }
+        }
+    }
+}
+
+
+
+@media (min-width: 650px) and (max-width: 999px) {
+    .container-settings {
+        width: 80vw;
+
+        &__message1 {
+            font-size: 45px;
         }
     }
 }
@@ -89,10 +110,5 @@
 @media (min-width: 1000px) { // make the youtube player small if the screen is particularily large
     .container-settings {
         width: 55vw;
-        &__youtube-controls {
-            &__icon {
-                height: 30%;
-            }
-        }
     }
 }
