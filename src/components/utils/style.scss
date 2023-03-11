@@ -60,10 +60,9 @@
 // }
 
 .button-text {
-    margin: 10px;
-    font-size: 22px;
-    @include font;
-    text-transform: capitalize
+    margin: 0px;
+    font-size: 18px;
+    @include font
 
 }
 

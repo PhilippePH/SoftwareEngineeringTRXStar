@@ -18,7 +18,7 @@ const BasicButton = ({option, next}) => {
         <button className='button'
             onClick={next}
            >
-            <div className="button-text">
+            <div className="basic-button-text">
                 {option}
                 </div>
         </button>
