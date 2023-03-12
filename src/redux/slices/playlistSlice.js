@@ -62,12 +62,19 @@ const playlistSlice = createSlice({
     updateRest:(state, action) => {
       var newTime = action.payload[0]; // removed [0] as test
       var changeForCardio = action.payload[1];
+      var newRestSetTime = action.payload[2]; 
 
       const updatedPlaylistData = [state.playlistData]; // fetches the most recent data
       var playlistLength = updatedPlaylistData[0].length;
 
       for(var i = 0; i < playlistLength; i++){
-        if(updatedPlaylistData[0][i].type == "rest" && !changeForCardio)
+
+        if(updatedPlaylistData[0][i].type == "exercise" && !changeForCardio && newRestSetTime>-1)
+        {
+          updatedPlaylistData[0][i].rest_set = newRestSetTime;
+        }
+
+        if(updatedPlaylistData[0][i].type == "rest" && !changeForCardio  && newTime>-1)
           updatedPlaylistData[0][i].time = newTime;
 
         //if user wants to replace rest for cardio
