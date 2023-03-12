@@ -1,6 +1,11 @@
 import { store } from "../redux/store";
 import { inputToPlaylist } from "../redux/slices/playlistSlice";
 
+/*
+    Promised wrapped indexedDB operation, return all entries in tableName which
+    has indexName value equal to the value parameter passed.
+    indexName cannot be the key of tableName. Otherwise, use filerOnKey function.
+*/
 export function filterDatabase (tableName, indexName, value, indexedDB, database, versionNumber) {
     
     return new Promise(function(resolve, reject) {
@@ -21,6 +26,11 @@ export function filterDatabase (tableName, indexName, value, indexedDB, database
 
 }
 
+/*
+    Promised wrapped indexedDB operation, return all entries in tableName which
+    has key equal to the value parameter passed.
+    If filtering on a value other than the key, use filterDatabase function.
+*/
 export function filterOnKey (tableName, value, indexedDB, database, versionNumber) {
     
     return new Promise(function(resolve, reject) {
@@ -41,31 +51,35 @@ export function filterOnKey (tableName, value, indexedDB, database, versionNumbe
 
 }
 
-export function negFilterDatabase (tableName, value, indexedDB, database) { 
-    return new Promise(function(resolve, reject) {
-        // open database
-        const dbPromise = indexedDB.open(database, 1);
-        dbPromise.onsuccess = () => {
-            const db = dbPromise.result;
-            const request = db.transaction(tableName, "readwrite")
-                .objectStore(tableName)
-                .openCursor();
+// export function negFilterDatabase (tableName, value, indexedDB, database) { 
+//     return new Promise(function(resolve, reject) {
+//         // open database
+//         const dbPromise = indexedDB.open(database, 1);
+//         dbPromise.onsuccess = () => {
+//             const db = dbPromise.result;
+//             const request = db.transaction(tableName, "readwrite")
+//                 .objectStore(tableName)
+//                 .openCursor();
 
-            // retrieve table and index of attribute specified
-            request.onsuccess = function (event) { 
-                var cursor = event.target.result; 
-                if(cursor){
-                    var entry = cursor.value; 
-                    if(!(value.includes(entry.exercise_name))) {cursor.delete();}
-                    cursor.continue(); 
-                }
-            }
-            request.onerror = function(event) {reject(event);}
-        }
-        dbPromise.onerror = function(event) {reject(event);}
-    })
-}
+//             // retrieve table and index of attribute specified
+//             request.onsuccess = function (event) { 
+//                 var cursor = event.target.result; 
+//                 if(cursor){
+//                     var entry = cursor.value; 
+//                     if(!(value.includes(entry.exercise_name))) {cursor.delete();}
+//                     cursor.continue(); 
+//                 }
+//             }
+//             request.onerror = function(event) {reject(event);}
+//         }
+//         dbPromise.onerror = function(event) {reject(event);}
+//     })
+// }
 
+/*
+    Promise wrapped indexedDB operation, adds objects into tableName of filtered
+    database.
+*/
 export function addToFilteredDB(tableName, objects) {
     return new Promise(function(resolve, reject) {
         const dbPromise  = indexedDB.open("FilteredDatabase", 1);
@@ -88,23 +102,6 @@ export function reject(event) {
     console.error("DB filtering rejected.");
     console.error(event.target.error);
 }
-
-
-/*
-export function createStructure(){
-
-    exercise_dict = {
-        "time": null,
-        "sets": 2,
-        "rest_set": 20,
-        "intensity": 2,
-        "URL": "",
-        "start_time": "",
-        "end_time": ""
-
-}
-*/
-
 
 export function computeRollingAverageIntensity(structureCopy)
 {
@@ -140,20 +137,14 @@ export function computeRollingAverageIntensity(structureCopy)
     return exerciseIntensity; 
 }
 
-
-
-
-
 export async function fillStructure(structure, indexedDB) {
     
-    var structureCopy = JSON.parse(JSON.stringify(structure));
     // fill each object in workout array
+    var structureCopy = JSON.parse(JSON.stringify(structure));
     
     for (let i = 1; i < structureCopy.length; i++) {
         var intensity = computeRollingAverageIntensity(structureCopy)
-            //console.log("Structure copy 1", structureCopy)
 
-        //console.log("Item", structureCopy[i])
         try {
             var intensity = computeRollingAverageIntensity(structureCopy)
         } catch (e) {
@@ -164,12 +155,10 @@ export async function fillStructure(structure, indexedDB) {
 
             var excluded_exercise = ((i > 1) ? structureCopy[i-1].exercise_name : null);
 
-            //console.log("Structure copy", structureCopy); 
     
             await getClip(indexedDB, structureCopy[i].type, structureCopy[i].time, intensity, excluded_exercise)
             .then(async function(clip) {
 
-                //("clip", clip);
                 var video_of_clip = await filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1);
                 var exercise_of_clip = await filterOnKey("exercises", clip.exercise_name, indexedDB, "ExerciseDatabase", 1);
 
@@ -186,14 +175,13 @@ export async function fillStructure(structure, indexedDB) {
         }
     }
 
-    //console.log("Structure copy 2", structureCopy)
-
-    //console.log("After fill", structureCopy);
     return structureCopy; 
 }
 
 
-
+/*
+    Gets clip with specified options from filtered database
+ */
 export async function getClip(indexedDB, type, time, intensity, excluded_exercise = null) {
 
     switch (type) {
@@ -210,17 +198,15 @@ export async function getClip(indexedDB, type, time, intensity, excluded_exercis
             return cooldown_clips[RandInt(0, cooldown_clips.length)]
 
         case "exercise":
-            //console.log("Intensity", intensity); 
             var exercise_clips = []
             var depth = 0; 
+
+            // While loop prevents duplicate exercises being chosen
             while (exercise_clips.length === 0 && depth<20) {
 
                 var valid_exercises = await filterDatabase("exercises", "intensity", intensity, indexedDB, "FilteredDatabase", 1);
                 var chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)]; 
-                //console.log("Chosen exercise", chosen_exercise)
-
-                //console.log("Chosen exercise", chosen_exercise)
-                //console.log("Excluded exercise", excluded_exercise)
+                
                 while (chosen_exercise != undefined && chosen_exercise.exercise_name == excluded_exercise && depth<20)
                 {
                     chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)];
@@ -228,19 +214,16 @@ export async function getClip(indexedDB, type, time, intensity, excluded_exercis
                     depth++; 
 
                 }
-                //console.log("Chosen_exercise", chosen_exercise);
-                //exercise_clips = await filterDatabase("clip", "exercise_name", chosen_exercise.exercise_name, indexedDB, "FilteredDatabase", 1);
-                //console.log("Exercise clips: ", exercise_clips);
-                //depth++; 
+                
                 depth++; 
             }
-            if(exercise_clips.length === 0)
-            {
+
+            // If valid exercise not chosen after 20 loops, expand search
+            if(exercise_clips.length === 0) {
                 var valid_exercises = await filterDatabase("exercises", "intensity", intensity, indexedDB, "ExerciseDatabase", 1);
                 var chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)]; 
                 exercise_clips = await filterDatabase("clip", "exercise_name", chosen_exercise.exercise_name, indexedDB, "ExerciseDatabase", 1);
             }
-            //console.log("Selected exercise clip", exercise_clips[RandInt(0, exercise_clips.length)]);
             return exercise_clips[RandInt(0, exercise_clips.length)];
 
         default:
@@ -253,29 +236,28 @@ function RandInt(min, max) {
     return Math.floor(Math.random() * max) + min; 
 }
 
-
+// Replace rest with cardio
 export function getCardio(ind){
-        filterDatabase ("exercises", "focus", 0, indexedDB, "ExerciseDatabase", 1) .then(
-                async function (exercise) {
-                    filterDatabase("clip", "exercise_name", exercise[RandInt(0, exercise.length)].exercise_name, indexedDB, "ExerciseDatabase", 1).then(
-                        async function (clip) {
-                            filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1).then(
-                                async function (video) {
-                            var clip_formatted = {
-                                "type": "exercise",
-                                "exercise_name": clip[0].exercise_name,
-                                "time": 40,
-                                "sets": 1,
-                                "muscles": exercise[0].muscle_type,
-                                "rest_set": 0,
-                                "intensity": 1,
-                                "URL": video[0].URL,
-                                "start_time": clip[0].start_time,
-                                "end_time": clip[0].end_time
-                            }
-                            store.dispatch(inputToPlaylist([clip_formatted, ind]))
-                        }
-                    )
-                })
+    filterDatabase ("exercises", "focus", 0, indexedDB, "ExerciseDatabase", 1)
+    .then(async function (exercise) {
+        filterDatabase("clip", "exercise_name", exercise[RandInt(0, exercise.length)].exercise_name, indexedDB, "ExerciseDatabase", 1)
+        .then(async function (clip) {
+            filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1)
+            .then(async function (video) {
+                var clip_formatted = {
+                    "type": "exercise",
+                    "exercise_name": clip[0].exercise_name,
+                    "time": 40,
+                    "sets": 1,
+                    "muscles": exercise[0].muscle_type,
+                    "rest_set": 0,
+                    "intensity": 1,
+                    "URL": video[0].URL,
+                    "start_time": clip[0].start_time,
+                    "end_time": clip[0].end_time
+                }
+                store.dispatch(inputToPlaylist([clip_formatted, ind]))
             })
+        })
+    })
 }

@@ -38,6 +38,7 @@ async function filterAll(indexedDB, userOptions) {
             })
         }
         
+        // clips based on valid videos
         for (i = 0; i < video_IDs.length; i++) {
             let filteredClips = await filterDatabase("clip", "video_ID", video_IDs[i], indexedDB, "ExerciseDatabase", 1);
             let validClips = []
@@ -65,6 +66,7 @@ function diff_to_comp(difficulty) {
         return 2;
 }
 
+// React component which calls the algorithm and generates playlist.
 const Playlist = ({ indexedDB }) => {
 
     const { 
@@ -85,7 +87,9 @@ const Playlist = ({ indexedDB }) => {
 
     const loaded = useSelector((state) => (state.playlist.playlistLoaded));
 
-    useEffect(() => {// make sure not re-rendering all the time
+    useEffect(() => { // make sure not re-rendering all the time
+
+        // if load from saved don't call algorithm
         if (!loaded) {
             filterAll(indexedDB, selectedOptions)
             .then(function() {

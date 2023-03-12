@@ -22,7 +22,6 @@ const CogModal = ({show, unshow}) => {
     const [replaceRest, setReplace] = useState(false);
     const [rest, setRest] = useState(-1);
 
-
     const [selectedSet30, setSelectedSet30] = useState(false);
     const [selectedSet20, setSelectedSet20] = useState(false);
     const [selectedSet40, setSelectedSet40] = useState(false);
@@ -34,8 +33,9 @@ const CogModal = ({show, unshow}) => {
             setSelectedSet30(false);
             setSelectedSet40(false); 
             setRestSet(20);  
-    }
+        }
     };
+    
     const restSetTimeHandler30 = (event) => {
         if (!replaceRest) {
             setSelectedSet30(true);
@@ -43,7 +43,8 @@ const CogModal = ({show, unshow}) => {
             setSelectedSet40(false);
             setRestSet(30);  
         }
-     };
+    };
+
     const restSetTimeHandler40 = (event) => {
         if (!replaceRest) {
             setSelectedSet40(true);
@@ -51,7 +52,7 @@ const CogModal = ({show, unshow}) => {
             setSelectedSet30(false);
             setRestSet(40);  
         }
-     };
+    };
 
     const restTimeHandler30 = (event) => {
         if (!replaceRest) {
@@ -59,8 +60,9 @@ const CogModal = ({show, unshow}) => {
             setSelected60(false);
             setSelected90(false); 
             setRest(30);  
-    }
+        }
     };
+
     const restTimeHandler60 = (event) => {
         if (!replaceRest) {
             setSelected60(true);
@@ -68,7 +70,8 @@ const CogModal = ({show, unshow}) => {
             setSelected90(false);
             setRest(60);  
         }
-     };
+    };
+
     const restTimeHandler90 = (event) => {
         if (!replaceRest) {
             setSelected90(true);
@@ -76,12 +79,11 @@ const CogModal = ({show, unshow}) => {
             setSelected60(false);
             setRest(90);  
         }
-     };
+    };
 
+    // Submit options to redux, updates playlists
     async function handleSubmit(e) {
-        // const cardio = Object.fromEntries(formData.entries())["cardio"];
-
-        // Replace for cardio only when true
+        
         var replaceForCardio = replaceRest ? 1 : 0;
         console.log("replace cardio", replaceForCardio); 
         console.log("rest", rest); 

@@ -20,6 +20,7 @@ const ExerciseCard = ({ exercise_name, duration, sets, time, rest_time, ind, mus
          
     var remaining_secs_duration = (sets * duration + (time * (sets))) % 60;
 
+    // React hooks to control anumations
     const [isOpen, setOPen] = useState(false);
     const [isFadingOut, setIsFadingOut] = useState(false);
     const [isSlidingIn, setIsSlidingIn] = useState(false);
@@ -30,6 +31,7 @@ const ExerciseCard = ({ exercise_name, duration, sets, time, rest_time, ind, mus
     const outerHeight = useRef(CLOSED_HEIGHT);
     const containerRef = useRef(null);
     
+    // Close all containers when exercise cards are modified
     useEffect(() => {
         if (closeAll) {
             setOPen(false);
@@ -56,6 +58,7 @@ const ExerciseCard = ({ exercise_name, duration, sets, time, rest_time, ind, mus
         setIsFadingOut(true);
     };
     
+    // Handler to open and close exercise cards
     const toggle = () => {
         if (!isOpen) {
             outerHeight.current = OPENED_HEIGHT;
@@ -64,6 +67,7 @@ const ExerciseCard = ({ exercise_name, duration, sets, time, rest_time, ind, mus
         
     };
 
+    // Handlers for exercise card operations
     const handleRemoveDiv = (event) => {
         event.stopPropagation();
         setOPen(false);
