@@ -10,14 +10,17 @@ import { Popover } from "react-bootstrap";
 import { RiInformationFill } from "react-icons/ri";
 
 const SelectDifficulty = () => {
+
+    const difficultyOptions = ["Easy", "Medium", "Hard"]; // difficulty options to choose from
     
     const dispatch = useDispatch()
-    const difficultyOptions = ["Easy", "Medium", "Hard"];
     
+    // retrive the difficulty (if already selected) and navigation direction from redux
     const completed = useSelector((state) => (state.select.difficulty))
     const direction = useSelector((state) => (state.select.navDirection))
 
     useEffect(() => {
+        // set the redux state of active tab
         dispatch(setActiveTab(DIFFICULTY));
     }, []);
 
@@ -40,7 +43,7 @@ const SelectDifficulty = () => {
                 style={{
                     animation: (direction=="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
                 }}>
-                {difficultyOptions?.map((option) => {
+                {difficultyOptions?.map((option) => { // create button for every difficulty option
                     return (
 
                         <SelectButton
@@ -64,6 +67,7 @@ const SelectDifficulty = () => {
 
 export default SelectDifficulty;
 
+// popover for the information button
 const popover = (
     <Popover id="popover-basic" className="popover__display">
       <Popover.Body className='popover__text'>
