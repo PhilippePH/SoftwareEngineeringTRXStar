@@ -254,7 +254,7 @@ function RandInt(min, max) {
 }
 
 
-export function getCardio(ind){
+export function getCardio(ind, previous_rest){
         filterDatabase ("exercises", "focus", 0, indexedDB, "ExerciseDatabase", 1) .then(
                 async function (exercise) {
                     filterDatabase("clip", "exercise_name", exercise[RandInt(0, exercise.length)].exercise_name, indexedDB, "ExerciseDatabase", 1).then(
@@ -271,7 +271,9 @@ export function getCardio(ind){
                                 "intensity": 1,
                                 "URL": video[0].URL,
                                 "start_time": clip[0].start_time,
-                                "end_time": clip[0].end_time
+                                "end_time": clip[0].end_time,
+                                "is_cardio": 1,
+                                "replaced_rest": previous_rest
                             }
                             store.dispatch(inputToPlaylist([clip_formatted, ind]))
                         }
