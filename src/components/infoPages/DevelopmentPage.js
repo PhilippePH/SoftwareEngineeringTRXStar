@@ -1,21 +1,7 @@
 import './infoPages.scss';
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import styled from "styled-components";
 import { Container } from "react-bootstrap";
 
-
-
 const Development = () => {
-    const [width, setWidth] = useState(window.innerWidth);
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    useEffect(() => {
-        const handleResize = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-      }, []);
 
     return (
         <Container className='dev__container'>
