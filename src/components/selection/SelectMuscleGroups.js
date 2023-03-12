@@ -6,7 +6,7 @@ import { FOCUS, MUSCLE_GROUPS } from "../utils/constants";
 import SelectMultipleButton from "../utils/SelectMultipleButton";
 import ModalButton from "../utils/ModalButton"
 import MusclesModal from "./SelectMusclesModal"
-import './style.scss'
+import './selection.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { RiInformationFill } from "react-icons/ri";

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { DIFFICULTY, DURATION, FOCUS, MUSCLE_GROUPS } from "../utils/constants";
-import './style.scss'
+import './selection.scss';
 import { useNavigate } from 'react-router-dom';
 import { GiJumpingRope,GiWeightLiftingUp} from "react-icons/gi";
 import {BiRun} from "react-icons/bi"

@@ -4,7 +4,7 @@ import NavButtons from "../utils/NavButtons";
 import { useEffect } from "react";
 import { DURATION, FOCUS, DIFFICULTY} from "../utils/constants";
 import SelectButton from "../utils/SelectButton";
-import './style.scss'
+import './selection.scss';
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { RiInformationFill } from "react-icons/ri";
 

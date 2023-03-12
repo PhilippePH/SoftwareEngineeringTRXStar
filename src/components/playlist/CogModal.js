@@ -1,17 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal'
-import { BsDisplay } from 'react-icons/bs';
-// import { useSelector } from 'react-redux'
-// import { useEffect } from "react";
 import { updateRest } from '../../redux/slices/playlistSlice';
 import { store } from "../../redux/store"
-// import SelectButton from "../utils/SelectButton";
-// import { useDispatch } from "react-redux";
-// import { setActiveTab } from "../../redux/slices/selectSlice";
-import '../selection/style.scss';
-// import { Button } from 'react-bootstrap';
-import ModalButton from "../utils/ModalButton"
-import '../utils/style.scss'
+import './playlist.scss'
 
 const CogModal = ({show, unshow}) => {
 
