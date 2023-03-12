@@ -43,12 +43,12 @@ const MusclesModal = ({show, unshow}) => {
             centered>
             <Modal.Header>
                 <Modal.Title
-                    className='modal__text'>
+                    className='muscle-modal__text'>
                     Deselect Muscles
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <div className="modal__muscles">
+                <div className="muscle-modal__muscles">
                     {
                         muscleGroups.map((muscleGroup) => {
                             return ( musclesOptions[muscleGroup]?.map((option) => {
@@ -57,9 +57,6 @@ const MusclesModal = ({show, unshow}) => {
                                         key={option} 
                                         type={MUSCLES} 
                                         option={option}
-                                        width="5.5rem"
-                                        height='3.4rem'
-                                        fontSize='0.9rem'
                                     />
                                 )
                             })
@@ -71,7 +68,7 @@ const MusclesModal = ({show, unshow}) => {
                 <button
                     onClick={() => clickHandler()}
                     style = {{color: !selected? "darkgray":"", borderColor: selected? "black":"darkgray"}}
-                    className="modal__button">
+                    className="muscle-modal__button">
                     Save
                 </button>
             </Modal.Footer>

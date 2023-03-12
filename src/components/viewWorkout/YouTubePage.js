@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import YouTube from 'react-youtube';
-import './YouTubePage.scss'
-import { useDispatch } from "react-redux";
+import './viewWorkout.scss'
 import { useNavigate } from "react-router-dom";
 import '../intro/WelcomePage.scss'
 import { FaFastForward, FaFastBackward, FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
@@ -18,8 +17,6 @@ import BackToPlaylistModal from './BackToPlaylistModal';
 const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  
   const [width, setWidth] = useState(window.innerWidth);
   const [isPlaying, setIsPlaying] = useState(false);
   const [key, setKey] = useState(0);

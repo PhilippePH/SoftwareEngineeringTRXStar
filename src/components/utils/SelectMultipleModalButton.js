@@ -5,7 +5,7 @@ import { MUSCLES, MUSCLE_GROUPS } from "./constants";
 import {TiTick} from "react-icons/ti"
 import './utils.scss';
 
-const SelectMultipleModalButton = ({type, option, width, height, fontSize}) => {
+const SelectMultipleModalButton = ({type, option}) => {
     const dispatch = useDispatch();
     const [selected, setSelected] = useState(false);
 

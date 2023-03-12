@@ -1,5 +1,13 @@
 @import '../../sassStyles/_mixins.scss';
 
+@media (hover: hover) {
+
+    .select-button {
+        background-color: #eed600;
+    }
+    
+}
+
 .select-button {
     display: flex;
     justify-content: center;
