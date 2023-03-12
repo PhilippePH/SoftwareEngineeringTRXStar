@@ -35,11 +35,8 @@
         }
     }
     &__image {
-        
-        // padding-left: 15px;
         width: 6rem;
         height: 6rem;
-        // padding-bottom: 5rem;
     }
 
     @media (min-width: 501px) and (max-width: 768px) {
@@ -74,10 +71,10 @@
 
         &-text {
             margin: 0px;
-        font-size: 20px;
-        color: rgba(0, 0, 0, 0.41);
-        @include font;
-        padding: 10px;
+            font-size: 20px;
+            color: rgba(0, 0, 0, 0.41);
+            @include font;
+            padding: 10px;
         }
     }
 
@@ -127,7 +124,7 @@
     &__header {
         @include font;
         font-size: 1rem;
-        font-weight: 400;
+        font-weight: 600;
     }
 
     &__container {
