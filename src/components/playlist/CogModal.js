@@ -167,12 +167,14 @@ const CogModal = ({show, unshow}) => {
                         <div className='cog-modal__container__wrapper'>
                             <button
                                 className={`cog-modal__button ${replaceRest ? "cog-modal__button-active" : ""}`}
-                                onClick={(event) => setReplace(true)}>
+                                onClick={(event) => setReplace(true)}
+                                style ={{width: "50px"}}>
                                 {"Yes"}
                             </button>
                             <button
                                 className={`cog-modal__button ${replaceRest ? "" : "cog-modal__button-active"}`}
-                                onClick={(event) => setReplace(false)}>
+                                onClick={(event) => setReplace(false)}
+                                style ={{width: "50px"}}>
                                 {"No"}
                             </button>
                         </div>
