@@ -263,6 +263,6 @@ export function getCardio(ind, previous_rest){
                     )
                 })
             })
-        })
-    })
+        
+    
 }
