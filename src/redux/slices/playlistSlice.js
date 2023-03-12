@@ -87,11 +87,10 @@ const playlistSlice = createSlice({
       const updatedPlaylistData = [state.playlistData]; // fetches the most recent data
       var playlistLength = updatedPlaylistData[0].length;
 
-      console.log("new time", newTime); 
 
       for(var i = 0; i < playlistLength; i++){
 
-        if(updatedPlaylistData[0][i].type == "exercise" && !changeForCardio && newRestSetTime>-1)
+        if(updatedPlaylistData[0][i].type == "exercise" && newRestSetTime>-1)
         {
           updatedPlaylistData[0][i].rest_set = newRestSetTime;
         }
@@ -109,14 +108,11 @@ const playlistSlice = createSlice({
         }
 
         if (updatedPlaylistData[0][i].is_cardio && !changeForCardio && newTime == -1) {
-          console.log("In here"); 
-
             var rest = {
               type: "rest",
               intensity: 0,
               time: updatedPlaylistData[0][i].replaced_rest
             }
-            console.log("Rest", rest); 
             updatedPlaylistData[0][i] = rest;
           
         }

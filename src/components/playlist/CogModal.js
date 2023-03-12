@@ -15,34 +15,41 @@ const CogModal = ({show, unshow}) => {
 
     const [selectedSet30, setSelectedSet30] = useState(false);
     const [selectedSet20, setSelectedSet20] = useState(false);
+    const [selectedSet0, setSelectedSet0] = useState(false);
     const [selectedSet40, setSelectedSet40] = useState(false);
     const [restSet, setRestSet] = useState(-1);
 
+
+    const restSetTimeHandler0 = (event) => {
+        setSelectedSet0(true);
+        setSelectedSet20(false);
+        setSelectedSet30(false);
+        setSelectedSet40(false); 
+        setRestSet(0);  
+};
+
     const restSetTimeHandler20 = (event) => {
-        if (!replaceRest) {
             setSelectedSet20(true);
             setSelectedSet30(false);
             setSelectedSet40(false); 
+            setSelectedSet0(false);
             setRestSet(20);  
-        }
     };
     
     const restSetTimeHandler30 = (event) => {
-        if (!replaceRest) {
             setSelectedSet30(true);
             setSelectedSet20(false);
             setSelectedSet40(false);
+            setSelectedSet0(false);
             setRestSet(30);  
-        }
     };
 
     const restSetTimeHandler40 = (event) => {
-        if (!replaceRest) {
             setSelectedSet40(true);
             setSelectedSet20(false);
             setSelectedSet30(false);
+            setSelectedSet0(false);
             setRestSet(40);  
-        }
     };
 
     const restTimeHandler30 = (event) => {
@@ -76,8 +83,6 @@ const CogModal = ({show, unshow}) => {
     async function handleSubmit(e) {
         
         var replaceForCardio = replaceRest ? 1 : 0;
-        console.log("replace cardio", replaceForCardio); 
-        console.log("rest", rest); 
         store.dispatch(updateRest([rest, replaceForCardio, restSet])); 
         
         /*
@@ -110,6 +115,11 @@ const CogModal = ({show, unshow}) => {
                             Select desired rest time between sets:
                         </p>
                         <div className='cog-modal__container__wrapper'>
+                        <button
+                                className={`cog-modal__button ${selectedSet0 ? "cog-modal__button-active" : ""}`}
+                                onClick={() => restSetTimeHandler0()}>
+                                {"No Rest"}
+                            </button>
                             <button
                                 className={`cog-modal__button ${selectedSet20 ? "cog-modal__button-active" : ""}`}
                                 onClick={() => restSetTimeHandler20()}>
@@ -134,17 +144,17 @@ const CogModal = ({show, unshow}) => {
                         </p>
                         <div className='cog-modal__container__wrapper'>
                             <button
-                                className={`cog-modal__button ${selected30 ? "cog-modal__button-active" : ""}`}
+                                className={`cog-modal__button ${selected30 && !replaceRest ? "cog-modal__button-active" : ""}`}
                                 onClick={() => restTimeHandler30()}>
                                 {"30 sec"}
                             </button>
                             <button
-                                className={`cog-modal__button ${selected60 ? "cog-modal__button-active" : ""}`}
+                                className={`cog-modal__button ${selected60 && !replaceRest ? "cog-modal__button-active" : ""}`}
                                 onClick={() => restTimeHandler60()}>
                                 {"60 sec"}
                             </button>
                             <button
-                                className={`cog-modal__button ${selected90 ? "cog-modal__button-active" : ""}`}
+                                className={`cog-modal__button ${selected90 && !replaceRest ? "cog-modal__button-active" : ""}`}
                                 onClick={() => restTimeHandler90()}>
                                 {"90 sec"}
                             </button>
