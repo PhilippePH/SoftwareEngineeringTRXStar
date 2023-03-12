@@ -2,14 +2,12 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setDifficulty, setDuration, setFocus, setMuscleGroups, setMuscles, setNavDirection } from "../../redux/slices/selectSlice";
 import { DIFFICULTY, DURATION, FOCUS } from "./constants";
-import './style.scss';
+import './utils.scss';
 import { GiJumpingRope,GiWeightLiftingUp} from "react-icons/gi";
 import {BiRun} from "react-icons/bi"
 import {GrYoga} from "react-icons/gr"
 import {WiTime12,WiTime6,WiTime3,WiTime9} from "react-icons/wi"
 import {TbAntennaBars3,TbAntennaBars4,TbAntennaBars5} from "react-icons/tb"
-
-
 
 const SelectButton = ({type, option, to, selected}) => {
 
@@ -54,15 +52,12 @@ const SelectButton = ({type, option, to, selected}) => {
 
     return (
         <button 
-            className={(option == selected)? 'button-selected':'button-unselected'}
+            className={`select-button ${selected == option ? 'selected' : 'unselected'}`}
             onClick={()=>clickHandler(type)}>
-            <p className="button-text">
+            <p>
                 {option}
-                
             </p>
-            <Icon 
-                className ="icon"
-                />
+            <Icon className ="select-button__icon"/>
         </button>
     )
 }

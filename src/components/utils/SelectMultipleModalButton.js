@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMuscleGroups, setMuscles } from "../../redux/slices/selectSlice";
 import { MUSCLES, MUSCLE_GROUPS } from "./constants";
 import {TiTick} from "react-icons/ti"
-import './style.scss';
+import './utils.scss';
 
 const SelectMultipleModalButton = ({type, option, width, height, fontSize}) => {
     const dispatch = useDispatch();
@@ -49,18 +49,14 @@ const SelectMultipleModalButton = ({type, option, width, height, fontSize}) => {
     },[])
 
     return (
-        <button className= {selected? "multi-modal-button-selected":"multi-modal-button-unselected"}
-            onClick={() => clickHandler(type)}
-            style={{ display: "flex", textAlign:"center" }}
-            // style={{backgroundColor: selected? "":"whitesmoke"}}
-            >
-                <div className = "multi-modal-tick-icon"></div>
-                <div className="multi-modal-button-text">
+        <button 
+            className={`muscle-modal-button ${selected ? 'selected' : 'unselected'}`}
+            onClick={() => clickHandler(type)}>
+                <div className = "multi-modal-button__tick"></div>
+                <p>
                     {option}
-                </div>
-                    {<TiTick size={20} className = "multi-modal-tick-icon" style = {{opacity: selected ?  '1': '0'}}/>}
-                
-           
+                </p>
+                <TiTick size={20} className = "multi-modal-button__tick" style = {{opacity: selected ?  '1': '0'}}/>
         </button>
     )
 }
