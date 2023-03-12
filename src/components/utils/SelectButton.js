@@ -32,10 +32,11 @@ const SelectButton = ({type, option, to, selected}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    // save button option in redux after clicking and set the navigation direction to forward (used for transitions)
     const clickHandler = (type) => {
         switch(type) {
             case DIFFICULTY:
-                dispatch(setDifficulty(option));
+                dispatch(setDifficulty(option)); 
                 break;
             case FOCUS:
                 dispatch(setFocus(option));
