@@ -54,6 +54,7 @@ const ViewWorkout = () => {
     }
 }
 
+
 function extractVideoIdFromURL (URL) {
     const startIndex = URL.indexOf("v=")+2
     const endIndex = URL.indexOf("&");

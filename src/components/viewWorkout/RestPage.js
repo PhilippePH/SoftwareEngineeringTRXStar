@@ -6,10 +6,16 @@ import WorkoutProgress from "./WorkoutProgress";
 import { useDispatch } from "react-redux";
 import { setNavDirection } from "../../redux/slices/selectSlice";
 import { useNavigate } from "react-router-dom";
-import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
+import { FaFastForward, FaFastBackward, FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
 import { MdForward10, MdOutlineReplay10 } from "react-icons/md";
 import EndWorkoutModal from './EndWorkoutModal';
 import BackToPlaylistModal from './BackToPlaylistModal';
+
+
+// This concerns the rest pages (between youtube pages, where the user rests)
+// This includes the format of the page, and the Youtube Control buttons
+// The timer is imported from the timer file
+
 
 const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, totalWorkoutLength }) => {
 
@@ -21,6 +27,8 @@ const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, t
     const [showEndOfWorkoutModal, setShowEndOfWorkoutModal] = useState(false);
     const [showBackToPlaylistModal, setShowBackToPlaylistModal] = useState(false);
 
+
+    // THOSE ARE THE CONTROL BUTTONS 
     const fastForward = () => {
         setTime(Math.min(restData.time, timeLeft+10));
     }
@@ -45,6 +53,7 @@ const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, t
         navigate(`/playlist`);
     }
 
+    // The format of the page
     return (
         <>
         <EndWorkoutModal show={showEndOfWorkoutModal}
@@ -84,13 +93,13 @@ const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, t
             </div>
             
             <div className="container-rest__rest-controls">
-                <FaStepBackward onClick={() => {
+                <FaFastBackward onClick={() => {
                     if(isPlaying) {
                         setIsPlaying(false);
                     }
                     setShowBackToPlaylistModal(true);
                 }} className="container-rest__rest-controls__icon"/>
-                <FaBackward onClick={prevVideo} className="container-rest__rest-controls__icon"/>
+                <FaStepBackward onClick={prevVideo} className="container-rest__rest-controls__icon"/>
                 <MdOutlineReplay10 onClick={fastForward} className="container-rest__rest-controls__icon container-rest__rest-controls__icon__ten-seconds"/>
                 {
                     isPlaying ?
@@ -99,8 +108,8 @@ const RestPage = ({ nextVideo, prevVideo, restData, nextExerciseName, counter, t
                     <FaPlay onClick={playTimer} className="container-rest__rest-controls__icon"/>
                 }
                 <MdForward10 onClick={rewind} className="container-rest__rest-controls__icon container-rest__rest-controls__icon__ten-seconds"/>
-                <FaForward onClick={nextVideo} className="container-rest__rest-controls__icon"/>
-                <FaStepForward onClick={() => {
+                <FaStepForward onClick={nextVideo} className="container-rest__rest-controls__icon"/>
+                <FaFastForward onClick={() => {
                     if(isPlaying) {
                         setIsPlaying(false);
                     }

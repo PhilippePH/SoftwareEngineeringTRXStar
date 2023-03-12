@@ -1,5 +1,7 @@
 @import '../../sassStyles/_mixins.scss';
 
+// This is the stylinh for the rest pages
+
 .progress-bar{
     width: 100%;
     padding-bottom: 2%;
@@ -53,18 +55,19 @@
     }
 
     &__rest-controls {
-        width: 89%;
+        padding-top: 4%;
+        width: 790px;
+        height: 120px;
+        padding-bottom: 4%;
+
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        padding-bottom: 4%;
-
+        
         &__icon {
-            width: 11.3%; // how far apart icons are from each other
+            width: 90px; // how far apart icons are from each other
+            height: 31.5px;
 
-            &__ten-seconds {
-                width: 13%;
-            }
             cursor: pointer;
         }
     }
@@ -95,14 +98,14 @@
             width: 100%;
             padding-bottom: 6%;
             &__icon {
-                width: 20%;
-                height: 60%;
+                width: 70px; // how far apart icons are from each other
+                height: 31.5px;
             }
         }
     }
 }
 
-@media (min-width: 500px) and (max-width: 999px) {
+@media (min-width: 500px) and (max-width: 649px) {
     .container-rest {
         width: 80vw;
 
@@ -118,9 +121,38 @@
             }
         }
 
-        &__rest-controls {
+        &__rest-controls{
+            width: 100%;
+            
             &__icon {
-                height: 49%;
+                width: 70px; // how far apart icons are from each other
+                height: 31.5px;
+            }
+        }
+    }
+}
+
+@media (min-width: 650px) and (max-width: 999px) {
+    .container-rest {
+        width: 80vw;
+
+        &__message-black1 {
+            font-size: 40px;
+        }
+
+        &__message-black2 {
+            font-size: 30px;
+
+            &__message-yellow {
+                font-size: 40px;
+            }
+        }
+        &__rest-controls{
+            width: 100%;
+            
+            &__icon {
+                width: 70px; // how far apart icons are from each other
+                height: 31.5px;
             }
         }
     }
@@ -129,11 +161,5 @@
 @media (min-width: 1000px) { // make the youtube player small if the screen is particularily large
     .container-rest {
         width: 55vw;
-        &__rest-controls {
-            padding-bottom: 2.75%;
-            &__icon {
-                height: 30%;
-            }
-        }
     }
 }
