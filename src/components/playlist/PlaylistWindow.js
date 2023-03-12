@@ -75,24 +75,21 @@ const PlaylistWindow = ({ indexedDB }) => {
 
         <>
             <Playlist indexedDB={indexedDB} key={key} />
+            <CogModal
+                show={show}
+                unshow={handleClose}/>
             <div className='playlist-window'>
-            <div className='playlist-window__heading'>
-                    <div className='playlist-window__heading__title'
-
+                <div className='playlist-window__heading'>
+                    <div 
+                        className='playlist-window__heading__title'
                         style={{ visibility: time > 0 ? "" : "hidden" }}>
-                        Workout {version} 
-                        <div>{time} min </div>  </div>
-
-                    <CogModal
-                        show={show}
-                        unshow={handleClose}>
-                    </CogModal>
-
+                        <p className='playlist-window__heading__title__text-l'> Workout {version} </p> 
+                        <p className='playlist-window__heading__title__text-s'> {time} min </p>  
+                    </div>
                     <div className='playlist-window__heading__settings'
                         onClick={() => setShow(true)}>
                         <IoMdSettings size={28} />
                     </div>
-
                 </div>
                 
 
