@@ -16,6 +16,7 @@ import { IoMdSettings } from 'react-icons/io';
 import CogModal from './CogModal';
 import './playlist.scss';
 import { updateLoaded } from '../../redux/slices/playlistSlice';
+import { calculatePlaylistTime } from '../../redux/slices/playlistSlice';
 
 const fadeIn = `
     @keyframes fade-in {
@@ -29,12 +30,14 @@ const PlaylistWindow = ({ indexedDB }) => {
     const [key, setKey] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [closeAllCards, setCloseAll] = useState(false);
+    const [time, setTotalTime] = useState(0);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const playlist = useSelector((state) => (state.playlist.playlistData));
     const version = useSelector((state) => (state.select.version));
+    const totalTime = useSelector((state) => state.playlist.totalTime);
 
     const [ show, setShow ] = useState(false);
     const handleClose = () => setShow(false);
@@ -55,7 +58,10 @@ const PlaylistWindow = ({ indexedDB }) => {
 
     useEffect(() => {
         setIsLoading(false);
-    }, [playlist])
+        store.dispatch(calculatePlaylistTime())
+        setTotalTime(totalTime);
+    }, [playlist, totalTime])
+
 
     const handleIncreaseVersion = () => {
         setIsLoading(true);
@@ -70,6 +76,25 @@ const PlaylistWindow = ({ indexedDB }) => {
         <>
             <Playlist indexedDB={indexedDB} key={key} />
             <div className='playlist-window'>
+            <div className='playlist-window__heading'>
+                    <div className='playlist-window__heading__title'
+
+                        style={{ visibility: time > 0 ? "" : "hidden" }}>
+                        Workout {version} 
+                        <div>{time} min </div>  </div>
+
+                    <CogModal
+                        show={show}
+                        unshow={handleClose}>
+                    </CogModal>
+
+                    <div className='playlist-window__heading__settings'
+                        onClick={() => setShow(true)}>
+                        <IoMdSettings size={28} />
+                    </div>
+
+                </div>
+                
 
                 <div
                     className='playlist-window__container'>
@@ -85,20 +110,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                             />
                         </div>) :
                         <>
-                            <div className='playlist-window__heading'>
-                                <div className='playlist-window__heading__title'> Workout {version} </div>
-                                
-                                <CogModal
-                                show={show}
-                                unshow={handleClose}>
-                                </CogModal>
-
-                                <div className='playlist-window__heading__settings'
-                                    onClick={() => setShow(true)}> 
-                                    <IoMdSettings size={28} /> 
-                                </div>
-
-                            </div>
+                            
 
 
                             <div className="playlist-window__parent">

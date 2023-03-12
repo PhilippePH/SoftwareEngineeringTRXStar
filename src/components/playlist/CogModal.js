@@ -132,6 +132,7 @@ const CogModal = ({show, unshow}) => {
                                 </button>
                             </div>
                         </div>
+                        
 
                         <label 
                             htmlFor="pname"

@@ -290,15 +290,18 @@
 
     &__heading {
         display: flex;
-        // flex-direction: row;
+        flex-wrap: wrap;
+        flex-direction: row;
         align-items: center; // vertical center 
         justify-content: space-between; // workout text centered
         padding-bottom: 20px;
 
         &__title{
+            display: flex;
             font-size: 1.5rem;
             margin: auto;
             padding-left: 50px;
+            font-weight: 700;
         }
 
         &__settings {
