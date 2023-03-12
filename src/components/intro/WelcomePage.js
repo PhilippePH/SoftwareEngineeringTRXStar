@@ -55,7 +55,7 @@ const Welcome = ({indexedDB}) => {
                         Load Playlist
                     </button>
                     <OverlayTrigger 
-                        trigger={[ 'click','hover','focus']} 
+                        trigger={window.matchMedia('(hover: hover)').matches? 'hover': 'click'} 
                         placement="bottom" overlay={popover}>
                         <div className="welcome__load-button-wrapper">
                             <RiInformationFill className='welcome__info-icon'/>

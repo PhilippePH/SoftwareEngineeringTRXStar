@@ -35,7 +35,7 @@ const SelectDuration = () => {
             <div className="title__wrapper"/>
             <div className="title__text" > Duration </div>
             <OverlayTrigger 
-                trigger={['hover', 'focus', 'click']} 
+                trigger={window.matchMedia('(hover: hover)').matches? 'hover': 'click'} 
                 placement="top" overlay={popover}>
                 <div className="title__wrapper">
                     <RiInformationFill className='title__icon'/>
