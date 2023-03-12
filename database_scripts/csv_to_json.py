@@ -2,10 +2,12 @@ import csv
 import json
 import os
 
+# This function converts all the csv tables in the "csv" folder to an "ExerciseDatabase.json"
 def csv_to_json(csv_files, json_file):
     
     table_structure =[]
     
+    # Search for csv in csv folder
     for csv_file in csv_files:
         table_name = os.path.splitext(csv_file)
         
@@ -19,10 +21,12 @@ def csv_to_json(csv_files, json_file):
             keyPath = header[0]
             
         indexes = []
-            
+
+        # Convert into desired structure    
         for h in header:
             if h == keyPath:
                 continue
+            #Muscle type is multientry
             if h == "muscle_type":
                 indexes.append({
                 "name": h,
@@ -40,6 +44,7 @@ def csv_to_json(csv_files, json_file):
                     })
                     
         data = []
+        # Append the data
         for row in rows:
             item = {}
             for i, h in enumerate(header):
@@ -50,9 +55,7 @@ def csv_to_json(csv_files, json_file):
                     item[h] = lst
                 else:
                     item[h] = row[i]
-           #print(item)
             data.append(item)
-        #print(data)
                     
                     
         structure = {
@@ -64,12 +67,14 @@ def csv_to_json(csv_files, json_file):
 
         table_structure.append(structure)
 
+    #Define the schema structure and name of the database
     schema_structure = {
         "name": "ExerciseDatabase",
         "version": 1,
         "tables": table_structure
     }
 
+    #Save to json
     with open("database_scripts/json/" + json_file, 'w') as f:
         json.dump(schema_structure, f, indent=2,
                   separators=(',', ': '), sort_keys=False)
