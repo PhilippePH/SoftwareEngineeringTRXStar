@@ -162,7 +162,7 @@ const CogModal = ({show, unshow}) => {
 
                         <p
                             className='cog-modal__container__text'>
-                            Replace rest for cardio:
+                            Replace mid-workout rest for cardio:
                         </p>
                         <div className='cog-modal__container__wrapper'>
                             <button
