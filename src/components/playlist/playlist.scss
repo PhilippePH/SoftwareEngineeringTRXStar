@@ -317,6 +317,7 @@
         }
     
         &__settings {
+            cursor: pointer;
             padding-top: 0px;
         }
     }
@@ -366,20 +367,29 @@
     &__header {
         @include font;
         font-size: 1rem;
-        font-weight: 400;
+        font-weight: 600;
     }
 
     &__container {
+
         @include flex-center;
         flex-direction: column;
         flex-wrap:wrap; 
 
-        &__rest-text {
+        &__text {
             @include font;
             font-weight: 600;
             font-size: 1rem;
             margin: 12px 0px;
-            
+        }
+
+        &__wrapper {
+
+            display: flex;
+            gap: 10px;
+            flex-direction: row;
+            flex-wrap: nowrap;
+
             &__choice{
                 width: 100%;
                 display: flex;
@@ -396,50 +406,41 @@
                 }
             }
         }
-    }
-
-    &__button {
-        padding: 6px 20px;
-        border-radius: 20px;
-        margin: 12px 0px
-    }
-
-    &__button-unselected {
-        display: flex;
-        justify-content: center;
-        align-items:center;
-        background-color: whitesmoke;
-        text-align: center;
-        cursor: pointer;
-        border: 2px solid black;
-        border-radius: 8px
+            
     }
     
-    &__button-selected {
-        display: flex;
-        justify-content: center;
-        align-items:center;
-        background-color: #FFE600;
-        text-align: center;
-        cursor: pointer;
+
+    &__button {
+        padding: 2px 6px;
+        border-radius: 8px;
         border: 2px solid black;
-        border-radius: 8px
-    }
-
-    &__buttontext {
-        @include font;
-        font-size: 1rem;
-        margin: 0;
-    }
-
-    &__error {
+        background-color: whitesmoke;
+        text-align: center;
         @include font;
         font-weight: 400;
         font-size: 1rem;
-        color: red;
-        margin: 0;
-        min-height: 1rem;
-        opacity: 0;
+
+        &:hover {
+            background-color: lightgray;
+        }
+
+        &-active {
+            background-color: #FFE600;
+            
+            &:hover {
+                background-color: #eed600;
+            }
+        }
     }
     
+    &__save-button {
+        padding: 6px 20px;
+        border-radius: 20px;
+        @include font;
+        background-color: whitesmoke;
+
+        &:hover {
+            background-color: lightgray;
+        }
+    }
 }

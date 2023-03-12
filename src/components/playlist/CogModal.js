@@ -102,94 +102,82 @@ const CogModal = ({show, unshow}) => {
             scrollable={false}
             centered>
             <Modal.Header 
-                className='save-modal__header'
+                className='cog-modal__header'
                 closeButton>
+                Advanced Settings
             </Modal.Header>
             <Modal.Body>
                     <div className="cog-modal__container">
-                    <label 
-                            htmlFor="pname"
-                            className='cog-modal__container__rest-text'>
+                        <p 
+                            className='cog-modal__container__text'>
                             Select desired rest time between sets:
-                        </label>
-                        <div className='cog-modal__container__rest-text__input'>
-                            <div className='cog-modal__container__rest-text__choice'>
-                                <button
-                                    className={selectedSet20 && !selectedSet30 && !selectedSet40 && !replaceRest ? 'cog-modal__button-selected' : 'cog-modal__button-unselected'}
-                                    style = {{ width: ""}}
-                                    onClick={() => restSetTimeHandler20()}>
-                                    {"20 sec"}
-                                </button>
-                                <button
-                                    className={selectedSet30 && !selectedSet20 && !selectedSet40 && !replaceRest  ? 'cog-modal__button-selected' : 'cog-modal__button-unselected'}
-                                    onClick={() => restSetTimeHandler30()}>
-                                    {"30 sec"}
-                                </button>
-                                <button
-                                    className={selectedSet40  && !selectedSet20 && !selectedSet30 && !replaceRest  ? 'cog-modal__button-selected' : 'cog-modal__button-unselected'}
-                                    onClick={() => restSetTimeHandler40()}>
-                                    {"40 sec"}
-                                </button>
-                            </div>
+                        </p>
+                        <div className='cog-modal__container__wrapper'>
+                            <button
+                                className={`cog-modal__button ${selectedSet20 ? "cog-modal__button-active" : ""}`}
+                                onClick={() => restSetTimeHandler20()}>
+                                {"20 sec"}
+                            </button>
+                            <button
+                                className={`cog-modal__button ${selectedSet30 ? "cog-modal__button-active" : ""}`}
+                                onClick={() => restSetTimeHandler30()}>
+                                {"30 sec"}
+                            </button>
+                            <button
+                                className={`cog-modal__button ${selectedSet40 ? "cog-modal__button-active" : ""}`}
+                                onClick={() => restSetTimeHandler40()}>
+                                {"40 sec"}
+                            </button>
                         </div>
                         
 
-                        <label 
-                            htmlFor="pname"
-                            className='cog-modal__container__rest-text'>
+                        <p
+                            className='cog-modal__container__text'>
                             Select desired mid-workout rest time:
-                        </label>
-                        <div className='cog-modal__container__rest-text__input'>
-                            <div className='cog-modal__container__rest-text__choice'>
-                                <button
-                                    className={selected30 && !selected60 && !selected90 && !replaceRest ? 'cog-modal__button-selected' : 'cog-modal__button-unselected'}
-                                    style = {{ width: ""}}
-                                    onClick={() => restTimeHandler30()}>
-                                    {"30 sec"}
-                                </button>
-                                <button
-                                    className={selected60 && !selected30 && !selected90 && !replaceRest  ? 'cog-modal__button-selected' : 'cog-modal__button-unselected'}
-                                    onClick={() => restTimeHandler60()}>
-                                    {"60 sec"}
-                                </button>
-                                <button
-                                    className={selected90  && !selected30 && !selected60 && !replaceRest  ? 'cog-modal__button-selected' : 'cog-modal__button-unselected'}
-                                    onClick={() => restTimeHandler90()}>
-                                    {"90 sec"}
-                                </button>
-                            </div>
+                        </p>
+                        <div className='cog-modal__container__wrapper'>
+                            <button
+                                className={`cog-modal__button ${selected30 ? "cog-modal__button-active" : ""}`}
+                                onClick={() => restTimeHandler30()}>
+                                {"30 sec"}
+                            </button>
+                            <button
+                                className={`cog-modal__button ${selected60 ? "cog-modal__button-active" : ""}`}
+                                onClick={() => restTimeHandler60()}>
+                                {"60 sec"}
+                            </button>
+                            <button
+                                className={`cog-modal__button ${selected90 ? "cog-modal__button-active" : ""}`}
+                                onClick={() => restTimeHandler90()}>
+                                {"90 sec"}
+                            </button>
                         </div>
 
-                        <label
-                            htmlFor="pname"
-                            className='cog-modal__container__rest-text'>
+                        <p
+                            className='cog-modal__container__text'>
                             Replace rest for cardio:
-                        </label>
-                        <div className='cog-modal__container__rest-text__input'>
-                            <div className='cog-modal__container__rest-text__choice'>
+                        </p>
+                        <div className='cog-modal__container__wrapper'>
                             <button
-                                className={replaceRest ? 'cog-modal__button-selected' : 'cog-modal__button-unselected'}
-                                style={{ width: "" }}
+                                className={`cog-modal__button ${replaceRest ? "cog-modal__button-active" : ""}`}
                                 onClick={(event) => setReplace(true)}>
                                 {"Yes"}
                             </button>
                             <button
-                                className={!replaceRest ? 'cog-modal__button-selected' : 'cog-modal__button-unselected'}
-                                style={{ width: "" }}
+                                className={`cog-modal__button ${selected90 ? "" : "cog-modal__button-active"}`}
                                 onClick={(event) => setReplace(false)}>
                                 {"No"}
                             </button>
-                            </div>
                         </div>
-                    
-                    <button 
-                        className='save-modal__button'
-                        onClick={() => handleSubmit()}>
-                            {"Save"}
-    
-                    </button>
                     </div>
                 </Modal.Body>
+                <Modal.Footer>
+                    <button 
+                        className='cog-modal__save-button'
+                        onClick={() => handleSubmit()}>
+                        {"Save"}
+                    </button>
+                </Modal.Footer>
         </Modal>
         </>
     )

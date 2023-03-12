@@ -87,7 +87,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                         <p className='playlist-window__heading__title__text-s'> {time} min </p>  
                     </div>
                     <div className='playlist-window__heading__settings'
-                    style={{ visibility: time > 0 ? "" : "hidden" }}
+                        style={{ visibility: time > 0 ? "" : "hidden" }}
                         onClick={() => setShow(true)}>
                         <IoMdSettings size={28} />
                     </div>
