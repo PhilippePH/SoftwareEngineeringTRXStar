@@ -8,6 +8,7 @@ export const Timer = ({ isPlaying, timeLeft, setTime, onTimeout, restData, fastF
     const COUNTDOWN_SECONDS = restData.time;
     const [audio] = useState(new Audio(countdownSound));
 
+    // Adds a sound effect when less than three seconds remaining
     useEffect(() => {
         if (timeLeft === 3 ||timeLeft === COUNTDOWN_SECONDS)
         {
