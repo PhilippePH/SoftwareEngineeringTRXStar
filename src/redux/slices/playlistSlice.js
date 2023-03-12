@@ -9,8 +9,31 @@ const playlistSlice = createSlice({
     playlistData: [],
     playlistSaved: false,
     playlistLoaded: false,
+    totalTime: 1,
   },
   reducers: {
+    calculatePlaylistTime: (state, action) => {
+
+      var totalTime = 0;
+      const playlistData = [state.playlistData];
+      var playlistLength = playlistData[0].length;
+
+      for(var i = 0; i < playlistLength; i++){
+
+        if(playlistData[0][i].type == "exercise")
+        {
+          totalTime += (playlistData[0][i].time + playlistData[0][i].rest_set) * playlistData[0][i].sets;
+        }
+
+        else if(playlistData[0][i].type == "rest" || playlistData[0][i].type == "warmup" || playlistData[0][i].type == "cooldown")
+        {
+          totalTime += playlistData[0][i].time;
+        }
+      }
+
+      state.totalTime = Math.floor(totalTime/60);
+    },
+
     addPlaylist: (state, action) => {
       state.playlistData = action.payload;
     }, 
@@ -18,11 +41,8 @@ const playlistSlice = createSlice({
       const arr = action.payload;
       const value = arr[0]; 
       const index = arr[1];
-      console.log(value)
-      console.log(index)
       const updatedPlaylistData = [state.playlistData];
       updatedPlaylistData[0][index] = value;
-      console.log("updated", updatedPlaylistData)
       state.playlistData = []
       state.playlistData = updatedPlaylistData[0];
     },
@@ -62,12 +82,19 @@ const playlistSlice = createSlice({
     updateRest:(state, action) => {
       var newTime = action.payload[0]; // removed [0] as test
       var changeForCardio = action.payload[1];
+      var newRestSetTime = action.payload[2]; 
 
       const updatedPlaylistData = [state.playlistData]; // fetches the most recent data
       var playlistLength = updatedPlaylistData[0].length;
 
       for(var i = 0; i < playlistLength; i++){
-        if(updatedPlaylistData[0][i].type == "rest" && !changeForCardio)
+
+        if(updatedPlaylistData[0][i].type == "exercise" && !changeForCardio && newRestSetTime>-1)
+        {
+          updatedPlaylistData[0][i].rest_set = newRestSetTime;
+        }
+
+        if(updatedPlaylistData[0][i].type == "rest" && !changeForCardio  && newTime>-1)
           updatedPlaylistData[0][i].time = newTime;
 
         //if user wants to replace rest for cardio
@@ -86,7 +113,7 @@ const playlistSlice = createSlice({
 });
 
 //const { actions, reducer } = playlistSlice;
-export const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved, updateLoaded, moveDownExercise, moveUpExercise, updateRest } = playlistSlice.actions;
+export const { addPlaylist, initialisePlaylist, inputToPlaylist, removeFromPlaylist, updateSaved, updateLoaded, moveDownExercise, moveUpExercise, updateRest, calculatePlaylistTime } = playlistSlice.actions;
 
 const playlistPersistConfig = {
   key: 'playlist',
