@@ -2,6 +2,19 @@
 @import '../../sassStyles/mixins';
 
 .nav-bar {
+
+    &__container {
+        position: sticky;
+        top: 0px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background-color: white;
+        justify-content: space-between;
+        border-bottom: 2px solid black;
+        padding-top: 1rem;
+        padding-bottom: 0.5rem;
+    }
    
     &__link {
         
@@ -12,7 +25,7 @@
 
         &:hover {
             text-decoration: underline;
-          }
+        }
 
     }
 
