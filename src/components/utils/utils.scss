@@ -46,7 +46,8 @@
         display: inline-flex;
         width: 100%;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+
 
         > p {
             margin: 0px;
@@ -103,4 +104,14 @@
         color: black;
         margin-right: 2%;
     }
+}
+
+.tick-icon {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-size: 25px;
+    color: black;
+    // margin-right: 2%;
 }

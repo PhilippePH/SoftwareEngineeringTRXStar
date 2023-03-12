@@ -41,7 +41,7 @@ const SelectDifficulty = () => {
             <div className="selection-container__left"></div>
             <div className="selection-container__options"
                 style={{
-                    animation: (direction=="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
+                    animation: (direction==="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
                 }}>
                 {difficultyOptions?.map((option) => { // create button for every difficulty option
                     return (

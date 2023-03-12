@@ -21,7 +21,7 @@ const MusclesModal = ({show, unshow}) => {
     const muscles = useSelector((state) => (state.select.muscles));
 
     useEffect(() => {
-        if (muscles.length != 0) {
+        if (muscles.length !== 0) {
             setSelected(true);
         }
         else {

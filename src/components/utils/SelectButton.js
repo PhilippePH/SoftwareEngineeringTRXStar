@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setDifficulty, setDuration, setFocus, setMuscleGroups, setMuscles, setNavDirection } from "../../redux/slices/selectSlice";
+import { setDifficulty, setDuration, setFocus, setNavDirection } from "../../redux/slices/selectSlice";
 import { DIFFICULTY, DURATION, FOCUS } from "./constants";
 import './utils.scss';
 import { GiJumpingRope,GiWeightLiftingUp} from "react-icons/gi";
@@ -53,7 +53,7 @@ const SelectButton = ({type, option, to, selected}) => {
 
     return (
         <button 
-            className={`select-button ${selected == option ? 'selected' : 'unselected'}`}
+            className={`select-button ${selected === option ? 'selected' : 'unselected'}`}
             onClick={()=>clickHandler(type)}>
             <p>
                 {option}

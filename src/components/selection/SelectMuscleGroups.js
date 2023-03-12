@@ -32,7 +32,7 @@ const SelectMuscleGroups = () => {
     const direction = useSelector((state) => (state.select.navDirection));
 
     const clickHandler = () => {
-        if (completed.length != 0) {
+        if (completed.length !== 0) {
             setShow(true);
         }
     }
@@ -79,7 +79,7 @@ const SelectMuscleGroups = () => {
             <div 
                 className="selection-container__options-muscles"
                 style={{
-                    animation: (direction=="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
+                    animation: (direction==="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
                 }}>
                 {
                     muscleGroupOptions?.map((option) => { // create button for every muscle group option
@@ -99,9 +99,9 @@ const SelectMuscleGroups = () => {
                 <button
                     onClick={clickHandler}
                     className="selection-container__button"
-                    style={{borderColor: completed.length != 0? "black":"darkgray"}}>
+                    style={{borderColor: completed.length !== 0? "black":"darkgray"}}>
                     <p
-                        style={{color: completed.length != 0? "black":"darkgray", }}>
+                        style={{color: completed.length !== 0? "black":"darkgray", }}>
                         Specify Muscles
                     </p>
                 </button>
@@ -109,7 +109,7 @@ const SelectMuscleGroups = () => {
             <div className="selection-container__right"/>
         </div> 
         <div className='generate__div'> 
-            {completed.length!=0 &&  // enable 'Generate Workout' button once completed
+            {completed.length!==0 &&  // enable 'Generate Workout' button once completed
             <button className="generate__button"
                 style={{
                     animation: "slide-in-bottom 1s forwards",   
