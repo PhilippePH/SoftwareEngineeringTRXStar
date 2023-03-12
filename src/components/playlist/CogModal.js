@@ -7,12 +7,16 @@ import './playlist.scss'
 const CogModal = ({show, unshow}) => {
 
 
+    // Use states for selection of mid-workout rest 
     const [selected30, setSelected30] = useState(false);
     const [selected60, setSelected60] = useState(false);
     const [selected90, setSelected90] = useState(false);
-    const [replaceRest, setReplace] = useState(false);
     const [rest, setRest] = useState(-1);
 
+    // Use state for replacement of mid-workout rest for cardio
+    const [replaceRest, setReplace] = useState(false);
+
+    // Use states for selection of rest between sets 
     const [selectedSet30, setSelectedSet30] = useState(false);
     const [selectedSet20, setSelectedSet20] = useState(false);
     const [selectedSet0, setSelectedSet0] = useState(false);
@@ -20,6 +24,7 @@ const CogModal = ({show, unshow}) => {
     const [restSet, setRestSet] = useState(-1);
 
 
+    // Handler for rest time between sets - no rest
     const restSetTimeHandler0 = (event) => {
         setSelectedSet0(true);
         setSelectedSet20(false);
@@ -28,6 +33,7 @@ const CogModal = ({show, unshow}) => {
         setRestSet(0);  
 };
 
+    // Handler for rest time between sets 20 sec
     const restSetTimeHandler20 = (event) => {
             setSelectedSet20(true);
             setSelectedSet30(false);
@@ -36,6 +42,7 @@ const CogModal = ({show, unshow}) => {
             setRestSet(20);  
     };
     
+    // Handler for rest time between sets 30 sec
     const restSetTimeHandler30 = (event) => {
             setSelectedSet30(true);
             setSelectedSet20(false);
@@ -44,6 +51,7 @@ const CogModal = ({show, unshow}) => {
             setRestSet(30);  
     };
 
+    // Handler for rest time between sets 40 sec
     const restSetTimeHandler40 = (event) => {
             setSelectedSet40(true);
             setSelectedSet20(false);
@@ -52,6 +60,7 @@ const CogModal = ({show, unshow}) => {
             setRestSet(40);  
     };
 
+    // Handler for mid-workout rest time 30 sec
     const restTimeHandler30 = (event) => {
         if (!replaceRest) {
             setSelected30(true);
@@ -61,6 +70,7 @@ const CogModal = ({show, unshow}) => {
         }
     };
 
+    // Handler for mid-workout rest time 60 sec
     const restTimeHandler60 = (event) => {
         if (!replaceRest) {
             setSelected60(true);
@@ -70,6 +80,7 @@ const CogModal = ({show, unshow}) => {
         }
     };
 
+    // Handler for mid-workout rest time 90 sec
     const restTimeHandler90 = (event) => {
         if (!replaceRest) {
             setSelected90(true);
@@ -79,20 +90,11 @@ const CogModal = ({show, unshow}) => {
         }
     };
 
-    // Submit options to redux, updates playlists
+    // Submit options to redux to update playlist
     async function handleSubmit(e) {
         
         var replaceForCardio = replaceRest ? 1 : 0;
         store.dispatch(updateRest([rest, replaceForCardio, restSet])); 
-        
-        /*
-        if ( setReplace || selected30 || selected60 || selected90 || selectedSet20 
-            || selectedSet30 || selectedSet40)
-        {
-            store.dispatch(updateRest([rest, replaceForCardio, restSet])); 
-        }
-        */
-        
         unshow(); 
     }
 
