@@ -167,6 +167,23 @@
         align-items: center;
         gap: 20px;
     }
+
+    &__button {
+        
+        background-color: lightgray;
+        padding: 6px 12px;
+        text-align: center;
+        cursor: pointer;
+        border: 2px solid black;
+        border-radius: 20px;
+
+        > p {
+            @include font;
+            font-weight: 600;
+            font-size: 14px;
+            margin: 0;
+        }
+    }
 };
 
 .modal {

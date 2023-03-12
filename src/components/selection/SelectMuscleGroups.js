@@ -4,7 +4,6 @@ import NavButtons from "../utils/NavButtons";
 import { useEffect, useState } from "react";
 import { FOCUS, MUSCLE_GROUPS } from "../utils/constants";
 import SelectMultipleButton from "../utils/SelectMultipleButton";
-import ModalButton from "../utils/ModalButton"
 import MusclesModal from "./SelectMusclesModal"
 import './selection.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -29,6 +28,12 @@ const SelectMuscleGroups = () => {
         "Lower Body",
         "Upper Body",
     ];
+
+    const clickHandler = () => {
+        if (completed.length != 0) {
+            setShow(true);
+        }
+    }
 
     useEffect(() => {
         dispatch(setActiveTab(MUSCLE_GROUPS));
@@ -58,8 +63,7 @@ const SelectMuscleGroups = () => {
                 className="selection-container__options-muscles"
                 style={{
                     animation: (direction=="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
-                }}
-            >
+                }}>
                 {
                     muscleGroupOptions?.map((option) => {
                         return (
@@ -75,14 +79,17 @@ const SelectMuscleGroups = () => {
 
                     })
                 }
-                <ModalButton 
-                    showModal={setShow}
-                    text={"Specify Muscles"}
-                />
+                <button
+                    onClick={clickHandler}
+                    className="selection-container__button"
+                    style={{borderColor: completed.length != 0? "black":"darkgray"}}>
+                    <p
+                        style={{color: completed.length != 0? "black":"darkgray", }}>
+                        Specify Muscles
+                    </p>
+                </button>
             </div>
-            <div className="selection-container__right">
-                {/* {completed.length!=0 && <NavButtons next="/playlist"/>} */}
-            </div>
+            <div className="selection-container__right"/>
         </div>
         <div className='generate__div'>
             {completed.length!=0 && 
