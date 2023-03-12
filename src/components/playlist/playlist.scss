@@ -293,7 +293,7 @@
         display: flex;
         flex-flow: row nowrap;
         align-items: baseline; // vertical center 
-        justify-content: center; // workout text centered
+        justify-content: space-around; // workout text centered
         width: 100%;
         gap: 20px;
 
@@ -317,6 +317,7 @@
         }
     
         &__settings {
+            width: 28px;
             cursor: pointer;
             padding-top: 0px;
         }

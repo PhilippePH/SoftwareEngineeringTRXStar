@@ -88,6 +88,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                 unshow={handleClose}/>
             <div className='playlist-window'>
                 <div className='playlist-window__heading'>
+                    <div className='playlist-window__heading__settings'/>
                     <div 
                         className='playlist-window__heading__title'
                         style={{ visibility: time > 0 ? "" : "hidden" }}>
