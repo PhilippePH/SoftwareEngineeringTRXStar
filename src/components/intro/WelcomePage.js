@@ -13,6 +13,7 @@ import { RiInformationFill } from "react-icons/ri";
 
 const Welcome = ({indexedDB}) => {
 
+    // Only reset redux state when navigating to start page
     useEffect(() => {
         store.dispatch(initialiseAll());
         store.dispatch(initialisePlaylist([]));
@@ -24,13 +25,6 @@ const Welcome = ({indexedDB}) => {
         dispatch(setNavDirection("forwards"));
         navigate(`/select/${DIFFICULTY}`);
     }
-
-    const [width, setWidth] = useState(window.innerWidth);
-    useEffect(() => {
-        const handleResize = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-      }, []);
 
     // Modal show unshow hooks
     const [ show, setShow ] = useState(false);

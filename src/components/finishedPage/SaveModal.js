@@ -38,15 +38,24 @@ const SaveModal = ({show, unshow, indexedDB}) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const pname = Object.fromEntries(formData.entries())["playlistName"];
+
+        // Await IndexedDB operations
         const event = await saveToDatabaseSucessful(pname)
         if (event.type == "success") {
             unshow();
+
+            // Update redux state to prevent multiple saves
             store.dispatch(updateSaved(true));
         } else if (event.target.error.message.includes("Key already exists")) {
+
+            // IndexedDB throws error if playlist name already exists 
             console.log("Duplicate key error.");
+
+            // Show error message
             document.getElementById("msg").style.opacity = "1";
+
         } else {
-            console.log("Other errors.");
+            console.error("An unexpected error occured", event.target.error.message);
         }        
         
     }

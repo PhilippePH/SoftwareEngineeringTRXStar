@@ -8,9 +8,11 @@ import { RiInformationFill } from "react-icons/ri";
 
 const FinishedWorkout = ({ indexedDB }) => {
 
+    // React hooks to open and close modals
     const [ show, setShow ] = useState(false);
     const handleClose = () => setShow(false);
 
+    // Boolean state to prevent saving the same playlist multiple times
     const savedState = useSelector((state) => (state.playlist.playlistSaved));
 
     return (

@@ -27,9 +27,16 @@ const fadeIn = `
 
 const PlaylistWindow = ({ indexedDB }) => {
 
+    // Playlist versioning hook, used to regenerate new playlist
     const [key, setKey] = useState(0);
+
+    // Display loading screen when regenrating
     const [isLoading, setIsLoading] = useState(false);
+
+    // React hook to control all exercise cards
     const [closeAllCards, setCloseAll] = useState(false);
+
+    // Set and display total playlist duration
     const [time, setTotalTime] = useState(0);
 
     const navigate = useNavigate();
@@ -39,6 +46,7 @@ const PlaylistWindow = ({ indexedDB }) => {
     const version = useSelector((state) => (state.select.version));
     const totalTime = useSelector((state) => state.playlist.totalTime);
 
+    // React hooks to show and close modal
     const [ show, setShow ] = useState(false);
     const handleClose = () => setShow(false);
 
@@ -56,21 +64,21 @@ const PlaylistWindow = ({ indexedDB }) => {
         return list;
     }
 
+    // Re-render page and show new playlist when playlist or total time changes
     useEffect(() => {
         setIsLoading(false);
         store.dispatch(calculatePlaylistTime())
         setTotalTime(totalTime);
     }, [playlist, totalTime])
 
-
     const handleIncreaseVersion = () => {
         setIsLoading(true);
+        // Overrides redux state to allow regenerating playlist after loading
         store.dispatch(updateLoaded(false));
         store.dispatch(increaseVersion());
         setKey(key + 1);
     };
     
-
     return (
 
         <>
@@ -80,6 +88,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                 unshow={handleClose}/>
             <div className='playlist-window'>
                 <div className='playlist-window__heading'>
+                    <div className='playlist-window__heading__settings'/>
                     <div 
                         className='playlist-window__heading__title'
                         style={{ visibility: time > 0 ? "" : "hidden" }}>
@@ -87,7 +96,7 @@ const PlaylistWindow = ({ indexedDB }) => {
                         <p className='playlist-window__heading__title__text-s'> {time} min </p>  
                     </div>
                     <div className='playlist-window__heading__settings'
-                    style={{ visibility: time > 0 ? "" : "hidden" }}
+                        style={{ visibility: time > 0 ? "" : "hidden" }}
                         onClick={() => setShow(true)}>
                         <IoMdSettings size={28} />
                     </div>

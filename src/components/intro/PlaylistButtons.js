@@ -9,6 +9,7 @@ const PlaylistButtons = ({playlists, handleDelete}) => {
 
     const navigate = useNavigate();
 
+    // On load, sets all redux states
     const clickHandler = (playlist) => {
         console.log("Playlist data", playlist.playlist);
         store.dispatch(addPlaylist(playlist.playlist));

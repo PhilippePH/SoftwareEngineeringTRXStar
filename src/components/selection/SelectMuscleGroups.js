@@ -6,10 +6,11 @@ import { FOCUS, MUSCLE_GROUPS } from "../utils/constants";
 import SelectMultipleButton from "../utils/SelectMultipleButton";
 import ModalButton from "../utils/ModalButton"
 import MusclesModal from "./SelectMusclesModal"
-import './style.scss'
+import './selection.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { RiInformationFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 
 const SelectMuscleGroups = () => {
@@ -18,6 +19,7 @@ const SelectMuscleGroups = () => {
     const handleClose = () => setShow(false);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     
     const completed = useSelector((state) => (state.select.muscleGroups));
     const direction = useSelector((state) => (state.select.navDirection));
@@ -53,7 +55,7 @@ const SelectMuscleGroups = () => {
                 <NavButtons prev={`/select/${FOCUS}`}/>
             </div>
             <div 
-                className="selection-container__options"
+                className="selection-container__options-muscles"
                 style={{
                     animation: (direction=="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
                 }}
@@ -75,13 +77,27 @@ const SelectMuscleGroups = () => {
                 }
                 <ModalButton 
                     showModal={setShow}
-                    text={"Advanced"}
+                    text={"Specify Muscles"}
                 />
             </div>
             <div className="selection-container__right">
-                {completed.length!=0 && <NavButtons next="/playlist"/>}
+                {/* {completed.length!=0 && <NavButtons next="/playlist"/>} */}
             </div>
         </div>
+        <div className='generate__div'>
+            {completed.length!=0 && 
+            <button className="generate__button"
+                style={{
+                    animation: "slide-in-bottom 1s forwards",   
+                }}
+                onClick={() => {navigate("/playlist") }}
+            
+            >
+                Generate Workout
+            </button>
+            }
+        </div>
+
         </>
     )
 }

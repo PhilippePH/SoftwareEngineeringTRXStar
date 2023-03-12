@@ -1,7 +1,7 @@
 import Modal from 'react-bootstrap/Modal'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SelectMultipleModalButton from "../utils/SelectMultipleModalButton";
-import './style.scss'
+import './selection.scss';
 import { useSelector } from "react-redux";
 import { MUSCLES } from "../utils/constants";
 import { useEffect, useState } from 'react';
