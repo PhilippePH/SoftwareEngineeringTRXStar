@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import './viewWorkout.scss'
 import countdownSound from '../../assets/countdown.wav';
 

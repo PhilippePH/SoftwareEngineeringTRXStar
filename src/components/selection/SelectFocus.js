@@ -44,7 +44,7 @@ const SelectFocus = () => {
             <div 
                 className="selection-container__options"
                 style={{
-                    animation: (direction=="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
+                    animation: (direction==="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
                 }}
             >
                 {

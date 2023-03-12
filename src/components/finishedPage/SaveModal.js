@@ -41,7 +41,7 @@ const SaveModal = ({show, unshow, indexedDB}) => {
 
         // Await IndexedDB operations
         const event = await saveToDatabaseSucessful(pname)
-        if (event.type == "success") {
+        if (event.type === "success") {
             unshow();
 
             // Update redux state to prevent multiple saves
