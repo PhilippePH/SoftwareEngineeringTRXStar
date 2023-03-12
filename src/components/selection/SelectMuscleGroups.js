@@ -10,7 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { RiInformationFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
-
+import { store } from "../../redux/store";
+import { updateLoaded } from "../../redux/slices/playlistSlice";
 
 const SelectMuscleGroups = () => {
 
@@ -38,7 +39,8 @@ const SelectMuscleGroups = () => {
 
     useEffect(() => {
         // set the redux state of active tab
-        dispatch(setActiveTab(MUSCLE_GROUPS));
+        dispatch(setActiveTab(MUSCLE_GROUPS))
+        store.dispatch(updateLoaded(false));;
     }, []);
 
     return (

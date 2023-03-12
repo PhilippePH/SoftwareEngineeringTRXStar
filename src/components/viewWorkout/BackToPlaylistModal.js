@@ -1,8 +1,12 @@
 import Modal from 'react-bootstrap/Modal'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './viewWorkout.scss'
+import { updateLoaded } from '../../redux/slices/playlistSlice';
+import { store } from '../../redux/store';
 
 const EndWorkoutModal = ({show, unshow, backToPlaylist}) => {
+
+    store.dispatch(updateLoaded(true));
 
     return (
         <Modal
