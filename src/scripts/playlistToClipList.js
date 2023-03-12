@@ -2,7 +2,7 @@ function playlistToClipList(playlist) {
 
     const playlistArray = playlist.playlistData;
 
-    console.log("playlist array", playlistArray);
+    // console.log("playlist array", playlistArray);
 
     var clipList = [];
     var countMetric = 0;

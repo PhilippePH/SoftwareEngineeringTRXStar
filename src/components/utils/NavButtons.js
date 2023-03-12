@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { setNavDirection } from "../../redux/slices/selectSlice";
+import './utils.scss';
+
 
 // fade in transition used by navigation buttons
 const fadeIn = `
@@ -21,10 +23,10 @@ const NavButtons = ({prev, next}) => {
         navigate(to);
     }
     return (
-        <div style={{
-            display: "flex",      
-            }}>
-                <style children={fadeIn} /> 
+
+        <div>
+            <style children={fadeIn}/> 
+
             {
                 prev
                 &&

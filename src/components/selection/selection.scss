@@ -187,7 +187,7 @@
     }
 };
 
-.modal {
+.muscle-modal {
 
     &-header {
         justify-content: center;
@@ -214,18 +214,13 @@
 
     &__button {
         background-color: lightgray;
-        width: 25vw;
-        min-width: 100px;
-        max-width: 120px;
-        height: 6vh;
-        min-height: 10px;
-        max-height: 40px;
         text-align: center;
         border: 2px solid black;
         border-radius: 20px;
         @include font;
         font-weight: 600;
-        font-size: 16px
+        font-size: 16px;
+        padding: 4px 20px;
     }
 
 };
@@ -297,4 +292,10 @@
         }       
     }
 
+}
+
+.icon {
+    font-size: 30px;
+    margin: 0px;
+    color:black;
 }

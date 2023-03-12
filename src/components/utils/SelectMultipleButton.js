@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMuscleGroups, setMuscles } from "../../redux/slices/selectSlice";
 import { MUSCLES, MUSCLE_GROUPS } from "./constants";
 import {TiTick} from "react-icons/ti"
-import './style.scss';
+import './utils.scss';
 
 const SelectMultipleButton = ({type, option}) => {
+
     const dispatch = useDispatch();
 
     // React hook to track if button has been selected
@@ -51,22 +52,18 @@ const SelectMultipleButton = ({type, option}) => {
     },[])
 
     return (
-        <button className= {selected? "multi-button-selected":"multi-button-unselected"}
-            onClick={() => clickHandler(type)}
-            style={{ display: "flex", textAlign:"center" }}
-            // style={{backgroundColor: selected? "":"whitesmoke"}}
-            >
-            <div className= "button-text-wrapper">
-            <div className="tick-wrapper"/>
-                <div className="multi-button-text">
+        <button 
+            className= {`select-button ${selected ? 'selected' : 'unselected'}`}
+            onClick={() => clickHandler(type)}>
+            <div className= "select-button__wrapper">
+                <div className="select-button__wrapper-tick"/>
+                <p>
                     {option}
-                </div>
-                <div className = "tick-wrapper">
+                </p>
+                <div className = "select-button__wrapper-tick">
                     {selected && <TiTick className = "tick-icon"/>}
                 </div>
-                
             </div>
-           
         </button>
     )
 }

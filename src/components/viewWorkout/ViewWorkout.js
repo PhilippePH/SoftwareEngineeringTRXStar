@@ -11,7 +11,7 @@ const ViewWorkout = () => {
     const playlist = useSelector((state) => (state.playlist));
     var clipList = playlist_to_clipList(playlist); 
 
-    console.log("clip list", clipList); 
+    // console.log("clip list", clipList); 
 
     if (count == clipList.length) { // if end of workout, navigate to FinishedPage        
             navigate("/end");            
@@ -35,7 +35,7 @@ const ViewWorkout = () => {
             totalWorkoutLength,
             totalSets
         }
-        console.log("Exercise data parsed: ", exerciseData)
+        // console.log("Exercise data parsed: ", exerciseData)
         return (
             <YouTubePage nextVideo={() => setCount(count+1)} 
                         prevVideo={() => setCount(Math.max(0,count-1))}

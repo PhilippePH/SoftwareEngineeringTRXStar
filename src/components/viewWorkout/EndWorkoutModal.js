@@ -1,6 +1,6 @@
 import Modal from 'react-bootstrap/Modal'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Modal.scss'
+import './viewWorkout.scss'
 
 const EndWorkoutModal = ({show, unshow, endWorkout}) => {
 
@@ -8,34 +8,29 @@ const EndWorkoutModal = ({show, unshow, endWorkout}) => {
         <Modal
             show={show}
             onHide={unshow}
-            backdrop="static"
             keyboard={false}
             scrollable={true}
             centered>
-            <Modal.Header>
-                <Modal.Title
-                    className='modal__text'>
+            <Modal.Header className='confirm-modal__header'>
+                <div
+                    className='confirm-modal__text'>
                     Continue to End Workout
-                </Modal.Title>
+                </div>
             </Modal.Header>
             <Modal.Body>
-            <div className="d-flex justify-content-center">
-                <button
+                <div className="d-flex justify-content-center">
+                    <button
                         onClick={unshow}
-                        style = {{color: "black", borderColor: "black"}}
-                        className="modal__button">
+                        className="confirm-modal__button cancel">
                         Cancel
-                </button>
-                <button
+                    </button>
+                    <button
                         onClick={endWorkout}
-                        style = {{color: "black", borderColor: "black", backgroundColor: "#FFE600"}}
-                        className="modal__button">
+                        className="confirm-modal__button proceed">
                         Confirm
-                </button>
-            </div>
+                    </button>
+                </div>
             </Modal.Body>
-            <Modal.Footer>
-            </Modal.Footer>
         </Modal>
     )
 }
