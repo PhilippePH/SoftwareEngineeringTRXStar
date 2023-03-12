@@ -50,12 +50,13 @@ const LoadModal = ({show, unshow, indexedDB, setButtonDisabled}) => {
 
     const [ playlists, setPlaylists ] = useState([]);
     
-    
+    // Handler for delete button
     const handleDelete = (playlist) => {
         console.log("Delete");
         deleteSavePlaylist(playlist.name, indexedDB)
     }
 
+    // Playlist react state updated on delete
     useEffect(() => {
         getSavedPlaylists(indexedDB)
         .then(function(e) {
@@ -74,6 +75,7 @@ const LoadModal = ({show, unshow, indexedDB, setButtonDisabled}) => {
         })
     }, [setButtonDisabled, indexedDB, playlists, unshow]);
 
+    // Playlist array passed to component PlaylistButtons to be displayed
     return (
         <Modal
             show={show}
