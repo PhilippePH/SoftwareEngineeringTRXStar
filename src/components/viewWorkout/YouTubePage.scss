@@ -106,6 +106,14 @@
         &__message1 {
             font-size: 45px;
         }
+        &__youtube-controls{
+            width: 100%;
+            
+            &__icon {
+                width: 70px; // how far apart icons are from each other
+                height: 31.5px;
+            }
+        }
     }
 }
 

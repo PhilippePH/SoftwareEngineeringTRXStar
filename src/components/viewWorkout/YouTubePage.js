@@ -5,7 +5,7 @@ import '../utils/style.scss'
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import '../intro/WelcomePage.scss'
-import { FaForward, FaBackward, FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
+import { FaFastForward, FaFastBackward, FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
 import { MdForward10, MdOutlineReplay10 } from "react-icons/md";
 import WorkoutProgress from "./WorkoutProgress";
 import EndWorkoutModal from './EndWorkoutModal';
@@ -160,14 +160,14 @@ const opts = {
             </div>  
 
             <div className="container-settings__youtube-controls">
-              <FaStepBackward onClick={() => {
+              <FaFastBackward onClick={() => {
                 if(isPlaying) {
                   pauseVideo();
                   setIsPlaying(false);
                 }
                 setShowBackToPlaylistModal(true)
                 }} className="container-settings__youtube-controls__icon"/>
-              <FaBackward onClick={handlePrevVideo} className="container-settings__youtube-controls__icon"/>
+              <FaStepBackward onClick={handlePrevVideo} className="container-settings__youtube-controls__icon"/>
               <MdOutlineReplay10 onClick={() => handleRewind()} className="container-settings__youtube-controls__icon container-youtube__youtube-controls__icon__ten-seconds"/>
               {
                 isPlaying ?
@@ -176,8 +176,8 @@ const opts = {
                 <FaPlay onClick={() => playVideo()} className="container-settings__youtube-controls__icon"/>
               }
               <MdForward10 onClick={() => handleFastForward()} className="container-settings__youtube-controls__icon container-youtube__youtube-controls__icon__ten-seconds"/>
-              <FaForward onClick={handleNextVideo} className="container-settings__youtube-controls__icon"/>
-              <FaStepForward onClick={() => {
+              <FaStepForward onClick={handleNextVideo} className="container-settings__youtube-controls__icon"/>
+              <FaFastForward onClick={() => {
                 if(isPlaying) {
                   pauseVideo();
                   setIsPlaying(false);
