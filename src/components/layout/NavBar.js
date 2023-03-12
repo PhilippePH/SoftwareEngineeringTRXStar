@@ -1,5 +1,4 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { GrHomeRounded } from "react-icons/gr";
 import './NavBar.scss';
 
 const withoutSidebarRoutes = ["/youtube"];

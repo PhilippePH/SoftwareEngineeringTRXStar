@@ -13,10 +13,10 @@ const ViewWorkout = () => {
 
     // console.log("clip list", clipList); 
 
-    if (count == clipList.length) { // if end of workout, navigate to FinishedPage        
+    if (count === clipList.length) { // if end of workout, navigate to FinishedPage        
             navigate("/end");            
 
-    } else if (clipList[count].type == 'clip') { // check if exercise 
+    } else if (clipList[count].type === 'clip') { // check if exercise 
         const videoId = extractVideoIdFromURL(clipList[count].URL)
         const startTime = parseTime(clipList[count].start_time)
         const endTime = parseTime(clipList[count].end_time)

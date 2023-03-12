@@ -16,32 +16,32 @@ const About = () => {
         <div className ='about__team-title'>Our Team</div>
         <div className='about__team-members'>
           <div className='about__member'>
-            <img className='about__member-photo' src="/images/danPhoto.jpeg" />
+            <img className='about__member-photo' src="/images/danPhoto.jpeg" alt="Dan" />
             <div className='about__member-name'>Dan</div>
             <a className='about__member-link' href="https://www.linkedin.com/in/daniel-doyle-21800b142/">LinkedIn</a>
           </div>
           <div className='about__member'>
-            <img className='about__member-photo' src="/images/eugenePhoto.jpeg" />
+            <img className='about__member-photo' src="/images/eugenePhoto.jpeg" alt="Eugene"/>
             <div className='about__member-name'>Eugene</div>
             <a className='about__member-link' href="https://www.linkedin.com/in/tsun-eugene-ting/">LinkedIn</a>
           </div>
           <div className='about__member'>
-            <img className='about__member-photo' src="/images/sofiaPhoto.jpeg" />
+            <img className='about__member-photo' src="/images/sofiaPhoto.jpeg" alt="Sofia"/>
             <div className='about__member-name'>Sofia</div>
             <a className='about__member-link' href="https://www.linkedin.com/in/sofiahernandezgelado/">LinkedIn</a>
           </div>
           <div className='about__member'>
-            <img className='about__member-photo' src="/images/adelaPhoto.jpeg" />
+            <img className='about__member-photo' src="/images/adelaPhoto.jpeg" alt="Adela"/>
             <div className='about__member-name'>Adela</div>
             <a className='about__member-link' href="https://www.linkedin.com/in/adela-viskova/">LinkedIn</a>
           </div>
           <div className='about__member'>
-            <img className='about__member-photo' src="/images/sorenPhoto.jpeg" />
+            <img className='about__member-photo' src="/images/sorenPhoto.jpeg" alt="Soren"/>
             <div className='about__member-name'>Soren</div>
             <a className='about__member-link' href="https://www.linkedin.com/in/soren-antebi/">LinkedIn</a>
           </div>
           <div className='about__member'>
-            <img className='about__member-photo' src="/images/philippePhoto.jpeg" />
+            <img className='about__member-photo' src="/images/philippePhoto.jpeg" alt="Philippe" />
             <div className='about__member-name'>Philippe</div>
             <a className='about__member-link' href="https://www.linkedin.com/in/philippe-paquin-hirtle/">LinkedIn</a>
           </div>  

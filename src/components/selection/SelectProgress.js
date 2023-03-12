@@ -40,29 +40,29 @@ const SelectProgress = () => {
 
     // after clicking, set the navigation direction (used for transitions) and navigate
     const clickHandler = (to) => {
-        if(activeTab==DIFFICULTY){
+        if(activeTab===DIFFICULTY){
             dispatch(setNavDirection("forwards")); 
         }
-        else if(activeTab==MUSCLE_GROUPS){
+        else if(activeTab===MUSCLE_GROUPS){
             dispatch(setNavDirection("backwards"));
         }
-        else if(activeTab==DURATION){
-            if(to==DIFFICULTY){
+        else if(activeTab===DURATION){
+            if(to===DIFFICULTY){
                 dispatch(setNavDirection("backwards"));
             }
             else{
                 dispatch(setNavDirection("forwards"));
             }
         }
-        else if(activeTab==FOCUS){
-            if(to==MUSCLE_GROUPS){
+        else if(activeTab===FOCUS){
+            if(to===MUSCLE_GROUPS){
                 dispatch(setNavDirection("forwards"));
             }
             else{
                 dispatch(setNavDirection("backwards"));
             }
         }
-        if(to != activeTab){
+        if(to !== activeTab){
             navigate(`/select/${to}`);
         }
     }
@@ -73,20 +73,20 @@ const SelectProgress = () => {
                 {"Select your preferences"}
             </div>
             <div className="progress-container__tab">
-                <div className={activeTab==DIFFICULTY?"progress-container__tab__active":"progress-container__tab__inactive"}
+                <div className={activeTab===DIFFICULTY?"progress-container__tab__active":"progress-container__tab__inactive"}
                     onClick ={() => {selectedDifficulty && clickHandler(DIFFICULTY)}}>
                     {selectedDifficulty && <Icon icon={optionIcons[selectedDifficulty]} />}
                 </div>
-                <div className={activeTab==DURATION?"progress-container__tab__active":"progress-container__tab__inactive"}
+                <div className={activeTab===DURATION?"progress-container__tab__active":"progress-container__tab__inactive"}
                     onClick ={() => {selectedDuration && clickHandler(DURATION)}}>
                     {selectedDuration && <Icon icon={optionIcons[selectedDuration]} />}
                 </div>
-                <div className={activeTab==FOCUS?"progress-container__tab__active":"progress-container__tab__inactive"}
+                <div className={activeTab===FOCUS?"progress-container__tab__active":"progress-container__tab__inactive"}
                     onClick ={() => {selectedFocus && clickHandler(FOCUS)}}>
                     {selectedFocus && <Icon icon={optionIcons[selectedFocus]} />}
                 </div>
-                <div className={activeTab==MUSCLE_GROUPS?"progress-container__tab__active":"progress-container__tab__inactive"}
-                    onClick ={() => {selectedMuscleGroup.length!=0 && clickHandler(MUSCLE_GROUPS)}}> 
+                <div className={activeTab===MUSCLE_GROUPS?"progress-container__tab__active":"progress-container__tab__inactive"}
+                    onClick ={() => {selectedMuscleGroup.length!==0 && clickHandler(MUSCLE_GROUPS)}}> 
                     <div className="progress-container__tab__bar">
                         {
                             selectedMuscleGroup?.map((muscleGroup) => {
