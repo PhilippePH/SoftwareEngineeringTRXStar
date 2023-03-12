@@ -9,14 +9,18 @@ import { OverlayTrigger, Popover } from "react-bootstrap";
 import { RiInformationFill } from "react-icons/ri";
 
 const SelectFocus = () => {
+    
+    const focusOptions = ["HIIT", "Strength", "Endurance", "Recovery"]; // focus options to choose from
 
     const dispatch = useDispatch();
-    const focusOptions = ["HIIT", "Strength", "Endurance", "Recovery"];
+    
 
+    // retrive the focus (if already selected) and navigation direction from redux
     const completed = useSelector((state) => (state.select.focus));
     const direction = useSelector((state) => (state.select.navDirection));
 
     useEffect(() => {
+        // set the redux state of active tab
         dispatch(setActiveTab(FOCUS));
     }, []);
 
@@ -26,7 +30,7 @@ const SelectFocus = () => {
             <div className="title__wrapper"/>
             <div className="title__text" > Focus </div>
             <OverlayTrigger 
-                trigger={['hover', 'focus', 'click']} 
+                trigger={window.matchMedia('(hover: hover)').matches? 'hover': 'click'} 
                 placement="top" overlay={popover}>
                 <div className="title__wrapper">
                     <RiInformationFill className='title__icon'/>
@@ -44,7 +48,7 @@ const SelectFocus = () => {
                 }}
             >
                 {
-                    focusOptions?.map((option) => {
+                    focusOptions?.map((option) => { // create button for every focus option
                         return (
                             <SelectButton 
                                 key={option} 
@@ -70,6 +74,7 @@ const SelectFocus = () => {
 
 export default SelectFocus;
 
+// popover for the information button
 const popover = (
     <Popover id="popover-basic" className="popover__display">
       <Popover.Body className='popover__text'>

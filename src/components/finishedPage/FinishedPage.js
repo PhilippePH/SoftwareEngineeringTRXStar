@@ -47,7 +47,7 @@ const FinishedWorkout = ({ indexedDB }) => {
                         </p>
                     </button>
                     <OverlayTrigger 
-                        trigger={[ 'click','hover','focus']} 
+                        trigger={window.matchMedia('(hover: hover)').matches? 'hover': 'click'} 
                         placement="bottom" overlay={popover}>
                         <div className="finish-page__load-button-wrapper">
                             <RiInformationFill className='finish-page__info-icon'/>

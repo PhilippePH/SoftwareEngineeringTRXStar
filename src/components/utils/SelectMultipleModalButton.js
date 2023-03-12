@@ -7,6 +7,8 @@ import './utils.scss';
 
 const SelectMultipleModalButton = ({type, option}) => {
     const dispatch = useDispatch();
+
+    // React hook to track if button has been selected
     const [selected, setSelected] = useState(false);
 
     const {

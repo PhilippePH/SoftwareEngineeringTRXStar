@@ -31,15 +31,17 @@ const SelectProgress = () => {
         "Upper Body":"U",
     };
 
+    // retrieve the selections from redux and the current (active) tab
     const activeTab = useSelector((state) => (state.select.activeTab));
     const selectedDifficulty = useSelector((state) => (state.select.difficulty));
     const selectedFocus = useSelector((state) => (state.select.focus));
     const selectedDuration = useSelector((state) => (state.select.duration));
     const selectedMuscleGroup = useSelector((state) => (state.select.muscleGroups));
 
+    // after clicking, set the navigation direction (used for transitions) and navigate
     const clickHandler = (to) => {
         if(activeTab==DIFFICULTY){
-            dispatch(setNavDirection("forwards"));
+            dispatch(setNavDirection("forwards")); 
         }
         else if(activeTab==MUSCLE_GROUPS){
             dispatch(setNavDirection("backwards"));

@@ -10,18 +10,21 @@ import { RiInformationFill } from "react-icons/ri";
 
 const SelectDuration = () => {
 
-    const dispatch = useDispatch();
-    const durationOptions = [
+    const durationOptions = [ // duration options to choose from
         "15 min", 
         "30 min",
         "45 min",
         "60 min"
     ];
 
+    const dispatch = useDispatch();
+    
+    // retrive the duration (if already selected) and navigation direction from redux
     const completed = useSelector((state) => (state.select.duration));
     const direction = useSelector((state) => (state.select.navDirection));
 
     useEffect(() => {
+        // set the redux state of active tab
         dispatch(setActiveTab(DURATION));
     }, []);
 
@@ -32,7 +35,7 @@ const SelectDuration = () => {
             <div className="title__wrapper"/>
             <div className="title__text" > Duration </div>
             <OverlayTrigger 
-                trigger={['hover', 'focus', 'click']} 
+                trigger={window.matchMedia('(hover: hover)').matches? 'hover': 'click'} 
                 placement="top" overlay={popover}>
                 <div className="title__wrapper">
                     <RiInformationFill className='title__icon'/>
@@ -50,7 +53,7 @@ const SelectDuration = () => {
                 }}
             >
                 {
-                    durationOptions?.map((option) => {
+                    durationOptions?.map((option) => { // create button for every duration option
                         return (
                             <SelectButton 
                                 key={option} 
@@ -73,6 +76,7 @@ const SelectDuration = () => {
 
 export default SelectDuration;
 
+// popover for the information button
 const popover = (
     <Popover id="popover-basic" className="popover__display">
       {/* <Popover.Header as="h3">Popover right</Popover.Header> */}

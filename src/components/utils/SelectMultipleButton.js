@@ -5,8 +5,11 @@ import { MUSCLES, MUSCLE_GROUPS } from "./constants";
 import {TiTick} from "react-icons/ti"
 import './utils.scss';
 
-const SelectMultipleButton = ({type, option, width, height, fontSize}) => {
+const SelectMultipleButton = ({type, option}) => {
+
     const dispatch = useDispatch();
+
+    // React hook to track if button has been selected
     const [selected, setSelected] = useState(false);
 
     const {
@@ -17,11 +20,11 @@ const SelectMultipleButton = ({type, option, width, height, fontSize}) => {
     const clickHandler = (type) => {
         switch(type) {
             case MUSCLE_GROUPS:
-                dispatch(setMuscleGroups(option));
+                dispatch(setMuscleGroups(option)); // store selected option in redux
                 setSelected(!selected);
                 break;
             case MUSCLES:
-                dispatch(setMuscles(option));
+                dispatch(setMuscles(option)); // store selected option in redux
                 setSelected(!selected);
             
                 break;

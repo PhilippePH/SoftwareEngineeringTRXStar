@@ -8,13 +8,15 @@ import { useEffect, useState } from 'react';
 
 const MusclesModal = ({show, unshow}) => {
 
-    const muscleGroups = useSelector((state) => (state.select.muscleGroups));
-    const musclesOptions = {
+    const musclesOptions = { // muscle options to choose from
         "Core": ["obliques", "abdomen"],
         "Lower Body": ["glutes", "quads", "hamstrings", "calves"],
         "Upper Body": ["lats", "back", "shoulders", "chest", "biceps", "triceps"]
     };
 
+    // retrieve chosen muscle groups from redux
+    const muscleGroups = useSelector((state) => (state.select.muscleGroups));
+    
     const [selected, setSelected] = useState(false);
     const muscles = useSelector((state) => (state.select.muscles));
 
@@ -50,8 +52,8 @@ const MusclesModal = ({show, unshow}) => {
             <Modal.Body>
                 <div className="muscle-modal__muscles">
                     {
-                        muscleGroups.map((muscleGroup) => {
-                            return ( musclesOptions[muscleGroup]?.map((option) => {
+                        muscleGroups.map((muscleGroup) => { // create button for each muscle from selected muscle groups
+                            return ( musclesOptions[muscleGroup]?.map((option) => { 
                                 return (
                                     <SelectMultipleModalButton 
                                         key={option} 

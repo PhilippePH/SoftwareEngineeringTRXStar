@@ -22,12 +22,12 @@ const EndWorkoutModal = ({show, unshow, backToPlaylist}) => {
                 <button
                     onClick={unshow}
                     className="confirm-modal__button cancel">
-                    Go Back
+                    Cancel
                 </button>
                 <button
                     onClick={backToPlaylist}
                     className="confirm-modal__button proceed">
-                    Proceed
+                    Confirm
                 </button>
             </div>
             </Modal.Body>

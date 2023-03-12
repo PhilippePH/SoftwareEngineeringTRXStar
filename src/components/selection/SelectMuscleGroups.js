@@ -14,20 +14,21 @@ import { useNavigate } from "react-router-dom";
 
 const SelectMuscleGroups = () => {
 
+    const muscleGroupOptions = [ // muscle group options to choose from
+        "Core",
+        "Lower Body",
+        "Upper Body",
+    ];
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
+    // retrive the muscle groups (if already selected) and navigation direction from redux
     const completed = useSelector((state) => (state.select.muscleGroups));
     const direction = useSelector((state) => (state.select.navDirection));
-    
-    const muscleGroupOptions = [
-        "Core",
-        "Lower Body",
-        "Upper Body",
-    ];
 
     const clickHandler = () => {
         if (completed.length != 0) {
@@ -36,6 +37,7 @@ const SelectMuscleGroups = () => {
     }
 
     useEffect(() => {
+        // set the redux state of active tab
         dispatch(setActiveTab(MUSCLE_GROUPS));
     }, []);
 
@@ -48,7 +50,7 @@ const SelectMuscleGroups = () => {
             <div className="title__wrapper"/>
             <div className="title__text" > Muscle Group(s) </div>
             <OverlayTrigger 
-                trigger={['hover', 'focus', 'click']} 
+                trigger={window.matchMedia('(hover: hover)').matches? 'hover': 'click'} 
                 placement="top" overlay={popover}>
                 <div className="title__wrapper">
                     <RiInformationFill className='title__icon'/>
@@ -65,7 +67,7 @@ const SelectMuscleGroups = () => {
                     animation: (direction=="forwards")? "slide-in-right 0.5s forwards":"slide-in-left 0.5s forwards",   
                 }}>
                 {
-                    muscleGroupOptions?.map((option) => {
+                    muscleGroupOptions?.map((option) => { // create button for every muscle group option
                         return (
                             <SelectMultipleButton 
                                 key={option} 
@@ -90,9 +92,9 @@ const SelectMuscleGroups = () => {
                 </button>
             </div>
             <div className="selection-container__right"/>
-        </div>
-        <div className='generate__div'>
-            {completed.length!=0 && 
+        </div> 
+        <div className='generate__div'> 
+            {completed.length!=0 &&  // enable 'Generate Workout' button once completed
             <button className="generate__button"
                 style={{
                     animation: "slide-in-bottom 1s forwards",   
@@ -111,6 +113,7 @@ const SelectMuscleGroups = () => {
 
 export default SelectMuscleGroups;
 
+// popover for the information button
 const popover = (
     <Popover id="popover-basic" className="popover__display">
         <Popover.Body className='popover__text'>

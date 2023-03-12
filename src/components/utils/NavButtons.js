@@ -5,6 +5,7 @@ import { setNavDirection } from "../../redux/slices/selectSlice";
 import './utils.scss';
 
 
+// fade in transition used by navigation buttons
 const fadeIn = `
     @keyframes fade-in {
         0%   { opacity: 0; }
@@ -18,18 +19,20 @@ const NavButtons = ({prev, next}) => {
 
 
     const navigateHandler = (to, dir) => {
-        dispatch(setNavDirection(dir))
+        dispatch(setNavDirection(dir)) // set the navigation direction (used for transitions)
         navigate(to);
     }
     return (
+
         <div>
             <style children={fadeIn}/> 
+
             {
                 prev
                 &&
                 <IoIosArrowBack 
                     className="nav-button"
-                    onClick={()=>{navigateHandler(prev, "backwards")}}
+                    onClick={()=>{navigateHandler(prev, "backwards")}} // set the navigation direction (used for transitions)
                 />
             }
             {
@@ -37,7 +40,7 @@ const NavButtons = ({prev, next}) => {
                 &&
                 <IoIosArrowForward 
                     className="nav-button"
-                    onClick={()=>{navigateHandler(next, "forwards")}}
+                    onClick={()=>{navigateHandler(next, "forwards")}} // set the navigation direction (used for transitions)
                 />
             }
         </div>
