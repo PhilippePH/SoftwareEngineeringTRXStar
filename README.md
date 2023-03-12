@@ -79,7 +79,6 @@ We're excited to share some potential changes and improvements we're considering
 
 - Utilise service worker to create a comprehensive offline experience up until YouTube pages
 - Pre-load YouTube videos during rest section
-- Implement server-side rendering to improve performance and SEO
 
 We're always looking for new contributors to help us bring these exciting changes to life, so if you're interested in getting involved, please check out our Contributing guidelines below and submit a pull request!
 

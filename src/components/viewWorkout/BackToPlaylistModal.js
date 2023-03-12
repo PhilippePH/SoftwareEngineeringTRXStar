@@ -24,13 +24,13 @@ const EndWorkoutModal = ({show, unshow, backToPlaylist}) => {
                         onClick={unshow}
                         style = {{color: "black", borderColor: "black"}}
                         className="modal__button">
-                        Go Back
+                        Cancel
                 </button>
                 <button
                         onClick={backToPlaylist}
                         style = {{color: "black", borderColor: "black", backgroundColor: "#FFE600"}}
                         className="modal__button">
-                        Proceed
+                        Confirm
                 </button>
             </div>
             </Modal.Body>
