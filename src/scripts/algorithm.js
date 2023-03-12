@@ -236,28 +236,33 @@ function RandInt(min, max) {
     return Math.floor(Math.random() * max) + min; 
 }
 
-// Replace rest with cardio
-export function getCardio(ind){
-    filterDatabase ("exercises", "focus", 0, indexedDB, "ExerciseDatabase", 1)
-    .then(async function (exercise) {
-        filterDatabase("clip", "exercise_name", exercise[RandInt(0, exercise.length)].exercise_name, indexedDB, "ExerciseDatabase", 1)
-        .then(async function (clip) {
-            filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1)
-            .then(async function (video) {
-                var clip_formatted = {
-                    "type": "exercise",
-                    "exercise_name": clip[0].exercise_name,
-                    "time": 40,
-                    "sets": 1,
-                    "muscles": exercise[0].muscle_type,
-                    "rest_set": 0,
-                    "intensity": 1,
-                    "URL": video[0].URL,
-                    "start_time": clip[0].start_time,
-                    "end_time": clip[0].end_time
-                }
-                store.dispatch(inputToPlaylist([clip_formatted, ind]))
+
+export function getCardio(ind, previous_rest){
+        filterDatabase ("exercises", "focus", 0, indexedDB, "ExerciseDatabase", 1) .then(
+                async function (exercise) {
+                    filterDatabase("clip", "exercise_name", exercise[RandInt(0, exercise.length)].exercise_name, indexedDB, "ExerciseDatabase", 1).then(
+                        async function (clip) {
+                            filterOnKey("video", clip.video_ID, indexedDB, "ExerciseDatabase", 1).then(
+                                async function (video) {
+                            var clip_formatted = {
+                                "type": "exercise",
+                                "exercise_name": clip[0].exercise_name,
+                                "time": 40,
+                                "sets": 1,
+                                "muscles": exercise[0].muscle_type,
+                                "rest_set": 0,
+                                "intensity": 1,
+                                "URL": video[0].URL,
+                                "start_time": clip[0].start_time,
+                                "end_time": clip[0].end_time,
+                                "is_cardio": 1,
+                                "replaced_rest": previous_rest
+                            }
+                            store.dispatch(inputToPlaylist([clip_formatted, ind]))
+                        }
+                    )
+                })
             })
-        })
-    })
+        
+    
 }

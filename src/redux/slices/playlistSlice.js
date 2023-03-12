@@ -87,6 +87,8 @@ const playlistSlice = createSlice({
       const updatedPlaylistData = [state.playlistData]; // fetches the most recent data
       var playlistLength = updatedPlaylistData[0].length;
 
+      console.log("new time", newTime); 
+
       for(var i = 0; i < playlistLength; i++){
 
         if(updatedPlaylistData[0][i].type == "exercise" && !changeForCardio && newRestSetTime>-1)
@@ -94,16 +96,38 @@ const playlistSlice = createSlice({
           updatedPlaylistData[0][i].rest_set = newRestSetTime;
         }
 
-        if(updatedPlaylistData[0][i].type == "rest" && !changeForCardio  && newTime>-1)
+        if((updatedPlaylistData[0][i].type == "rest" || updatedPlaylistData[0][i].is_cardio) && !changeForCardio  && newTime>-1)
+        {
+          var rest = {
+            type: "rest",
+            intensity: 0,
+            time: updatedPlaylistData[0][i].previous_rest
+          }
+          updatedPlaylistData[0][i] = rest;
           updatedPlaylistData[0][i].time = newTime;
+
+        }
+
+        if (updatedPlaylistData[0][i].is_cardio && !changeForCardio && newTime == -1) {
+          console.log("In here"); 
+
+            var rest = {
+              type: "rest",
+              intensity: 0,
+              time: updatedPlaylistData[0][i].replaced_rest
+            }
+            console.log("Rest", rest); 
+            updatedPlaylistData[0][i] = rest;
+          
+        }
 
         //if user wants to replace rest for cardio
         else if(updatedPlaylistData[0][i].type == "rest" && changeForCardio)
         {
           // This does all filtering and updating code is in algorithm.js
-          getCardio(i); 
+          var previous_rest = updatedPlaylistData[0][i].time; 
+          getCardio(i, previous_rest); 
         }
-
 
       }
       state.playlistData = [] // empties the playlist

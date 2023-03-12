@@ -78,12 +78,16 @@ const CogModal = ({show, unshow}) => {
         var replaceForCardio = replaceRest ? 1 : 0;
         console.log("replace cardio", replaceForCardio); 
         console.log("rest", rest); 
-
-        if (selected30 || selected60 || selected90 || selectedSet20 
+        store.dispatch(updateRest([rest, replaceForCardio, restSet])); 
+        
+        /*
+        if ( setReplace || selected30 || selected60 || selected90 || selectedSet20 
             || selectedSet30 || selectedSet40)
         {
             store.dispatch(updateRest([rest, replaceForCardio, restSet])); 
         }
+        */
+        
         unshow(); 
     }
 
