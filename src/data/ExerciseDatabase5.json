@@ -388,7 +388,7 @@
           "intensity": 1
         },
         {
-          "exercise_name": "hip henge",
+          "exercise_name": "hip hinge",
           "muscle_group": "lowerBody",
           "muscle_type": [
             "glutes",
@@ -2301,7 +2301,7 @@
           "start_sec": 1964,
           "end_sec": 2006,
           "duration": 42,
-          "exercise_name": "hip henge",
+          "exercise_name": "hip hinge",
           "start_time": "00:32:44",
           "end_time": "00:33:26",
           "total_time": "00:00:42"
@@ -2972,7 +2972,7 @@
           "start_sec": 1964,
           "end_sec": 2007,
           "duration": 43,
-          "exercise_name": "hip henge",
+          "exercise_name": "hip hinge",
           "start_time": "00:32:44",
           "end_time": "00:33:27",
           "total_time": "00:00:43"

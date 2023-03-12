@@ -41,6 +41,19 @@ const SelectMuscleGroups = () => {
         // set the redux state of active tab
         dispatch(setActiveTab(MUSCLE_GROUPS))
         store.dispatch(updateLoaded(false));;
+
+        // clear filteredDatabase if returning to selection pages
+        // create filtered database at start-up
+        const filtered = indexedDB.open("FilteredDatabase", 1);
+
+        // if filtered database already exists, clear object stores
+        filtered.onsuccess = function(event) {
+            const db = filtered.result;
+            const objectStoreList = db.objectStoreNames;
+            for (var i = 0; i < objectStoreList.length; i++) {
+                db.transaction(objectStoreList[i], "readwrite").objectStore(objectStoreList[i]).clear();
+            }
+        };
     }, []);
 
     return (
